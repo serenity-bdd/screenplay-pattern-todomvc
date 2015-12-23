@@ -3,10 +3,9 @@ package net.serenitybdd.demos.todos.questions;
 import com.google.common.collect.ImmutableMap;
 import net.serenitybdd.core.steps.Instrumented;
 import net.serenitybdd.demos.todos.model.TodoStatus;
-import net.serenitybdd.demos.todos.pages.components.ToDoList;
+import net.serenitybdd.demos.todos.pages.components.TodoListItem;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Question;
-import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 
 import java.util.Map;
 
@@ -28,9 +27,11 @@ public class TheItemStatus implements Question<TodoStatus> {
         this.itemName = itemName;
     }
 
+    private TodoListItem toDoListItem;
+
     @Override
     public TodoStatus answeredBy(Actor actor) {
-        return statusFrom(BrowseTheWeb.as(actor).onPage(ToDoList.class).isChecked(itemName));
+        return statusFrom(toDoListItem.forItem(itemName).isChecked());
     }
 
     private TodoStatus statusFrom(Boolean checked) {

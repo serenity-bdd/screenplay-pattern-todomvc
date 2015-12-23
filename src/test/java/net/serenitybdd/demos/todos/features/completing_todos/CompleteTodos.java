@@ -25,14 +25,16 @@ import static org.hamcrest.Matchers.not;
 public class CompleteTodos {
 
     @Managed
+    private
     WebDriver hisBrowser;
 
-    Actor james = Actor.named("James");
+    private Actor james = Actor.named("James");
 
     @Steps
     ClearCompletedItems clearTheCompletedItems;
 
     @Steps
+    private
     DisplayedItems theDisplayedItems;
 
     @Before
@@ -47,12 +49,44 @@ public class CompleteTodos {
         andThat(james).wasAbleTo(AddTodoItems.called("Walk the dog", "Put out the garbage"));
 
         when(james).attemptsTo(
-                CompleteItem.called("Walk the dog")
+                Complete.itemCalled("Walk the dog")
         );
 
         then(james).should(
                 seeThat(TheItemStatus.forTheItemCalled("Walk the dog"), is(Completed)),
                 seeThat(TheRemainingItemCount.value(), is(1)));
+    }
+
+    @Test
+    public void complete_all_todos() {
+
+        givenThat(james).wasAbleTo(OpenTheApplication.onTheHomePage());
+        andThat(james).wasAbleTo(AddTodoItems.called("Walk the dog", "Put out the garbage"));
+
+        when(james).attemptsTo(
+                Complete.allItems()
+        );
+
+        then(james).should(
+                seeThat(TheItemStatus.forTheItemCalled("Walk the dog"), is(Completed)),
+                seeThat(TheItemStatus.forTheItemCalled("Put out the garbage"), is(Completed))
+        );
+    }
+
+
+    @Test
+    public void complete_all_todos_should_update_remaining_count() {
+
+        givenThat(james).wasAbleTo(OpenTheApplication.onTheHomePage());
+        andThat(james).wasAbleTo(AddTodoItems.called("Walk the dog", "Put out the garbage"));
+
+        when(james).attemptsTo(
+                Complete.allItems()
+        );
+
+        then(james).should(
+                seeThat(TheRemainingItemCount.value(), is(0))
+        );
     }
 
     @Test
@@ -62,7 +96,7 @@ public class CompleteTodos {
         andThat(james).wasAbleTo(AddTodoItems.called("Walk the dog", "Put out the garbage"));
 
         when(james).attemptsTo(
-                CompleteItem.called("Walk the dog")
+                Complete.itemCalled("Walk the dog")
         );
 
         then(james).should(seeThat(TheRemainingItemCount.value(), is(1)));
@@ -76,7 +110,7 @@ public class CompleteTodos {
         andThat(james).wasAbleTo(AddTodoItems.called("Walk the dog", "Put out the garbage"));
 
         when(james).attemptsTo(
-                CompleteItem.called("Walk the dog"),
+                Complete.itemCalled("Walk the dog"),
                 FilterItems.byStatus(Active)
         );
 

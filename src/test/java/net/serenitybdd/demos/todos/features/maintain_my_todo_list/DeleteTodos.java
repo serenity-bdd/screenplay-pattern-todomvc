@@ -1,6 +1,7 @@
 package net.serenitybdd.demos.todos.features.maintain_my_todo_list;
 
 import net.serenitybdd.demos.todos.questions.DisplayedItems;
+import net.serenitybdd.demos.todos.questions.TheRemainingItemCount;
 import net.serenitybdd.demos.todos.tasks.*;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.screenplay.Actor;
@@ -13,17 +14,20 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.*;
+import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.contains;
 
 @RunWith(SerenityRunner.class)
 public class DeleteTodos {
 
     @Managed
+    private
     WebDriver hisBrowser;
 
-    Actor james = Actor.named("James");
+    private Actor james = Actor.named("James");
 
     @Steps
+    private
     DisplayedItems theDisplayedItems;
 
     @Before
@@ -42,6 +46,19 @@ public class DeleteTodos {
         );
 
         then(james).should(seeThat(theDisplayedItems, contains("Put out the garbage")));
+    }
+
+    @Test
+    public void deleting_an_item_should_decrease_the_item_count() {
+
+        givenThat(james).wasAbleTo(OpenTheApplication.onTheHomePage());
+        andThat(james).wasAbleTo(AddTodoItems.called("Walk the dog", "Put out the garbage"));
+
+        when(james).attemptsTo(
+                DeleteAnItem.called("Walk the dog")
+        );
+
+        then(james).should(seeThat(TheRemainingItemCount.value(), is(1)));
     }
 
 }

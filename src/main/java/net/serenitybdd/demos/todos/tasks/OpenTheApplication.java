@@ -10,7 +10,7 @@ import static net.serenitybdd.screenplay.Tasks.instrumented;
 
 public class OpenTheApplication implements Action {
 
-    ApplicationHomePage applicationHomePage;
+    private ApplicationHomePage applicationHomePage;
 
     public static OpenTheApplication onTheHomePage() {
         return instrumented(OpenTheApplication.class);

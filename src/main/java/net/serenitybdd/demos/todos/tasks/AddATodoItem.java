@@ -14,7 +14,7 @@ public class AddATodoItem implements Task {
 
     private final String thingToDo;
 
-    public AddATodoItem(String thingToDo) { this.thingToDo = thingToDo; }
+    protected AddATodoItem(String thingToDo) { this.thingToDo = thingToDo; }
 
     @Step("{0} adds a todo item called #thingToDo")
     public <T extends Actor> void performAs(T actor) {

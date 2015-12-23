@@ -24,12 +24,15 @@ import static org.hamcrest.core.Is.is;
 @RunWith(SerenityRunner.class)
 public class AddNewTodos {
 
-    Actor james = Actor.named("James");
+    private Actor james = Actor.named("James");
 
     @Managed
-    WebDriver hisBrowser;
+    private WebDriver hisBrowser;
 
-    DisplayedItems theDisplayedItems = new DisplayedItems();
+    @Steps
+    private PlaceholderText thePlaceholderText;
+
+    private DisplayedItems theDisplayedItems = new DisplayedItems();
 
     @Before
     public void jamesCanBrowseTheWeb() {
@@ -53,7 +56,4 @@ public class AddNewTodos {
 
         then(james).should(seeThat(thePlaceholderText, is("What needs to be done?")));
     }
-
-    @Steps
-    PlaceholderText thePlaceholderText;
 }
