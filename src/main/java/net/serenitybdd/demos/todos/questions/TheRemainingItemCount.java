@@ -1,6 +1,6 @@
 package net.serenitybdd.demos.todos.questions;
 
-import net.serenitybdd.demos.todos.pages.components.TodoCounter;
+import net.serenitybdd.demos.todos.pages.todolist.counter.TodoCounter;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Question;
 

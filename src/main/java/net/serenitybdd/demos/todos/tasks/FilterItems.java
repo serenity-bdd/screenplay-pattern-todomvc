@@ -1,7 +1,7 @@
 package net.serenitybdd.demos.todos.tasks;
 
 import net.serenitybdd.demos.todos.model.TodoStatusFilter;
-import net.serenitybdd.demos.todos.pages.components.Filter;
+import net.serenitybdd.demos.todos.pages.todolist.filter.Filter;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.actions.Click;

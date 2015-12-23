@@ -1,4 +1,4 @@
-package net.serenitybdd.demos.todos.pages.components;
+package net.serenitybdd.demos.todos.pages.todolist.counter;
 
 import net.serenitybdd.core.pages.PageObject;
 

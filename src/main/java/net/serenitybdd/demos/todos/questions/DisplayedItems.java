@@ -1,7 +1,7 @@
 package net.serenitybdd.demos.todos.questions;
 
 import net.serenitybdd.core.pages.WebElementFacade;
-import net.serenitybdd.demos.todos.pages.components.ToDoList;
+import net.serenitybdd.demos.todos.pages.todolist.ToDoList;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Question;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;

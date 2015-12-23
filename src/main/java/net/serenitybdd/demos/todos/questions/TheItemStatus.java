@@ -3,7 +3,7 @@ package net.serenitybdd.demos.todos.questions;
 import com.google.common.collect.ImmutableMap;
 import net.serenitybdd.core.steps.Instrumented;
 import net.serenitybdd.demos.todos.model.TodoStatus;
-import net.serenitybdd.demos.todos.pages.components.TodoListItem;
+import net.serenitybdd.demos.todos.pages.todolist.items.TodoListItem;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Question;
 

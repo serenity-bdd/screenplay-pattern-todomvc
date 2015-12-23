@@ -1,6 +1,6 @@
 package net.serenitybdd.demos.todos.questions;
 
-import net.serenitybdd.demos.todos.pages.components.NewTodoForm;
+import net.serenitybdd.demos.todos.pages.todolist.newitem.NewTodoForm;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Question;
 import net.serenitybdd.screenplay.annotations.Subject;

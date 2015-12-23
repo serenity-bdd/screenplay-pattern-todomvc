@@ -1,7 +1,7 @@
 package net.serenitybdd.demos.todos.tasks;
 
 import net.serenitybdd.core.steps.Instrumented;
-import net.serenitybdd.demos.todos.pages.components.NewTodoForm;
+import net.serenitybdd.demos.todos.pages.todolist.newitem.NewTodoForm;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Enter;

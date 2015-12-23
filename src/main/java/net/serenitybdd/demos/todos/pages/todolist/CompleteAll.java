@@ -1,4 +1,4 @@
-package net.serenitybdd.demos.todos.pages.components;
+package net.serenitybdd.demos.todos.pages.todolist;
 
 import net.serenitybdd.core.targets.Target;
 

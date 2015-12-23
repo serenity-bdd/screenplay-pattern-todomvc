@@ -22,7 +22,7 @@ import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.not;
 
 @RunWith(SerenityRunner.class)
-public class CompleteTodos {
+public class CompleteATodo {
 
     @Managed
     private
@@ -55,38 +55,6 @@ public class CompleteTodos {
         then(james).should(
                 seeThat(TheItemStatus.forTheItemCalled("Walk the dog"), is(Completed)),
                 seeThat(TheRemainingItemCount.value(), is(1)));
-    }
-
-    @Test
-    public void complete_all_todos() {
-
-        givenThat(james).wasAbleTo(OpenTheApplication.onTheHomePage());
-        andThat(james).wasAbleTo(AddTodoItems.called("Walk the dog", "Put out the garbage"));
-
-        when(james).attemptsTo(
-                Complete.allItems()
-        );
-
-        then(james).should(
-                seeThat(TheItemStatus.forTheItemCalled("Walk the dog"), is(Completed)),
-                seeThat(TheItemStatus.forTheItemCalled("Put out the garbage"), is(Completed))
-        );
-    }
-
-
-    @Test
-    public void complete_all_todos_should_update_remaining_count() {
-
-        givenThat(james).wasAbleTo(OpenTheApplication.onTheHomePage());
-        andThat(james).wasAbleTo(AddTodoItems.called("Walk the dog", "Put out the garbage"));
-
-        when(james).attemptsTo(
-                Complete.allItems()
-        );
-
-        then(james).should(
-                seeThat(TheRemainingItemCount.value(), is(0))
-        );
     }
 
     @Test

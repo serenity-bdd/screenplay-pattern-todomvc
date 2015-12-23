@@ -1,7 +1,7 @@
 package net.serenitybdd.demos.todos.questions;
 
 import com.google.common.collect.ImmutableMap;
-import net.serenitybdd.demos.todos.pages.components.ClearCompleted;
+import net.serenitybdd.demos.todos.pages.todolist.ClearCompleted;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Question;
 import net.serenitybdd.screenplay.annotations.Subject;

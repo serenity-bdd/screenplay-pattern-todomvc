@@ -1,7 +1,6 @@
 package net.serenitybdd.demos.todos.tasks;
 
-import net.serenitybdd.demos.todos.pages.components.ToDoList;
-import net.serenitybdd.demos.todos.pages.components.TodoListItem;
+import net.serenitybdd.demos.todos.pages.todolist.items.TodoListItem;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.actions.Click;

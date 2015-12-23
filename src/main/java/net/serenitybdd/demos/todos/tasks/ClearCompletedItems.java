@@ -1,6 +1,6 @@
 package net.serenitybdd.demos.todos.tasks;
 
-import net.serenitybdd.demos.todos.pages.components.ClearCompleted;
+import net.serenitybdd.demos.todos.pages.todolist.ClearCompleted;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.actions.Click;
