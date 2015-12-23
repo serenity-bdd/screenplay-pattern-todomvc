@@ -17,12 +17,11 @@ public class SendClick implements Action {
         this.target = target;
     }
 
-    @Step("{0} clicks on #target")
     @Override
+    @Step("{0} clicks on #target")
     public <T extends Actor> void performAs(T theActor) {
         WebElement deleteButton = as(theActor).findBy(pathTo(target));
         as(theActor).evaluateJavascript("arguments[0].click()", deleteButton);
-
     }
 
     public static Action to(Target target) {
