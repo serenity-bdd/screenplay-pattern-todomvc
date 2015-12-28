@@ -1,13 +1,7 @@
 package net.serenitybdd.demos.todos.pages.todolist.newitem;
 
-import net.serenitybdd.core.pages.PageObject;
-import net.serenitybdd.core.targets.Target;
+import net.serenitybdd.screenplay.targets.Target;
 
-public class NewTodoForm extends PageObject {
-
+public class NewTodoForm {
     public static Target NEW_TODO_FIELD = Target.the("New Todo Field").locatedBy("#new-todo");
-
-    public String getPlaceholderText() {
-        return $(NEW_TODO_FIELD).getAttribute("placeholder");
-    }
 }

@@ -1,40 +1,18 @@
 package net.serenitybdd.demos.todos.pages.todolist.items;
 
-import com.google.common.base.Preconditions;
-import net.serenitybdd.core.pages.PageObject;
-import net.serenitybdd.core.targets.Target;
+import net.serenitybdd.screenplay.targets.Target;
 
-public class TodoListItem extends PageObject {
+public class TodoListItem {
 
-    private String itemName;
+    public static Target COMPLETE_ITEM_BUTTON = Target.the("Complete button")
+                                              .locatedBy( "//*[@class='view' and contains(.,'{0}')]//input[@type='checkbox']");
 
-    public TodoListItem forItem(String itemName) {
-        this.itemName = itemName;
-        return this;
-    }
+    public static Target DELETE_ITEM_BUTTON = Target.the("Delete button")
+                                            .locatedBy( "//*[@class='view' and contains(.,'{0}')]//button[@class='destroy']");
 
-    public Boolean isChecked() {
-        Preconditions.checkNotNull(itemName, "Select an item using forName() before calling this method");
-        return $(completeButton()).isSelected();
-    }
+    public static Target ITEM_TEXT_LABEL = Target.the("Item text label")
+                                          .locatedBy("//*[@class='view' and contains(.,'{0}')]//label");
 
-    public Target completeButton() {
-        Preconditions.checkNotNull(itemName, "Select an item using forName() before calling this method");
-        return CompleteItemButton.forItemCalled(itemName);
-    }
-
-    public Target deleteButton() {
-        Preconditions.checkNotNull(itemName, "Select an item using forName() before calling this method");
-        return DeleteItemButton.forItemCalled(itemName);
-    }
-
-    public Target text() {
-        Preconditions.checkNotNull(itemName, "Select an item using forName() before calling this method");
-        return ItemTextLabel.forItemCalled(itemName);
-    }
-
-    public Target inlineEditField() {
-        Preconditions.checkNotNull(itemName, "Select an item using forName() before calling this method");
-        return ItemTextInlineInput.forItemCalled(itemName);
-    }
+    public static Target ITEM_TEXT_INPUT = Target.the("Item text label")
+                                          .locatedBy("//li[contains(.,'{0}')]//form/input");
 }

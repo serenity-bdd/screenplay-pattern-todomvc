@@ -6,6 +6,8 @@ import net.serenitybdd.demos.todos.model.TodoStatus;
 import net.serenitybdd.demos.todos.pages.todolist.items.TodoListItem;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Question;
+import net.serenitybdd.screenplay.questions.SelectedStatus;
+import net.serenitybdd.screenplay.targets.Target;
 
 import java.util.Map;
 
@@ -27,11 +29,12 @@ public class TheItemStatus implements Question<TodoStatus> {
         this.itemName = itemName;
     }
 
-    private TodoListItem toDoListItem;
-
     @Override
     public TodoStatus answeredBy(Actor actor) {
-        return statusFrom(toDoListItem.forItem(itemName).isChecked());
+        Target completeItemButton = TodoListItem.COMPLETE_ITEM_BUTTON.of(itemName);
+
+        Boolean itemChecked = SelectedStatus.of(completeItemButton).onTheScreenOf(actor).as(Boolean.class);
+        return statusFrom(itemChecked);
     }
 
     private TodoStatus statusFrom(Boolean checked) {

@@ -2,11 +2,12 @@ package net.serenitybdd.demos.todos.tasks;
 
 import net.serenitybdd.demos.todos.pages.todolist.items.TodoListItem;
 import net.serenitybdd.screenplay.Actor;
-import net.serenitybdd.screenplay.Performable;
+import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
+import net.serenitybdd.screenplay.targets.Target;
 import net.thucydides.core.annotations.Step;
 
-public class CompleteItem implements Performable {
+public class CompleteItem implements Task {
 
     private final String itemName;
 
@@ -14,11 +15,10 @@ public class CompleteItem implements Performable {
         this.itemName = itemName;
     }
 
-    TodoListItem listItem;
-
     @Override
     @Step("Completes item called #itemName")
     public <T extends Actor> void performAs(T theActor) {
-        theActor.attemptsTo(Click.on(listItem.forItem(itemName).completeButton()));
+        Target completeButton = TodoListItem.COMPLETE_ITEM_BUTTON.of(itemName);
+        theActor.attemptsTo(Click.on(completeButton));
     }
 }

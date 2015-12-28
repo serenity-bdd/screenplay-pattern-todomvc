@@ -1,5 +1,6 @@
 package net.serenitybdd.demos.todos.features.record_todos;
 
+import net.serenitybdd.demos.todos.questions.ApplicationDetails;
 import net.serenitybdd.demos.todos.questions.DisplayedItems;
 import net.serenitybdd.demos.todos.questions.PlaceholderText;
 import net.serenitybdd.demos.todos.tasks.AddATodoItem;
@@ -16,7 +17,6 @@ import org.openqa.selenium.WebDriver;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.*;
 import static org.hamcrest.Matchers.hasItem;
-import static org.hamcrest.core.Is.is;
 
 /**
  * This example illustrates using Serenity Steps with JUnit.
@@ -28,9 +28,6 @@ public class AddNewTodos {
 
     @Managed
     private WebDriver hisBrowser;
-
-    @Steps
-    private PlaceholderText thePlaceholderText;
 
     private DisplayedItems theDisplayedItems = new DisplayedItems();
 
@@ -49,11 +46,4 @@ public class AddNewTodos {
         then(james).should(seeThat(theDisplayedItems, hasItem("Buy some milk")));
     }
 
-    @Test
-    public void should_display_a_meaningful_placeholder() {
-
-        givenThat(james).wasAbleTo(OpenTheApplication.onTheHomePage());
-
-        then(james).should(seeThat(thePlaceholderText, is("What needs to be done?")));
-    }
 }

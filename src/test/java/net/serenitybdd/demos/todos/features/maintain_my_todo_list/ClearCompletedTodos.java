@@ -85,4 +85,5 @@ public class ClearCompletedTodos {
 
         then(jane).should(seeThat(theDisplayedItems, contains("Walk the dog", "Feed the cat")));
     }
+
 }

@@ -2,20 +2,21 @@ package net.serenitybdd.demos.todos.features.maintain_my_todo_list;
 
 import net.serenitybdd.demos.todos.questions.DisplayedItems;
 import net.serenitybdd.demos.todos.questions.TheRemainingItemCount;
-import net.serenitybdd.demos.todos.tasks.*;
+import net.serenitybdd.demos.todos.tasks.AddTodoItems;
+import net.serenitybdd.demos.todos.tasks.DeleteAnItem;
+import net.serenitybdd.demos.todos.tasks.OpenTheApplication;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.thucydides.core.annotations.Managed;
-import net.thucydides.core.annotations.Steps;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.*;
+import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.Matchers.contains;
 
 @RunWith(SerenityRunner.class)
 public class DeleteTodos {
@@ -26,9 +27,8 @@ public class DeleteTodos {
 
     private Actor james = Actor.named("James");
 
-    @Steps
-    private
-    DisplayedItems theDisplayedItems;
+//    @Steps
+    private DisplayedItems theDisplayedItems = new DisplayedItems();
 
     @Before
     public void jamesCanBrowseTheWeb() {
@@ -45,7 +45,7 @@ public class DeleteTodos {
                 DeleteAnItem.called("Walk the dog")
         );
 
-        then(james).should(seeThat(theDisplayedItems, contains("Put out the garbage")));
+        then(james).should(seeThat(theDisplayedItems, hasItem("Put out the garbage")));
     }
 
     @Test

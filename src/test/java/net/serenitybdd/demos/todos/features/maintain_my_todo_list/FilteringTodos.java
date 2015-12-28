@@ -3,12 +3,14 @@ package net.serenitybdd.demos.todos.features.maintain_my_todo_list;
 import net.serenitybdd.demos.todos.model.TodoStatusFilter;
 import net.serenitybdd.demos.todos.questions.CurrentFilter;
 import net.serenitybdd.demos.todos.questions.DisplayedItems;
-import net.serenitybdd.demos.todos.tasks.*;
+import net.serenitybdd.demos.todos.tasks.AddTodoItems;
+import net.serenitybdd.demos.todos.tasks.Complete;
+import net.serenitybdd.demos.todos.tasks.FilterItems;
+import net.serenitybdd.demos.todos.tasks.OpenTheApplication;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.thucydides.core.annotations.Managed;
-import net.thucydides.core.annotations.Steps;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,13 +26,11 @@ import static org.hamcrest.Matchers.is;
 public class FilteringTodos {
 
     private Actor james = Actor.named("James");
+
     @Managed
     private WebDriver hisBrowser;
 
-    @Steps
-    private
-    DisplayedItems theDisplayedItems;
-
+    private DisplayedItems theDisplayedItems = new DisplayedItems();
     private CurrentFilter theCurrentFilter = new CurrentFilter();
 
     @Before
