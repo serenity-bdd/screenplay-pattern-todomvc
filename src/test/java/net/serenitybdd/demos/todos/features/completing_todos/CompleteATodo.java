@@ -1,8 +1,7 @@
 package net.serenitybdd.demos.todos.features.completing_todos;
 
-import net.serenitybdd.demos.todos.questions.DisplayedItems;
 import net.serenitybdd.demos.todos.questions.TheItemStatus;
-import net.serenitybdd.demos.todos.questions.TheRemainingItemCount;
+import net.serenitybdd.demos.todos.questions.TheItems;
 import net.serenitybdd.demos.todos.tasks.*;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.screenplay.Actor;
@@ -33,10 +32,6 @@ public class CompleteATodo {
     @Steps
     ClearCompletedItems clearTheCompletedItems;
 
-    @Steps
-    private
-    DisplayedItems theDisplayedItems;
-
     @Before
     public void jamesCanBrowseTheWeb() {
         james.can(BrowseTheWeb.with(hisBrowser));
@@ -54,7 +49,7 @@ public class CompleteATodo {
 
         then(james).should(
                 seeThat(TheItemStatus.forTheItemCalled("Walk the dog"), is(Completed)),
-                seeThat(TheRemainingItemCount.value(), is(1)));
+                seeThat(TheItems.leftCount(), is(1)));
     }
 
     @Test
@@ -67,7 +62,8 @@ public class CompleteATodo {
                 Complete.itemCalled("Walk the dog")
         );
 
-        then(james).should(seeThat(TheRemainingItemCount.value(), is(1)));
+        then(james).should(seeThat(TheItems.leftCount(), is(1)));
+        then(james).should(seeThat(TheItems.leftCount(), is(1)));
     }
 
 
@@ -82,7 +78,7 @@ public class CompleteATodo {
                 FilterItems.byStatus(Active)
         );
 
-        then(james).should(seeThat(theDisplayedItems, not(contains("Walk the dog"))));
+        then(james).should(seeThat(TheItems.displayed(), not(contains("Walk the dog"))));
     }
 
 }

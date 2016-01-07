@@ -13,6 +13,6 @@ public class DisplayedItems implements Question<List<String>> {
 
     @Override
     public List<String> answeredBy(Actor actor) {
-        return Text.of(ToDoList.TODO_ITEMS).onTheScreenOf(actor).asList();
+        return Text.of(ToDoList.TODO_ITEMS).viewedBy(actor).asList();
     }
 }

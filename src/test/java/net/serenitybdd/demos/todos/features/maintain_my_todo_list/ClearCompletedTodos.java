@@ -1,7 +1,7 @@
 package net.serenitybdd.demos.todos.features.maintain_my_todo_list;
 
 import net.serenitybdd.demos.todos.questions.ClearCompletedItemsOptionAvailability;
-import net.serenitybdd.demos.todos.questions.DisplayedItems;
+import net.serenitybdd.demos.todos.questions.TheItems;
 import net.serenitybdd.demos.todos.tasks.AddTodoItems;
 import net.serenitybdd.demos.todos.tasks.ClearCompletedItems;
 import net.serenitybdd.demos.todos.tasks.Complete;
@@ -39,8 +39,6 @@ public class ClearCompletedTodos {
     private
     ClearCompletedItems clearTheCompletedItems;
 
-    private DisplayedItems theDisplayedItems = new DisplayedItems();
-
     private ClearCompletedItemsOptionAvailability theClearCompletedItemsOption = new ClearCompletedItemsOptionAvailability();
 
     @Before
@@ -59,7 +57,7 @@ public class ClearCompletedTodos {
                 Complete.itemCalled("Walk the dog"),
                 clearTheCompletedItems);
 
-        then(james).should(seeThat(theDisplayedItems, contains("Put out the garbage")));
+        then(james).should(seeThat(TheItems.displayed(), contains("Put out the garbage")));
     }
 
     @Test
@@ -83,7 +81,7 @@ public class ClearCompletedTodos {
                 Complete.itemCalled("Walk the dog"),
                 clearTheCompletedItems);
 
-        then(jane).should(seeThat(theDisplayedItems, contains("Walk the dog", "Feed the cat")));
+        then(jane).should(seeThat(TheItems.displayed(), contains("Walk the dog", "Feed the cat")));
     }
 
 }

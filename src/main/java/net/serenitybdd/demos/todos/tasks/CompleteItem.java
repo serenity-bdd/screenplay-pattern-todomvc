@@ -16,7 +16,7 @@ public class CompleteItem implements Task {
     }
 
     @Override
-    @Step("Completes item called #itemName")
+    @Step("{0} completes the item called #itemName")
     public <T extends Actor> void performAs(T theActor) {
         Target completeButton = TodoListItem.COMPLETE_ITEM_BUTTON.of(itemName);
         theActor.attemptsTo(Click.on(completeButton));

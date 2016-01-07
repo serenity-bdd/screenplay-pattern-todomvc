@@ -11,6 +11,6 @@ public class PlaceholderText implements Question<String> {
 
     @Override
     public String answeredBy(Actor actor) {
-        return Attribute.of(NewTodoForm.NEW_TODO_FIELD).named("placeholder").onTheScreenOf(actor).asString();
+        return Attribute.of(NewTodoForm.NEW_TODO_FIELD).named("placeholder").viewedBy(actor).asString();
     }
 }

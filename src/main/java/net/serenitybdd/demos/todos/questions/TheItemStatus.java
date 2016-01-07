@@ -33,7 +33,7 @@ public class TheItemStatus implements Question<TodoStatus> {
     public TodoStatus answeredBy(Actor actor) {
         Target completeItemButton = TodoListItem.COMPLETE_ITEM_BUTTON.of(itemName);
 
-        Boolean itemChecked = SelectedStatus.of(completeItemButton).onTheScreenOf(actor).as(Boolean.class);
+        Boolean itemChecked = SelectedStatus.of(completeItemButton).viewedBy(actor).as(Boolean.class);
         return statusFrom(itemChecked);
     }
 

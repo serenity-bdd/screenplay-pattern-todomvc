@@ -2,7 +2,7 @@ package net.serenitybdd.demos.todos.features.maintain_my_todo_list;
 
 import net.serenitybdd.demos.todos.model.TodoStatusFilter;
 import net.serenitybdd.demos.todos.questions.CurrentFilter;
-import net.serenitybdd.demos.todos.questions.DisplayedItems;
+import net.serenitybdd.demos.todos.questions.TheItems;
 import net.serenitybdd.demos.todos.tasks.AddTodoItems;
 import net.serenitybdd.demos.todos.tasks.Complete;
 import net.serenitybdd.demos.todos.tasks.FilterItems;
@@ -30,7 +30,6 @@ public class FilteringTodos {
     @Managed
     private WebDriver hisBrowser;
 
-    private DisplayedItems theDisplayedItems = new DisplayedItems();
     private CurrentFilter theCurrentFilter = new CurrentFilter();
 
     @Before
@@ -48,7 +47,7 @@ public class FilteringTodos {
                 Complete.itemCalled("Walk the dog"),
                 FilterItems.byStatus(TodoStatusFilter.Completed));
 
-        then(james).should(seeThat(theDisplayedItems, contains("Walk the dog")));
+        then(james).should(seeThat(TheItems.displayed(), contains("Walk the dog")));
     }
 
     @Test
@@ -61,7 +60,7 @@ public class FilteringTodos {
                 Complete.itemCalled("Walk the dog"),
                 FilterItems.byStatus(Active));
 
-        then(james).should(seeThat(theDisplayedItems, contains("Put out the garbage")));
+        then(james).should(seeThat(TheItems.displayed(), contains("Put out the garbage")));
     }
 
     @Test
@@ -75,7 +74,7 @@ public class FilteringTodos {
                 FilterItems.byStatus(Active),
                 FilterItems.byStatus(All));
 
-        then(james).should(seeThat(theDisplayedItems, contains("Walk the dog", "Put out the garbage")));
+        then(james).should(seeThat(TheItems.displayed(), contains("Walk the dog", "Put out the garbage")));
     }
 
     @Test

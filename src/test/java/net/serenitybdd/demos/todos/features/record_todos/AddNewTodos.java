@@ -1,6 +1,6 @@
 package net.serenitybdd.demos.todos.features.record_todos;
 
-import net.serenitybdd.demos.todos.questions.DisplayedItems;
+import net.serenitybdd.demos.todos.questions.TheItems;
 import net.serenitybdd.demos.todos.tasks.AddATodoItem;
 import net.serenitybdd.demos.todos.tasks.AddTodoItems;
 import net.serenitybdd.demos.todos.tasks.OpenTheApplication;
@@ -28,8 +28,6 @@ public class AddNewTodos {
     @Managed
     private WebDriver hisBrowser;
 
-    private DisplayedItems theDisplayedItems = new DisplayedItems();
-
     @Before
     public void jamesCanBrowseTheWeb() {
         james.can(BrowseTheWeb.with(hisBrowser));
@@ -42,7 +40,7 @@ public class AddNewTodos {
 
         when(james).attemptsTo(AddATodoItem.called("Buy some milk"));
 
-        then(james).should(seeThat(theDisplayedItems, hasItem("Buy some milk")));
+        then(james).should(seeThat(TheItems.displayed(), hasItem("Buy some milk")));
     }
 
     @Test
@@ -53,7 +51,7 @@ public class AddNewTodos {
 
         when(james).attemptsTo(AddATodoItem.called("Buy some milk"));
 
-        then(james).should(seeThat(theDisplayedItems,
+        then(james).should(seeThat(TheItems.displayed(),
                                    hasItems("Walk the dog", "Put out the garbage", "Buy some milk")));
     }
 

@@ -9,7 +9,7 @@ import net.thucydides.core.annotations.Step;
 public class CompleteAllItems implements Task {
 
     @Override
-    @Step("Completes item called #itemName")
+    @Step("Completes all items")
     public <T extends Actor> void performAs(T theActor) {
         theActor.attemptsTo(Click.on(CompleteAll.BUTTON));
     }

@@ -20,7 +20,7 @@ public class ClearCompletedItemsOptionAvailability implements Question<ElementAv
 
     @Override
     public ElementAvailability answeredBy(Actor actor) {
-        Boolean clearCompleteButtonIsVisible = Visibility.of(ClearCompleted.BUTTON).onTheScreenOf(actor).value();
+        Boolean clearCompleteButtonIsVisible = Visibility.of(ClearCompleted.BUTTON).viewedBy(actor).value();
         return ELEMENT_AVAILABILITY.get(clearCompleteButtonIsVisible);
     }
 }

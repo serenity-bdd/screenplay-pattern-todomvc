@@ -15,8 +15,8 @@ public class ApplicationDetails implements Question<ApplicationInformation> {
     @Override
     public ApplicationInformation answeredBy(Actor actor) {
         String title = BrowseTheWeb.as(actor).getTitle();
-        String heading = Text.of(MAIN_HEADING).onTheScreenOf(actor).value();
-        String aboutInformation = Text.of(FOOTER).onTheScreenOf(actor).value();
+        String heading = Text.of(MAIN_HEADING).viewedBy(actor).value();
+        String aboutInformation = Text.of(FOOTER).viewedBy(actor).value();
 
         return new ApplicationInformation(title, heading, aboutInformation);
     }

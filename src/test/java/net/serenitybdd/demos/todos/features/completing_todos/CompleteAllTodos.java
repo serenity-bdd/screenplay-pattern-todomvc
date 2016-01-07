@@ -1,8 +1,7 @@
 package net.serenitybdd.demos.todos.features.completing_todos;
 
-import net.serenitybdd.demos.todos.questions.DisplayedItems;
 import net.serenitybdd.demos.todos.questions.TheItemStatus;
-import net.serenitybdd.demos.todos.questions.TheRemainingItemCount;
+import net.serenitybdd.demos.todos.questions.TheItems;
 import net.serenitybdd.demos.todos.tasks.AddTodoItems;
 import net.serenitybdd.demos.todos.tasks.ClearCompletedItems;
 import net.serenitybdd.demos.todos.tasks.Complete;
@@ -34,15 +33,10 @@ public class CompleteAllTodos {
     @Steps
     ClearCompletedItems clearTheCompletedItems;
 
-    @Steps
-    private
-    DisplayedItems theDisplayedItems;
-
     @Before
     public void jamesCanBrowseTheWeb() {
         james.can(BrowseTheWeb.with(hisBrowser));
     }
-
 
     @Test
     public void should_be_able_to_complete_all_todos_with_a_single_action() {
@@ -90,7 +84,7 @@ public class CompleteAllTodos {
         );
 
         then(james).should(
-                seeThat(TheRemainingItemCount.value(), is(0))
+                seeThat(TheItems.leftCount(), is(0))
         );
     }
 
@@ -106,7 +100,7 @@ public class CompleteAllTodos {
         );
 
         then(james).should(
-                seeThat(TheRemainingItemCount.value(), is(2))
+                seeThat(TheItems.leftCount(), is(2))
         );
     }
 
