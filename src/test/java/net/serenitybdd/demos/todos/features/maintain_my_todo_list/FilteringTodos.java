@@ -20,6 +20,7 @@ import static net.serenitybdd.demos.todos.model.TodoStatusFilter.Active;
 import static net.serenitybdd.demos.todos.model.TodoStatusFilter.All;
 import static net.serenitybdd.screenplay.GivenWhenThen.*;
 import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.is;
 
 @RunWith(SerenityRunner.class)
@@ -61,6 +62,22 @@ public class FilteringTodos {
                 FilterItems.byStatus(Active));
 
         then(james).should(seeThat(TheItems.displayed(), contains("Put out the garbage")));
+    }
+
+    /**
+     * This test should fail because the feature it is testing doesn't exist yet
+     */
+    @Test
+    public void items_should_not_be_flagged_as_Important_by_default() {
+
+        givenThat(james).wasAbleTo(OpenTheApplication.onTheHomePage());
+        andThat(james).wasAbleTo(AddTodoItems.called("Walk the dog", "Put out the garbage"));
+
+        when(james).attemptsTo(
+                Complete.itemCalled("Walk the dog"),
+                FilterItems.byStatus(TodoStatusFilter.Important));
+
+        then(james).should(seeThat(TheItems.displayed(), is(empty())));
     }
 
     @Test

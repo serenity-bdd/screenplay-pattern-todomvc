@@ -1,9 +1,7 @@
 package net.serenitybdd.demos.todos.features.maintain_my_todo_list;
 
 import net.serenitybdd.demos.todos.questions.TheItems;
-import net.serenitybdd.demos.todos.tasks.AddTodoItems;
-import net.serenitybdd.demos.todos.tasks.DeleteAnItem;
-import net.serenitybdd.demos.todos.tasks.OpenTheApplication;
+import net.serenitybdd.demos.todos.tasks.*;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
@@ -57,4 +55,51 @@ public class DeleteTodos {
         then(james).should(seeThat(TheItems.leftCount(), is(1)));
     }
 
+    /**
+     * This test should produce an error because the test is invalid
+     */
+    @Test
+    public void trying_to_delete_an_item_that_could_not_be_added() {
+
+        givenThat(james).wasAbleTo(OpenTheApplication.onTheHomePage());
+        andThat(james).wasAbleTo(AddTheTodoItem.called("Walk the dog"));
+
+        when(james).attemptsTo(
+                DeleteAnItem.called("Walk the cat")
+        );
+
+        then(james).should(seeThat(TheItems.leftCount(), is(1)));
+    }
+
+    /**
+     * This test should produce an error because the test is invalid
+     */
+    @Test
+    public void trying_to_delete_an_item_that_does_not_exist() {
+
+        givenThat(james).wasAbleTo(OpenTheApplication.onTheHomePage());
+        andThat(james).wasAbleTo(AddTodoItems.called("Walk the dog", "Put out the garbage"));
+
+        when(james).attemptsTo(
+                DeleteAnItem.called("Walk the cat")
+        );
+
+        then(james).should(seeThat(TheItems.leftCount(), is(1)));
+    }
+
+    /**
+     * This test should produce an error because the test is invalid
+     */
+    @Test
+    public void trying_to_delete_an_item_that_does_not_exist_with_semantic_error_messages() {
+
+        givenThat(james).wasAbleTo(OpenTheApplication.onTheHomePage());
+        andThat(james).wasAbleTo(AddTodoItems.called("Walk the dog", "Put out the garbage"));
+
+        when(james).attemptsTo(
+                DeleteTheItem.called("Walk the cat")
+        );
+
+        then(james).should(seeThat(TheItems.leftCount(), is(1)));
+    }
 }

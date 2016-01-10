@@ -14,6 +14,7 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.*;
+import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.hasItems;
 
@@ -54,5 +55,22 @@ public class AddNewTodos {
         then(james).should(seeThat(TheItems.displayed(),
                                    hasItems("Walk the dog", "Put out the garbage", "Buy some milk")));
     }
+
+    /**
+     * This will correctly report a test error
+     */
+    @Test
+    public void should_not_be_able_to_add_an_item_that_already_exists() {
+
+        givenThat(james).wasAbleTo(OpenTheApplication.onTheHomePage());
+        andThat(james).wasAbleTo(AddTodoItems.called("Walk the dog", "Put out the garbage","Buy some milk"));
+
+        when(james).attemptsTo(AddATodoItem.called("Walk the dog"));
+
+        then(james).should(seeThat(TheItems.displayed(),
+                contains("Walk the dog", "Put out the garbage", "Buy some milk")));
+    }
+
+
 
 }
