@@ -11,11 +11,12 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <serenity.version>1.1.22-SNAPSHOT</serenity.version>
-        <serenity.maven.version>1.1.22-rc.14</serenity.maven.version>
+        <serenity.version>1.1.25-rc.2</serenity.version>
+        <serenity.maven.version>1.1.25-rc.2</serenity.maven.version>
         <serenity.cucumber.version>1.1.2</serenity.cucumber.version>
         <serenity.jbehave.version>1.1.0</serenity.jbehave.version>
         <parallel.tests>4</parallel.tests>
+        <webdriver.base.url>http://todomvc.com/examples/angularjs/#/</webdriver.base.url>
     </properties>
 
     <repositories>
@@ -117,6 +118,9 @@
                         <include>**/jbehave/**/*.java</include>
                         <include>**/cucumber/*.java</include>
                     </includes>
+                    <systemPropertyVariables>
+                      <webdriver.base.url>${webdriver.base.url}</webdriver.base.url>
+                    </systemPropertyVariables>
                     <excludes>
                         <exclude>**/*WithFailures.java</exclude>
                     </excludes>
@@ -172,6 +176,12 @@
         </plugins>
     </build>
     <profiles>
+      <profile>
+          <id>localhost</id>
+          <properties>
+               <webdriver.base.url>http://localhost:8080/angularjs/#/</webdriver.base.url>
+          </properties>
+      </profile>
         <profile>
             <id>failing</id>
             <build>
