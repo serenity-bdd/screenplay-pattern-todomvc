@@ -63,7 +63,6 @@ public class CompleteATodo {
         );
 
         then(james).should(seeThat(TheItems.leftCount(), is(1)));
-        then(james).should(seeThat(TheItems.leftCount(), is(1)));
     }
 
 
