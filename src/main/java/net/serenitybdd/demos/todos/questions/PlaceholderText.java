@@ -11,6 +11,8 @@ public class PlaceholderText implements Question<String> {
 
     @Override
     public String answeredBy(Actor actor) {
-        return Attribute.of(ToDoList.WHAT_NEEDS_TO_BE_DONE).named("placeholder").viewedBy(actor).asString();
+        return Attribute.of(ToDoList.WHAT_NEEDS_TO_BE_DONE).named("placeholder")
+                .viewedBy(actor)
+                .asString();
     }
 }

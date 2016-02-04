@@ -1,27 +1,20 @@
 package net.serenitybdd.demos.todos.questions;
 
-import com.google.common.collect.ImmutableMap;
 import net.serenitybdd.demos.todos.user_interface.ToDoList;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Question;
 import net.serenitybdd.screenplay.annotations.Subject;
 import net.serenitybdd.screenplay.questions.Visibility;
 
-import java.util.Map;
-
 import static serenityx.ValueOf.the;
 
 @Subject("the 'Clear Completed' option")
 public class ClearCompletedItemsOptionAvailability implements Question<ElementAvailability> {
 
-    private final Map<Boolean, ElementAvailability> ELEMENT_AVAILABILITY =
-            ImmutableMap.of(
-                    Boolean.TRUE, ElementAvailability.Available,
-                    Boolean.FALSE, ElementAvailability.Unavailable
-                    );
-
     @Override
     public ElementAvailability answeredBy(Actor actor) {
-        return ELEMENT_AVAILABILITY.get(the(Visibility.of(ToDoList.CLEAR_COMPLETED).viewedBy(actor)));
+        return ElementAvailability.from(
+                the(Visibility.of(ToDoList.CLEAR_COMPLETED).viewedBy(actor))
+        );
     }
 }

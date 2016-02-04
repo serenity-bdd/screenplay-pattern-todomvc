@@ -12,6 +12,8 @@ public class CurrentFilter implements Question<TodoStatusFilter> {
 
     @Override
     public TodoStatusFilter answeredBy(Actor actor) {
-        return Text.of(ToDoList.SELECTED_FILTER).viewedBy(actor).asEnum(TodoStatusFilter.class);
+        return Text.of(ToDoList.SELECTED_FILTER)
+                .viewedBy(actor)
+                .asEnum(TodoStatusFilter.class);
     }
 }
