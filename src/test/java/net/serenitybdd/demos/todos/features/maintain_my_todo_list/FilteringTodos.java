@@ -37,8 +37,7 @@ public class FilteringTodos {
     @Test
     public void filtering_by_completed() {
 
-        givenThat(james).wasAbleTo(OpenTheApplication.onTheHomePage());
-        andThat(james).wasAbleTo(AddTodoItems.called("Walk the dog", "Put out the garbage"));
+        givenThat(james).wasAbleTo(Start.withATodoListContaining("Walk the dog", "Put out the garbage"));
 
         when(james).attemptsTo(
                 CompleteItem.called("Walk the dog"),
@@ -50,8 +49,7 @@ public class FilteringTodos {
     @Test
     public void filtering_by_active() {
 
-        givenThat(james).wasAbleTo(OpenTheApplication.onTheHomePage());
-        andThat(james).wasAbleTo(AddTodoItems.called("Walk the dog", "Put out the garbage"));
+        givenThat(james).wasAbleTo(Start.withATodoListContaining("Walk the dog", "Put out the garbage"));
 
         when(james).attemptsTo(
                 CompleteItem.called("Walk the dog"),
@@ -63,8 +61,7 @@ public class FilteringTodos {
     @Test
     public void filtering_by_all() {
 
-        givenThat(james).wasAbleTo(OpenTheApplication.onTheHomePage());
-        andThat(james).wasAbleTo(AddTodoItems.called("Walk the dog", "Put out the garbage"));
+        givenThat(james).wasAbleTo(Start.withATodoListContaining("Walk the dog", "Put out the garbage"));
 
         when(james).attemptsTo(
                 CompleteItem.called("Walk the dog"),
@@ -77,13 +74,10 @@ public class FilteringTodos {
     @Test
     public void should_indicate_what_filter_is_currently_being_used() {
 
-        givenThat(james).wasAbleTo(OpenTheApplication.onTheHomePage());
-
-        when(james).wasAbleTo(AddTodoItems.called("Walk the dog", "Put out the garbage"));
+        givenThat(james).wasAbleTo(Start.withATodoListContaining("Walk the dog", "Put out the garbage"));
         then(james).should(seeThat(theCurrentFilter, is(All)));
 
         when(james).attemptsTo(FilterItems.byStatus(Active));
         then(james).should(seeThat(theCurrentFilter, is(Active)));
     }
-
 }

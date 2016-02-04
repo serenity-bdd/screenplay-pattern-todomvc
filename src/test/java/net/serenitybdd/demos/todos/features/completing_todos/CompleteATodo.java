@@ -40,8 +40,7 @@ public class CompleteATodo {
     @Test
     public void completed_items_should_be_marked_as_completed_in_the_main_list() {
 
-        givenThat(james).wasAbleTo(OpenTheApplication.onTheHomePage());
-        andThat(james).wasAbleTo(AddTodoItems.called("Walk the dog", "Put out the garbage"));
+        givenThat(james).wasAbleTo(Start.withATodoListContaining("Walk the dog", "Put out the garbage"));
 
         when(james).attemptsTo(
                 CompleteItem.called("Walk the dog")
@@ -55,8 +54,7 @@ public class CompleteATodo {
     @Test
     public void items_left_counter_should_be_decremented_when_an_item_is_completed() {
 
-        givenThat(james).wasAbleTo(OpenTheApplication.onTheHomePage());
-        andThat(james).wasAbleTo(AddTodoItems.called("Walk the dog", "Put out the garbage"));
+        givenThat(james).wasAbleTo(Start.withATodoListContaining("Walk the dog", "Put out the garbage"));
 
         when(james).attemptsTo(
                 CompleteItem.called("Walk the dog")
@@ -69,8 +67,7 @@ public class CompleteATodo {
     @Test
     public void completed_items_should_not_appear_in_the_active_list() {
 
-        givenThat(james).wasAbleTo(OpenTheApplication.onTheHomePage());
-        andThat(james).wasAbleTo(AddTodoItems.called("Walk the dog", "Put out the garbage"));
+        givenThat(james).wasAbleTo(Start.withATodoListContaining("Walk the dog", "Put out the garbage"));
 
         when(james).attemptsTo(
                 CompleteItem.called("Walk the dog"),
@@ -79,5 +76,4 @@ public class CompleteATodo {
 
         then(james).should(seeThat(TheItems.displayed(), not(contains("Walk the dog"))));
     }
-
 }

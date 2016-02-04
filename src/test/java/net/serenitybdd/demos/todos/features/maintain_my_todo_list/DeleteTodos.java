@@ -1,9 +1,8 @@
 package net.serenitybdd.demos.todos.features.maintain_my_todo_list;
 
 import net.serenitybdd.demos.todos.questions.TheItems;
-import net.serenitybdd.demos.todos.tasks.AddTodoItems;
 import net.serenitybdd.demos.todos.tasks.DeleteAnItem;
-import net.serenitybdd.demos.todos.tasks.OpenTheApplication;
+import net.serenitybdd.demos.todos.tasks.Start;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
@@ -34,8 +33,7 @@ public class DeleteTodos {
     @Test
     public void deleted_items_should_be_removed_from_the_list() {
 
-        givenThat(james).wasAbleTo(OpenTheApplication.onTheHomePage());
-        andThat(james).wasAbleTo(AddTodoItems.called("Walk the dog", "Put out the garbage"));
+        givenThat(james).wasAbleTo(Start.withATodoListContaining("Walk the dog", "Put out the garbage"));
 
         when(james).attemptsTo(
                 DeleteAnItem.called("Walk the dog")
@@ -47,8 +45,7 @@ public class DeleteTodos {
     @Test
     public void deleting_an_item_should_decrease_the_item_count() {
 
-        givenThat(james).wasAbleTo(OpenTheApplication.onTheHomePage());
-        andThat(james).wasAbleTo(AddTodoItems.called("Walk the dog", "Put out the garbage"));
+        givenThat(james).wasAbleTo(Start.withATodoListContaining("Walk the dog", "Put out the garbage"));
 
         when(james).attemptsTo(
                 DeleteAnItem.called("Walk the dog")
@@ -56,5 +53,4 @@ public class DeleteTodos {
 
         then(james).should(seeThat(TheItems.leftCount(), is(1)));
     }
-
 }

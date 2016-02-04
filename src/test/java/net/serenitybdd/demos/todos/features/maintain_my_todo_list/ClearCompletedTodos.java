@@ -21,20 +21,13 @@ import static org.hamcrest.Matchers.equalTo;
 @RunWith(SerenityRunner.class)
 public class ClearCompletedTodos {
 
-    @Managed
-    private
-    WebDriver hisBrowser;
-
-    @Managed
-    private
-    WebDriver herBrowser;
+    @Managed private WebDriver hisBrowser;
+    @Managed private WebDriver herBrowser;
 
     private Actor james = Actor.named("James");
     private Actor jane = Actor.named("Jane");
 
-    @Steps
-    private
-    ClearCompletedItems clearTheCompletedItems;
+    @Steps private ClearCompletedItems clearTheCompletedItems;
 
     private ClearCompletedItemsOptionAvailability theClearCompletedItemsOption = new ClearCompletedItemsOptionAvailability();
 
@@ -47,8 +40,7 @@ public class ClearCompletedTodos {
     @Test
     public void cleared_completed_items_should_disappear_from_the_todo_list() {
 
-        givenThat(james).wasAbleTo(OpenTheApplication.onTheHomePage());
-        andThat(james).wasAbleTo(AddTodoItems.called("Walk the dog", "Put out the garbage"));
+        givenThat(james).wasAbleTo(Start.withATodoListContaining("Walk the dog", "Put out the garbage"));
 
         when(james).attemptsTo(
                 CompleteItem.called("Walk the dog"),
@@ -60,19 +52,15 @@ public class ClearCompletedTodos {
     @Test
     public void cleared_completed_option_should_not_be_available_if_no_items_are_completed() {
 
-        givenThat(james).wasAbleTo(OpenTheApplication.onTheHomePage());
-        andThat(james).wasAbleTo(AddTodoItems.called("Walk the dog", "Put out the garbage"));
+        givenThat(james).wasAbleTo(Start.withATodoListContaining("Walk the dog", "Put out the garbage"));
 
         then(james).should(seeThat(theClearCompletedItemsOption, equalTo(Unavailable)));
     }
 
     @Test
     public void clearing_completed_items_should_not_affect_items_belonging_to_other_users() {
-        givenThat(james).wasAbleTo(OpenTheApplication.onTheHomePage());
-        andThat(jane).wasAbleTo(OpenTheApplication.onTheHomePage());
-
-        givenThat(james).wasAbleTo(AddTodoItems.called("Walk the dog", "Put out the garbage"));
-        andThat(jane).wasAbleTo(AddTodoItems.called("Walk the dog", "Feed the cat"));
+        givenThat(james).wasAbleTo(Start.withATodoListContaining("Walk the dog", "Put out the garbage"));
+        andThat(jane).wasAbleTo(Start.withATodoListContaining("Walk the dog", "Feed the cat"));
 
         when(james).attemptsTo(
                 CompleteItem.called("Walk the dog"),
@@ -80,5 +68,4 @@ public class ClearCompletedTodos {
 
         then(jane).should(seeThat(TheItems.displayed(), contains("Walk the dog", "Feed the cat")));
     }
-
 }

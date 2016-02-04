@@ -2,7 +2,7 @@ package net.serenitybdd.demos.todos.features.accessing_the_application;
 
 import net.serenitybdd.demos.todos.questions.ApplicationDetails;
 import net.serenitybdd.demos.todos.questions.PlaceholderText;
-import net.serenitybdd.demos.todos.tasks.OpenTheApplication;
+import net.serenitybdd.demos.todos.tasks.Start;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
@@ -43,7 +43,7 @@ public class LearnAboutTheApplication {
     @Test
     public void application_should_be_clearly_identified_by_the_title() {
 
-        givenThat(james).wasAbleTo(OpenTheApplication.onTheHomePage());
+        givenThat(james).wasAbleTo(Start.withAnEmptyTodoList());
 
         then(james).should(
                 seeThat(theApplication,
@@ -57,7 +57,7 @@ public class LearnAboutTheApplication {
     @Test
     public void should_display_a_meaningful_placeholder() {
 
-        givenThat(james).wasAbleTo(OpenTheApplication.onTheHomePage());
+        givenThat(james).wasAbleTo(Start.withAnEmptyTodoList());
 
         then(james).should(seeThat(thePlaceholderText, is("What needs to be done?")));
     }

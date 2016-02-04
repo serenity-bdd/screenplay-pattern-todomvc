@@ -38,8 +38,7 @@ public class CompleteAllTodos {
     @Test
     public void should_be_able_to_complete_all_todos_with_a_single_action() {
 
-        givenThat(james).wasAbleTo(OpenTheApplication.onTheHomePage());
-        andThat(james).wasAbleTo(AddTodoItems.called("Walk the dog", "Put out the garbage"));
+        givenThat(james).wasAbleTo(Start.withATodoListContaining("Walk the dog", "Put out the garbage"));
 
         when(james).attemptsTo(
                 CompleteAll.items()
@@ -55,8 +54,7 @@ public class CompleteAllTodos {
     @Test
     public void complete_todos_can_be_toggled() {
 
-        givenThat(james).wasAbleTo(OpenTheApplication.onTheHomePage());
-        andThat(james).wasAbleTo(AddTodoItems.called("Walk the dog", "Put out the garbage"));
+        givenThat(james).wasAbleTo(Start.withATodoListContaining("Walk the dog", "Put out the garbage"));
 
         when(james).attemptsTo(
                 CompleteAll.items(),
@@ -73,8 +71,7 @@ public class CompleteAllTodos {
     @Test
     public void complete_all_todos_should_set_the_remaining_count_to_zero() {
 
-        givenThat(james).wasAbleTo(OpenTheApplication.onTheHomePage());
-        andThat(james).wasAbleTo(AddTodoItems.called("Walk the dog", "Put out the garbage"));
+        givenThat(james).wasAbleTo(Start.withATodoListContaining("Walk the dog", "Put out the garbage"));
 
         when(james).attemptsTo(
                 CompleteAll.items()
@@ -88,8 +85,7 @@ public class CompleteAllTodos {
     @Test
     public void when_complete_all_is_toggled_the_remaining_counter_should_be_restored() {
 
-        givenThat(james).wasAbleTo(OpenTheApplication.onTheHomePage());
-        andThat(james).wasAbleTo(AddTodoItems.called("Walk the dog", "Put out the garbage"));
+        givenThat(james).wasAbleTo(Start.withATodoListContaining("Walk the dog", "Put out the garbage"));
 
         when(james).attemptsTo(
                 CompleteAll.items(),
