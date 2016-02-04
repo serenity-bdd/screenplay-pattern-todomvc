@@ -13,11 +13,13 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
-import static net.serenitybdd.screenplay.GivenWhenThen.*;
+import static net.serenitybdd.screenplay.GivenWhenThen.givenThat;
+import static net.serenitybdd.screenplay.GivenWhenThen.then;
 import static net.serenitybdd.screenplay.matchers.ConsequenceMatchers.displays;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.core.Is.is;
+import static serenityx.GivenWhenThen.seeThat;
 
 /**
  * This example illustrates using Serenity Steps with JUnit.
@@ -27,11 +29,8 @@ public class LearnAboutTheApplication {
 
     private Actor james = Actor.named("James");
 
-    @Managed
-    private WebDriver hisBrowser;
-
-    @Steps
-    private PlaceholderText thePlaceholderText;
+    @Managed private WebDriver hisBrowser;
+    @Steps private PlaceholderText thePlaceholderText;
 
     private ApplicationDetails theApplication = new ApplicationDetails();
 
@@ -47,9 +46,12 @@ public class LearnAboutTheApplication {
         givenThat(james).wasAbleTo(OpenTheApplication.onTheHomePage());
 
         then(james).should(
-                seeThat(theApplication, displays("title",equalTo("AngularJS • TodoMVC"))),
-                seeThat(theApplication, displays("heading",equalTo("todos"))),
-                seeThat(theApplication, displays("about", containsString("Credits"))));
+                seeThat(theApplication,
+                        displays("title",equalTo("AngularJS • TodoMVC")),
+                        displays("heading",equalTo("todos")),
+                        displays("about", containsString("Credits"))
+                )
+        );
     }
 
     @Test
