@@ -3,10 +3,7 @@ package net.serenitybdd.demos.todos.features.maintain_my_todo_list;
 import net.serenitybdd.demos.todos.model.TodoStatusFilter;
 import net.serenitybdd.demos.todos.questions.CurrentFilter;
 import net.serenitybdd.demos.todos.questions.TheItems;
-import net.serenitybdd.demos.todos.tasks.AddTodoItems;
-import net.serenitybdd.demos.todos.tasks.Complete;
-import net.serenitybdd.demos.todos.tasks.FilterItems;
-import net.serenitybdd.demos.todos.tasks.OpenTheApplication;
+import net.serenitybdd.demos.todos.tasks.*;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
@@ -44,7 +41,7 @@ public class FilteringTodos {
         andThat(james).wasAbleTo(AddTodoItems.called("Walk the dog", "Put out the garbage"));
 
         when(james).attemptsTo(
-                Complete.itemCalled("Walk the dog"),
+                CompleteItem.called("Walk the dog"),
                 FilterItems.byStatus(TodoStatusFilter.Completed));
 
         then(james).should(seeThat(TheItems.displayed(), contains("Walk the dog")));
@@ -57,7 +54,7 @@ public class FilteringTodos {
         andThat(james).wasAbleTo(AddTodoItems.called("Walk the dog", "Put out the garbage"));
 
         when(james).attemptsTo(
-                Complete.itemCalled("Walk the dog"),
+                CompleteItem.called("Walk the dog"),
                 FilterItems.byStatus(Active));
 
         then(james).should(seeThat(TheItems.displayed(), contains("Put out the garbage")));
@@ -70,7 +67,7 @@ public class FilteringTodos {
         andThat(james).wasAbleTo(AddTodoItems.called("Walk the dog", "Put out the garbage"));
 
         when(james).attemptsTo(
-                Complete.itemCalled("Walk the dog"),
+                CompleteItem.called("Walk the dog"),
                 FilterItems.byStatus(Active),
                 FilterItems.byStatus(All));
 

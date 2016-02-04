@@ -2,10 +2,7 @@ package net.serenitybdd.demos.todos.features.completing_todos;
 
 import net.serenitybdd.demos.todos.questions.TheItemStatus;
 import net.serenitybdd.demos.todos.questions.TheItems;
-import net.serenitybdd.demos.todos.tasks.AddTodoItems;
-import net.serenitybdd.demos.todos.tasks.ClearCompletedItems;
-import net.serenitybdd.demos.todos.tasks.Complete;
-import net.serenitybdd.demos.todos.tasks.OpenTheApplication;
+import net.serenitybdd.demos.todos.tasks.*;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
@@ -45,7 +42,7 @@ public class CompleteAllTodos {
         andThat(james).wasAbleTo(AddTodoItems.called("Walk the dog", "Put out the garbage"));
 
         when(james).attemptsTo(
-                Complete.allItems()
+                CompleteAll.items()
         );
 
         then(james).should(
@@ -62,8 +59,8 @@ public class CompleteAllTodos {
         andThat(james).wasAbleTo(AddTodoItems.called("Walk the dog", "Put out the garbage"));
 
         when(james).attemptsTo(
-                Complete.allItems(),
-                Complete.allItems()
+                CompleteAll.items(),
+                CompleteAll.items()
         );
 
         then(james).should(
@@ -80,7 +77,7 @@ public class CompleteAllTodos {
         andThat(james).wasAbleTo(AddTodoItems.called("Walk the dog", "Put out the garbage"));
 
         when(james).attemptsTo(
-                Complete.allItems()
+                CompleteAll.items()
         );
 
         then(james).should(
@@ -95,8 +92,8 @@ public class CompleteAllTodos {
         andThat(james).wasAbleTo(AddTodoItems.called("Walk the dog", "Put out the garbage"));
 
         when(james).attemptsTo(
-                Complete.allItems(),
-                Complete.allItems()
+                CompleteAll.items(),
+                CompleteAll.items()
         );
 
         then(james).should(

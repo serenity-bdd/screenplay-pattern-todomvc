@@ -12,11 +12,12 @@ public class OpenTheApplication implements Task {
 
     private ApplicationHomePage applicationHomePage;
 
-    public static OpenTheApplication onTheHomePage() {
-        return instrumented(OpenTheApplication.class);
-    }
     @Step("{0} opens the application on the home page")
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(Open.browserOn().the(applicationHomePage));
+    }
+
+    public static OpenTheApplication onTheHomePage() {
+        return instrumented(OpenTheApplication.class);
     }
 }

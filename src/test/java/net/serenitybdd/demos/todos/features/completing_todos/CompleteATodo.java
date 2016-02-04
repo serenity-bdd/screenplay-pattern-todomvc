@@ -44,7 +44,7 @@ public class CompleteATodo {
         andThat(james).wasAbleTo(AddTodoItems.called("Walk the dog", "Put out the garbage"));
 
         when(james).attemptsTo(
-                Complete.itemCalled("Walk the dog")
+                CompleteItem.called("Walk the dog")
         );
 
         then(james).should(
@@ -59,7 +59,7 @@ public class CompleteATodo {
         andThat(james).wasAbleTo(AddTodoItems.called("Walk the dog", "Put out the garbage"));
 
         when(james).attemptsTo(
-                Complete.itemCalled("Walk the dog")
+                CompleteItem.called("Walk the dog")
         );
 
         then(james).should(seeThat(TheItems.leftCount(), is(1)));
@@ -73,7 +73,7 @@ public class CompleteATodo {
         andThat(james).wasAbleTo(AddTodoItems.called("Walk the dog", "Put out the garbage"));
 
         when(james).attemptsTo(
-                Complete.itemCalled("Walk the dog"),
+                CompleteItem.called("Walk the dog"),
                 FilterItems.byStatus(Active)
         );
 
