@@ -1,6 +1,6 @@
 package net.serenitybdd.demos.todos.tasks;
 
-import net.serenitybdd.demos.todos.pages.todolist.CompleteAll;
+import net.serenitybdd.demos.todos.pages.ToDoList;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
@@ -11,6 +11,6 @@ public class CompleteAllItems implements Task {
     @Override
     @Step("Completes all items")
     public <T extends Actor> void performAs(T theActor) {
-        theActor.attemptsTo(Click.on(CompleteAll.BUTTON));
+        theActor.attemptsTo(Click.on(ToDoList.COMPLETE_ALL));
     }
 }

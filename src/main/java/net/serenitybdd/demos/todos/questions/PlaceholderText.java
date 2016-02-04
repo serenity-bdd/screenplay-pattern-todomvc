@@ -1,6 +1,6 @@
 package net.serenitybdd.demos.todos.questions;
 
-import net.serenitybdd.demos.todos.pages.todolist.newitem.NewTodoForm;
+import net.serenitybdd.demos.todos.pages.ToDoList;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Question;
 import net.serenitybdd.screenplay.annotations.Subject;
@@ -11,6 +11,6 @@ public class PlaceholderText implements Question<String> {
 
     @Override
     public String answeredBy(Actor actor) {
-        return Attribute.of(NewTodoForm.NEW_TODO_FIELD).named("placeholder").viewedBy(actor).asString();
+        return Attribute.of(ToDoList.WHAT_NEEDS_TO_BE_DONE).named("placeholder").viewedBy(actor).asString();
     }
 }

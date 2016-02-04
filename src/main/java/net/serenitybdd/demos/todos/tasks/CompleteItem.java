@@ -1,6 +1,6 @@
 package net.serenitybdd.demos.todos.tasks;
 
-import net.serenitybdd.demos.todos.pages.todolist.items.TodoListItem;
+import net.serenitybdd.demos.todos.pages.TodoListItem;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
@@ -18,7 +18,7 @@ public class CompleteItem implements Task {
     @Override
     @Step("{0} completes the item called #itemName")
     public <T extends Actor> void performAs(T theActor) {
-        Target completeButton = TodoListItem.COMPLETE_ITEM_BUTTON.of(itemName);
+        Target completeButton = TodoListItem.COMPLETE_ITEM.of(itemName);
         theActor.attemptsTo(Click.on(completeButton));
     }
 }

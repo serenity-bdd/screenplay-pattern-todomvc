@@ -1,7 +1,7 @@
 package net.serenitybdd.demos.todos.tasks;
 
 import net.serenitybdd.demos.todos.model.TodoStatusFilter;
-import net.serenitybdd.demos.todos.pages.todolist.filter.FilterSelection;
+import net.serenitybdd.demos.todos.pages.ToDoList;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
@@ -24,7 +24,7 @@ public class FilterItems implements Task {
 
     @Step("{0} filters items by #filter")
     public <T extends Actor> void performAs(T theActor) {
-        Target filterSelection = FilterSelection.FILTER.of(filter.name()).called("filter by "+ filter);
+        Target filterSelection = ToDoList.FILTER.of(filter.name()).called("filter by "+ filter);
         theActor.attemptsTo(Click.on(filterSelection));
     }
 }

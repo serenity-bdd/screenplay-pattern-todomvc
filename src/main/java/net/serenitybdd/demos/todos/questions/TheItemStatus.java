@@ -3,7 +3,7 @@ package net.serenitybdd.demos.todos.questions;
 import com.google.common.collect.ImmutableMap;
 import net.serenitybdd.core.steps.Instrumented;
 import net.serenitybdd.demos.todos.model.TodoStatus;
-import net.serenitybdd.demos.todos.pages.todolist.items.TodoListItem;
+import net.serenitybdd.demos.todos.pages.TodoListItem;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Question;
 import net.serenitybdd.screenplay.questions.SelectedStatus;
@@ -31,7 +31,7 @@ public class TheItemStatus implements Question<TodoStatus> {
 
     @Override
     public TodoStatus answeredBy(Actor actor) {
-        Target completeItemButton = TodoListItem.COMPLETE_ITEM_BUTTON.of(itemName);
+        Target completeItemButton = TodoListItem.COMPLETE_ITEM.of(itemName);
 
         Boolean itemChecked = SelectedStatus.of(completeItemButton).viewedBy(actor).as(Boolean.class);
         return statusFrom(itemChecked);

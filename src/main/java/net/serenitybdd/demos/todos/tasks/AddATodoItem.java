@@ -1,7 +1,7 @@
 package net.serenitybdd.demos.todos.tasks;
 
 import net.serenitybdd.core.steps.Instrumented;
-import net.serenitybdd.demos.todos.pages.todolist.newitem.NewTodoForm;
+import net.serenitybdd.demos.todos.pages.ToDoList;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Enter;
@@ -18,7 +18,7 @@ public class AddATodoItem implements Task {
     public <T extends Actor> void performAs(T theActor) {
         theActor.attemptsTo(
                 Enter.theValue(thingToDo)
-                     .into(NewTodoForm.NEW_TODO_FIELD)
+                     .into(ToDoList.WHAT_NEEDS_TO_BE_DONE)
                         .thenHit(Keys.RETURN)
         );
     }

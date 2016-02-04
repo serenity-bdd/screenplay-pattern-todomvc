@@ -1,7 +1,7 @@
 package net.serenitybdd.demos.todos.tasks;
 
 import net.serenitybdd.demos.todos.action.JSClick;
-import net.serenitybdd.demos.todos.pages.todolist.items.TodoListItem;
+import net.serenitybdd.demos.todos.pages.TodoListItem;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.targets.Target;
@@ -19,7 +19,7 @@ public class DeleteAnItem implements Task {
 
     @Step("{0} deletes the item '#itemName'")
     public <T extends Actor> void performAs(T theActor) {
-        Target deleteButton = TodoListItem.DELETE_ITEM_BUTTON.of(itemName);
+        Target deleteButton = TodoListItem.DELETE_ITEM.of(itemName);
         theActor.attemptsTo(JSClick.on(deleteButton));
     }
 

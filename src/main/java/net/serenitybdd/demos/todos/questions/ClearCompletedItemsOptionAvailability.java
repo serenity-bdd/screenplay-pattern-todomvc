@@ -1,7 +1,7 @@
 package net.serenitybdd.demos.todos.questions;
 
 import com.google.common.collect.ImmutableMap;
-import net.serenitybdd.demos.todos.pages.todolist.ClearCompleted;
+import net.serenitybdd.demos.todos.pages.ToDoList;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Question;
 import net.serenitybdd.screenplay.annotations.Subject;
@@ -20,7 +20,7 @@ public class ClearCompletedItemsOptionAvailability implements Question<ElementAv
 
     @Override
     public ElementAvailability answeredBy(Actor actor) {
-        Boolean clearCompleteButtonIsVisible = Visibility.of(ClearCompleted.BUTTON).viewedBy(actor).value();
+        Boolean clearCompleteButtonIsVisible = Visibility.of(ToDoList.CLEAR_COMPLETED).viewedBy(actor).value();
         return ELEMENT_AVAILABILITY.get(clearCompleteButtonIsVisible);
     }
 }
