@@ -1,4 +1,4 @@
-package net.serenitybdd.demos.todos.pages;
+package net.serenitybdd.demos.todos.user_interface;
 
 import net.serenitybdd.screenplay.targets.Target;
 

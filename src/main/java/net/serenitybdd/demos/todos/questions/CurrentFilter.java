@@ -1,7 +1,7 @@
 package net.serenitybdd.demos.todos.questions;
 
 import net.serenitybdd.demos.todos.model.TodoStatusFilter;
-import net.serenitybdd.demos.todos.pages.ToDoList;
+import net.serenitybdd.demos.todos.user_interface.ToDoList;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Question;
 import net.serenitybdd.screenplay.annotations.Subject;
