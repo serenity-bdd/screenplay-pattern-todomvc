@@ -7,7 +7,9 @@ import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.serenitybdd.screenplay.questions.Text;
 import net.serenitybdd.screenplay.targets.Target;
 
-public class ApplicationDetails implements Question<ApplicationInformation> {
+import static serenityx.ValueOf.the;
+
+public class Application implements Question<ApplicationInformation> {
 
     private final Target MAIN_HEADING = Target.the("main heading").locatedBy("css:h1");
     private final Target FOOTER = Target.the("footer").locatedBy("#info");
@@ -15,9 +17,13 @@ public class ApplicationDetails implements Question<ApplicationInformation> {
     @Override
     public ApplicationInformation answeredBy(Actor actor) {
         String title = BrowseTheWeb.as(actor).getTitle();
-        String heading = Text.of(MAIN_HEADING).viewedBy(actor).value();
-        String aboutInformation = Text.of(FOOTER).viewedBy(actor).value();
+        String heading = the(Text.of(MAIN_HEADING).viewedBy(actor));
+        String aboutInformation = the(Text.of(FOOTER).viewedBy(actor));
 
         return new ApplicationInformation(title, heading, aboutInformation);
+    }
+
+    public static Application information() {
+        return new Application();
     }
 }

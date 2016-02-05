@@ -25,10 +25,6 @@ public class ApplicationInformation {
 
     @Override
     public String toString() {
-        return "{" +
-                "title='" + title + '\'' +
-                ", heading='" + heading + '\'' +
-                ", about='" + about + '\'' +
-                '}';
+        return String.format("{title='%s', heading='%s', about='%s'}", title, heading, about);
     }
 }

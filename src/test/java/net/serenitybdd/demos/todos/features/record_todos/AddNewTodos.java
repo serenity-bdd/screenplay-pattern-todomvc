@@ -2,8 +2,7 @@ package net.serenitybdd.demos.todos.features.record_todos;
 
 import net.serenitybdd.demos.todos.questions.TheItems;
 import net.serenitybdd.demos.todos.tasks.AddATodoItem;
-import net.serenitybdd.demos.todos.tasks.AddTodoItems;
-import net.serenitybdd.demos.todos.tasks.OpenTheApplication;
+import net.serenitybdd.demos.todos.tasks.Start;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
@@ -24,19 +23,15 @@ import static org.hamcrest.Matchers.hasItems;
 public class AddNewTodos {
 
     private Actor james = Actor.named("James");
-
-    @Managed
-    private WebDriver hisBrowser;
-
-    @Before
-    public void jamesCanBrowseTheWeb() {
+    @Managed private WebDriver hisBrowser;
+    @Before public void jamesCanBrowseTheWeb() {
         james.can(BrowseTheWeb.with(hisBrowser));
     }
 
     @Test
-    public void should_be_able_to_add_a_todo_item() {
+    public void should_be_able_to_add_the_first_todo_item() {
 
-        givenThat(james).wasAbleTo(OpenTheApplication.onTheHomePage());
+        givenThat(james).wasAbleTo(Start.withAnEmptyTodoList());
 
         when(james).attemptsTo(AddATodoItem.called("Buy some milk"));
 
@@ -44,15 +39,13 @@ public class AddNewTodos {
     }
 
     @Test
-    public void should_be_able_to_add_a_todo_item_to_an_existing_list() {
+    public void should_be_able_to_add_additional_todo_items() {
 
-        givenThat(james).wasAbleTo(OpenTheApplication.onTheHomePage());
-        andThat(james).wasAbleTo(AddTodoItems.called("Walk the dog", "Put out the garbage"));
+        givenThat(james).wasAbleTo(Start.withATodoListContaining("Walk the dog", "Put out the garbage"));
 
         when(james).attemptsTo(AddATodoItem.called("Buy some milk"));
 
         then(james).should(seeThat(TheItems.displayed(),
                                    hasItems("Walk the dog", "Put out the garbage", "Buy some milk")));
     }
-
 }

@@ -1,7 +1,7 @@
 package net.serenitybdd.demos.todos.questions;
 
 import net.serenitybdd.demos.todos.model.TodoStatusFilter;
-import net.serenitybdd.demos.todos.pages.todolist.filter.FilterSelection;
+import net.serenitybdd.demos.todos.user_interface.ToDoList;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Question;
 import net.serenitybdd.screenplay.annotations.Subject;
@@ -12,6 +12,12 @@ public class CurrentFilter implements Question<TodoStatusFilter> {
 
     @Override
     public TodoStatusFilter answeredBy(Actor actor) {
-        return Text.of(FilterSelection.SELECTED_FILTER).viewedBy(actor).asEnum(TodoStatusFilter.class);
+        return Text.of(ToDoList.SELECTED_FILTER)
+                .viewedBy(actor)
+                .asEnum(TodoStatusFilter.class);
+    }
+
+    public static CurrentFilter selected() {
+        return new CurrentFilter();
     }
 }
