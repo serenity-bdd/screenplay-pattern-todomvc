@@ -4,9 +4,11 @@ import net.serenitybdd.demos.todos.model.TodoStatus;
 import net.serenitybdd.demos.todos.user_interface.TodoListItem;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Question;
+import net.serenitybdd.screenplay.annotations.Subject;
 import net.serenitybdd.screenplay.questions.SelectedStatus;
 import net.serenitybdd.screenplay.targets.Target;
 
+@Subject("The item status for '#itemName'")
 public class TheItemStatus implements Question<TodoStatus> {
 
     private final String itemName;

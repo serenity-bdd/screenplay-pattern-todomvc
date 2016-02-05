@@ -11,7 +11,7 @@ import static net.serenitybdd.screenplay.Tasks.instrumented;
 public class ToggleStatus implements Task {
 
     @Override
-    @Step("Completes all items")
+    @Step("{0} toggles the status of all items")
     public <T extends Actor> void performAs(T theActor) {
         theActor.attemptsTo(Click.on(TOGGLE_ALL));
     }
