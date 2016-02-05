@@ -16,4 +16,8 @@ public class CurrentFilter implements Question<TodoStatusFilter> {
                 .viewedBy(actor)
                 .asEnum(TodoStatusFilter.class);
     }
+
+    public static CurrentFilter selected() {
+        return new CurrentFilter();
+    }
 }

@@ -18,7 +18,7 @@ public class FilterItems implements Task {
         theActor.attemptsTo(Click.on(FILTER.of(filter.name()).called("filter by "+ filter)));
     }
 
-    public static FilterItems byStatus(TodoStatusFilter status) {
+    public static FilterItems toShow(TodoStatusFilter status) {
         return instrumented(FilterItems.class, status);
     }
     public FilterItems(TodoStatusFilter filter) { this.filter = filter; }

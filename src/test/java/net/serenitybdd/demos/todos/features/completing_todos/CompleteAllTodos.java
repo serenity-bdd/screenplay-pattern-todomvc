@@ -2,12 +2,12 @@ package net.serenitybdd.demos.todos.features.completing_todos;
 
 import net.serenitybdd.demos.todos.questions.TheItemStatus;
 import net.serenitybdd.demos.todos.questions.TheItems;
-import net.serenitybdd.demos.todos.tasks.*;
+import net.serenitybdd.demos.todos.tasks.Start;
+import net.serenitybdd.demos.todos.tasks.ToggleStatus;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.thucydides.core.annotations.Managed;
-import net.thucydides.core.annotations.Steps;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,17 +21,9 @@ import static org.hamcrest.CoreMatchers.is;
 @RunWith(SerenityRunner.class)
 public class CompleteAllTodos {
 
-    @Managed
-    private
-    WebDriver hisBrowser;
-
+    @Managed private WebDriver hisBrowser;
     private Actor james = Actor.named("James");
-
-    @Steps
-    ClearCompletedItems clearTheCompletedItems;
-
-    @Before
-    public void jamesCanBrowseTheWeb() {
+    @Before public void jamesCanBrowseTheWeb() {
         james.can(BrowseTheWeb.with(hisBrowser));
     }
 
@@ -41,7 +33,7 @@ public class CompleteAllTodos {
         givenThat(james).wasAbleTo(Start.withATodoListContaining("Walk the dog", "Put out the garbage"));
 
         when(james).attemptsTo(
-                CompleteAll.items()
+                ToggleStatus.ofAllItems()
         );
 
         then(james).should(
@@ -50,15 +42,14 @@ public class CompleteAllTodos {
         );
     }
 
-
     @Test
     public void complete_todos_can_be_toggled() {
 
         givenThat(james).wasAbleTo(Start.withATodoListContaining("Walk the dog", "Put out the garbage"));
 
         when(james).attemptsTo(
-                CompleteAll.items(),
-                CompleteAll.items()
+                ToggleStatus.ofAllItems(),
+                ToggleStatus.ofAllItems()
         );
 
         then(james).should(
@@ -74,7 +65,7 @@ public class CompleteAllTodos {
         givenThat(james).wasAbleTo(Start.withATodoListContaining("Walk the dog", "Put out the garbage"));
 
         when(james).attemptsTo(
-                CompleteAll.items()
+                ToggleStatus.ofAllItems()
         );
 
         then(james).should(
@@ -88,13 +79,12 @@ public class CompleteAllTodos {
         givenThat(james).wasAbleTo(Start.withATodoListContaining("Walk the dog", "Put out the garbage"));
 
         when(james).attemptsTo(
-                CompleteAll.items(),
-                CompleteAll.items()
+                ToggleStatus.ofAllItems(),
+                ToggleStatus.ofAllItems()
         );
 
         then(james).should(
                 seeThat(TheItems.leftCount(), is(2))
         );
     }
-
 }

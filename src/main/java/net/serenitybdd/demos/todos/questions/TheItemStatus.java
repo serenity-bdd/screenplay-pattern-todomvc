@@ -1,6 +1,5 @@
 package net.serenitybdd.demos.todos.questions;
 
-import net.serenitybdd.core.steps.Instrumented;
 import net.serenitybdd.demos.todos.model.TodoStatus;
 import net.serenitybdd.demos.todos.user_interface.TodoListItem;
 import net.serenitybdd.screenplay.Actor;
@@ -12,10 +11,6 @@ public class TheItemStatus implements Question<TodoStatus> {
 
     private final String itemName;
 
-    public TheItemStatus(String itemName) {
-        this.itemName = itemName;
-    }
-
     @Override
     public TodoStatus answeredBy(Actor actor) {
         Target completeItemButton = TodoListItem.COMPLETE_ITEM.of(itemName);
@@ -24,7 +19,10 @@ public class TheItemStatus implements Question<TodoStatus> {
         return TodoStatus.from(itemChecked);
     }
 
-    public static Question<?> forTheItemCalled(String itemName) {
-        return Instrumented.instanceOf(TheItemStatus.class).withProperties(itemName);
+    public static TheItemStatus forTheItemCalled(String itemName) {
+        return new TheItemStatus(itemName);
+    }
+    public TheItemStatus(String itemName) {
+        this.itemName = itemName;
     }
 }

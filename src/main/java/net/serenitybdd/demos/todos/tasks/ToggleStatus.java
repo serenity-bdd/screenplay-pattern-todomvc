@@ -5,18 +5,18 @@ import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 import net.thucydides.core.annotations.Step;
 
-import static net.serenitybdd.demos.todos.user_interface.ToDoList.COMPLETE_ALL;
+import static net.serenitybdd.demos.todos.user_interface.ToDoList.TOGGLE_ALL;
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 
-public class CompleteAll implements Task {
+public class ToggleStatus implements Task {
 
     @Override
     @Step("Completes all items")
     public <T extends Actor> void performAs(T theActor) {
-        theActor.attemptsTo(Click.on(COMPLETE_ALL));
+        theActor.attemptsTo(Click.on(TOGGLE_ALL));
     }
 
-    public static CompleteAll items() {
-        return instrumented(CompleteAll.class);
+    public static ToggleStatus ofAllItems() {
+        return instrumented(ToggleStatus.class);
     }
 }

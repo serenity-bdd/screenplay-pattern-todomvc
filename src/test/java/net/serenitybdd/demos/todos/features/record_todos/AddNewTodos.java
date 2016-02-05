@@ -23,11 +23,8 @@ import static org.hamcrest.Matchers.hasItems;
 public class AddNewTodos {
 
     private Actor james = Actor.named("James");
-
     @Managed private WebDriver hisBrowser;
-
-    @Before
-    public void jamesCanBrowseTheWeb() {
+    @Before public void jamesCanBrowseTheWeb() {
         james.can(BrowseTheWeb.with(hisBrowser));
     }
 

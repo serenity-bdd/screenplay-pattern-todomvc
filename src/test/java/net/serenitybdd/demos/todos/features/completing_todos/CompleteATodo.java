@@ -2,12 +2,13 @@ package net.serenitybdd.demos.todos.features.completing_todos;
 
 import net.serenitybdd.demos.todos.questions.TheItemStatus;
 import net.serenitybdd.demos.todos.questions.TheItems;
-import net.serenitybdd.demos.todos.tasks.*;
+import net.serenitybdd.demos.todos.tasks.CompleteItem;
+import net.serenitybdd.demos.todos.tasks.FilterItems;
+import net.serenitybdd.demos.todos.tasks.Start;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.thucydides.core.annotations.Managed;
-import net.thucydides.core.annotations.Steps;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,17 +24,9 @@ import static org.hamcrest.Matchers.not;
 @RunWith(SerenityRunner.class)
 public class CompleteATodo {
 
-    @Managed
-    private
-    WebDriver hisBrowser;
-
     private Actor james = Actor.named("James");
-
-    @Steps
-    ClearCompletedItems clearTheCompletedItems;
-
-    @Before
-    public void jamesCanBrowseTheWeb() {
+    @Managed private WebDriver hisBrowser;
+    @Before public void jamesCanBrowseTheWeb() {
         james.can(BrowseTheWeb.with(hisBrowser));
     }
 
@@ -63,7 +56,6 @@ public class CompleteATodo {
         then(james).should(seeThat(TheItems.leftCount(), is(1)));
     }
 
-
     @Test
     public void completed_items_should_not_appear_in_the_active_list() {
 
@@ -71,7 +63,7 @@ public class CompleteATodo {
 
         when(james).attemptsTo(
                 CompleteItem.called("Walk the dog"),
-                FilterItems.byStatus(Active)
+                FilterItems.toShow(Active)
         );
 
         then(james).should(seeThat(TheItems.displayed(), not(contains("Walk the dog"))));
