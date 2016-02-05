@@ -6,7 +6,7 @@ import net.serenitybdd.screenplay.Question;
 import net.serenitybdd.screenplay.annotations.Subject;
 import net.serenitybdd.screenplay.questions.Visibility;
 
-import static serenityx.ValueOf.the;
+import static net.serenitybdd.screenplay.questions.ValueOf.the;
 
 @Subject("the 'Clear Completed' option")
 public class ClearCompletedItems implements Question<ElementAvailability> {

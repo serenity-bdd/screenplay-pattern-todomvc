@@ -7,7 +7,7 @@ import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.serenitybdd.screenplay.questions.Text;
 import net.serenitybdd.screenplay.targets.Target;
 
-import static serenityx.ValueOf.the;
+import static net.serenitybdd.screenplay.questions.ValueOf.the;
 
 public class Application implements Question<ApplicationInformation> {
 

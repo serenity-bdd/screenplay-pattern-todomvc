@@ -13,12 +13,12 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.givenThat;
+import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.GivenWhenThen.then;
 import static net.serenitybdd.screenplay.matchers.ConsequenceMatchers.displays;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.core.Is.is;
-import static serenityx.GivenWhenThen.seeThat;
 
 /**
  * This example illustrates using Serenity Steps with JUnit.
