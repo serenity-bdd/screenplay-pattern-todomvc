@@ -1,10 +1,12 @@
 package net.serenitybdd.demos.todos.tasks;
 
+import com.google.common.base.Joiner;
 import net.serenitybdd.demos.todos.user_interface.ApplicationHomePage;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Open;
 import net.thucydides.core.annotations.Step;
+import serenityx.Unless;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -16,20 +18,24 @@ public class Start implements Task {
 
     private final Collection<String> items;
     private ApplicationHomePage applicationHomePage;
+    private final String todoListDescription;
 
-    @Step("{0} opens the application on the home page")
+    @Step("{0} starts with #todoListDescription")
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
                 Open.browserOn().the(applicationHomePage),
-                AddTodoItems.called(items)
-        );
+                Unless.the(items.isEmpty(), AddTodoItems.called(items)));
     }
 
     public static Start withAnEmptyTodoList() {
-        return instrumented(Start.class, Collections.EMPTY_LIST);
+        return instrumented(Start.class, Collections.EMPTY_LIST, "no items");
     }
     public static Start withATodoListContaining(String... items) {
-        return instrumented(Start.class, Arrays.asList(items));
+        return instrumented(Start.class, Arrays.asList(items), Joiner.on(", ").join(items));
     }
-    public Start(Collection<String> items) { this.items = items; }
+
+    public Start(Collection<String> items, String todoListDescription) {
+        this.items = items;
+        this.todoListDescription = todoListDescription;
+    }
 }
