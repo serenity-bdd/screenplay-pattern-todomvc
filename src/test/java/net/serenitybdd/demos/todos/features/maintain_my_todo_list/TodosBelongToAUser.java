@@ -32,7 +32,7 @@ public class TodosBelongToAUser {
     }
 
     @Test
-    public void my_todo_list_is_unaffected_by_others() {
+    public void should_not_affect_todos_belonging_to_another_user() {
         givenThat(james).wasAbleTo(Start.withATodoListContaining("Walk the dog", "Put out the garbage"));
         andThat(jane).wasAbleTo(Start.withATodoListContaining("Walk the dog", "Feed the cat"));
 

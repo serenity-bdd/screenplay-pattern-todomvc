@@ -19,7 +19,7 @@ import static net.serenitybdd.screenplay.GivenWhenThen.*;
 import static org.hamcrest.CoreMatchers.is;
 
 @RunWith(SerenityRunner.class)
-public class CompleteAllTodos {
+public class ToggleAllTodos {
 
     @Managed private WebDriver hisBrowser;
     private Actor james = Actor.named("James");
@@ -28,63 +28,63 @@ public class CompleteAllTodos {
     }
 
     @Test
-    public void should_be_able_to_complete_all_todos_with_a_single_action() {
+    public void should_be_able_to_quickly_complete_all_todos() {
 
         givenThat(james).wasAbleTo(Start.withATodoListContaining("Walk the dog", "Put out the garbage"));
 
         when(james).attemptsTo(
-                ToggleStatus.ofAllItems()
+            ToggleStatus.ofAllItems()
         );
 
         then(james).should(
-                seeThat(TheItemStatus.forTheItemCalled("Walk the dog"), is(Completed)),
-                seeThat(TheItemStatus.forTheItemCalled("Put out the garbage"), is(Completed))
+            seeThat(TheItemStatus.forTheItemCalled("Walk the dog"), is(Completed)),
+            seeThat(TheItemStatus.forTheItemCalled("Put out the garbage"), is(Completed))
         );
     }
 
     @Test
-    public void complete_todos_can_be_toggled() {
+    public void should_be_able_to_toggle_status_of_all_todos() {
 
         givenThat(james).wasAbleTo(Start.withATodoListContaining("Walk the dog", "Put out the garbage"));
 
         when(james).attemptsTo(
-                ToggleStatus.ofAllItems(),
-                ToggleStatus.ofAllItems()
+            ToggleStatus.ofAllItems(),
+            ToggleStatus.ofAllItems()
         );
 
         then(james).should(
-                seeThat(TheItemStatus.forTheItemCalled("Walk the dog"), is(Active)),
-                seeThat(TheItemStatus.forTheItemCalled("Put out the garbage"), is(Active))
+            seeThat(TheItemStatus.forTheItemCalled("Walk the dog"), is(Active)),
+            seeThat(TheItemStatus.forTheItemCalled("Put out the garbage"), is(Active))
         );
     }
 
 
     @Test
-    public void complete_all_todos_should_set_the_remaining_count_to_zero() {
+    public void should_see_that_there_are_zero_items_todo_when_all_are_toggled_complete() {
 
         givenThat(james).wasAbleTo(Start.withATodoListContaining("Walk the dog", "Put out the garbage"));
 
         when(james).attemptsTo(
-                ToggleStatus.ofAllItems()
+            ToggleStatus.ofAllItems()
         );
 
         then(james).should(
-                seeThat(TheItems.leftCount(), is(0))
+            seeThat(TheItems.leftCount(), is(0))
         );
     }
 
     @Test
-    public void when_complete_all_is_toggled_the_remaining_counter_should_be_restored() {
+    public void should_see_how_many_items_todo_when_all_are_toggled_to_incomplete() {
 
         givenThat(james).wasAbleTo(Start.withATodoListContaining("Walk the dog", "Put out the garbage"));
 
         when(james).attemptsTo(
-                ToggleStatus.ofAllItems(),
-                ToggleStatus.ofAllItems()
+            ToggleStatus.ofAllItems(),
+            ToggleStatus.ofAllItems()
         );
 
         then(james).should(
-                seeThat(TheItems.leftCount(), is(2))
+            seeThat(TheItems.leftCount(), is(2))
         );
     }
 }

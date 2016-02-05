@@ -18,6 +18,7 @@ import static net.serenitybdd.demos.todos.model.TodoStatusFilter.*;
 import static net.serenitybdd.screenplay.GivenWhenThen.*;
 import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.not;
 
 @RunWith(SerenityRunner.class)
 public class FilteringTodos {
@@ -29,7 +30,7 @@ public class FilteringTodos {
     }
 
     @Test
-    public void filtering_by_completed() {
+    public void should_be_able_to_view_only_completed_todos() {
 
         givenThat(james).wasAbleTo(Start.withATodoListContaining("Walk the dog", "Put out the garbage"));
 
@@ -39,10 +40,12 @@ public class FilteringTodos {
         );
 
         then(james).should(seeThat(TheItems.displayed(), contains("Walk the dog")));
+        and(james).should(seeThat(TheItems.displayed(), not(contains("Put out the garbage"))));
+        and(james).should(seeThat(CurrentFilter.selected(), is(Completed)));
     }
 
     @Test
-    public void filtering_by_active() {
+    public void should_be_able_to_view_only_incomplete_todos() {
 
         givenThat(james).wasAbleTo(Start.withATodoListContaining("Walk the dog", "Put out the garbage"));
 
@@ -52,10 +55,12 @@ public class FilteringTodos {
         );
 
         then(james).should(seeThat(TheItems.displayed(), contains("Put out the garbage")));
+        and(james).should(seeThat(TheItems.displayed(), not(contains("Walk the dog"))));
+        and(james).should(seeThat(CurrentFilter.selected(), is(Active)));
     }
 
     @Test
-    public void filtering_by_all() {
+    public void should_be_able_to_view_both_complete_and_incomplete_todos() {
 
         givenThat(james).wasAbleTo(Start.withATodoListContaining("Walk the dog", "Put out the garbage"));
 
@@ -66,15 +71,6 @@ public class FilteringTodos {
         );
 
         then(james).should(seeThat(TheItems.displayed(), contains("Walk the dog", "Put out the garbage")));
-    }
-
-    @Test
-    public void should_indicate_what_filter_is_currently_being_used() {
-
-        givenThat(james).wasAbleTo(Start.withATodoListContaining("Walk the dog", "Put out the garbage"));
-        then(james).should(seeThat(CurrentFilter.selected(), is(All)));
-
-        when(james).attemptsTo(FilterItems.toShow(Active));
-        then(james).should(seeThat(CurrentFilter.selected(), is(Active)));
+        and(james).should(seeThat(CurrentFilter.selected(), is(All)));
     }
 }

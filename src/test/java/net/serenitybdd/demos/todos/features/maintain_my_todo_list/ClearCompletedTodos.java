@@ -29,7 +29,7 @@ public class ClearCompletedTodos {
     }
 
     @Test
-    public void cleared_completed_items_should_disappear_from_the_todo_list() {
+    public void should_be_able_to_clear_completed_todos() {
 
         givenThat(james).wasAbleTo(Start.withATodoListContaining("Walk the dog", "Put out the garbage"));
 
@@ -42,7 +42,7 @@ public class ClearCompletedTodos {
     }
 
     @Test
-    public void cleared_completed_option_should_not_be_available_if_no_items_are_completed() {
+    public void should_not_be_able_to_clear_completed_todos_if_none_are_complete() {
 
         givenThat(james).wasAbleTo(Start.withATodoListContaining("Walk the dog", "Put out the garbage"));
 

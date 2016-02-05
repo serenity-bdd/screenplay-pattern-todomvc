@@ -33,21 +33,21 @@ public class LearnAboutTheApplication {
     }
 
     @Test
-    public void application_should_be_clearly_identified_by_the_title() {
+    public void should_be_able_to_identify_the_application() {
 
         givenThat(james).wasAbleTo(Start.withAnEmptyTodoList());
 
         then(james).should(
-                seeThat(Application.information(),
-                        displays("title",equalTo("AngularJS • TodoMVC")),
-                        displays("heading",equalTo("todos")),
-                        displays("about", containsString("Credits"))
-                )
+            seeThat(Application.information(),
+                displays("title",equalTo("AngularJS • TodoMVC")),
+                displays("heading",equalTo("todos")),
+                displays("about", containsString("Credits"))
+            )
         );
     }
 
     @Test
-    public void should_display_a_meaningful_placeholder() {
+    public void should_see_how_to_begin() {
 
         givenThat(james).wasAbleTo(Start.withAnEmptyTodoList());
 

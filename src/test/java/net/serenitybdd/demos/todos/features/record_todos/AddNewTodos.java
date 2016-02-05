@@ -29,7 +29,7 @@ public class AddNewTodos {
     }
 
     @Test
-    public void should_be_able_to_add_a_todo_item() {
+    public void should_be_able_to_add_the_first_todo_item() {
 
         givenThat(james).wasAbleTo(Start.withAnEmptyTodoList());
 
@@ -39,7 +39,7 @@ public class AddNewTodos {
     }
 
     @Test
-    public void should_be_able_to_add_a_todo_item_to_an_existing_list() {
+    public void should_be_able_to_add_additional_todo_items() {
 
         givenThat(james).wasAbleTo(Start.withATodoListContaining("Walk the dog", "Put out the garbage"));
 
