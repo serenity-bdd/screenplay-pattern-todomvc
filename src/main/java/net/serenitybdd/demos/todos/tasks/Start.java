@@ -4,9 +4,9 @@ import com.google.common.base.Joiner;
 import net.serenitybdd.demos.todos.user_interface.ApplicationHomePage;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
+import net.serenitybdd.screenplay.Unless;
 import net.serenitybdd.screenplay.actions.Open;
 import net.thucydides.core.annotations.Step;
-import serenityx.Unless;
 
 import java.util.Arrays;
 import java.util.Collection;
