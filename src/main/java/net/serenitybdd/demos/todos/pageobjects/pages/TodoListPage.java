@@ -21,8 +21,8 @@ public class TodoListPage extends PageObject {
     private static final String MAIN_HEADING         = "css:h1";
     private static final String FOOTER               = "#info";
     private static final String NEW_TODO_INPUT_FIELD = "#new-todo";
-    private static final String ACTION_ROW           = "//div[@class='view' and contains(.,'%s')]";
-    private static final String ACTION_ROW_LABEL     = "//label[contains(.,'%s')]";
+    private static final String ITEM_ROW             = "//div[@class='view' and contains(.,'%s')]";
+    private static final String ITEM_ROW_LABEL        = "//label[contains(.,'%s')]";
     private static final String COMPLETE_TICKBOX     = ".//input[@ng-model='todo.completed']";
     private static final String DELETE_BUTTON        = "//button[@class='destroy']";
     private static final String FILTERS              = "#filters";
@@ -32,7 +32,7 @@ public class TodoListPage extends PageObject {
     private static final String CLEAR_COMPLETED      = "#clear-completed";
 
     // -----------------------------------------------------------------------------------------------------------------
-    // STEPS
+    // ACTIONS
 
     public void openApplication() {
         open();
@@ -43,8 +43,8 @@ public class TodoListPage extends PageObject {
         withTimeoutOf(60, TimeUnit.SECONDS).waitFor(NEW_TODO_INPUT_FIELD);
     }
 
-    public void addAnActionCalled(String actionName) {
-        $(NEW_TODO_INPUT_FIELD).type(actionName)
+    public void addATodoItemCalled(String itemName) {
+        $(NEW_TODO_INPUT_FIELD).type(itemName)
                 .then().sendKeys(Keys.ENTER);
     }
 
@@ -58,33 +58,33 @@ public class TodoListPage extends PageObject {
         return String.format(".//a[.='%s']", status.name());
     }
 
-    public void markAsComplete(String action) {
-        inActionRowFor(action).findBy(COMPLETE_TICKBOX).click();
+    public void markAsComplete(String todoItem) {
+        inItemRowFor(todoItem).findBy(COMPLETE_TICKBOX).click();
     }
 
-    public void delete(String action) {
-        evaluateJavascript("arguments[0].click()", inActionRowLabelFor(action).findBy(DELETE_BUTTON));
+    public void delete(String todoItem) {
+        evaluateJavascript("arguments[0].click()", inItemRowLabelFor(todoItem).findBy(DELETE_BUTTON));
     }
 
-    private WebElementFacade inActionRowFor(String action) {
-        return $(String.format(ACTION_ROW, action));
+    private WebElementFacade inItemRowFor(String todoItem) {
+        return $(String.format(ITEM_ROW, todoItem));
     }
 
-    private WebElementFacade inActionRowLabelFor(String action) {
-        return $(String.format(ACTION_ROW_LABEL, action));
+    private WebElementFacade inItemRowLabelFor(String todoItem) {
+        return $(String.format(ITEM_ROW_LABEL, todoItem));
     }
 
-    private boolean isShownAsCompleted(WebElementFacade actionRow) {
-        return actionRow.find(By.tagName("label")).getCssValue("text-decoration").equals("line-through");
+    private boolean isShownAsCompleted(WebElementFacade itemRow) {
+        return itemRow.find(By.tagName("label")).getCssValue("text-decoration").equals("line-through");
     }
 
-    public void updateAction(String currentActionName, String newActionName) {
-        evaluateJavascript("arguments[0].click()", inActionRowLabelFor(currentActionName));
-        inActionRowLabelFor(currentActionName).type(newActionName);
-        inActionRowLabelFor(currentActionName).sendKeys(Keys.RETURN);
+    public void updateItem(String currentItemName, String newItemName) {
+        evaluateJavascript("arguments[0].click()", inItemRowLabelFor(currentItemName));
+        inItemRowLabelFor(currentItemName).type(newItemName);
+        inItemRowLabelFor(currentItemName).sendKeys(Keys.RETURN);
     }
 
-    public void clearCompletedActions() {
+    public void clearCompletedItems() {
         $(CLEAR_COMPLETED).click();
     }
 
@@ -104,24 +104,24 @@ public class TodoListPage extends PageObject {
         return $(NEW_TODO_INPUT_FIELD).getAttribute("placeholder");
     }
 
-    public int itemsLeftCount() {
+    public int numberOfItemsLeft() {
         return Integer.valueOf($(ITEMS_LEFT_COUNT).getText());
     }
 
-    public boolean canClearCompletedActions() {
+    public boolean canClearCompletedItems() {
         return $(CLEAR_COMPLETED).isCurrentlyVisible();
     }
 
-    public TodoStatus statusOf(String action) {
-        WebElementFacade actionRow = inActionRowFor(action);
-        return isShownAsCompleted(actionRow) ? TodoStatus.Completed : TodoStatus.Active;
+    public TodoStatus statusOf(String todoItem) {
+        WebElementFacade itemRow = inItemRowFor(todoItem);
+        return isShownAsCompleted(itemRow) ? TodoStatus.Completed : TodoStatus.Active;
     }
 
     public TodoStatusFilter currentlySelectedFilter() {
         return TodoStatusFilter.valueOf(findBy(SELECTED_FILTER).getText());
     }
 
-    public List<String> actions() {
+    public List<String> displayedItems() {
         return findAll(".view").stream()
                 .map(WebElementFacade::getText)
                 .collect(Collectors.toList());

@@ -22,7 +22,7 @@ public class AddNewTodos {
 
         james.starts_with_an_empty_todo_list();
 
-        james.adds_an_action_called("Buy some milk");
+        james.adds_a_todo_item_called("Buy some milk");
 
         james.should_see_that_displayed_items_contain("Buy some milk");
     }
@@ -32,7 +32,7 @@ public class AddNewTodos {
 
         james.starts_with_a_todo_list_containing("Walk the dog", "Put out the garbage");
 
-        james.adds_an_action_called("Buy some milk");
+        james.adds_a_todo_item_called("Buy some milk");
 
         james.should_see_that_displayed_items_contain("Walk the dog", "Put out the garbage", "Buy some milk");
     }

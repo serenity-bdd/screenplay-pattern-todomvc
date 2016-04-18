@@ -19,7 +19,7 @@ public class TodoUserSteps {
     TodoListPage todoListPage;
 
     // -----------------------------------------------------------------------------------------------------------------
-    // ACTIONS
+    // STEPS (9 in total)
 
     @Step
     public void starts_with_an_empty_todo_list() {
@@ -27,26 +27,35 @@ public class TodoUserSteps {
     }
 
     @Step
-    public void starts_with_a_todo_list_containing(String... actions) {
+    public void starts_with_a_todo_list_containing(String... items) {
         todoListPage.openApplication();
 
-        asList(actions).forEach(this::adds_an_action_called);
+        adds_todo_items_called(items);
     }
 
     @Step
-    public void adds_an_action_called(String actionName) {
-        todoListPage.addAnActionCalled(actionName);
+    public void adds_todo_items_called(String... items) {
+        asList(items).forEach(this::adds_a_todo_item_called);
     }
 
     @Step
-    public void completes_item_called(String action) {
-        todoListPage.markAsComplete(action);
+    public void adds_a_todo_item_called(String item) {
+        todoListPage.addATodoItemCalled(item);
     }
 
+    @Step
+    public void completes(String item) {
+        todoListPage.markAsComplete(item);
+    }
 
     @Step
-    public void deletes_item_called(String action) {
-        todoListPage.delete(action);
+    public void filters_items_to_show(TodoStatusFilter filter) {
+        todoListPage.filterByStatus(filter);
+    }
+
+    @Step
+    public void deletes(String item) {
+        todoListPage.delete(item);
     }
 
     @Step
@@ -56,11 +65,11 @@ public class TodoUserSteps {
 
     @Step
     public void clears_completed_items() {
-        todoListPage.clearCompletedActions();
+        todoListPage.clearCompletedItems();
     }
 
     // -----------------------------------------------------------------------------------------------------------------
-    // ASSERTIONS
+    // ASSERTIONS (13 in total)
 
     @Step
     public void should_see_that_the_placeholder_text_says(String expectedPlaceholderText) {
@@ -68,38 +77,33 @@ public class TodoUserSteps {
     }
 
     @Step
-    public void should_see_that_that_following_items_are_marked_as_complete(String... actions) {
-        asList(actions).forEach(this::should_see_that_that_following_item_is_marked_as_complete);
+    public void should_see_that_that_following_items_are_marked_as_complete(String... itemss) {
+        asList(itemss).forEach(this::should_see_that_that_following_item_is_marked_as_complete);
     }
 
     @Step
-    public void should_see_that_that_following_item_is_marked_as_complete(String action) {
-        assertThat(todoListPage.statusOf(action), is(Completed));
+    public void should_see_that_that_following_item_is_marked_as_complete(String item) {
+        assertThat(todoListPage.statusOf(item), is(Completed));
     }
 
     @Step
-    public void should_see_that_that_following_items_are_marked_as_active(String... actions) {
-        asList(actions).forEach(this::should_see_that_that_following_items_is_marked_as_active);
+    public void should_see_that_that_following_items_are_marked_as_active(String... items) {
+        asList(items).forEach(this::should_see_that_that_following_item_is_marked_as_active);
     }
 
     @Step
-    private void should_see_that_that_following_items_is_marked_as_active(String action) {
-        assertThat(todoListPage.statusOf(action), is(Active));
+    public void should_see_that_that_following_item_is_marked_as_active(String item) {
+        assertThat(todoListPage.statusOf(item), is(Active));
     }
 
     @Step
-    public void should_see_that_the_number_of_items_left_is(int expectedCount) {
-        assertThat(todoListPage.itemsLeftCount(), is(expectedCount));
+    public void should_see_that_the_number_of_items_left_is(int expected) {
+        assertThat(todoListPage.numberOfItemsLeft(), is(expected));
     }
 
     @Step
     public void should_see_that_the_clear_completed_items_option_is_not_visible() {
-        assertThat(todoListPage.canClearCompletedActions(), is(false));
-    }
-
-    @Step
-    public void filters_items_to_show(TodoStatusFilter filter) {
-        todoListPage.filterByStatus(filter);
+        assertThat(todoListPage.canClearCompletedItems(), is(false));
     }
 
     @Step
@@ -108,13 +112,13 @@ public class TodoUserSteps {
     }
 
     @Step
-    public void should_see_that_displayed_items_contain(String... actions) {
-        assertThat(todoListPage.actions(), hasItems(actions));
+    public void should_see_that_displayed_items_contain(String... items) {
+        assertThat(todoListPage.displayedItems(), hasItems(items));
     }
 
     @Step
-    public void should_see_that_displayed_items_do_not_contain(String... actions) {
-        assertThat(todoListPage.actions(), not(contains(actions)));
+    public void should_see_that_displayed_items_do_not_contain(String... items) {
+        assertThat(todoListPage.displayedItems(), not(contains(items)));
     }
 
     @Step

@@ -22,7 +22,7 @@ public class CompleteATodo {
 
         james.starts_with_a_todo_list_containing("Walk the dog", "Put out the garbage");
 
-        james.completes_item_called("Walk the dog");
+        james.completes("Walk the dog");
 
         james.should_see_that_that_following_item_is_marked_as_complete("Walk the dog");
 
@@ -34,7 +34,7 @@ public class CompleteATodo {
 
         james.starts_with_a_todo_list_containing("Walk the dog", "Put out the garbage");
 
-        james.completes_item_called("Walk the dog");
+        james.completes("Walk the dog");
 
         james.should_see_that_the_number_of_items_left_is(1);
     }

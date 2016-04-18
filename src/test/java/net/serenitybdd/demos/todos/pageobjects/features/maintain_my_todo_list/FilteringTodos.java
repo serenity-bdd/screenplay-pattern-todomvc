@@ -23,7 +23,7 @@ public class FilteringTodos {
 
         james.starts_with_a_todo_list_containing("Walk the dog", "Put out the garbage");
 
-        james.completes_item_called("Walk the dog");
+        james.completes("Walk the dog");
 
         james.filters_items_to_show(TodoStatusFilter.Completed);
 
@@ -37,7 +37,7 @@ public class FilteringTodos {
 
         james.starts_with_a_todo_list_containing("Walk the dog", "Put out the garbage");
 
-        james.completes_item_called("Walk the dog");
+        james.completes("Walk the dog");
 
         james.filters_items_to_show(TodoStatusFilter.Active);
 
@@ -51,7 +51,7 @@ public class FilteringTodos {
 
         james.starts_with_a_todo_list_containing("Walk the dog", "Put out the garbage");
 
-        james.completes_item_called("Walk the dog");
+        james.completes("Walk the dog");
 
         james.filters_items_to_show(TodoStatusFilter.Active);
 

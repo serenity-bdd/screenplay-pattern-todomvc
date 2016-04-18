@@ -22,7 +22,7 @@ public class ClearCompletedTodos {
 
         james.starts_with_a_todo_list_containing("Walk the dog", "Put out the garbage");
 
-        james.completes_item_called("Walk the dog");
+        james.completes("Walk the dog");
 
         james.clears_completed_items();
 

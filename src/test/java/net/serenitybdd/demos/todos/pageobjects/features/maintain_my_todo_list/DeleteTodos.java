@@ -22,7 +22,7 @@ public class DeleteTodos {
 
         james.starts_with_a_todo_list_containing("Walk the dog", "Put out the garbage");
 
-        james.deletes_item_called("Walk the dog");
+        james.deletes("Walk the dog");
 
         james.should_see_that_displayed_items_contain("Put out the garbage");
     }
@@ -32,7 +32,7 @@ public class DeleteTodos {
 
         james.starts_with_a_todo_list_containing("Walk the dog", "Put out the garbage");
 
-        james.deletes_item_called("Walk the dog");
+        james.deletes("Walk the dog");
 
         james.should_see_that_the_number_of_items_left_is(1);
     }
