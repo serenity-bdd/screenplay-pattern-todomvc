@@ -5,9 +5,9 @@ import net.serenitybdd.demos.todos.screenplay.tasks.AddATodoItem;
 import net.serenitybdd.demos.todos.screenplay.tasks.Start;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.screenplay.Actor;
-import net.serenitybdd.screenplay.GivenWhenThen;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.thucydides.core.annotations.Managed;
+import net.thucydides.core.annotations.WithTag;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,6 +21,7 @@ import static org.hamcrest.Matchers.hasItems;
  * This example illustrates using Serenity Steps with JUnit.
  */
 @RunWith(SerenityRunner.class)
+@WithTag("Screenplay pattern")
 public class AddNewTodos {
 
     private Actor james = Actor.named("James");
@@ -36,7 +37,7 @@ public class AddNewTodos {
 
         when(james).attemptsTo(AddATodoItem.called("Buy some milk"));
 
-        then(james).should(GivenWhenThen.seeThat(TheItems.displayed(), hasItem("Buy some milk")));
+        then(james).should(seeThat(TheItems.displayed(), hasItem("Buy some milk")));
     }
 
     @Test

@@ -5,9 +5,9 @@ import net.serenitybdd.demos.todos.screenplay.tasks.DeleteAnItem;
 import net.serenitybdd.demos.todos.screenplay.tasks.Start;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.screenplay.Actor;
-import net.serenitybdd.screenplay.GivenWhenThen;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.thucydides.core.annotations.Managed;
+import net.thucydides.core.annotations.WithTag;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,6 +18,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.contains;
 
 @RunWith(SerenityRunner.class)
+@WithTag("Screenplay pattern")
 public class DeleteTodos {
 
     @Managed private WebDriver hisBrowser;
@@ -35,7 +36,7 @@ public class DeleteTodos {
                 DeleteAnItem.called("Walk the dog")
         );
 
-        then(james).should(GivenWhenThen.seeThat(TheItems.displayed(), contains("Put out the garbage")));
+        then(james).should(seeThat(TheItems.displayed(), contains("Put out the garbage")));
     }
 
     @Test

@@ -31,7 +31,7 @@ public class Start implements Task {
         return instrumented(Start.class, Collections.EMPTY_LIST, "no items");
     }
     public static Start withATodoListContaining(String... items) {
-        return instrumented(Start.class, Arrays.asList(items), Joiner.on(", ").join(items));
+        return instrumented(Start.class, Arrays.asList(items), "a todo list containing " +  Joiner.on(", ").join(items));
     }
 
     public Start(Collection<String> items, String todoListDescription) {

@@ -2,13 +2,13 @@ package net.serenitybdd.demos.todos.screenplay.features.completing_todos;
 
 import net.serenitybdd.demos.todos.screenplay.questions.TheItemStatus;
 import net.serenitybdd.demos.todos.screenplay.questions.TheItems;
-import net.serenitybdd.demos.todos.screenplay.tasks.ToggleStatus;
 import net.serenitybdd.demos.todos.screenplay.tasks.Start;
+import net.serenitybdd.demos.todos.screenplay.tasks.ToggleStatus;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.screenplay.Actor;
-import net.serenitybdd.screenplay.GivenWhenThen;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.thucydides.core.annotations.Managed;
+import net.thucydides.core.annotations.WithTag;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,6 +20,7 @@ import static net.serenitybdd.screenplay.GivenWhenThen.*;
 import static org.hamcrest.CoreMatchers.is;
 
 @RunWith(SerenityRunner.class)
+@WithTag("Screenplay pattern")
 public class ToggleAllTodos {
 
     @Managed private WebDriver hisBrowser;
@@ -70,7 +71,7 @@ public class ToggleAllTodos {
         );
 
         then(james).should(
-            GivenWhenThen.seeThat(TheItems.leftCount(), is(0))
+            seeThat(TheItems.leftCount(), is(0))
         );
     }
 

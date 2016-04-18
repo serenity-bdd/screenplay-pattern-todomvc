@@ -6,9 +6,9 @@ import net.serenitybdd.demos.todos.screenplay.tasks.CompleteItem;
 import net.serenitybdd.demos.todos.screenplay.tasks.Start;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.screenplay.Actor;
-import net.serenitybdd.screenplay.GivenWhenThen;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.thucydides.core.annotations.Managed;
+import net.thucydides.core.annotations.WithTag;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,6 +18,7 @@ import static net.serenitybdd.screenplay.GivenWhenThen.*;
 import static org.hamcrest.Matchers.contains;
 
 @RunWith(SerenityRunner.class)
+@WithTag("Screenplay pattern")
 public class TodosBelongToAUser {
 
     private Actor james = Actor.named("James");
@@ -42,6 +43,6 @@ public class TodosBelongToAUser {
                 Clear.completedItems()
         );
 
-        then(jane).should(GivenWhenThen.seeThat(TheItems.displayed(), contains("Walk the dog", "Feed the cat")));
+        then(jane).should(seeThat(TheItems.displayed(), contains("Walk the dog", "Feed the cat")));
     }
 }

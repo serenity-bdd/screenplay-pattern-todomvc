@@ -13,7 +13,7 @@ public class AddATodoItem implements Task {
 
     private final String thingToDo;
 
-    @Step("{0} adds a todo item called #thingToDo")
+    @Step("{0} adds a todo item called: #thingToDo")
     public <T extends Actor> void performAs(T theActor) {
         theActor.attemptsTo(
             Enter.theValue(thingToDo)

@@ -13,7 +13,7 @@ public class CompleteItem implements Task {
     private final String itemName;
 
     @Override
-    @Step("{0} completes the item called #itemName")
+    @Step("{0} completes the item called: #itemName")
     public <T extends Actor> void performAs(T theActor) {
         theActor.attemptsTo(Click.on(TodoListItem.COMPLETE_ITEM.of(itemName)));
     }

@@ -15,7 +15,7 @@ public class AddTodoItems implements Task {
 
     private final List<String> todos;
 
-    @Step("{0} adds the todo items called #todos")
+    @Step("{0} adds the todo items called: #todos")
     public <T extends Actor> void performAs(T actor) {
         todos.forEach(
                 todo -> actor.attemptsTo(AddATodoItem.called(todo))
