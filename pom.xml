@@ -17,6 +17,7 @@
         <serenity.jbehave.version>1.6.0</serenity.jbehave.version>
         <parallel.tests>4</parallel.tests>
         <webdriver.base.url>http://todomvc.com/examples/angularjs/#/</webdriver.base.url>
+        <encoding>UTF-8</encoding>
     </properties>
 
     <repositories>
