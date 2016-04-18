@@ -77,8 +77,8 @@ public class TodoUserSteps {
     }
 
     @Step
-    public void should_see_that_that_following_items_are_marked_as_complete(String... itemss) {
-        asList(itemss).forEach(this::should_see_that_that_following_item_is_marked_as_complete);
+    public void should_see_that_that_following_items_are_marked_as_complete(String... items) {
+        asList(items).forEach(this::should_see_that_that_following_item_is_marked_as_complete);
     }
 
     @Step
