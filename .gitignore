@@ -1,6 +1,7 @@
 # IntelliJ project files
 .idea
 *.iml
+*.ipr
 
 ### Maven template
 target/
