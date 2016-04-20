@@ -2,15 +2,25 @@ package net.serenitybdd.demos.todos.cucumber.actors;
 
 import net.serenitybdd.screenplay.Actor;
 
-public class OnStage {
+import java.util.function.Supplier;
 
-    private static final Cast cast = new Cast();
+public class OnStage implements Supplier<Stage> {
 
-    public static Actor theActorCalled(String actorName) {
-        return cast.actorNamed(actorName);
+    private static final ThreadLocal<Stage> stage = ThreadLocal.withInitial(new OnStage());
+
+    public static Actor theActorCalled(String requiredActor) {
+        return stage().shineSpotlightOn(requiredActor);
     }
 
     public static Actor theActorInTheSpotlight() {
-        return null;
+        return stage().theActorInTheSpotlight();
     }
+
+    @Override
+    public Stage get() {
+        return new Stage(new Cast());
+    }
+
+    private static Stage stage() { return stage.get(); }
+
 }
