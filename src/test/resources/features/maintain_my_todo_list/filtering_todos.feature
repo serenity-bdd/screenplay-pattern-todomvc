@@ -10,3 +10,4 @@ Feature: Filtering todos
     And she has completed the task called 'Walk the dog'
     When she filters her list to show only Completed tasks
     Then her todo list should contain Walk the dog
+
