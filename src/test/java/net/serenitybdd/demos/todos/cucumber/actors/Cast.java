@@ -25,4 +25,8 @@ public class Cast {
         }
         return actors.get(actorName);
     }
+
+    public void dismissAll() {
+        actors.clear();
+    }
 }

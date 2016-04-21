@@ -22,4 +22,8 @@ public class Stage {
         Preconditions.checkNotNull(actorInTheSpotlight);
         return actorInTheSpotlight;
     }
+
+    public void drawTheCurtain() {
+        cast.dismissAll();
+    }
 }

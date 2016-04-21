@@ -23,4 +23,7 @@ public class OnStage implements Supplier<Stage> {
 
     private static Stage stage() { return stage.get(); }
 
+    public static void drawTheCurtain() {
+        stage().drawTheCurtain();
+    }
 }
