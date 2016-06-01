@@ -1,4 +1,4 @@
-package net.serenitybdd.demos.todos.screenplay.action;
+package net.serenitybdd.demos.todos.screenplay.actions;
 
 import net.serenitybdd.screenplay.Action;
 import net.serenitybdd.screenplay.Actor;
