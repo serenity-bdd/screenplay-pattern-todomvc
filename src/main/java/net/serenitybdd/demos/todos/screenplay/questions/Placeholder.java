@@ -1,6 +1,6 @@
 package net.serenitybdd.demos.todos.screenplay.questions;
 
-import net.serenitybdd.demos.todos.screenplay.user_interface.ToDoList;
+import net.serenitybdd.demos.todos.screenplay.user_interface.TodoList;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Question;
 import net.serenitybdd.screenplay.annotations.Subject;
@@ -11,7 +11,7 @@ public class Placeholder implements Question<String> {
 
     @Override
     public String answeredBy(Actor actor) {
-        return Attribute.of(ToDoList.WHAT_NEEDS_TO_BE_DONE).named("placeholder")
+        return Attribute.of(TodoList.WHAT_NEEDS_TO_BE_DONE).named("placeholder")
                 .viewedBy(actor)
                 .asString();
     }

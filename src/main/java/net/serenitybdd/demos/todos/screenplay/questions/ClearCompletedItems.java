@@ -1,6 +1,6 @@
 package net.serenitybdd.demos.todos.screenplay.questions;
 
-import net.serenitybdd.demos.todos.screenplay.user_interface.ToDoList;
+import net.serenitybdd.demos.todos.screenplay.user_interface.TodoList;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Question;
 import net.serenitybdd.screenplay.annotations.Subject;
@@ -14,7 +14,7 @@ public class ClearCompletedItems implements Question<ElementAvailability> {
     @Override
     public ElementAvailability answeredBy(Actor actor) {
         return ElementAvailability.from(
-                the(Visibility.of(ToDoList.CLEAR_COMPLETED).viewedBy(actor))
+                the(Visibility.of(TodoList.CLEAR_COMPLETED).viewedBy(actor))
         );
     }
 
