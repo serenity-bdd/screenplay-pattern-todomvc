@@ -11,11 +11,10 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <serenity.version>1.1.32-rc.1</serenity.version>
-        <serenity.maven.version>1.1.31</serenity.maven.version>
-        <serenity.cucumber.version>1.1.6</serenity.cucumber.version>
-        <serenity.jbehave.version>1.10.0</serenity.jbehave.version>
-        <parallel.tests>1</parallel.tests>
+        <serenity.version>1.1.34</serenity.version>
+        <serenity.maven.version>1.1.34</serenity.maven.version>
+        <serenity.cucumber.version>1.1.8</serenity.cucumber.version>
+        <parallel.tests>4</parallel.tests>
         <webdriver.base.url>http://todomvc.com/examples/angularjs/#/</webdriver.base.url>
         <encoding>UTF-8</encoding>
     </properties>
@@ -66,17 +65,6 @@
             <groupId>net.serenity-bdd</groupId>
             <artifactId>serenity-cucumber</artifactId>
             <version>${serenity.cucumber.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>net.serenity-bdd</groupId>
-            <artifactId>serenity-jbehave</artifactId>
-            <version>${serenity.jbehave.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <version>2.52.0</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -130,7 +118,6 @@
                     <excludes>
                         <exclude>**/*WithFailures.java</exclude>
                     </excludes>
-                    <argLine>-Xmx512m</argLine>
                     <parallel>classes</parallel>
                     <threadCount>${parallel.tests}</threadCount>
                     <forkCount>${parallel.tests}</forkCount>
@@ -202,7 +189,6 @@
                                 <include>**/cucumber/*.java</include>
                                 <include>**/*WithFailures.java</include>
                             </includes>
-                            <argLine>-Xmx512m</argLine>
                         </configuration>
                         <executions>
                             <execution>
@@ -227,7 +213,6 @@
                             <includes>
                                 <include>**/cucumber/*.java</include>
                             </includes>
-                            <argLine>-Xmx512m</argLine>
                         </configuration>
                         <executions>
                             <execution>

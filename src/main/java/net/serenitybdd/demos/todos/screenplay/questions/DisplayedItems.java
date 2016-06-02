@@ -1,6 +1,6 @@
 package net.serenitybdd.demos.todos.screenplay.questions;
 
-import net.serenitybdd.demos.todos.screenplay.user_interface.ToDoList;
+import net.serenitybdd.demos.todos.screenplay.user_interface.TodoList;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Question;
 import net.serenitybdd.screenplay.annotations.Subject;
@@ -13,7 +13,7 @@ public class DisplayedItems implements Question<List<String>> {
 
     @Override
     public List<String> answeredBy(Actor actor) {
-        return Text.of(ToDoList.ITEMS)
+        return Text.of(TodoList.ITEMS)
                 .viewedBy(actor)
                 .asList();
     }
