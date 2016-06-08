@@ -7,6 +7,9 @@ import net.serenitybdd.demos.todos.pageobjects.model.TodoStatus;
 import net.serenitybdd.demos.todos.pageobjects.model.TodoStatusFilter;
 import net.thucydides.core.annotations.DefaultUrl;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.FindBys;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -34,8 +37,15 @@ public class TodoListPage extends PageObject {
     // -----------------------------------------------------------------------------------------------------------------
     // ACTIONS
 
+    @FindBys({@FindBy(tagName = "a")})  List<WebElement> testFindBys;
+
     public void openApplication() {
         open();
+try {
+    testFindBys.size();
+}  catch (Throwable e) {
+    e.printStackTrace();
+}
         waitForTheApplicationToLoad();
     }
 
