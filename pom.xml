@@ -204,6 +204,9 @@
         </profile>
         <profile>
             <id>cucumber</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
             <build>
                 <plugins>
                     <plugin>
