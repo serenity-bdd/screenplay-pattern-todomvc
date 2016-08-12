@@ -1,4 +1,4 @@
-# Serenity Journey Pattern demo
+# Screenplay Pattern with Serenity BDD
 
 This project is a simple demonstration showing the difference between
 the [PageObject](http://martinfowler.com/bliki/PageObject.html)
