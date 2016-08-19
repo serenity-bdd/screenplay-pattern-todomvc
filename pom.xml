@@ -11,12 +11,13 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <serenity.version>1.1.37-rc.6</serenity.version>
-        <serenity.maven.version>1.1.37-rc.6</serenity.maven.version>
-        <serenity.cucumber.version>1.1.9</serenity.cucumber.version>
+        <serenity.version>1.1.37-rc.7</serenity.version>
+        <serenity.maven.version>1.1.37-rc.7</serenity.maven.version>
+        <serenity.cucumber.version>1.1.10</serenity.cucumber.version>
         <parallel.tests>4</parallel.tests>
         <webdriver.base.url>http://todomvc.com/examples/angularjs/#/</webdriver.base.url>
         <encoding>UTF-8</encoding>
+        <serenity.test.root></serenity.test.root>
     </properties>
 
     <repositories>
@@ -113,7 +114,7 @@
                         <include>**/cucumber/*.java</include>
                     </includes>
                     <systemPropertyVariables>
-                      <webdriver.base.url>${webdriver.base.url}</webdriver.base.url>
+                        <webdriver.base.url>${webdriver.base.url}</webdriver.base.url>
                     </systemPropertyVariables>
                     <excludes>
                         <exclude>**/*WithFailures.java</exclude>
@@ -169,12 +170,12 @@
         </plugins>
     </build>
     <profiles>
-      <profile>
-          <id>localhost</id>
-          <properties>
-               <webdriver.base.url>http://localhost:8080/angularjs/#/</webdriver.base.url>
-          </properties>
-      </profile>
+        <profile>
+            <id>localhost</id>
+            <properties>
+                <webdriver.base.url>http://localhost:8080/angularjs/#/</webdriver.base.url>
+            </properties>
+        </profile>
         <profile>
             <id>failing</id>
             <build>
@@ -231,6 +232,9 @@
         </profile>
         <profile>
             <id>screenplay</id>
+            <properties>
+                <serenity.test.root>net.serenitybdd.demos.todos.screenplay.features</serenity.test.root>
+            </properties>
             <build>
                 <plugins>
                     <plugin>
@@ -240,6 +244,9 @@
                             <includes>
                                 <include>**/screenplay/**/*.java</include>
                             </includes>
+                            <systemPropertyVariables>
+                                <serenity.test.root>${serenity.test.root}</serenity.test.root>
+                            </systemPropertyVariables>
                         </configuration>
                         <executions>
                             <execution>
@@ -255,6 +262,9 @@
         </profile>
         <profile>
             <id>pageobjects</id>
+            <properties>
+                <serenity.test.root>net.serenitybdd.demos.todos.pageobjects.features</serenity.test.root>
+            </properties>
             <build>
                 <plugins>
                     <plugin>
@@ -264,6 +274,9 @@
                             <includes>
                                 <include>**/pageobjects/**/*.java</include>
                             </includes>
+                            <systemPropertyVariables>
+                                <serenity.test.root>${serenity.test.root}</serenity.test.root>
+                            </systemPropertyVariables>
                         </configuration>
                         <executions>
                             <execution>
