@@ -7,7 +7,8 @@ public class TodoListItem {
     public static Target ITEM_LABEL    =  Target.the("Item label")
             .locatedBy("//*[@class='view' and contains(.,'{0}')]//label");
 
-    public static Target COMPLETE_ITEM = Target.the("Complete item tick box")
+    public static Target
+            COMPLETE_ITEM = Target.the("Complete item tick box")
             .locatedBy("//*[@class='view' and contains(.,'{0}')]//input[@type='checkbox']");
 
     public static Target EDIT_ITEM     = Target.the("Edit item field")

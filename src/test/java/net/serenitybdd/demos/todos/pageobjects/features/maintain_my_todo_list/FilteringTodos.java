@@ -25,11 +25,11 @@ public class FilteringTodos {
 
         james.completes("Walk the dog");
 
-        james.filters_items_to_show(TodoStatusFilter.Completed);
+        james.filters_items_to_show(TodoStatusFilter.Done);
 
         james.should_see_that_displayed_items_contain("Walk the dog");
         james.should_see_that_displayed_items_do_not_contain("Put out the garbage");
-        james.should_see_that_the_currently_selected_filter_is(TodoStatusFilter.Completed);
+        james.should_see_that_the_currently_selected_filter_is(TodoStatusFilter.Done);
     }
 
     @Test

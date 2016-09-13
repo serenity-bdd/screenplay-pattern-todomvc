@@ -2,9 +2,7 @@ package net.serenitybdd.demos.todos.pageobjects.features.accessing_the_applicati
 
 import net.serenitybdd.demos.todos.pageobjects.steps.TodoUserSteps;
 import net.serenitybdd.junit.runners.SerenityParameterizedRunner;
-import net.thucydides.core.annotations.Managed;
-import net.thucydides.core.annotations.Manual;
-import net.thucydides.core.annotations.Steps;
+import net.thucydides.core.annotations.*;
 import net.thucydides.junit.annotations.Concurrent;
 import net.thucydides.junit.annotations.TestData;
 import org.junit.Before;
@@ -17,6 +15,10 @@ import java.util.Collection;
 
 @RunWith(SerenityParameterizedRunner.class)
 @Concurrent
+@WithTags({
+        @WithTag("PageObjects pattern"),
+        @WithTag("version:RELEASE-3"),
+})
 public class AddDifferentSortsOfTodos {
 
     @Managed

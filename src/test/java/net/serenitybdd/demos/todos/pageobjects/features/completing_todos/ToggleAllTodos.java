@@ -2,22 +2,26 @@ package net.serenitybdd.demos.todos.pageobjects.features.completing_todos;
 
 import net.serenitybdd.demos.todos.pageobjects.steps.TodoUserSteps;
 import net.serenitybdd.junit.runners.SerenityRunner;
-import net.thucydides.core.annotations.Managed;
-import net.thucydides.core.annotations.Steps;
-import net.thucydides.core.annotations.WithTag;
+import net.thucydides.core.annotations.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
 @RunWith(SerenityRunner.class)
-@WithTag("PageObjects pattern")
+@WithTags({
+        @WithTag("PageObjects pattern"),
+        @WithTag("version:RELEASE-1"),
+})
 public class ToggleAllTodos {
 
-    @Managed WebDriver driver;
+    @Managed
+    WebDriver driver;
 
-    @Steps   TodoUserSteps james;
+    @Steps
+    TodoUserSteps james;
 
     @Test
+    @Issues({"PROJ-12", "PROJ-43"})
     public void should_be_able_to_quickly_complete_all_todos() {
 
         james.starts_with_a_todo_list_containing("Walk the dog", "Put out the garbage");

@@ -34,6 +34,6 @@ public class DeleteTodos {
 
         james.deletes("Walk the dog");
 
-        james.should_see_that_the_number_of_items_left_is(1);
+        james.should_see_that_the_number_of_items_left_is(2);
     }
 }

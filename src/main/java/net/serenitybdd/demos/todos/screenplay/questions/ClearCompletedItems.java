@@ -8,7 +8,7 @@ import net.serenitybdd.screenplay.questions.Visibility;
 
 import static net.serenitybdd.screenplay.questions.ValueOf.the;
 
-@Subject("the 'Clear Completed' option")
+@Subject("the 'Clear Done' option")
 public class ClearCompletedItems implements Question<ElementAvailability> {
 
     @Override
