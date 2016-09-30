@@ -6,6 +6,7 @@ import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.annotations.WithTag;
 import net.thucydides.core.annotations.WithTags;
+import net.thucydides.core.util.EnvironmentVariables;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,6 +27,8 @@ public class AddNewTodos {
     public void refreshBrowser() {
         driver.manage();
     }
+
+    EnvironmentVariables environmentVariables;
 
     @Test
     public void should_be_able_to_add_the_first_todo_item() {
