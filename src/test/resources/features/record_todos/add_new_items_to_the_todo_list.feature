@@ -1,5 +1,5 @@
 @cucumber
-Feature: Add new items to the todo list
+Feature: Add new todos
 
   In order to avoid having to remember things that need doing
   As a forgetful person

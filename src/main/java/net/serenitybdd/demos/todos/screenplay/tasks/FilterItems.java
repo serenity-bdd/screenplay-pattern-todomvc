@@ -15,7 +15,9 @@ public class FilterItems implements Task {
 
     @Step("{0} filters items by #filter")
     public <T extends Actor> void performAs(T theActor) {
-        theActor.attemptsTo(Click.on(TodoList.FILTER.of(filter.name()).called("filter by "+ filter)));
+        theActor.attemptsTo(
+                Click.on(TodoList.FILTER.of(filter.name()).called("filter by "+ filter))
+        );
     }
 
     public static FilterItems toShow(TodoStatusFilter status) {

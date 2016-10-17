@@ -21,27 +21,27 @@ public class TodoListPage extends PageObject {
     // -----------------------------------------------------------------------------------------------------------------
     // SELECTORS
 
-    private static final String MAIN_HEADING         = "css:h1";
-    private static final String FOOTER               = "#info";
+    private static final String MAIN_HEADING = "css:h1";
+    private static final String FOOTER = "#info";
     private static final String NEW_TODO_INPUT_FIELD = "#new-todo";
-    private static final String ITEM_ROW             = "//div[@class='view' and contains(.,'%s')]";
-    private static final String ITEM_ROW_LABEL        = "//label[contains(.,'%s')]";
-    private static final String COMPLETE_TICKBOX     = ".//input[@ng-model='todo.completed']";
-    private static final String DELETE_BUTTON        = "//button[@class='destroy']";
-    private static final String FILTERS              = "#filters";
-    private static final String SELECTED_FILTER      = "#filters li .selected";
-    private static final String ITEMS_LEFT_COUNT     = "#todo-count strong";
-    private static final String TOGGLE_ALL           = "#toggle-all";
-    private static final String CLEAR_COMPLETED      = "#clear-completed";
+    private static final String ITEM_ROW = "//div[@class='view' and contains(.,'%s')]";
+    private static final String ITEM_ROW_LABEL = "//label[contains(.,'%s')]";
+    private static final String COMPLETE_TICKBOX = ".//input[@ng-model='todo.completed']";
+    private static final String DELETE_BUTTON = "//button[@class='destroy']";
+    private static final String FILTERS = "#filters";
+    private static final String SELECTED_FILTER = "#filters li .selected";
+    private static final String ITEMS_LEFT_COUNT = "#todo-count strong";
+    private static final String TOGGLE_ALL = "#toggle-all";
+    private static final String CLEAR_COMPLETED = "#clear-completed";
 
     // -----------------------------------------------------------------------------------------------------------------
     // ACTIONS
 
-    @FindBys({@FindBy(tagName = "a")})  List<WebElement> testFindBys;
+    @FindBys({@FindBy(tagName = "a")})
+    List<WebElement> testFindBys;
 
     public void openApplication() {
         open();
-
         waitForTheApplicationToLoad();
     }
 

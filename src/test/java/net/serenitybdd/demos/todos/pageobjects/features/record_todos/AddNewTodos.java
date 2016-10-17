@@ -5,12 +5,16 @@ import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.annotations.WithTag;
+import net.thucydides.core.annotations.WithTags;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
 @RunWith(SerenityRunner.class)
-@WithTag("PageObjects pattern")
+@WithTags({
+        @WithTag("PageObjects pattern"),
+        @WithTag("version:RELEASE-2"),
+})
 public class AddNewTodos {
 
     @Managed WebDriver driver;

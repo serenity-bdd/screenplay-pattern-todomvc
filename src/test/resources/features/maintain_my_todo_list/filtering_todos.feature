@@ -11,13 +11,12 @@ Feature: Filtering todos
     When she filters her list to show only Completed tasks
     Then her todo list should contain Walk the dog
 
-  @Manual
-  Scenario Outline: Do other things
+  Scenario Outline: Viewing items by status
     Given that Jane has a todo list containing <tasks>
     And she has completed the task called 'Walk the dog'
     When she filters her list to show only <filter> tasks
     Then her todo list should contain <expected>
     Examples:
       | tasks                       | filter    | expected      |
-      | Buy some milk, Walk the dog | Completed | Walk the dog  |
       | Buy some milk, Walk the dog | Active    | Buy some milk |
+      | Buy some milk, Walk the dog | Completed | Walk the dog  |
