@@ -11,9 +11,9 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <serenity.version>1.1.42-SNAPSHOT</serenity.version>
-        <serenity.maven.version>1.1.42-SNAPSHOT</serenity.maven.version>
-        <serenity.jbehave.version>1.13.1-SNAPSHOT</serenity.jbehave.version>
+        <serenity.version>1.1.42</serenity.version>
+        <serenity.maven.version>1.1.42</serenity.maven.version>
+        <serenity.jbehave.version>1.13.0</serenity.jbehave.version>
         <parallel.tests>4</parallel.tests>
         <webdriver.base.url>http://todomvc.com/examples/angularjs/#/</webdriver.base.url>
         <encoding>UTF-8</encoding>
@@ -204,7 +204,7 @@
         <profile>
             <id>cucumber</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
             </activation>
             <build>
                 <plugins>
@@ -228,6 +228,34 @@
                 </plugins>
             </build>
         </profile>
+        <profile>
+            <id>jbehave</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-failsafe-plugin</artifactId>
+                        <version>2.18.1</version>
+                        <configuration>
+                            <includes>
+                                <include>**/jbehave/*.java</include>
+                            </includes>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>integration-test</goal>
+                                    <goal>verify</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
         <profile>
             <id>screenplay</id>
             <properties>
