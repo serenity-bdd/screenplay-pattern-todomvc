@@ -36,8 +36,6 @@ public class AddNewTodos {
 //      james.starts_with_an_empty_todo_list();
         givenThat(james).wasAbleTo(Start.withAnEmptyTodoList());
 
-
-
 //      james.adds_a_todo_item_called("Buy some milk");
         when(james).attemptsTo(AddATodoItem.called("Buy some milk"));
 

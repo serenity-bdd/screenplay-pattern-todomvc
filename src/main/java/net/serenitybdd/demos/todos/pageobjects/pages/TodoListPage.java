@@ -41,11 +41,7 @@ public class TodoListPage extends PageObject {
 
     public void openApplication() {
         open();
-try {
-    testFindBys.size();
-}  catch (Throwable e) {
-    e.printStackTrace();
-}
+
         waitForTheApplicationToLoad();
     }
 
