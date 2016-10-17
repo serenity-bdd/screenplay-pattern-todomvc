@@ -1,5 +1,5 @@
 @cucumber
-Feature: Filtering todos
+Feature: Filtering my todo list
 
   In order to make me feel a sense of accomplishment
   As a forgetful person
@@ -11,8 +11,7 @@ Feature: Filtering todos
     When she filters her list to show only Completed tasks
     Then her todo list should contain Walk the dog
 
-  @current
-  Scenario Outline: Viewing filtered items
+  Scenario Outline: Viewing items by status
     Given that Jane has a todo list containing <tasks>
     And she has completed the task called 'Walk the dog'
     When she filters her list to show only <filter> tasks
@@ -20,4 +19,4 @@ Feature: Filtering todos
     Examples:
       | tasks                       | filter    | expected      |
       | Buy some milk, Walk the dog | Active    | Buy some milk |
-      | Buy some milk, Walk the dog | Completed | Walk the cat  |
+      | Buy some milk, Walk the dog | Completed | Walk the dog  |

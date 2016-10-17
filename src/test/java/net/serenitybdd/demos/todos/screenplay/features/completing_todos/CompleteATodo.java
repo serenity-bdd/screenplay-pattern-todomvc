@@ -10,6 +10,7 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.WithTag;
+import net.thucydides.core.steps.StepEventBus;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -41,6 +42,7 @@ public class CompleteATodo {
             seeThat(TheItemStatus.forTheItemCalled("Walk the dog"), is(TodoStatus.Completed)),
             seeThat(TheItems.leftCount(), is(1))
         );
+
     }
 
     @Test
