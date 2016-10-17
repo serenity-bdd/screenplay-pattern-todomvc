@@ -9,6 +9,7 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.WithTag;
+import net.thucydides.core.annotations.WithTags;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,6 +20,10 @@ import static org.hamcrest.Matchers.contains;
 
 @RunWith(SerenityRunner.class)
 @WithTag("Screenplay pattern")
+@WithTags({
+        @WithTag("Screenplay pattern"),
+        @WithTag("version:RELEASE-3"),
+})
 public class TodosBelongToAUser {
 
     private Actor james = Actor.named("James");

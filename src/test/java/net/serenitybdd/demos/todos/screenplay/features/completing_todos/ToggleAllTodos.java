@@ -9,6 +9,7 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.WithTag;
+import net.thucydides.core.annotations.WithTags;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,7 +21,10 @@ import static net.serenitybdd.screenplay.GivenWhenThen.*;
 import static org.hamcrest.CoreMatchers.is;
 
 @RunWith(SerenityRunner.class)
-@WithTag("Screenplay pattern")
+@WithTags({
+        @WithTag("Screenplay pattern"),
+        @WithTag("version:RELEASE-2"),
+})
 public class ToggleAllTodos {
 
     @Managed private WebDriver hisBrowser;

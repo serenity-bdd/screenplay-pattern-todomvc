@@ -1,6 +1,5 @@
 package net.serenitybdd.demos.todos.screenplay.features.completing_todos;
 
-import net.serenitybdd.demos.todos.screenplay.model.TodoStatus;
 import net.serenitybdd.demos.todos.screenplay.questions.TheItemStatus;
 import net.serenitybdd.demos.todos.screenplay.questions.TheItems;
 import net.serenitybdd.demos.todos.screenplay.tasks.CompleteItem;
@@ -10,16 +9,21 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.WithTag;
+import net.thucydides.core.annotations.WithTags;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
+import static net.serenitybdd.demos.todos.screenplay.model.TodoStatus.Completed;
 import static net.serenitybdd.screenplay.GivenWhenThen.*;
 import static org.hamcrest.CoreMatchers.is;
 
 @RunWith(SerenityRunner.class)
-@WithTag("Screenplay pattern")
+@WithTags({
+        @WithTag("Screenplay pattern"),
+        @WithTag("version:RELEASE-1"),
+})
 public class CompleteATodo {
 
     private Actor james = Actor.named("James");
@@ -38,7 +42,7 @@ public class CompleteATodo {
         );
 
         then(james).should(
-            seeThat(TheItemStatus.forTheItemCalled("Walk the dog"), is(TodoStatus.Completed)),
+            seeThat(TheItemStatus.forTheItemCalled("Walk the dog"), is(Completed)),
             seeThat(TheItems.leftCount(), is(1))
         );
     }

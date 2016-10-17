@@ -8,6 +8,7 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.WithTag;
+import net.thucydides.core.annotations.WithTags;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,7 +26,10 @@ import static org.hamcrest.core.Is.is;
  * This example illustrates using Serenity Steps with JUnit.
  */
 @RunWith(SerenityRunner.class)
-@WithTag("Screenplay pattern")
+@WithTags({
+        @WithTag("Screenplay pattern"),
+        @WithTag("version:RELEASE-1"),
+})
 public class LearnAboutTheApplication {
 
     private Actor james = Actor.named("James");
