@@ -2,10 +2,7 @@ package net.serenitybdd.demos.todos.pageobjects.features.record_todos;
 
 import net.serenitybdd.demos.todos.pageobjects.steps.TodoUserSteps;
 import net.serenitybdd.junit.runners.SerenityRunner;
-import net.thucydides.core.annotations.Managed;
-import net.thucydides.core.annotations.Steps;
-import net.thucydides.core.annotations.WithTag;
-import net.thucydides.core.annotations.WithTags;
+import net.thucydides.core.annotations.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
@@ -22,6 +19,7 @@ public class AddNewTodos {
     @Steps   TodoUserSteps james;
 
     @Test
+    @Title("Test to resolve issue #616172")
     public void should_be_able_to_add_the_first_todo_item() {
 
         james.starts_with_an_empty_todo_list();
