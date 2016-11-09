@@ -11,11 +11,11 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <serenity.version>1.1.42</serenity.version>
+        <serenity.version>1.2.1-SNAPSHOT</serenity.version>
         <serenity.maven.version>1.1.42</serenity.maven.version>
-        <serenity.jbehave.version>1.13.0</serenity.jbehave.version>
+        <serenity.jbehave.version>1.14.1-SNAPSHOT</serenity.jbehave.version>
         <parallel.tests>4</parallel.tests>
-        <webdriver.base.url>http://todomvc.com/examples/angularjs/#/</webdriver.base.url>
+        <!--<webdriver.base.url>http://todomvc.com/examples/angularjs/#/</webdriver.base.url>-->
         <encoding>UTF-8</encoding>
         <serenity.test.root></serenity.test.root>
     </properties>
@@ -117,9 +117,9 @@
                     <excludes>
                         <exclude>**/*WithFailures.java</exclude>
                     </excludes>
-                    <parallel>classes</parallel>
-                    <threadCount>${parallel.tests}</threadCount>
-                    <forkCount>${parallel.tests}</forkCount>
+                    <!--<parallel>classes</parallel>-->
+                    <!--<threadCount>${parallel.tests}</threadCount>-->
+                    <!--<forkCount>${parallel.tests}</forkCount>-->
                 </configuration>
                 <executions>
                     <execution>
