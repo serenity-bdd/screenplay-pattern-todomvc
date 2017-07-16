@@ -1,5 +1,6 @@
 package net.serenitybdd.demos.todos.screenplay.features.completing_todos;
 
+import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.demos.todos.screenplay.questions.TheItemStatus;
 import net.serenitybdd.demos.todos.screenplay.questions.TheItems;
 import net.serenitybdd.demos.todos.screenplay.tasks.Start;
@@ -7,6 +8,8 @@ import net.serenitybdd.demos.todos.screenplay.tasks.ToggleStatus;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
+import net.serenitybdd.screenplay.targets.Target;
+import net.serenitybdd.screenplay.waits.WaitUntil;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.WithTag;
 import net.thucydides.core.annotations.WithTags;
@@ -17,7 +20,10 @@ import org.openqa.selenium.WebDriver;
 
 import static net.serenitybdd.demos.todos.screenplay.model.TodoStatus.Active;
 import static net.serenitybdd.demos.todos.screenplay.model.TodoStatus.Completed;
+import static net.serenitybdd.screenplay.EventualConsequence.eventually;
 import static net.serenitybdd.screenplay.GivenWhenThen.*;
+import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
+import static net.serenitybdd.screenplay.questions.WebElementQuestion.the;
 import static org.hamcrest.CoreMatchers.is;
 
 @RunWith(SerenityRunner.class)
@@ -27,9 +33,12 @@ import static org.hamcrest.CoreMatchers.is;
 })
 public class ToggleAllTodos {
 
-    @Managed private WebDriver hisBrowser;
+    @Managed
+    private WebDriver hisBrowser;
     private Actor james = Actor.named("James");
-    @Before public void jamesCanBrowseTheWeb() {
+
+    @Before
+    public void jamesCanBrowseTheWeb() {
         james.can(BrowseTheWeb.with(hisBrowser));
     }
 
@@ -39,12 +48,19 @@ public class ToggleAllTodos {
         givenThat(james).wasAbleTo(Start.withATodoListContaining("Walk the dog", "Put out the garbage"));
 
         when(james).attemptsTo(
-            ToggleStatus.ofAllItems()
+                ToggleStatus.ofAllItems()
+        );
+
+
+        Target BUTTON = Target.the("BUTTON").located(By.buttonText(".mybutton"));
+
+        james.should(
+                eventually(seeThat(the(BUTTON), isVisible())).waitingForNoLongerThan(10).seconds()
         );
 
         then(james).should(
-            seeThat(TheItemStatus.forTheItemCalled("Walk the dog"), is(Completed)),
-            seeThat(TheItemStatus.forTheItemCalled("Put out the garbage"), is(Completed))
+                seeThat(TheItemStatus.forTheItemCalled("Walk the dog"), is(Completed)),
+                seeThat(TheItemStatus.forTheItemCalled("Put out the garbage"), is(Completed))
         );
     }
 
@@ -54,13 +70,13 @@ public class ToggleAllTodos {
         givenThat(james).wasAbleTo(Start.withATodoListContaining("Walk the dog", "Put out the garbage"));
 
         when(james).attemptsTo(
-            ToggleStatus.ofAllItems(),
-            ToggleStatus.ofAllItems()
+                ToggleStatus.ofAllItems(),
+                ToggleStatus.ofAllItems()
         );
 
         then(james).should(
-            seeThat(TheItemStatus.forTheItemCalled("Walk the dog"), is(Active)),
-            seeThat(TheItemStatus.forTheItemCalled("Put out the garbage"), is(Active))
+                seeThat(TheItemStatus.forTheItemCalled("Walk the dog"), is(Active)),
+                seeThat(TheItemStatus.forTheItemCalled("Put out the garbage"), is(Active))
         );
     }
 
@@ -71,11 +87,11 @@ public class ToggleAllTodos {
         givenThat(james).wasAbleTo(Start.withATodoListContaining("Walk the dog", "Put out the garbage"));
 
         when(james).attemptsTo(
-            ToggleStatus.ofAllItems()
+                ToggleStatus.ofAllItems()
         );
 
         then(james).should(
-            seeThat(TheItems.leftCount(), is(0))
+                seeThat(TheItems.leftCount(), is(0))
         );
     }
 
@@ -85,12 +101,12 @@ public class ToggleAllTodos {
         givenThat(james).wasAbleTo(Start.withATodoListContaining("Walk the dog", "Put out the garbage"));
 
         when(james).attemptsTo(
-            ToggleStatus.ofAllItems(),
-            ToggleStatus.ofAllItems()
+                ToggleStatus.ofAllItems(),
+                ToggleStatus.ofAllItems()
         );
 
         then(james).should(
-            seeThat(TheItems.leftCount(), is(2))
+                seeThat(TheItems.leftCount(), is(2))
         );
     }
 }

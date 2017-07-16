@@ -3,6 +3,7 @@ package net.serenitybdd.demos.todos.pageobjects.steps;
 import net.serenitybdd.demos.todos.pageobjects.model.TodoStatusFilter;
 import net.serenitybdd.demos.todos.pageobjects.pages.TodoListPage;
 import net.thucydides.core.annotations.Step;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import static java.util.Arrays.asList;
 import static net.serenitybdd.demos.todos.pageobjects.model.TodoStatus.Active;
@@ -134,5 +135,12 @@ public class TodoUserSteps {
     @Step
     public void should_see_the_about_section() {
         assertThat(todoListPage.footer(), containsString("Credits"));
+    }
+
+    @Step
+    public String seesItemsLeft() {
+        todoListPage.waitForCondition().until(ExpectedConditions.textToBePresentInElement(todoListPage.itemsLeft, "right"));
+
+        return todoListPage.itemsLeft.getText();
     }
 }

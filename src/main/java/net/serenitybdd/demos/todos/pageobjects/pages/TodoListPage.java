@@ -40,6 +40,9 @@ public class TodoListPage extends PageObject {
     @FindBys({@FindBy(tagName = "a")})
     List<WebElement> testFindBys;
 
+    @FindBy(css = "#todo-count")
+    public WebElement itemsLeft;
+
     public void openApplication() {
         open();
         waitForTheApplicationToLoad();

@@ -28,6 +28,10 @@ public class CompleteATodo {
 
         james.completes("Walk the dog");
 
+        String itemsLeft = james.seesItemsLeft();
+
+        itemsLeft.length();
+
         james.should_see_that_that_following_item_is_marked_as_complete("Walk the dog");
 
         james.should_see_that_the_number_of_items_left_is(1);

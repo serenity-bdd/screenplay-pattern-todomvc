@@ -11,9 +11,9 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <serenity.version>1.2.3-rc.3</serenity.version>
-        <serenity.maven.version>1.2.2</serenity.maven.version>
-        <serenity.cucumber.version>1.1.23</serenity.cucumber.version>
+        <serenity.version>1.5.0-SNAPSHOT</serenity.version>
+        <serenity.maven.version>1.5.0-rc.1</serenity.maven.version>
+        <serenity.cucumber.version>1.1.39-SNAPSHOT</serenity.cucumber.version>
         <parallel.tests>2</parallel.tests>
         <webdriver.base.url>http://todomvc.com/examples/angularjs/#/</webdriver.base.url>
         <encoding>UTF-8</encoding>
@@ -82,7 +82,7 @@
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
-            <version>1.7.0</version>
+            <version>3.6.2</version>
         </dependency>
         <dependency>
             <groupId>com.googlecode.lambdaj</groupId>
