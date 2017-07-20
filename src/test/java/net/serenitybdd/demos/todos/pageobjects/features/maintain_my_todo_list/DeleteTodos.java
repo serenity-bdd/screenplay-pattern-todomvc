@@ -18,7 +18,7 @@ public class DeleteTodos {
     @Steps   TodoUserSteps james;
 
     @Test
-    public void should_be_able_to_delete_todos() {
+    public void should_be_able_to_delete_todos_with_page_objects() {
 
         james.starts_with_a_todo_list_containing("Walk the dog", "Put out the garbage");
 
@@ -28,7 +28,7 @@ public class DeleteTodos {
     }
 
     @Test
-    public void should_see_deleting_a_todo_decreases_the_remaining_items_count() {
+    public void should_see_deleting_a_todo_decreases_the_remaining_items_count_with_page_objects() {
 
         james.starts_with_a_todo_list_containing("Walk the dog", "Put out the garbage");
 

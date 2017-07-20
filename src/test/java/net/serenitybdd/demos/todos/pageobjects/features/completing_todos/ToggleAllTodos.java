@@ -14,7 +14,7 @@ import org.openqa.selenium.WebDriver;
 })
 public class ToggleAllTodos {
 
-    @Managed
+    @Managed(driver = "chrome", options = "--headless")
     WebDriver driver;
 
     @Steps
@@ -22,7 +22,7 @@ public class ToggleAllTodos {
 
     @Test
     @Issues({"PROJ-12", "PROJ-43"})
-    public void should_be_able_to_quickly_complete_all_todos() {
+    public void should_be_able_to_quickly_complete_all_todos_with_page_objects() {
 
         james.starts_with_a_todo_list_containing("Walk the dog", "Put out the garbage");
 
@@ -32,7 +32,7 @@ public class ToggleAllTodos {
     }
 
     @Test
-    public void should_be_able_to_toggle_status_of_all_todos() {
+    public void should_be_able_to_toggle_status_of_all_todos_with_page_objects() {
 
         james.starts_with_a_todo_list_containing("Walk the dog", "Put out the garbage");
 
@@ -45,7 +45,7 @@ public class ToggleAllTodos {
 
 
     @Test
-    public void should_see_that_there_are_zero_items_todo_when_all_are_toggled_complete() {
+    public void should_see_that_there_are_zero_items_todo_when_all_are_toggled_complete_with_page_objects() {
 
         james.starts_with_a_todo_list_containing("Walk the dog", "Put out the garbage");
 
@@ -55,7 +55,7 @@ public class ToggleAllTodos {
     }
 
     @Test
-    public void should_see_how_many_items_todo_when_all_are_toggled_to_incomplete() {
+    public void should_see_how_many_items_todo_when_all_are_toggled_to_incomplete_with_page_objects() {
 
         james.starts_with_a_todo_list_containing("Walk the dog", "Put out the garbage");
 

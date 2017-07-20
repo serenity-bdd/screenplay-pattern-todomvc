@@ -18,7 +18,7 @@ public class ClearCompletedTodos {
     @Steps   TodoUserSteps james;
 
     @Test
-    public void should_be_able_to_clear_completed_todos() {
+    public void should_be_able_to_clear_completed_todos_with_page_objects() {
 
         james.starts_with_a_todo_list_containing("Walk the dog", "Put out the garbage");
 
@@ -30,7 +30,7 @@ public class ClearCompletedTodos {
     }
 
     @Test
-    public void should_not_be_able_to_clear_completed_todos_if_none_are_complete() {
+    public void should_not_be_able_to_clear_completed_todos_if_none_are_complete_with_page_objects() {
 
         james.starts_with_a_todo_list_containing("Walk the dog", "Put out the garbage");
 

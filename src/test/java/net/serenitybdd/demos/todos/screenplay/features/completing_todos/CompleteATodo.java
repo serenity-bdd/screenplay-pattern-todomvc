@@ -27,7 +27,10 @@ import static org.hamcrest.CoreMatchers.is;
 public class CompleteATodo {
 
     private Actor james = Actor.named("James");
-    @Managed private WebDriver hisBrowser;
+
+    @Managed(driver = "chrome", options = "--headless")
+    private WebDriver hisBrowser;
+
     @Before public void jamesCanBrowseTheWeb() {
         james.can(BrowseTheWeb.with(hisBrowser));
     }

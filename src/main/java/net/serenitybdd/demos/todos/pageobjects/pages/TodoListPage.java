@@ -84,7 +84,7 @@ public class TodoListPage extends PageObject {
     }
 
     private boolean isShownAsCompleted(WebElementFacade itemRow) {
-        return itemRow.find(By.tagName("label")).getCssValue("text-decoration").equals("line-through");
+        return itemRow.find(By.tagName("label")).getCssValue("text-decoration").contains("line-through");
     }
 
     public void updateItem(String currentItemName, String newItemName) {

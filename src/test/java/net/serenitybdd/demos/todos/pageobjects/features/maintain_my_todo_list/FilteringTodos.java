@@ -19,7 +19,7 @@ public class FilteringTodos {
     @Steps   TodoUserSteps james;
 
     @Test
-    public void should_be_able_to_view_only_completed_todos() {
+    public void should_be_able_to_view_only_completed_todos_with_page_objects() {
 
         james.starts_with_a_todo_list_containing("Walk the dog", "Put out the garbage");
 
@@ -33,7 +33,7 @@ public class FilteringTodos {
     }
 
     @Test
-    public void should_be_able_to_view_only_incomplete_todos() {
+    public void should_be_able_to_view_only_incomplete_todos_with_page_objects() {
 
         james.starts_with_a_todo_list_containing("Walk the dog", "Put out the garbage");
 
@@ -47,7 +47,7 @@ public class FilteringTodos {
     }
 
     @Test
-    public void should_be_able_to_view_both_complete_and_incomplete_todos() {
+    public void should_be_able_to_view_both_complete_and_incomplete_todos_with_page_objects() {
 
         james.starts_with_a_todo_list_containing("Walk the dog", "Put out the garbage");
 

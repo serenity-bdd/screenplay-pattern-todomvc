@@ -6,6 +6,7 @@ import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.annotations.WithTag;
 import net.thucydides.core.annotations.WithTags;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
@@ -17,30 +18,28 @@ import org.openqa.selenium.WebDriver;
 })
 public class CompleteATodo {
 
-    @Managed WebDriver driver;
+    @Managed(driver="chrome", uniqueSession = true)
+    WebDriver driver;
 
     @Steps   TodoUserSteps james;
 
-    @Test
-    public void should_be_able_to_complete_a_todo() {
-
+    @Before
+    public void setup()
+    {
         james.starts_with_a_todo_list_containing("Walk the dog", "Put out the garbage");
-
-        james.completes("Walk the dog");
-
-        String itemsLeft = james.seesItemsLeft();
-
-        itemsLeft.length();
-
-        james.should_see_that_that_following_item_is_marked_as_complete("Walk the dog");
-
-        james.should_see_that_the_number_of_items_left_is(1);
     }
 
     @Test
-    public void should_see_the_number_of_todos_decrease_when_an_item_is_completed() {
+    public void should_be_able_to_complete_a_todo_with_page_objects() {
 
-        james.starts_with_a_todo_list_containing("Walk the dog", "Put out the garbage");
+        james.completes("Walk the dog");
+
+        james.should_see_that_that_following_item_is_marked_as_complete("Walk the dog");
+
+    }
+
+    @Test
+    public void should_see_the_number_of_todos_decrease_when_an_item_is_completed_with_page_objects() {
 
         james.completes("Walk the dog");
 

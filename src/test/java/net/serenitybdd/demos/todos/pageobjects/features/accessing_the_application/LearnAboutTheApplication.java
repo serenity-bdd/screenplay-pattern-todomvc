@@ -22,7 +22,7 @@ public class LearnAboutTheApplication {
     @Steps   TodoUserSteps james;
 
     @Test
-    public void should_be_able_to_identify_the_application() {
+    public void should_be_able_to_identify_the_application_with_page_objects() {
 
         james.starts_with_an_empty_todo_list();
 
@@ -32,7 +32,7 @@ public class LearnAboutTheApplication {
     }
 
     @Test
-    public void should_see_how_to_begin() {
+    public void should_see_how_to_begin_with_page_objects() {
 
         james.starts_with_an_empty_todo_list();
 

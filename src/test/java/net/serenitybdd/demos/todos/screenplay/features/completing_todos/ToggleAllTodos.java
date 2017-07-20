@@ -51,13 +51,6 @@ public class ToggleAllTodos {
                 ToggleStatus.ofAllItems()
         );
 
-
-        Target BUTTON = Target.the("BUTTON").located(By.buttonText(".mybutton"));
-
-        james.should(
-                eventually(seeThat(the(BUTTON), isVisible())).waitingForNoLongerThan(10).seconds()
-        );
-
         then(james).should(
                 seeThat(TheItemStatus.forTheItemCalled("Walk the dog"), is(Completed)),
                 seeThat(TheItemStatus.forTheItemCalled("Put out the garbage"), is(Completed))

@@ -8,6 +8,7 @@ both implemented using the [Serenity BDD](http://serenity-bdd.info/#/) library a
 The web tests you'll find here run against the http://todomvc.com/examples/angularjs/#/ application and are organised
 by feature in packages under `src/test/java/net/serenitybdd/demos/todos/<pattern name>/features`.
 
+By default the tests run on Chrome, so make sure you have the latest chromedriver instance on your system path.
 ## PageObjects implementation
 
 These tests use pages and steps defined in `src/main/java/net/serenitybdd/demos/todos/pageobjects`.

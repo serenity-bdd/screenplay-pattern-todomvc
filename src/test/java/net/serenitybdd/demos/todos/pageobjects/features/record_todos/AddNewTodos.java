@@ -20,7 +20,7 @@ public class AddNewTodos {
 
     @Test
     @Title("Test to resolve issue #616172")
-    public void should_be_able_to_add_the_first_todo_item() {
+    public void should_be_able_to_add_the_first_todo_item_with_page_objects() {
 
         james.starts_with_an_empty_todo_list();
 
@@ -30,7 +30,7 @@ public class AddNewTodos {
     }
 
     @Test
-    public void should_be_able_to_add_additional_todo_items() {
+    public void should_be_able_to_add_additional_todo_items_with_page_objects() {
 
         james.starts_with_a_todo_list_containing("Walk the dog", "Put out the garbage");
 
