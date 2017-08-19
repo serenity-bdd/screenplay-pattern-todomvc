@@ -15,7 +15,9 @@ public class CompleteItem implements Task {
     @Override
     @Step("{0} completes the item called: #itemName")
     public <T extends Actor> void performAs(T theActor) {
-        theActor.attemptsTo(Click.on(TodoListItem.COMPLETE_ITEM.of(itemName)));
+        theActor.attemptsTo(
+                Click.on(TodoListItem.COMPLETE_ITEM.of(itemName))
+        );
     }
 
     public static CompleteItem called(String itemName) {

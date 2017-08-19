@@ -18,7 +18,7 @@ import org.openqa.selenium.WebDriver;
 })
 public class CompleteATodo {
 
-    @Managed(driver="chrome", uniqueSession = true)
+    @Managed(uniqueSession = true)
     WebDriver driver;
 
     @Steps   TodoUserSteps james;
