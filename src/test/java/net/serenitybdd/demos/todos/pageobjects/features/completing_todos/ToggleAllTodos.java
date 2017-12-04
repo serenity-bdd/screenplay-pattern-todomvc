@@ -14,7 +14,7 @@ import org.openqa.selenium.WebDriver;
 })
 public class ToggleAllTodos {
 
-    @Managed(driver = "chrome", options = "--headless")
+    @Managed//(driver = "chrome", options = "--headless")
     WebDriver driver;
 
     @Steps

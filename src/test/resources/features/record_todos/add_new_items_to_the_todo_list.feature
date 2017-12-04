@@ -1,4 +1,5 @@
 @cucumber
+@adding
 Feature: Add new todos
 
   In order to avoid having to remember things that need doing

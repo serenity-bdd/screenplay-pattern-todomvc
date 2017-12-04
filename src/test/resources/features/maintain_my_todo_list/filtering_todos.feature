@@ -1,4 +1,5 @@
 @cucumber
+@filtering
 Feature: Filtering todos
 
   In order to make me feel **a sense of accomplishment**

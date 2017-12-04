@@ -26,6 +26,7 @@ public class TodoUserSteps {
 
     @Step
     public void starts_with_an_empty_todo_list() {
+        todoListPage.openAt("http://www.google.com");
         starts_with_a_todo_list_containing();
     }
 

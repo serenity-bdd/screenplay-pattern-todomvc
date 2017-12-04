@@ -9,21 +9,13 @@ import static net.serenitybdd.demos.todos.screenplay.user_interface.TodoList.WHA
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 import static org.openqa.selenium.Keys.RETURN;
 
-public class AddATodoItem implements Task {
+public class AddATodoItem {
 
-    private final String thingToDo;
-
-    @Step("{0} adds a todo item called: #thingToDo")
-    public <T extends Actor> void performAs(T theActor) {
-        theActor.attemptsTo(
-            Enter.theValue(thingToDo)
-                .into(WHAT_NEEDS_TO_BE_DONE)
-                .thenHit(RETURN)
-        );
+    public static Task called(String thingToDo) {
+        return Task.where("{0} adds a todo item called: #thingToDo",
+                Enter.theValue(thingToDo)
+                        .into(WHAT_NEEDS_TO_BE_DONE)
+                        .thenHit(RETURN)
+                ).with("thingsToDo").of(thingToDo);
     }
-
-    public static AddATodoItem called(String thingToDo) {
-        return instrumented(AddATodoItem.class, thingToDo);
-    }
-    public AddATodoItem(String thingToDo) { this.thingToDo = thingToDo; }
 }

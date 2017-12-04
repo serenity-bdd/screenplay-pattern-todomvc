@@ -28,7 +28,7 @@ public class CompleteATodo {
 
     private Actor james = Actor.named("James");
 
-    @Managed(driver = "chrome", options = "--headless")
+    @Managed//(driver = "chrome", options = "--headless")
     private WebDriver hisBrowser;
 
     @Before public void jamesCanBrowseTheWeb() {

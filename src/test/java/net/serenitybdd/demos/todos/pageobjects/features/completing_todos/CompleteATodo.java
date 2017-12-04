@@ -43,6 +43,16 @@ public class CompleteATodo {
 
         james.completes("Walk the dog");
 
-        james.should_see_that_the_number_of_items_left_is(1);
+        james.should_see_that_the_number_of_items_left_is(3);
     }
+
+
+    @Test
+    public void should_see_the_number_of_todos_increase_when_an_item_is_added_with_page_objects() {
+
+        james.adds_a_todo_item_called("Walk the cat");
+
+        james.should_see_that_the_number_of_items_left_is(3);
+    }
+
 }
