@@ -17,7 +17,8 @@ import org.openqa.selenium.WebDriver;
 })
 public class LearnAboutTheApplication {
 
-    @Managed WebDriver driver;
+    @Managed(driver = "chrome")
+    WebDriver driver;
 
     @Steps   TodoUserSteps james;
 

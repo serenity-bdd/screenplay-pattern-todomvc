@@ -11,6 +11,10 @@ import java.util.List;
 @Subject("the displayed todo items")
 public class DisplayedItems implements Question<List<String>> {
 
+    public Question<List<String>> displayed() {
+        return actor -> Text.of(TodoList.ITEMS).viewedBy(actor).asList();
+    }
+
     @Override
     public List<String> answeredBy(Actor actor) {
         return Text.of(TodoList.ITEMS)

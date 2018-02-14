@@ -10,4 +10,5 @@ public class TodoList {
     public static Target CLEAR_COMPLETED = Target.the("Clear completed link").locatedBy("#clear-completed");
     public static Target FILTER = Target.the("filter").locatedBy("//*[@id='filters']//a[.='{0}']");
     public static Target SELECTED_FILTER = Target.the("selected filter").locatedBy("#filters li .selected");
+
 }

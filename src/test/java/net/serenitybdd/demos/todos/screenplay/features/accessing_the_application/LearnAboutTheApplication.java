@@ -33,7 +33,10 @@ import static org.hamcrest.core.Is.is;
 public class LearnAboutTheApplication {
 
     private Actor james = Actor.named("James");
-    @Managed private WebDriver hisBrowser;
+
+    @Managed
+    private WebDriver hisBrowser;
+
     @Before public void jamesCanBrowseTheWeb() {
         james.can(BrowseTheWeb.with(hisBrowser));
     }

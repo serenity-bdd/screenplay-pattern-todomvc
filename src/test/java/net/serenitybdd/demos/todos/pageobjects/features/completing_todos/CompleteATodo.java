@@ -9,6 +9,7 @@ import net.thucydides.core.annotations.WithTags;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 @RunWith(SerenityRunner.class)
@@ -43,7 +44,7 @@ public class CompleteATodo {
 
         james.completes("Walk the dog");
 
-        james.should_see_that_the_number_of_items_left_is(3);
+        james.should_see_that_the_number_of_items_left_is(1);
     }
 
 

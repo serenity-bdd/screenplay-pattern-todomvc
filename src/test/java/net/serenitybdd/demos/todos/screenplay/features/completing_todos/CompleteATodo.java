@@ -8,6 +8,7 @@ import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.thucydides.core.annotations.Managed;
+import net.thucydides.core.annotations.Manual;
 import net.thucydides.core.annotations.WithTag;
 import net.thucydides.core.annotations.WithTags;
 import org.junit.Before;
@@ -28,7 +29,7 @@ public class CompleteATodo {
 
     private Actor james = Actor.named("James");
 
-    @Managed//(driver = "chrome", options = "--headless")
+    @Managed(driver = "chrome", options = "--headless")
     private WebDriver hisBrowser;
 
     @Before public void jamesCanBrowseTheWeb() {
@@ -36,6 +37,7 @@ public class CompleteATodo {
     }
 
     @Test
+    @Manual
     public void should_be_able_to_complete_a_todo() {
 
         givenThat(james).wasAbleTo(Start.withATodoListContaining("Walk the dog", "Put out the garbage"));
