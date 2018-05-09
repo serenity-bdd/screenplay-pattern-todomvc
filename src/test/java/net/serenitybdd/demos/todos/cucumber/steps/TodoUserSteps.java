@@ -35,7 +35,6 @@ public class TodoUserSteps {
 
     @Given("^that (.*) has a todo list containing (.*)$")
     public void that_James_has_an_empty_todo_list(String actorName, List<String> items) throws Throwable {
-
         theActorCalled(actorName).wasAbleTo(Start.withATodoListContaining(items));
     }
 
@@ -70,4 +69,19 @@ public class TodoUserSteps {
     public void item_should_be_recorded_in_the_list(String expectedItem) throws Throwable {
        theActorInTheSpotlight().should(seeThat(TheItems.displayed(), hasItem(expectedItem)));
     }
+
+
+    @Given("^a precondition$")
+    public void a_precondition() throws Exception {
+    }
+
+
+    @When("^something happens$")
+    public void something_happens() throws Exception {
+    }
+
+    @Then("^something should result$")
+    public void something_should_result() throws Exception {
+    }
+
 }

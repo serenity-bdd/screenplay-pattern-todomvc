@@ -21,7 +21,7 @@ import java.util.Collection;
 })
 public class AddDifferentSortsOfTodos {
 
-    @Managed(driver = "iexplorer")
+    @Managed
     WebDriver janesBrowser;
 
     @TestData

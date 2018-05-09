@@ -1,5 +1,6 @@
 package net.serenitybdd.demos.todos.screenplay.features.completing_todos;
 
+import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.demos.todos.screenplay.questions.TheItemStatus;
 import net.serenitybdd.demos.todos.screenplay.questions.TheItems;
 import net.serenitybdd.demos.todos.screenplay.tasks.Start;
@@ -7,6 +8,8 @@ import net.serenitybdd.demos.todos.screenplay.tasks.ToggleStatus;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
+import net.serenitybdd.screenplay.targets.Target;
+import net.serenitybdd.screenplay.waits.WaitUntil;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.WithTag;
 import net.thucydides.core.annotations.WithTags;
@@ -17,7 +20,10 @@ import org.openqa.selenium.WebDriver;
 
 import static net.serenitybdd.demos.todos.screenplay.model.TodoStatus.Active;
 import static net.serenitybdd.demos.todos.screenplay.model.TodoStatus.Completed;
+import static net.serenitybdd.screenplay.EventualConsequence.eventually;
 import static net.serenitybdd.screenplay.GivenWhenThen.*;
+import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
+import static net.serenitybdd.screenplay.questions.WebElementQuestion.the;
 import static org.hamcrest.CoreMatchers.is;
 
 @RunWith(SerenityRunner.class)
@@ -27,9 +33,8 @@ import static org.hamcrest.CoreMatchers.is;
 })
 public class ToggleAllTodos {
 
-    @Managed(driver = "chrome", options = "--headless")
+    @Managed
     private WebDriver hisBrowser;
-
     private Actor james = Actor.named("James");
 
     @Before
