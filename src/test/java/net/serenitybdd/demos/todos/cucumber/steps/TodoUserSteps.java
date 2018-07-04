@@ -4,6 +4,7 @@ import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import net.serenitybdd.demos.todos.cucumber.MissingTodoItemsException;
 import net.serenitybdd.demos.todos.screenplay.model.TodoStatusFilter;
 import net.serenitybdd.demos.todos.screenplay.questions.TheItems;
 import net.serenitybdd.demos.todos.screenplay.tasks.AddATodoItem;
@@ -45,7 +46,8 @@ public class TodoUserSteps {
 
     @Then("^(?:his|her|the) todo list should contain (.*)$")
     public void todo_list_should_contain(List<String> expectedItems) throws Throwable {
-        theActorInTheSpotlight().should(seeThat(TheItems.displayed(), equalTo(expectedItems)));
+        theActorInTheSpotlight().should(seeThat(TheItems.displayed(), equalTo(expectedItems))
+                .orComplainWith(MissingTodoItemsException.class,"Missing todos " + expectedItems));
     }
 
     @Then("^s?he has completed the task called '(.*)'$")
@@ -62,12 +64,14 @@ public class TodoUserSteps {
 
     @Then("^(.*)'s todo list should contain (.*)$")
     public void a_users_todo_list_should_contain(String actorName, List<String> expectedItems) throws Throwable {
-        theActorCalled(actorName).should(seeThat(TheItems.displayed(), equalTo(expectedItems)));
+        theActorCalled(actorName).should(seeThat(TheItems.displayed(), equalTo(expectedItems))
+                                        .orComplainWith(MissingTodoItemsException.class,"Missing todos " + expectedItems));
     }
 
     @Then("^'(.*)' should be recorded in (?:his|her|the) list$")
     public void item_should_be_recorded_in_the_list(String expectedItem) throws Throwable {
-       theActorInTheSpotlight().should(seeThat(TheItems.displayed(), hasItem(expectedItem)));
+       theActorInTheSpotlight().should(seeThat(TheItems.displayed(), hasItem(expectedItem))
+                                        .orComplainWith(MissingTodoItemsException.class,"Missing todo " + expectedItem));
     }
 
 
