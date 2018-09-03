@@ -16,6 +16,7 @@ import net.serenitybdd.screenplay.actors.OnlineCast;
 
 import java.util.List;
 
+import static java.util.Collections.EMPTY_LIST;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorCalled;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
@@ -50,7 +51,12 @@ public class TodoUserSteps {
                 .orComplainWith(MissingTodoItemsException.class,"Missing todos " + expectedItems));
     }
 
-    @Then("^s?he has completed the task called '(.*)'$")
+    @Then("^(?:his|her|the) todo list should be empty$")
+    public void todo_list_should_be_empty() throws Throwable {
+        theActorInTheSpotlight().should(seeThat(TheItems.displayed(), equalTo(EMPTY_LIST)));
+    }
+
+    @Then("^s?he (?:completes|has completed) the task called '(.*)'$")
     public void completes_task_called(String item) throws Throwable {
         theActorInTheSpotlight().attemptsTo(
                 CompleteItem.called(item)
