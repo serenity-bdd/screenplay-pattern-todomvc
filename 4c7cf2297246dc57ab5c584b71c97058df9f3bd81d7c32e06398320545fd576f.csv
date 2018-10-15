@@ -1,0 +1,6 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Complete a todo","Should see the number of todos decrease when an item is completed with page objects","SUCCESS","2018-10-15T18:38:21.807+05:30[Asia/Kolkata]","0.0","9.47"
+"Complete a todo","Should see the number of todos increase when an item is added with page objects","SUCCESS","2018-10-15T18:38:31.305+05:30[Asia/Kolkata]","0.0","3.81"
+"Complete a todo","Should be able to complete a todo with page objects","SUCCESS","2018-10-15T18:38:35.124+05:30[Asia/Kolkata]","0.0","3.81"
+"Add new todos","Test to resolve issue #616172","SUCCESS","2018-10-15T18:37:11.037+05:30[Asia/Kolkata]","0.0","15.02"
+"Add new todos","Should be able to add additional todo items with page objects","SUCCESS","2018-10-15T18:37:26.112+05:30[Asia/Kolkata]","0.0","9.13"

@@ -1,0 +1,6 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Clear completed todos","Should not be able to clear completed todos if none are complete","SUCCESS","2018-10-15T18:52:01.22+05:30[Asia/Kolkata]","0.0","12.23"
+"Clear completed todos","Should be able to clear completed todos","SUCCESS","2018-10-15T18:52:13.506+05:30[Asia/Kolkata]","0.0","12.56"
+"Filtering todos","Should be able to view only incomplete todos","SUCCESS","2018-10-15T18:52:26.189+05:30[Asia/Kolkata]","0.0","14.56"
+"Filtering todos","Should be able to view only completed todos","SUCCESS","2018-10-15T18:52:40.807+05:30[Asia/Kolkata]","0.0","13.07"
+"Filtering todos","Should be able to view both complete and incomplete todos","SUCCESS","2018-10-15T18:52:53.934+05:30[Asia/Kolkata]","0.0","15.09"

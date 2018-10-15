@@ -1,0 +1,3 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Add new todos","Test to resolve issue #616172","SUCCESS","2018-10-15T18:37:11.037+05:30[Asia/Kolkata]","0.0","15.02"
+"Add new todos","Should be able to add additional todo items with page objects","SUCCESS","2018-10-15T18:37:26.112+05:30[Asia/Kolkata]","0.0","9.13"

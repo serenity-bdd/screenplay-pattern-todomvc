@@ -1,0 +1,3 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Complete a todo","Should be able to complete a todo","SUCCESS","2018-10-15T18:31:15.109+05:30[Asia/Kolkata]","0.0","13.31"
+"Complete a todo","Should see the number of todos decrease when an item is completed","SUCCESS","2018-10-15T18:31:28.473+05:30[Asia/Kolkata]","0.0","13.02"

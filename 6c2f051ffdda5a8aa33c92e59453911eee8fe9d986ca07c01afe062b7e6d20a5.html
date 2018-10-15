@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Serenity Reports</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<!--[if IE 7]>
+<!--<link rel="stylesheet" href="font-awesome/css/font-awesome-ie7.min.css">-->
+
+<link rel="stylesheet" href="fontawesome-free-5.3.1-web/css/all.css">
+<link rel="stylesheet" href="fontawesome-free-5.3.1-web/css/v4-shims.css">
+
+<!-- JQuery -->
+<script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script><link rel="stylesheet" href="chartist/chartist-plugin-tooltip/dist/chartist-plugin-tooltip.css">
+<link rel="stylesheet" href="chartist/dist/chartist.min.css">
+<script src="chartist/dist/chartist.min.js"></script>
+<script src="chartist/chartist-plugin-tooltip/dist/chartist-plugin-tooltip.js"></script>
+<!-- Required Stylesheets -->
+<link href="bootstrap-treeview/dist/bootstrap-treeview.min.css" rel="stylesheet">
+
+<!-- Required Javascript -->
+<script src="bootstrap-treeview/dist/bootstrap-treeview.min.js"></script><!-- DataTables -->
+<link type="text/css" href="datatables/1.10.19/datatables.min.css" rel="stylesheet" />
+<script type="text/javascript" src="datatables/1.10.19/datatables.min.js"></script>
+
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="datatables/1.10.19/datatables.bootstrap4.min.js"></script>
+<link type="text/css" href="datatables/1.10.19/datatables.bootstrap4.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="css/core.css"/>
+<link rel="stylesheet" href="css/link.css"/>
+<link type="text/css" media="screen" href="css/screen.css" rel="Stylesheet"/><!-- JQuery-UI -->
+<link type="text/css" href="jqueryui/1.11.2-start/jquery-ui.min.css" rel="Stylesheet" />
+<script type="text/javascript" src="jqueryui/1.11.2-start/jquery-ui.min.js"></script><!-- DataTables -->
+<link type="text/css" href="datatables/1.10.19/datatables.min.css" rel="stylesheet" />
+<script type="text/javascript" src="datatables/1.10.19/datatables.min.js"></script>
+
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="datatables/1.10.19/datatables.bootstrap4.min.js"></script>
+<link type="text/css" href="datatables/1.10.19/datatables.bootstrap4.min.css" rel="stylesheet" />
+
+
+
+
+    <script class="code" type="text/javascript">$(document).ready(function () {
+
+
+        $('.scenario-result-table').DataTable({
+
+            "order": [[0, "asc",], [3, "asc",]],
+            "pageLength": 25,
+            "language": {
+                searchPlaceholder: "Filter",
+                search: ""
+            }
+        });
+
+        // Results table
+        $('#test-results-table').DataTable({
+            "order": [[0, "asc",], [3, "asc",]],
+            "pageLength": 100,
+            "lengthMenu": [[25, 50, 100, 200, -1], [25, 50, 100, 200, "All"]]
+        });
+
+    })
+    ;
+    </script>
+</head>
+
+<body class="results-page">
+<div id="topheader">
+    <div id="topbanner">
+        <div id="logo"><a href="index.html"><img src="images/serenity-logo.png" border="0"/></a></div>
+        <div id="projectname-banner" style="float:right">
+            <span class="projectname"></span>
+        </div>
+    </div>
+</div>
+
+<div class="middlecontent">
+
+
+    <div id="contenttop">
+        <div class="middlebg">
+        <span class="breadcrumbs"><a href="index.html">Home</a>
+                > Tag 
+                > <span
+                    class="truncate-60">Screenplay Pattern (Passing Tests)</span>
+        </span>
+        </div>
+        <div class="rightbg"></div>
+    </div>
+
+    <div class="clr"></div>
+    <!--/* starts second table*/-->
+<div>
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#"><i class="fa fa-check-square-o"></i> Overall Test Results</a>
+        </li>
+        <li >
+            <a href="capabilities.html"><i class="fa fa-book"></i> Requirements</a>
+        </li>
+        <li >
+            <a href="7ea0a5e2d679b9deeda9910ae4a9bcd3a281e0d908303a9e16e486103e98880c.html"><i class="fa fa-comments-o"></i> Capabilities</a>
+        </li>
+        <li >
+            <a href="576946480b52ad056d6f5bddf874399c83582ecf90963cc074a14c70580e7d9f.html"><i class="fa fa-comments-o"></i> Features</a>
+        </li>
+    </ul>
+    <span class="date-and-time"><a href="build-info.html"><i class="fa fa-info-circle"></i></a> Report generated 15-10-2018 19:13</span>
+    <br style="clear:left"/>
+</div>
+    <div class="clr"></div>
+    <div id="beforetable"></div>
+    <div id="results-dashboard">
+        <div class="middlb">
+            <div class="table">
+
+                <h2><i class='fa fa-tags'></i> Tag: Screenplay Pattern (Passing Tests)</h2>
+                <table class='overview'>
+                    <tr>
+                        <td width="375px" valign="top">
+                            <div class="test-count-summary">
+                                <div>
+
+                                    18 passing tests across 18 scenarios
+
+                                     |
+                                        <a href="27c0da01e9667909ef862592d1ebeec6f88a91aa37b76ac01626142eddaf6bf7.csv" title="Download CSV"> <i class="fa fa-download" title="Download CSV"></i></a>
+
+
+
+
+                                </div>
+                            </div>
+
+                            <div>
+                                <ul class="nav nav-tabs">
+                                    <li class="active">
+                                        <a data-toggle="tab" href="#summary"><i class="fas fa-home"></i> Summary</a>
+                                    </li>
+                                    <li>
+                                        <a data-toggle="tab" href="#tests"><i class="fas fa-tachometer-alt"></i> Test
+                                            Results</a>
+                                    </li>
+                                </ul>
+
+
+                                <div class="card border">
+                                    <div class="tab-content" id="pills-tabContent">
+                                        <div id="summary" class="tab-pane fade in active">
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <div style="width:300px;" class="chart-container automated-and-manual-results">
+                                                            <div class="ct-chart ct-square"></div>
+                                                        </div>
+                                                        <script>
+
+                                                            var labels = ['100%', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
+                                                            // Our series array that contains series objects or in this case series data arrays
+
+                                                            var series = [{meta: 'Passing tests (automated)', value: 18}, {meta: 'Passing tests (manual)', value: 0}, {meta: 'Pending tests (automated)', value: 0}, {meta: 'Pending tests (manual)', value: 0}, {meta: 'Ignored tests (automated)', value: 0}, {meta: 'Ignored tests (manual)', value: 0}, {meta: 'Skipped tests (automated)', value: 0}, {meta: 'Skipped tests (manual)', value: 0}, {meta: 'Failing tests (automated)', value: 0}, {meta: 'Failing tests (manual)', value: 0}, {meta: 'Broken tests (automated)', value: 0}, {meta: 'Broken tests (manual)', value: 0}, {meta: 'Compromised tests (automated)', value: 0}, {meta: 'Compromised tests (manual)', value: 0}];
+
+                                                            // As options we currently only set a static size of 300x200 px. We can also omit this and use aspect ratio containers
+                                                            // as you saw in the previous example
+                                                            var options = {
+                                                                width: 350,
+                                                                height: 300
+                                                            };
+
+
+                                                            new Chartist.Pie('.ct-chart', {
+                                                                series: series,
+                                                                labels: labels
+                                                            }, {
+                                                                plugins: [ Chartist.plugins.tooltip() ],
+                                                                donut: true,
+                                                                donutWidth: 60,
+                                                                donutSolid: true,
+                                                                startAngle: 270,
+                                                                showLabel: true
+                                                            }, options);
+
+
+                                                            $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+                                                                new Chartist.Pie('.ct-chart', {
+                                                                    series: series,
+                                                                    labels: labels
+                                                                }, {
+                                                                    plugins: [ Chartist.plugins.tooltip() ],
+                                                                    donut: true,
+                                                                    donutWidth: 60,
+                                                                    donutSolid: true,
+                                                                    startAngle: 270,
+                                                                    showLabel: true
+                                                                }, options);
+                                                            });
+
+
+                                                        </script>
+                                                    </div>
+                                                    <div class="col-sm-8">
+
+                                                        <table class="table">
+                                                            <thead>
+                                                            <tr>
+                                                                <th scope="col">Scenarios</th>
+                                                                <th scope="col" colspan="2" class="automated-stats">
+                                                                    Automated
+                                                                </th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr>
+                                                                    <td class="aggregate-result-count">
+                                                                        <a href="6c2f051ffdda5a8aa33c92e59453911eee8fe9d986ca07c01afe062b7e6d20a5.html"><i class='fa fa-check-circle-o success-icon'></i>&nbsp;Passing</a>
+                                                                    </td>
+                                                                <td class="automated-stats">18</td>
+                                                                <td class="automated-stats">100%</td>
+                                                            </tr>
+                                                            <tr>
+                                                                    <td class="aggregate-result-count"><i
+                                                                            class='fa fa-stop-circle-o pending-icon'></i>&nbsp;Pending
+                                                                    </td>
+                                                                <td class="automated-stats">0</td>
+                                                                <td class="automated-stats"> </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="aggregate-result-count"><i
+                                                                        class='fa fa-ban ignored-icon'></i>&nbsp;Ignored
+                                                                </td>
+                                                                <td class="automated-stats">0</td>
+                                                                <td class="automated-stats"> </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="aggregate-result-count"><i
+                                                                        class='fa fa-fast-forward skip-icon'></i>&nbsp;Skipped
+                                                                </td>
+                                                                <td class="automated-stats">0</td>
+                                                                <td class="automated-stats"> </td>
+                                                            </tr>
+                                                            <tr>
+                                                                    <td colspan="3"><a href="065f70c5dd6974c7ff5f709ecad4c2b7ade2b39cf62114386feba9c44edf458c.html"><i class='fa fa-times failure-icon'></i>&nbsp;<em>Unsuccessful</em></a></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="aggregate-result-count indented-error-category"><i
+                                                                        class='fa fa-times-circle failure-icon'></i>&nbsp;Failed
+                                                                </td>
+                                                                <td class="automated-stats">0</td>
+                                                                <td class="automated-stats"> </td>
+                                                            <tr>
+                                                                <td class="aggregate-result-count indented-error-category"><i
+                                                                        class='fa fa-exclamation-triangle error-icon'></i>&nbsp;Broken
+                                                                </td>
+                                                                <td class="automated-stats">0</td>
+                                                                <td class="automated-stats"> </td>
+                                                            <tr>
+                                                                <td class="aggregate-result-count indented-error-category"><i
+                                                                        class='fa fa-chain-broken compromised-icon'></i>&nbsp;Compromised
+                                                                </td>
+                                                                <td class="automated-stats">0</td>
+                                                                <td class="automated-stats"> </td>
+                                                            </tr>
+                                                            <tr class="summary-stats">
+                                                                <td class="aggregate-result-count">Total</td>
+                                                                <td class="automated-stats">18</td>
+                                                                <td class="automated-stats"></td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <h3>Tags</h3>
+
+                                                        <span>
+                                                            <a href="053b54a36df6819388f81474e5a2d572a44c9aabf4446457afe50ab397e81910.html">
+                                                                <span class="badge" style="background-color:#1D9918; margin:1em;padding:4px;"><i class="fa fa-tag"></i> Screenplay pattern&nbsp;&nbsp;&nbsp;18</span>
+                                                            </a>
+                                                        </span>
+                                                        <span>
+                                                            <a href="4901eafaf583ea17bf216005da7c311ac572c54ee94b4b4c766ec350390bd78b.html">
+                                                                <span class="badge" style="background-color:#1D9918; margin:1em;padding:4px;"><i class="fa fa-tag"></i> RELEASE-1 (version)&nbsp;&nbsp;&nbsp;8</span>
+                                                            </a>
+                                                        </span>
+                                                        <span>
+                                                            <a href="886fbae5e7db041747d779cad09b2ed57e11b3883a945e21e976bf646dc2de5d.html">
+                                                                <span class="badge" style="background-color:#1D9918; margin:1em;padding:4px;"><i class="fa fa-tag"></i> RELEASE-2 (version)&nbsp;&nbsp;&nbsp;9</span>
+                                                            </a>
+                                                        </span>
+                                                        <span>
+                                                            <a href="35744c866846e3da6da233f603b02eb94b20e0554393a65481004747a3760386.html">
+                                                                <span class="badge" style="background-color:#1D9918; margin:1em;padding:4px;"><i class="fa fa-tag"></i> RELEASE-3 (version)&nbsp;&nbsp;&nbsp;1</span>
+                                                            </a>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="tests" class="tab-pane fade">
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <h3><i class="fas fa-cogs"></i> Automated Tests</h3>
+
+                                            <table class="scenario-result-table table" id="scenario-results">
+                                                <thead>
+                                                <tr>
+                                                    <th>feature</th>
+                                                    <th class="test-name-column">Scenario</th>
+                                                    <th>Steps</th>
+                                                    <th>Start Time</th>
+                                                    <th>Duration</th>
+                                                    <th>Result</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="08ce90219f53171ee864403b7e6bb62291f1bb0237c9039f9dee631bc99d1d8c.html">Learn about the application</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="4a7f5866f7cba954e52ad319b54e8ed7e5c3941866e2250e56bf94b81e7fb2f6.html">Should be able to identify the application</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td>18:53:35</td>
+                                                    <td>00:11</td>
+                                                    <td><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i> <span style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="08ce90219f53171ee864403b7e6bb62291f1bb0237c9039f9dee631bc99d1d8c.html">Learn about the application</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="cd24dfc3d326de69698deac58e64b552a3f685ccb544916abde358c16165cc05.html">Should see how to begin</a>
+                                                    </td>
+                                                    <td>2</td>
+                                                    <td>18:53:46</td>
+                                                    <td>00:07</td>
+                                                    <td><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i> <span style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="d4fe570afab9b96396b11942a396c2093843ff087c934f2f222d3a44fd267e8b.html">Toggle all todos</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="6a3ec84754f5a053e279bcecbbd1f5dcf1b7bc6036dc6640629762cae234c100.html">Should see how many items todo when all are toggled to incomplete</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td>18:50:20</td>
+                                                    <td>00:10</td>
+                                                    <td><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i> <span style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="d4fe570afab9b96396b11942a396c2093843ff087c934f2f222d3a44fd267e8b.html">Toggle all todos</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="877954c60edefe19a28f776b9db08b9b3bc3bb0e58f0c27f2cb111dae0f536c3.html">Should be able to quickly complete all todos</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td>18:50:31</td>
+                                                    <td>00:11</td>
+                                                    <td><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i> <span style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="d4fe570afab9b96396b11942a396c2093843ff087c934f2f222d3a44fd267e8b.html">Toggle all todos</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="cf7b8345b8b193cefb8a7695eee28c4ea69e750994baa3932a6beea7207a72ed.html">Should be able to toggle status of all todos</a>
+                                                    </td>
+                                                    <td>5</td>
+                                                    <td>18:50:43</td>
+                                                    <td>00:12</td>
+                                                    <td><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i> <span style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="d4fe570afab9b96396b11942a396c2093843ff087c934f2f222d3a44fd267e8b.html">Toggle all todos</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="8550ee01d7e6cf018448e7864465f4ee302b363464ce0a2431a59c19bb37bcf8.html">Should see that there are zero items todo when all are toggled complete</a>
+                                                    </td>
+                                                    <td>3</td>
+                                                    <td>18:50:55</td>
+                                                    <td>00:11</td>
+                                                    <td><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i> <span style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="0ca1e62e799c0daf6f2c425800424c03d52c87ff341f77ead3fe26fc18afe123.html">Complete a todo</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="a586252841f52966eff369927fea50c8a65de5be430a8f7ca8a104c53d4b2c31.html">Should be able to complete a todo</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td>18:51:07</td>
+                                                    <td>00:13</td>
+                                                    <td><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i> <span style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="0ca1e62e799c0daf6f2c425800424c03d52c87ff341f77ead3fe26fc18afe123.html">Complete a todo</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="3122773eaf7a4cfaf266abec4d715cba26bdaea496d27bc809526cb64c9f5560.html">Should see the number of todos decrease when an item is completed</a>
+                                                    </td>
+                                                    <td>3</td>
+                                                    <td>18:51:21</td>
+                                                    <td>00:11</td>
+                                                    <td><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i> <span style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="e96afe21fd16b79a474d07fdc8e5b35632987950e452a62c74f684c9e865b44e.html">Delete todos</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="70e0998c0374546b14d8ca5556b58f120d30ef0c18821aea7c910debc7bf17b5.html">Should be able to delete todos</a>
+                                                    </td>
+                                                    <td>3</td>
+                                                    <td>18:51:33</td>
+                                                    <td>00:15</td>
+                                                    <td><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i> <span style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="e96afe21fd16b79a474d07fdc8e5b35632987950e452a62c74f684c9e865b44e.html">Delete todos</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="7fb59271ca7c1319d823daa482cdb6b47a9768fb1ced2f9f63f4c21a33c86b2e.html">Should see deleting a todo decreases the remaining items count</a>
+                                                    </td>
+                                                    <td>3</td>
+                                                    <td>18:51:48</td>
+                                                    <td>00:12</td>
+                                                    <td><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i> <span style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="11e1408c8517d651071b63256804f665760ab36be9b750ceef62810fc4e509ed.html">Clear completed todos</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="390b85aa6fce434981c57b44828df08945279dbd8e2609c8de08fc5f5022cec7.html">Should not be able to clear completed todos if none are complete</a>
+                                                    </td>
+                                                    <td>2</td>
+                                                    <td>18:52:01</td>
+                                                    <td>00:12</td>
+                                                    <td><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i> <span style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="11e1408c8517d651071b63256804f665760ab36be9b750ceef62810fc4e509ed.html">Clear completed todos</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="509d684729e5f069940636f0fd2e24783700f063a22e17edf67b2255b6a31700.html">Should be able to clear completed todos</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td>18:52:13</td>
+                                                    <td>00:12</td>
+                                                    <td><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i> <span style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="146d1549177a0e26cddf285517d427266a05282cd4a02f6b4a51d02c92a15440.html">Filtering todos</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="326a4b346d26ca3e7885e3fe3f537ed3a9e0b245c655916d8ec6f10e433c2497.html">Should be able to view only incomplete todos</a>
+                                                    </td>
+                                                    <td>6</td>
+                                                    <td>18:52:26</td>
+                                                    <td>00:14</td>
+                                                    <td><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i> <span style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="146d1549177a0e26cddf285517d427266a05282cd4a02f6b4a51d02c92a15440.html">Filtering todos</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="edb5a66041a8e84c5ecfe4d62ed003165c73c85a00876b4948d5bcefd01be355.html">Should be able to view only completed todos</a>
+                                                    </td>
+                                                    <td>6</td>
+                                                    <td>18:52:40</td>
+                                                    <td>00:13</td>
+                                                    <td><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i> <span style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="146d1549177a0e26cddf285517d427266a05282cd4a02f6b4a51d02c92a15440.html">Filtering todos</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="2fbcd8e2d6294184d27732b0fe9f96cae948991620de82ac0bab2d83f7a3d31e.html">Should be able to view both complete and incomplete todos</a>
+                                                    </td>
+                                                    <td>6</td>
+                                                    <td>18:52:53</td>
+                                                    <td>00:15</td>
+                                                    <td><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i> <span style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="a6e729eeb6d5d4a072cf1675cc4e91b9187045b2416295cbed142b38ce61fd5c.html">Todos belong to a user</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="eca14d743608a89231035837055e8d9b14f5aed2fe397f503e0d3a81aaa646ee.html">Should not affect todos belonging to another user</a>
+                                                    </td>
+                                                    <td>5</td>
+                                                    <td>18:53:09</td>
+                                                    <td>00:26</td>
+                                                    <td><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i> <span style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="8e1dcd0cfef3d9107f5fef9b32f92869ad39a36ab79b41320aff3227794cf394.html">Add new todos</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="d082746569f1850b330bf15006a08a481b73c87b68af9da91b203b0f19d4f0fb.html">Should be able to add the first todo item</a>
+                                                    </td>
+                                                    <td>3</td>
+                                                    <td>18:49:57</td>
+                                                    <td>00:09</td>
+                                                    <td><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i> <span style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="8e1dcd0cfef3d9107f5fef9b32f92869ad39a36ab79b41320aff3227794cf394.html">Add new todos</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="2128e8df1285a18524ec40ce1790bb690f8d3f6e8ef4fc48e33a15f7e7f5866c.html">Should be able to add additional todo items</a>
+                                                    </td>
+                                                    <td>3</td>
+                                                    <td>18:50:06</td>
+                                                    <td>00:11</td>
+                                                    <td><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i> <span style="display:none">SUCCESS</span></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <h3><i class="fas fa-edit"></i> Manual Tests</h3>
+
+                                                No manual tests were recorded
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                        </td>
+
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div id="beforefooter"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <span class="version">Serenity BDD version 2.0.5</span>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
