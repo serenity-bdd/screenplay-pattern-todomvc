@@ -52,7 +52,6 @@ public class AddDifferentSortsOfTodos {
     }
 
     @Test
-    @Manual
     public void shouldBeAbleToAddANewTodoItem() {
         james.should_see_the_correct_website_title();
         james.should_see_the_correct_application_heading();

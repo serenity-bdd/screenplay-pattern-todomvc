@@ -1,9 +1,9 @@
 @cucumber
 Feature: Completing todos
 
-  In order to make me feel **a sense of accomplishment**
+  In order to make me feel a sense of accomplishment
   As a forgetful person
-  I want to be to _view all of things I have completed_
+  I want to be to view all of things I have completed
 
   Scenario: Mark a task as completed in Cucumber
     Given that Jane has a todo list containing Buy some milk, Walk the dog
