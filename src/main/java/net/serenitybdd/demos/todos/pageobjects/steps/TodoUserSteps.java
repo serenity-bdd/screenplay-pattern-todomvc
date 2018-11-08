@@ -2,13 +2,16 @@ package net.serenitybdd.demos.todos.pageobjects.steps;
 
 import net.serenitybdd.demos.todos.pageobjects.model.TodoStatusFilter;
 import net.serenitybdd.demos.todos.pageobjects.pages.TodoListPage;
+import net.thucydides.core.ThucydidesSystemProperty;
 import net.thucydides.core.annotations.Step;
+import net.thucydides.core.util.EnvironmentVariables;
 import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import static java.util.Arrays.asList;
 import static net.serenitybdd.demos.todos.pageobjects.model.TodoStatus.Active;
 import static net.serenitybdd.demos.todos.pageobjects.model.TodoStatus.Completed;
+import static net.thucydides.core.ThucydidesSystemProperty.WEBDRIVER_BASE_URL;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
@@ -30,9 +33,13 @@ public class TodoUserSteps {
         starts_with_a_todo_list_containing();
     }
 
+    EnvironmentVariables environmentVariables;
     @Step
     public void starts_with_a_todo_list_containing(String... items) {
         todoListPage.openApplication();
+
+        String baseUrl = ThucydidesSystemProperty.WEBDRIVER_BASE_URL.from(environmentVariables);
+
 
         adds_todo_items_called(items);
     }
