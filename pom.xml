@@ -11,11 +11,11 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <serenity.version>2.0.12-SNAPSHOT</serenity.version>
-        <serenity.maven.version>2.0.10</serenity.maven.version>
-        <serenity.cucumber.version>1.9.20</serenity.cucumber.version>
-        <parallel.tests>2</parallel.tests>
-        <webdriver.base.url>http://todomvc.com/examples/angularjs/#/</webdriver.base.url>
+        <serenity.version>2.0.20</serenity.version>
+        <serenity.maven.version>2.0.20</serenity.maven.version>
+        <serenity.cucumber.version>1.9.21</serenity.cucumber.version>
+        <parallel.tests>4</parallel.tests>
+        <!--<webdriver.base.url>http://todomvc.com/examples/angularjs/#/</webdriver.base.url>-->
         <encoding>UTF-8</encoding>
         <serenity.test.root></serenity.test.root>
         <tags></tags>
@@ -114,9 +114,9 @@
                         <include>**/jbehave/**/*.java</include>
                         <include>**/cucumber/*.java</include>
                     </includes>
-                    <systemPropertyVariables>
-                        <webdriver.base.url>${webdriver.base.url}</webdriver.base.url>
-                    </systemPropertyVariables>
+                    <!--<systemPropertyVariables>-->
+                        <!--<webdriver.base.url>${webdriver.base.url}</webdriver.base.url>-->
+                    <!--</systemPropertyVariables>-->
                     <excludes>
                         <exclude>**/*WithFailures.java</exclude>
                     </excludes>
@@ -209,6 +209,7 @@
                             </includes>
                             <parallel>classes</parallel>
                             <threadCount>${parallel.tests}</threadCount>
+                            <forkCount>${parallel.tests}</forkCount>
                         </configuration>
                         <executions>
                             <execution>
