@@ -11,9 +11,9 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <serenity.version>2.0.20</serenity.version>
+        <serenity.version>2.0.21-SNAPSHOT</serenity.version>
         <serenity.maven.version>2.0.20</serenity.maven.version>
-        <serenity.cucumber.version>1.9.21</serenity.cucumber.version>
+        <serenity.cucumber.version>1.9.20</serenity.cucumber.version>
         <parallel.tests>4</parallel.tests>
         <!--<webdriver.base.url>http://todomvc.com/examples/angularjs/#/</webdriver.base.url>-->
         <encoding>UTF-8</encoding>
@@ -67,6 +67,11 @@
             <groupId>net.serenity-bdd</groupId>
             <artifactId>serenity-cucumber</artifactId>
             <version>${serenity.cucumber.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java8</artifactId>
+            <version>4.2.0</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>

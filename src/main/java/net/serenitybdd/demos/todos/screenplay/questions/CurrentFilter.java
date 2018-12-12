@@ -7,7 +7,7 @@ import net.serenitybdd.screenplay.Question;
 import net.serenitybdd.screenplay.annotations.Subject;
 import net.serenitybdd.screenplay.questions.Text;
 
-@Subject("the displayed todo items")
+@Subject("the current filter")
 public class CurrentFilter implements Question<TodoStatusFilter> {
 
     @Override
