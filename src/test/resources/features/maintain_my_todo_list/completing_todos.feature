@@ -1,11 +1,12 @@
-@cucumber
-@driver:chrome
+@issue:TRAD-19
+@component:core
 Feature: Completing todos
 
   In order to make me feel **a sense of accomplishment**
   As a forgetful person
   I want to be to _view all of things I have completed_
 
+  @issue:TRAD-17
   Scenario: Mark a task as completed
     Given that Jane has a todo list containing Buy some milk, Walk the dog
     When she completes the task called 'Walk the dog'

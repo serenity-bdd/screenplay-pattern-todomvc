@@ -1,5 +1,6 @@
 @cucumber
-@adding
+@component:core
+@issue:TRAD-17
 Feature: Add new todos
 
   In order to avoid having to remember things that need doing

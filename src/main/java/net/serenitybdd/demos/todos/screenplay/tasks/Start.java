@@ -3,6 +3,7 @@ package net.serenitybdd.demos.todos.screenplay.tasks;
 import com.google.common.base.Joiner;
 import net.serenitybdd.demos.todos.screenplay.actions.Refresh;
 import net.serenitybdd.demos.todos.screenplay.user_interface.ApplicationHomePage;
+import net.serenitybdd.markers.IsSilent;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Open;
@@ -25,7 +26,7 @@ public class Start implements Task {
     @Step("{0} starts with #todoListDescription")
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
-                Open.browserOn().the(applicationHomePage),
+                GoTo.theRightPlace(),
                 Refresh.theBrowserSession(),
                 Check.whether(items.isEmpty()).otherwise(AddTodoItems.called(items)));
     }
