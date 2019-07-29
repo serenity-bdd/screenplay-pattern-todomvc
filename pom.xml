@@ -11,9 +11,9 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <serenity.version>2.0.21-SNAPSHOT</serenity.version>
-        <serenity.maven.version>2.0.20</serenity.maven.version>
-        <serenity.cucumber.version>1.9.20</serenity.cucumber.version>
+        <serenity.version>2.0.63</serenity.version>
+        <serenity.maven.version>2.0.60</serenity.maven.version>
+        <serenity.cucumber.version>1.0.15</serenity.cucumber.version>
         <parallel.tests>4</parallel.tests>
         <!--<webdriver.base.url>http://todomvc.com/examples/angularjs/#/</webdriver.base.url>-->
         <encoding>UTF-8</encoding>
@@ -63,14 +63,24 @@
             <artifactId>serenity-screenplay-webdriver</artifactId>
             <version>${serenity.version}</version>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>net.serenity-bdd</groupId>-->
+<!--            <artifactId>serenity-browserstack</artifactId>-->
+<!--            <version>${serenity.version}</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>net.serenity-bdd</groupId>-->
+<!--            <artifactId>serenity-zalenium</artifactId>-->
+<!--            <version>${serenity.version}</version>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>net.serenity-bdd</groupId>
-            <artifactId>serenity-cucumber</artifactId>
+            <artifactId>serenity-cucumber4</artifactId>
             <version>${serenity.cucumber.version}</version>
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-java8</artifactId>
+            <artifactId>cucumber-core</artifactId>
             <version>4.2.0</version>
         </dependency>
         <dependency>
@@ -112,19 +122,24 @@
             </plugin>
             <plugin>
                 <artifactId>maven-failsafe-plugin</artifactId>
-                <version>2.18.1</version>
+                <version>3.0.0-M3</version>
                 <configuration>
                     <includes>
                         <include>**/features/**/*.java</include>
                         <include>**/jbehave/**/*.java</include>
                         <include>**/cucumber/*.java</include>
                     </includes>
-                    <!--<systemPropertyVariables>-->
-                        <!--<webdriver.base.url>${webdriver.base.url}</webdriver.base.url>-->
-                    <!--</systemPropertyVariables>-->
+<!--                    <systemPropertyVariables>-->
+<!--                        <webdriver.base.url>${webdriver.base.url}</webdriver.base.url>-->
+<!--                    </systemPropertyVariables>-->
                     <excludes>
                         <exclude>**/*WithFailures.java</exclude>
                     </excludes>
+                    <!-- Parallel execution in the same JVM -->
+<!--                    <parallel>classes</parallel>-->
+<!--                    <threadCount>8</threadCount>-->
+<!--                    <perCoreThreadCount>false</perCoreThreadCount>-->
+<!--                    <forkCount>2C</forkCount>-->
                 </configuration>
                 <executions>
                     <execution>

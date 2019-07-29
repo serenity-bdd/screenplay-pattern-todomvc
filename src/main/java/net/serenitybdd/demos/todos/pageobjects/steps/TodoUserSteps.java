@@ -1,5 +1,6 @@
 package net.serenitybdd.demos.todos.pageobjects.steps;
 
+import net.serenitybdd.core.Serenity;
 import net.serenitybdd.demos.todos.pageobjects.model.TodoStatusFilter;
 import net.serenitybdd.demos.todos.pageobjects.pages.TodoListPage;
 import net.thucydides.core.ThucydidesSystemProperty;
@@ -29,17 +30,15 @@ public class TodoUserSteps {
 
     @Step
     public void starts_with_an_empty_todo_list() {
-        todoListPage.openAt("http://www.google.com");
         starts_with_a_todo_list_containing();
+        Serenity.recordReportData().withTitle("some log").andContents("some log data");
     }
 
     EnvironmentVariables environmentVariables;
     @Step
     public void starts_with_a_todo_list_containing(String... items) {
         todoListPage.openApplication();
-
-        String baseUrl = ThucydidesSystemProperty.WEBDRIVER_BASE_URL.from(environmentVariables);
-
+        todoListPage.getDriver().navigate().refresh();
 
         adds_todo_items_called(items);
     }
@@ -52,6 +51,11 @@ public class TodoUserSteps {
     @Step
     public void adds_a_todo_item_called(String item) {
         todoListPage.addATodoItemCalled(item);
+    }
+
+    @Step
+    public void should_see_the_page_title_containing(String title) {
+        assertThat(todoListPage.getTitle(), containsString(title));
     }
 
     @Step

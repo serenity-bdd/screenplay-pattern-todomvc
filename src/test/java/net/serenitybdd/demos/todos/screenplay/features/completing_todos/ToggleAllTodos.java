@@ -8,6 +8,9 @@ import net.serenitybdd.demos.todos.screenplay.tasks.ToggleStatus;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
+import net.serenitybdd.screenplay.matchers.WebElementStateMatchers;
+import net.serenitybdd.screenplay.questions.TheValue;
+import net.serenitybdd.screenplay.questions.WebElementQuestion;
 import net.serenitybdd.screenplay.targets.Target;
 import net.serenitybdd.screenplay.waits.WaitUntil;
 import net.thucydides.core.annotations.Managed;
@@ -36,7 +39,6 @@ public class ToggleAllTodos {
     @Managed
     private WebDriver hisBrowser;
     private Actor james = Actor.named("James");
-
     @Before
     public void jamesCanBrowseTheWeb() {
         james.can(BrowseTheWeb.with(hisBrowser));
@@ -51,6 +53,14 @@ public class ToggleAllTodos {
                 ToggleStatus.ofAllItems()
         );
 
+
+
+        james.should(
+                seeThat(
+                        WebElementQuestion.the(Target.the("").locatedBy("")),
+                        WebElementStateMatchers.hasValue("filename.txt")
+                )
+        );
         then(james).should(
                 seeThat(TheItemStatus.forTheItemCalled("Walk the dog"), is(Completed)),
                 seeThat(TheItemStatus.forTheItemCalled("Put out the garbage"), is(Completed))

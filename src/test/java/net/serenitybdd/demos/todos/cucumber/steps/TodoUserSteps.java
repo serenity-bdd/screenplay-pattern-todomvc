@@ -1,5 +1,6 @@
 package net.serenitybdd.demos.todos.cucumber.steps;
 
+import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -7,15 +8,17 @@ import cucumber.api.java.en.When;
 import net.serenitybdd.demos.todos.cucumber.MissingTodoItemsException;
 import net.serenitybdd.demos.todos.screenplay.model.TodoStatusFilter;
 import net.serenitybdd.demos.todos.screenplay.questions.TheItems;
-import net.serenitybdd.demos.todos.screenplay.tasks.AddATodoItem;
-import net.serenitybdd.demos.todos.screenplay.tasks.CompleteItem;
-import net.serenitybdd.demos.todos.screenplay.tasks.FilterItems;
-import net.serenitybdd.demos.todos.screenplay.tasks.Start;
+import net.serenitybdd.demos.todos.screenplay.tasks.*;
+import net.serenitybdd.demos.todos.screenplay.user_interface.ApplicationHomePage;
+import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
+import net.serenitybdd.screenplay.actions.Open;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
+import static java.util.Arrays.stream;
 import static java.util.Collections.EMPTY_LIST;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorCalled;
@@ -25,18 +28,14 @@ import static org.hamcrest.Matchers.hasItem;
 
 public class TodoUserSteps {
 
-    @Before
-    public void set_the_stage() {
-        OnStage.setTheStage(new OnlineCast());
-    }
-
     @Given("^that (.*) has an empty todo list$")
     public void that_James_has_an_empty_todo_list(String actorName) throws Throwable {
         theActorCalled(actorName).wasAbleTo(Start.withAnEmptyTodoList());
     }
 
     @Given("^that (.*) has a todo list containing (.*)$")
-    public void that_James_has_an_empty_todo_list(String actorName, List<String> items) throws Throwable {
+    public void that_James_has_an_empty_todo_list(String actorName, String itemList) throws Throwable {
+        List<String> items = split(itemList);
         theActorCalled(actorName).wasAbleTo(Start.withATodoListContaining(items));
     }
 
@@ -46,7 +45,8 @@ public class TodoUserSteps {
     }
 
     @Then("^(?:his|her|the) todo list should contain (.*)$")
-    public void todo_list_should_contain(List<String> expectedItems) throws Throwable {
+    public void todo_list_should_contain(String itemList) throws Throwable {
+        List<String> expectedItems = split(itemList);
         theActorInTheSpotlight().should(seeThat(TheItems.displayed(), equalTo(expectedItems))
                 .orComplainWith(MissingTodoItemsException.class,"Missing todos " + expectedItems));
     }
@@ -69,7 +69,8 @@ public class TodoUserSteps {
     }
 
     @Then("^(.*)'s todo list should contain (.*)$")
-    public void a_users_todo_list_should_contain(String actorName, List<String> expectedItems) throws Throwable {
+    public void a_users_todo_list_should_contain(String actorName, String itemList) throws Throwable {
+        List<String> expectedItems = split(itemList);
         theActorCalled(actorName).should(seeThat(TheItems.displayed(), equalTo(expectedItems))
                                         .orComplainWith(MissingTodoItemsException.class,"Missing todos " + expectedItems));
     }
@@ -80,18 +81,27 @@ public class TodoUserSteps {
                                         .orComplainWith(MissingTodoItemsException.class,"Missing todo " + expectedItem));
     }
 
-
-    @Given("^a precondition$")
-    public void a_precondition() throws Exception {
+    private List<String> split(String itemList) {
+        return stream(itemList.split(",")).map(String::trim).collect(Collectors.toList());
     }
 
+    private ApplicationHomePage applicationHomePage;
 
-    @When("^something happens$")
-    public void something_happens() throws Exception {
+    @Before(value="@web", order=1)
+    public void set_the_stage() {
+        OnStage.setTheStage(new OnlineCast());
     }
 
-    @Then("^something should result$")
-    public void something_should_result() throws Exception {
+    @Before(order=2)
+    public void openApplication() {
+        OnStage.aNewActor().attemptsTo(
+                OpenTheTodoMVCApplication.onTheHomePage()
+        );
+    }
+
+    @After
+    public void tidyUp() {
+        theActorInTheSpotlight().attemptsTo(DeleteAll.items());
     }
 
 }

@@ -25,7 +25,7 @@ public class Start implements Task {
     @Step("{0} starts with #todoListDescription")
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
-                Open.browserOn().the(applicationHomePage),
+//                Open.browserOn().the(applicationHomePage),
                 Refresh.theBrowserSession(),
                 Check.whether(items.isEmpty()).otherwise(AddTodoItems.called(items)));
     }

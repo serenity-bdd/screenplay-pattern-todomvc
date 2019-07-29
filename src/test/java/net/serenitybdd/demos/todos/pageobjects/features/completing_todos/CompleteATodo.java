@@ -18,10 +18,11 @@ import org.openqa.selenium.WebDriver;
 })
 public class CompleteATodo {
 
-    @Managed(uniqueSession = true)
+    @Managed
     WebDriver driver;
 
-    @Steps   TodoUserSteps james;
+    @Steps
+    TodoUserSteps james;
 
     @Before
     public void setup()

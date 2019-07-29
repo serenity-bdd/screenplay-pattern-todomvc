@@ -38,7 +38,8 @@ public class CompleteATodo {
     @Test
     public void should_be_able_to_complete_a_todo() {
 
-        givenThat(james).wasAbleTo(Start.withATodoListContaining("Walk the dog", "Put out the garbage"));
+        givenThat(james).wasAbleTo(
+                Start.withATodoListContaining("Walk the dog", "Put out the garbage"));
 
         when(james).attemptsTo(
             CompleteItem.called("Walk the dog")

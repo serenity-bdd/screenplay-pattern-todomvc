@@ -1,5 +1,6 @@
 package net.serenitybdd.demos.todos.pageobjects.features.accessing_the_application;
 
+import net.jcip.annotations.NotThreadSafe;
 import net.serenitybdd.demos.todos.pageobjects.steps.TodoUserSteps;
 import net.serenitybdd.junit.runners.SerenityParameterizedRunner;
 import net.thucydides.core.annotations.*;
@@ -19,6 +20,7 @@ import java.util.Collection;
         @WithTag("PageObjects pattern"),
         @WithTag("version:RELEASE-3"),
 })
+//@NotThreadSafe
 public class AddDifferentSortsOfTodos {
 
     @Managed
@@ -52,8 +54,7 @@ public class AddDifferentSortsOfTodos {
     }
 
     @Test
-    @Manual
-    public void shouldBeAbleToAddANewTodoItem() {
+    public void shouldBeAbleToAddDifferentTodoItems() {
         james.should_see_the_correct_website_title();
         james.should_see_the_correct_application_heading();
         james.should_see_the_about_section();

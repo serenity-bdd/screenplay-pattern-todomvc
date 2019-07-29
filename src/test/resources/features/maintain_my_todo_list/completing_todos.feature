@@ -1,5 +1,5 @@
 @cucumber
-@driver:chrome
+@web
 Feature: Completing todos
 
   In order to make me feel **a sense of accomplishment**
@@ -10,7 +10,7 @@ Feature: Completing todos
     Given that Jane has a todo list containing Buy some milk, Walk the dog
     When she completes the task called 'Walk the dog'
     And she filters her list to show only Completed tasks
-    Then her todo list should contain Walk the dog
+    Then her todo list should contain Walk the dogs
 
   Scenario: List of completed items should be empty if nothing has been completed
     Given that Jane has a todo list containing Buy some milk, Walk the dog

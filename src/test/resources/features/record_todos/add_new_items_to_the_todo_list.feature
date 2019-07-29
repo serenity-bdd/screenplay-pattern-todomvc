@@ -1,5 +1,6 @@
 @cucumber
 @adding
+@web
 Feature: Add new todos
 
   In order to avoid having to remember things that need doing
@@ -20,5 +21,5 @@ Feature: Add new todos
     Given that James has a todo list containing Buy some milk, Walk the dog
     And that Jill has a todo list containing Buy some milk, Buy some cheese
     When she adds 'Buy some cereal' to her list
-    Then Jill's todo list should contain Buy some milk, Buy some cheese, Buy some cereal
+    Then Jill's todo list should contain Buy some milk, Buy some cheese, Buy some cerealx
     And James's todo list should contain Buy some milk, Walk the dog
