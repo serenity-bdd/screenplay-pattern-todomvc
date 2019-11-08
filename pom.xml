@@ -11,9 +11,9 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <serenity.version>2.0.21-SNAPSHOT</serenity.version>
-        <serenity.maven.version>2.0.20</serenity.maven.version>
-        <serenity.cucumber.version>1.9.20</serenity.cucumber.version>
+        <serenity.version>2.0.81</serenity.version>
+        <serenity.maven.version>2.0.81</serenity.maven.version>
+        <serenity.cucumber.version>1.9.45</serenity.cucumber.version>
         <parallel.tests>4</parallel.tests>
         <!--<webdriver.base.url>http://todomvc.com/examples/angularjs/#/</webdriver.base.url>-->
         <encoding>UTF-8</encoding>
@@ -105,14 +105,14 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.18.1</version>
+                <version>2.22.1</version>
                 <configuration>
                     <skip>true</skip>
                 </configuration>
             </plugin>
             <plugin>
                 <artifactId>maven-failsafe-plugin</artifactId>
-                <version>2.18.1</version>
+                <version>2.22.1</version>
                 <configuration>
                     <includes>
                         <include>**/features/**/*.java</include>
@@ -138,7 +138,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.2</version>
+                <version>3.8.1</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
@@ -183,7 +183,7 @@
                 <plugins>
                     <plugin>
                         <artifactId>maven-failsafe-plugin</artifactId>
-                        <version>2.18.1</version>
+                        <version>2.22.1</version>
                         <configuration>
                             <includes>
                                 <include>**/*WithFailures.java</include>
@@ -207,7 +207,7 @@
                 <plugins>
                     <plugin>
                         <artifactId>maven-failsafe-plugin</artifactId>
-                        <version>2.18.1</version>
+                        <version>2.22.1</version>
                         <configuration>
                             <includes>
                                 <include>**/cucumber/*.java</include>
@@ -234,7 +234,7 @@
                 <plugins>
                     <plugin>
                         <artifactId>maven-failsafe-plugin</artifactId>
-                        <version>2.18.1</version>
+                        <version>2.22.1</version>
                         <configuration>
                             <includes>
                                 <include>**/cucumber/FullTestSuite.java</include>
@@ -258,7 +258,7 @@
                 <plugins>
                     <plugin>
                         <artifactId>maven-failsafe-plugin</artifactId>
-                        <version>2.18.1</version>
+                        <version>2.22.1</version>
                         <configuration>
                             <includes>
                                 <include>**/*IT.java</include>
@@ -358,7 +358,7 @@
                 <plugins>
                     <plugin>
                         <artifactId>maven-failsafe-plugin</artifactId>
-                        <version>2.18.1</version>
+                        <version>2.22.1</version>
                         <configuration>
                             <includes>
                                 <include>**/screenplay/**/*.java</include>
@@ -390,7 +390,7 @@
                 <plugins>
                     <plugin>
                         <artifactId>maven-failsafe-plugin</artifactId>
-                        <version>2.18.1</version>
+                        <version>2.22.1</version>
                         <configuration>
                             <includes>
                                 <include>**/pageobjects/**/*.java</include>

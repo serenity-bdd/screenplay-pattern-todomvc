@@ -1,5 +1,6 @@
 package net.serenitybdd.demos.todos.cucumber.steps;
 
+import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -11,6 +12,7 @@ import net.serenitybdd.demos.todos.screenplay.tasks.AddATodoItem;
 import net.serenitybdd.demos.todos.screenplay.tasks.CompleteItem;
 import net.serenitybdd.demos.todos.screenplay.tasks.FilterItems;
 import net.serenitybdd.demos.todos.screenplay.tasks.Start;
+import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
 
@@ -18,8 +20,7 @@ import java.util.List;
 
 import static java.util.Collections.EMPTY_LIST;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
-import static net.serenitybdd.screenplay.actors.OnStage.theActorCalled;
-import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
+import static net.serenitybdd.screenplay.actors.OnStage.*;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasItem;
 
@@ -28,11 +29,12 @@ public class TodoUserSteps {
     @Before
     public void set_the_stage() {
         OnStage.setTheStage(new OnlineCast());
+        OnStage.aNewActor().wasAbleTo(Start.withAnEmptyTodoList());
     }
 
     @Given("^that (.*) has an empty todo list$")
     public void that_James_has_an_empty_todo_list(String actorName) throws Throwable {
-        theActorCalled(actorName).wasAbleTo(Start.withAnEmptyTodoList());
+//        theActorCalled(actorName).wasAbleTo(Start.withAnEmptyTodoList());
     }
 
     @Given("^that (.*) has a todo list containing (.*)$")
@@ -66,6 +68,9 @@ public class TodoUserSteps {
     @When("s?he filters her list to show only (.*) tasks")
     public void filters_tasks_by(TodoStatusFilter status) {
         theActorInTheSpotlight().attemptsTo(FilterItems.toShow(status));
+        withCurrentActor(
+                FilterItems.toShow(status)
+        );
     }
 
     @Then("^(.*)'s todo list should contain (.*)$")
@@ -76,10 +81,9 @@ public class TodoUserSteps {
 
     @Then("^'(.*)' should be recorded in (?:his|her|the) list$")
     public void item_should_be_recorded_in_the_list(String expectedItem) throws Throwable {
-       theActorInTheSpotlight().should(seeThat(TheItems.displayed(), hasItem(expectedItem))
-                                        .orComplainWith(MissingTodoItemsException.class,"Missing todo " + expectedItem));
+        theActorInTheSpotlight().should(seeThat(TheItems.displayed(), hasItem(expectedItem))
+                .orComplainWith(MissingTodoItemsException.class, "Missing todo " + expectedItem));
     }
-
 
     @Given("^a precondition$")
     public void a_precondition() throws Exception {
