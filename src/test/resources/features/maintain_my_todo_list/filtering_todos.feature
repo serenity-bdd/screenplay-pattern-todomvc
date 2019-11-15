@@ -18,15 +18,7 @@ Feature: Filtering todos
     When she filters her list to show only <filter> tasks
     Then her todo list should contain <expected>
 
-    @basic
-    Examples: Basic Filtering
+    Examples:
       | tasks                       | filter    | expected      |
       | Buy some milk, Walk the dog | Active    | Buy some milk |
-      | Buy some milk, Walk the dog | Completed | Walk the cat  |
-
-    @advanced
-    Examples: Advanced Filtering
-      | tasks                                        | filter    | expected                   |
-      | Buy some milk, Walk the dog, Feed the cat    | Active    | Buy some milk,Feed the cat |
-      | Buy some milk, Walk the dog, Feed the cat    | Completed | Walk the dog               |
-      | Buy some milk, Walk the dog, Feed the ferret | Completed | Walk the dog               |
+      | Buy some milk, Walk the dog | Completed | Walk the dog  |
