@@ -1,6 +1,5 @@
 package net.serenitybdd.demos.todos.cucumber.steps;
 
-import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -12,7 +11,6 @@ import net.serenitybdd.demos.todos.screenplay.tasks.AddATodoItem;
 import net.serenitybdd.demos.todos.screenplay.tasks.CompleteItem;
 import net.serenitybdd.demos.todos.screenplay.tasks.FilterItems;
 import net.serenitybdd.demos.todos.screenplay.tasks.Start;
-import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
 
@@ -83,19 +81,6 @@ public class TodoUserSteps {
     public void item_should_be_recorded_in_the_list(String expectedItem) throws Throwable {
         theActorInTheSpotlight().should(seeThat(TheItems.displayed(), hasItem(expectedItem))
                 .orComplainWith(MissingTodoItemsException.class, "Missing todo " + expectedItem));
-    }
-
-    @Given("^a precondition$")
-    public void a_precondition() throws Exception {
-    }
-
-
-    @When("^something happens$")
-    public void something_happens() throws Exception {
-    }
-
-    @Then("^something should result$")
-    public void something_should_result() throws Exception {
     }
 
 }

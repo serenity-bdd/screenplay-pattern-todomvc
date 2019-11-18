@@ -11,8 +11,8 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <serenity.version>2.0.81</serenity.version>
-        <serenity.maven.version>2.0.81</serenity.maven.version>
+        <serenity.version>2.0.82</serenity.version>
+        <serenity.maven.version>2.0.82</serenity.maven.version>
         <serenity.cucumber.version>1.9.45</serenity.cucumber.version>
         <parallel.tests>4</parallel.tests>
         <!--<webdriver.base.url>http://todomvc.com/examples/angularjs/#/</webdriver.base.url>-->
@@ -115,16 +115,8 @@
                 <version>2.22.1</version>
                 <configuration>
                     <includes>
-                        <include>**/features/**/*.java</include>
-                        <include>**/jbehave/**/*.java</include>
-                        <include>**/cucumber/*.java</include>
+                        <include>**/cucumber/*TestSuite.java</include>
                     </includes>
-                    <!--<systemPropertyVariables>-->
-                        <!--<webdriver.base.url>${webdriver.base.url}</webdriver.base.url>-->
-                    <!--</systemPropertyVariables>-->
-                    <excludes>
-                        <exclude>**/*WithFailures.java</exclude>
-                    </excludes>
                 </configuration>
                 <executions>
                     <execution>
