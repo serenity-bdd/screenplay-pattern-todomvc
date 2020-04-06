@@ -1,5 +1,6 @@
 @cucumber
-@driver:chrome
+@completing
+#@driver:chrome
 Feature: Completing todos
 
   In order to make me feel **a sense of accomplishment**
@@ -8,7 +9,7 @@ Feature: Completing todos
 
   Scenario: Mark a task as completed
     Given that Jane has a todo list containing Buy some milk, Walk the dog
-    When she completes the task called 'Walk the dog'
+    When she completes the task called "Walk the dog"
     And she filters her list to show only Completed tasks
     Then her todo list should contain Walk the dog
 

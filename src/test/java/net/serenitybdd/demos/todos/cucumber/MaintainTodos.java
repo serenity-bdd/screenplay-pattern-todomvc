@@ -1,6 +1,6 @@
 package net.serenitybdd.demos.todos.cucumber;
 
-import cucumber.api.CucumberOptions;
+import io.cucumber.junit.CucumberOptions;
 import net.serenitybdd.cucumber.CucumberWithSerenity;
 import org.junit.runner.RunWith;
 
