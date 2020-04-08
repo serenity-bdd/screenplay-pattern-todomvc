@@ -14,7 +14,7 @@ import java.util.Arrays;
 import java.util.Collection;
 
 @RunWith(SerenityParameterizedRunner.class)
-@Concurrent
+@Concurrent(threads = "4")
 @WithTags({
         @WithTag("PageObjects pattern"),
         @WithTag("version:RELEASE-3"),
@@ -52,7 +52,7 @@ public class AddDifferentSortsOfTodos {
     }
 
     @Test
-    @Manual
+//    @Manual
     public void shouldBeAbleToAddANewTodoItem() {
         james.should_see_the_correct_website_title();
         james.should_see_the_correct_application_heading();
