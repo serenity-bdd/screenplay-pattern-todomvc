@@ -13,10 +13,12 @@ import net.serenitybdd.screenplay.waits.WaitUntil;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.WithTag;
 import net.thucydides.core.annotations.WithTags;
+import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import static net.serenitybdd.demos.todos.screenplay.model.TodoStatus.Active;
 import static net.serenitybdd.demos.todos.screenplay.model.TodoStatus.Completed;
@@ -25,6 +27,7 @@ import static net.serenitybdd.screenplay.GivenWhenThen.*;
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
 import static net.serenitybdd.screenplay.questions.WebElementQuestion.the;
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 @RunWith(SerenityRunner.class)
 @WithTags({
@@ -44,7 +47,6 @@ public class ToggleAllTodos {
 
     @Test
     public void should_be_able_to_quickly_complete_all_todos() {
-
         givenThat(james).wasAbleTo(Start.withATodoListContaining("Walk the dog", "Put out the garbage"));
 
         when(james).attemptsTo(

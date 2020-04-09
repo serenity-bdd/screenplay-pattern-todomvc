@@ -1,6 +1,5 @@
 @cucumber
 @completing
-#@driver:chrome
 Feature: Completing todos
 
   In order to make me feel **a sense of accomplishment**

@@ -16,8 +16,7 @@
         <serenity.cucumber.version>2.2.0</serenity.cucumber.version>
         <parallel.tests>6</parallel.tests>
         <encoding>UTF-8</encoding>
-        <serenity.test.root></serenity.test.root>
-        <tags></tags>
+        <serenity.test.root>net.serenitybdd.demos.todos.screenplay.features</serenity.test.root>
     </properties>
 
     <repositories>
@@ -49,6 +48,11 @@
         </dependency>
         <dependency>
             <groupId>net.serenity-bdd</groupId>
+            <artifactId>serenity-cucumber5</artifactId>
+            <version>${serenity.cucumber.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.serenity-bdd</groupId>
             <artifactId>serenity-junit</artifactId>
             <version>${serenity.version}</version>
         </dependency>
@@ -61,11 +65,6 @@
             <groupId>net.serenity-bdd</groupId>
             <artifactId>serenity-screenplay-webdriver</artifactId>
             <version>${serenity.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>net.serenity-bdd</groupId>
-            <artifactId>serenity-cucumber5</artifactId>
-            <version>${serenity.cucumber.version}</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
