@@ -22,7 +22,7 @@ public class Start implements Task {
     private ApplicationHomePage applicationHomePage;
     private final String todoListDescription;
 
-    @Step("{0} starts with **#todoListDescription**")
+    @Step("{0} starts with #todoListDescription")
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
                 Open.browserOn().the(applicationHomePage),

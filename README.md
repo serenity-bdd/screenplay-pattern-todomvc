@@ -51,12 +51,6 @@ The first demo shows the integration of Serenity BDD, Screenplay and Cucumber JV
 To run it, execute:
 
 ```
-mvn clean verify
-```
-
-or
-
-```
 mvn clean verify -Pcucumber
 ```
 

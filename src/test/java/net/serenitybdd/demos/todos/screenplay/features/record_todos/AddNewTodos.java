@@ -1,6 +1,4 @@
 package net.serenitybdd.demos.todos.screenplay.features.record_todos;
-
-import cucumber.api.java.en_old.Ac;
 import net.serenitybdd.demos.todos.screenplay.questions.TheItems;
 import net.serenitybdd.demos.todos.screenplay.tasks.AddATodoItem;
 import net.serenitybdd.demos.todos.screenplay.tasks.Start;

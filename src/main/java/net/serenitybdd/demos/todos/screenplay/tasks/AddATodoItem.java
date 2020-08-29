@@ -1,12 +1,9 @@
 package net.serenitybdd.demos.todos.screenplay.tasks;
 
-import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Enter;
-import net.thucydides.core.annotations.Step;
 
 import static net.serenitybdd.demos.todos.screenplay.user_interface.TodoList.WHAT_NEEDS_TO_BE_DONE;
-import static net.serenitybdd.screenplay.Tasks.instrumented;
 import static org.openqa.selenium.Keys.RETURN;
 
 public class AddATodoItem {
@@ -16,6 +13,6 @@ public class AddATodoItem {
                 Enter.theValue(thingToDo)
                         .into(WHAT_NEEDS_TO_BE_DONE)
                         .thenHit(RETURN)
-                ).with("thingsToDo").of(thingToDo);
+                ).with("thingToDo").of(thingToDo);
     }
 }
