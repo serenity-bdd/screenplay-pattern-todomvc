@@ -11,11 +11,10 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <serenity.version>2.0.81</serenity.version>
-        <serenity.maven.version>2.0.81</serenity.maven.version>
-        <serenity.cucumber.version>1.9.45</serenity.cucumber.version>
+        <serenity.version>2.3.1</serenity.version>
+        <serenity.maven.version>2.3.1</serenity.maven.version>
+        <serenity.cucumber.version>2.3.1</serenity.cucumber.version>
         <parallel.tests>4</parallel.tests>
-        <!--<webdriver.base.url>http://todomvc.com/examples/angularjs/#/</webdriver.base.url>-->
         <encoding>UTF-8</encoding>
         <serenity.test.root></serenity.test.root>
         <tags></tags>
@@ -28,7 +27,7 @@
             </snapshots>
             <id>central</id>
             <name>bintray</name>
-            <url>http://jcenter.bintray.com</url>
+            <url>https://jcenter.bintray.com</url>
         </repository>
     </repositories>
     <pluginRepositories>
@@ -38,7 +37,7 @@
             </snapshots>
             <id>central</id>
             <name>bintray-plugins</name>
-            <url>http://jcenter.bintray.com</url>
+            <url>https://jcenter.bintray.com</url>
         </pluginRepository>
     </pluginRepositories>
 
@@ -65,13 +64,8 @@
         </dependency>
         <dependency>
             <groupId>net.serenity-bdd</groupId>
-            <artifactId>serenity-cucumber</artifactId>
+            <artifactId>serenity-cucumber6</artifactId>
             <version>${serenity.cucumber.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-java8</artifactId>
-            <version>4.2.0</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -116,7 +110,6 @@
                 <configuration>
                     <includes>
                         <include>**/features/**/*.java</include>
-                        <include>**/jbehave/**/*.java</include>
                         <include>**/cucumber/*.java</include>
                     </includes>
                     <!--<systemPropertyVariables>-->
@@ -125,6 +118,8 @@
                     <excludes>
                         <exclude>**/*WithFailures.java</exclude>
                     </excludes>
+                    <parallel>methods</parallel>
+                    <useUnlimitedThreads>true</useUnlimitedThreads>
                 </configuration>
                 <executions>
                     <execution>
@@ -183,7 +178,7 @@
                 <plugins>
                     <plugin>
                         <artifactId>maven-failsafe-plugin</artifactId>
-                        <version>2.22.1</version>
+                        <version>3.0.0-M5</version>
                         <configuration>
                             <includes>
                                 <include>**/*WithFailures.java</include>
@@ -207,197 +202,13 @@
                 <plugins>
                     <plugin>
                         <artifactId>maven-failsafe-plugin</artifactId>
-                        <version>2.22.1</version>
+                        <version>3.0.0-M5</version>
                         <configuration>
                             <includes>
-                                <include>**/cucumber/*.java</include>
+                                <include>**/CucumberTestSuite.java</include>
                             </includes>
-                            <parallel>classes</parallel>
-                            <threadCount>${parallel.tests}</threadCount>
-                            <forkCount>${parallel.tests}</forkCount>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>integration-test</goal>
-                                    <goal>verify</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>cucumber-sequential</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <artifactId>maven-failsafe-plugin</artifactId>
-                        <version>2.22.1</version>
-                        <configuration>
-                            <includes>
-                                <include>**/cucumber/FullTestSuite.java</include>
-                            </includes>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>integration-test</goal>
-                                    <goal>verify</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>cucumber-parallel</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <artifactId>maven-failsafe-plugin</artifactId>
-                        <version>2.22.1</version>
-                        <configuration>
-                            <includes>
-                                <include>**/*IT.java</include>
-                            </includes>
-                            <parallel>classes</parallel>
-                            <threadCount>3</threadCount>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>integration-test</goal>
-                                    <goal>verify</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>com.github.temyers</groupId>
-                        <artifactId>cucumber-jvm-parallel-plugin</artifactId>
-                        <version>4.0.0</version>
-                        <executions>
-                            <execution>
-                                <id>generateRunners</id>
-                                <phase>generate-test-sources</phase>
-                                <goals>
-                                    <goal>generateRunners</goal>
-                                </goals>
-                                <configuration>
-                                    <glue>
-                                        <package>net.serenitybdd</package>
-                                    </glue>
-                                    <featuresDirectory>src/test/resources/features/</featuresDirectory>
-                                    <cucumberOutputDir>target/cucumber-parallel</cucumberOutputDir>
-                                    <!--<tags>-->
-                                        <!--<tag>${tags}</tag>-->
-                                    <!--</tags>-->
-
-                                    <strict>true</strict>
-                                    <!-- Generate TestNG runners instead of JUnit ones. -->
-                                    <useTestNG>false</useTestNG>
-                                    <!-- The naming scheme to use for the generated test classes. One
-                                      of 'simple' or 'feature-title' -->
-                                    <namingScheme>pattern</namingScheme>
-                                    <!-- The class naming pattern to use. Only required/used if naming
-                                      scheme is 'pattern'. -->
-                                    <namingPattern>Parallel{c}IT</namingPattern>
-                                    <!-- One of [SCENARIO, FEATURE]. SCENARIO generates one runner per
-                                      scenario. FEATURE generates a runner per feature. -->
-                                    <parallelScheme>FEATURE</parallelScheme>
-                                    <!-- Specify a custom template for the generated sources (this is a path relative to the project base directory) -->
-                                    <customVmTemplate>src/test/resources/cucumber-symch-junit-runner.vm
-                                    </customVmTemplate>
-                                    <packageName>net.serenitybdd</packageName>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>screenplay</id>
-            <properties>
-                <serenity.test.root>net.serenitybdd.demos.todos.screenplay.features</serenity.test.root>
-            </properties>
-            <build>
-                <plugins>
-                    <plugin>
-                        <artifactId>maven-failsafe-plugin</artifactId>
-                        <version>2.18.1</version>
-                        <configuration>
-                            <includes>
-                                <include>**/screenplay/**/*.java</include>
-                            </includes>
-                            <systemPropertyVariables>
-                                <serenity.test.root>${serenity.test.root}</serenity.test.root>
-                            </systemPropertyVariables>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>integration-test</goal>
-                                    <goal>verify</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>screenplay-parallel</id>
-            <properties>
-                <serenity.test.root>net.serenitybdd.demos.todos.screenplay.features</serenity.test.root>
-            </properties>
-            <build>
-                <plugins>
-                    <plugin>
-                        <artifactId>maven-failsafe-plugin</artifactId>
-                        <version>2.22.1</version>
-                        <configuration>
-                            <includes>
-                                <include>**/screenplay/**/*.java</include>
-                            </includes>
-                            <systemPropertyVariables>
-                                <serenity.test.root>${serenity.test.root}</serenity.test.root>
-                            </systemPropertyVariables>
-                            <parallel>classes</parallel>
-                            <threadCount>3</threadCount>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>integration-test</goal>
-                                    <goal>verify</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>pageobjects</id>
-            <properties>
-                <serenity.test.root>net.serenitybdd.demos.todos.pageobjects.features</serenity.test.root>
-            </properties>
-            <build>
-                <plugins>
-                    <plugin>
-                        <artifactId>maven-failsafe-plugin</artifactId>
-                        <version>2.22.1</version>
-                        <configuration>
-                            <includes>
-                                <include>**/pageobjects/**/*.java</include>
-                            </includes>
-                            <systemPropertyVariables>
-                                <serenity.test.root>${serenity.test.root}</serenity.test.root>
-                            </systemPropertyVariables>
+                            <parallel>methods</parallel>
+                            <useUnlimitedThreads>true</useUnlimitedThreads>
                         </configuration>
                         <executions>
                             <execution>

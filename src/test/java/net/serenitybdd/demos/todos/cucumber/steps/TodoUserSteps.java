@@ -1,20 +1,24 @@
 package net.serenitybdd.demos.todos.cucumber.steps;
 
-import cucumber.api.java.After;
-import cucumber.api.java.Before;
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
+
+import com.google.common.base.Splitter;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
+import io.cucumber.java.ParameterType;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import net.serenitybdd.core.annotations.events.*;
 import net.serenitybdd.demos.todos.cucumber.MissingTodoItemsException;
 import net.serenitybdd.demos.todos.screenplay.model.TodoStatusFilter;
 import net.serenitybdd.demos.todos.screenplay.questions.TheItems;
-import net.serenitybdd.demos.todos.screenplay.tasks.AddATodoItem;
-import net.serenitybdd.demos.todos.screenplay.tasks.CompleteItem;
-import net.serenitybdd.demos.todos.screenplay.tasks.FilterItems;
-import net.serenitybdd.demos.todos.screenplay.tasks.Start;
-import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
+import net.serenitybdd.demos.todos.screenplay.tasks.*;
+import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
+import net.thucydides.core.model.TestOutcome;
+import net.thucydides.core.steps.BaseStepListener;
+import net.thucydides.core.steps.StepEventBus;
 
 import java.util.List;
 
@@ -28,74 +32,110 @@ public class TodoUserSteps {
 
     @Before
     public void set_the_stage() {
-        OnStage.setTheStage(new OnlineCast());
-        OnStage.aNewActor().wasAbleTo(Start.withAnEmptyTodoList());
+        setTheStage(new OnlineCast());
     }
 
-    @Given("^that (.*) has an empty todo list$")
-    public void that_James_has_an_empty_todo_list(String actorName) throws Throwable {
-//        theActorCalled(actorName).wasAbleTo(Start.withAnEmptyTodoList());
+    //
+    // These methods illustrate the Cucumber lifecycle methods available in Serenity
+    //
+    @BeforeScenario
+    public void beforeScenario(TestOutcome outcome) {
+        System.out.println("BEFORE SCENARIO " + outcome.getName());
     }
 
-    @Given("^that (.*) has a todo list containing (.*)$")
-    public void that_James_has_an_empty_todo_list(String actorName, List<String> items) throws Throwable {
-        theActorCalled(actorName).wasAbleTo(Start.withATodoListContaining(items));
+    @BeforeScenario
+    public void beforeAScenario() {
+        System.out.println("BEFORE SCENARIO");
     }
 
-    @When("^s?he adds '(.*)' to (?:his|her|the) list$")
-    public void adds_Buy_some_milk_to_his_list(String item) throws Throwable {
-        theActorInTheSpotlight().attemptsTo(AddATodoItem.called(item));
+    @BeforeExample
+    public void beforeExample() {
+        System.out.println("BEFORE EXAMPLE");
     }
 
-    @Then("^(?:his|her|the) todo list should contain (.*)$")
-    public void todo_list_should_contain(List<String> expectedItems) throws Throwable {
+    @AfterExample
+    public void deleteAllTheTasks() {
+        System.out.println("AFTER EXAMPLE");
+        theActorInTheSpotlight().attemptsTo(
+                DeleteAllTheItems.onThePage()
+        );
+    }
+
+    @AfterScenario
+    public void afterScenario(TestOutcome outcome) {
+        System.out.println("AFTER SCENARIO " + outcome.getName());
+    }
+
+    @ParameterType(".*")
+    public Actor actor(String actor) {
+        return OnStage.theActorCalled(actor);
+    }
+
+    @ParameterType("All|Active|Completed")
+    public TodoStatusFilter filter(String filter) {
+        return TodoStatusFilter.valueOf(filter);
+    }
+
+    @ParameterType(".*")
+    public List<String> items(String listOfItems) {
+        return Splitter.on(",").trimResults().omitEmptyStrings().splitToList(listOfItems);
+    }
+
+    @Given("that {actor} has an empty todo list")
+    public void that_James_has_an_empty_todo_list(Actor actor) {
+        actor.wasAbleTo(Start.withAnEmptyTodoList());
+    }
+
+    @Given("that {actor} has a todo list containing {items}")
+    public void that_James_has_an_empty_todo_list(Actor actor, List<String> items) {
+        actor.wasAbleTo(Start.withATodoListContaining(items));
+    }
+
+    @When("{actor} adds {string} to his/her list")
+    public void adds_to_his_list(Actor actor, String item) {
+        actor.attemptsTo(AddATodoItem.called(item));
+    }
+
+    @When("{actor} deletes the task called {string}")
+    public void deletes_an_item(Actor actor, String item) {
+        actor.attemptsTo(DeleteAnItem.called(item));
+    }
+
+    @Then("{string} should be recorded in his/her list")
+    public void item_should_be_recorded_in_the_list(String expectedItem) {
+        theActorInTheSpotlight().should(seeThat(TheItems.displayed(), hasItem(expectedItem))
+                .orComplainWith(MissingTodoItemsException.class, "Missing todo " + expectedItem));
+    }
+
+    @Then("his/her todo list should contain {items}")
+    public void todo_list_should_contain(List<String> expectedItems) {
         theActorInTheSpotlight().should(seeThat(TheItems.displayed(), equalTo(expectedItems))
-                .orComplainWith(MissingTodoItemsException.class,"Missing todos " + expectedItems));
+                .orComplainWith(MissingTodoItemsException.class, "Missing todos " + expectedItems));
     }
 
-    @Then("^(?:his|her|the) todo list should be empty$")
-    public void todo_list_should_be_empty() throws Throwable {
+    @Then("{actor}'s todo list should contain {items}")
+    public void a_users_todo_list_should_contain(Actor actor, List<String> expectedItems) {
+        actor.should(seeThat(TheItems.displayed(), equalTo(expectedItems))
+                .orComplainWith(MissingTodoItemsException.class, "Missing todos " + expectedItems));
+    }
+
+
+    @Then("his/her todo list should be empty")
+    public void todo_list_should_be_empty() {
         theActorInTheSpotlight().should(seeThat(TheItems.displayed(), equalTo(EMPTY_LIST)));
     }
 
     @Then("^s?he (?:completes|has completed) the task called '(.*)'$")
-    public void completes_task_called(String item) throws Throwable {
+    public void completes_task_called(String item) {
         theActorInTheSpotlight().attemptsTo(
                 CompleteItem.called(item)
         );
     }
 
-    @When("s?he filters her list to show only (.*) tasks")
-    public void filters_tasks_by(TodoStatusFilter status) {
-        theActorInTheSpotlight().attemptsTo(FilterItems.toShow(status));
-        withCurrentActor(
+    @When("{actor} filters her list to show only {filter} tasks")
+    public void filters_tasks_by(Actor actor, TodoStatusFilter status) {
+        actor.attemptsTo(
                 FilterItems.toShow(status)
         );
     }
-
-    @Then("^(.*)'s todo list should contain (.*)$")
-    public void a_users_todo_list_should_contain(String actorName, List<String> expectedItems) throws Throwable {
-        theActorCalled(actorName).should(seeThat(TheItems.displayed(), equalTo(expectedItems))
-                                        .orComplainWith(MissingTodoItemsException.class,"Missing todos " + expectedItems));
-    }
-
-    @Then("^'(.*)' should be recorded in (?:his|her|the) list$")
-    public void item_should_be_recorded_in_the_list(String expectedItem) throws Throwable {
-        theActorInTheSpotlight().should(seeThat(TheItems.displayed(), hasItem(expectedItem))
-                .orComplainWith(MissingTodoItemsException.class, "Missing todo " + expectedItem));
-    }
-
-    @Given("^a precondition$")
-    public void a_precondition() throws Exception {
-    }
-
-
-    @When("^something happens$")
-    public void something_happens() throws Exception {
-    }
-
-    @Then("^something should result$")
-    public void something_should_result() throws Exception {
-    }
-
 }

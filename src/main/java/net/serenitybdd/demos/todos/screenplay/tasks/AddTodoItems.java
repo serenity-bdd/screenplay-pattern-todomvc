@@ -9,11 +9,13 @@ import java.util.Collection;
 import java.util.List;
 
 import static java.util.Arrays.asList;
-import static net.serenitybdd.screenplay.Tasks.instrumented;
 
 public class AddTodoItems implements Task {
 
-    private final List<String> todos;
+    private List<String> todos;
+
+    public AddTodoItems(){}
+    public AddTodoItems(Collection<String> items) { this.todos = ImmutableList.copyOf(items); }
 
     @Step("{0} adds the todo items called: #todos")
     public <T extends Actor> void performAs(T actor) {
@@ -23,11 +25,10 @@ public class AddTodoItems implements Task {
     }
 
     public static AddTodoItems called(String... items) {
-        return instrumented(AddTodoItems.class, asList(items));
+        return new AddTodoItems(asList(items));
     }
 
     public static AddTodoItems called(Collection<String> items) {
-        return instrumented(AddTodoItems.class, items);
+        return new AddTodoItems(items);
     }
-    public AddTodoItems(List<String> items) { this.todos = ImmutableList.copyOf(items); }
 }
