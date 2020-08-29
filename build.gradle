@@ -1,0 +1,53 @@
+defaultTasks 'clean', 'test', 'aggregate'
+
+repositories {
+    mavenLocal()
+    jcenter()
+}
+
+buildscript {
+    repositories {
+        mavenLocal()
+        jcenter()
+    }
+    dependencies {
+        classpath("net.serenity-bdd:serenity-gradle-plugin:2.3.1")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'net.serenity-bdd.aggregator'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+ext {
+    slf4jVersion = '1.7.7'
+    serenityCoreVersion = '2.2.1'
+    serenityCucumberVersion = '2.3.1'
+    junitVersion = '4.12'
+    assertJVersion = '3.8.0'
+    logbackVersion = '1.2.3'
+}
+
+dependencies {
+    compile "ch.qos.logback:logback-classic:${logbackVersion}",
+            "net.serenity-bdd:serenity-core:${serenityCoreVersion}",
+            "net.serenity-bdd:serenity-junit:${serenityCoreVersion}",
+            "net.serenity-bdd:serenity-cucumber5:${serenityCucumberVersion}",
+            "net.serenity-bdd:serenity-screenplay:${serenityCoreVersion}",
+            "net.serenity-bdd:serenity-screenplay-webdriver:${serenityCoreVersion}",
+            "org.assertj:assertj-core:${assertJVersion}"
+    testCompile "junit:junit:${junitVersion}"
+}
+
+test {
+    testLogging.showStandardStreams = true
+    systemProperties System.getProperties()
+}
+
+gradle.startParameter.continueOnFailure = true
+
+test.finalizedBy(aggregate)
