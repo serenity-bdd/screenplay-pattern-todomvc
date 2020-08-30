@@ -5,7 +5,6 @@ import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.serenitybdd.demos.todos.pageobjects.model.TodoStatus;
 import net.serenitybdd.demos.todos.pageobjects.model.TodoStatusFilter;
-import net.serenitybdd.screenplay.actions.Click;
 import net.thucydides.core.annotations.DefaultUrl;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;

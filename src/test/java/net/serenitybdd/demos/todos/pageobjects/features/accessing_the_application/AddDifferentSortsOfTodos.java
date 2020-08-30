@@ -2,7 +2,10 @@ package net.serenitybdd.demos.todos.pageobjects.features.accessing_the_applicati
 
 import net.serenitybdd.demos.todos.pageobjects.steps.TodoUserSteps;
 import net.serenitybdd.junit.runners.SerenityParameterizedRunner;
-import net.thucydides.core.annotations.*;
+import net.thucydides.core.annotations.Managed;
+import net.thucydides.core.annotations.Steps;
+import net.thucydides.core.annotations.WithTag;
+import net.thucydides.core.annotations.WithTags;
 import net.thucydides.junit.annotations.Concurrent;
 import net.thucydides.junit.annotations.TestData;
 import org.junit.Before;

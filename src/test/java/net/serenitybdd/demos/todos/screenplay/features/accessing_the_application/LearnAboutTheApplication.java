@@ -14,9 +14,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
-import static net.serenitybdd.screenplay.GivenWhenThen.givenThat;
-import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
-import static net.serenitybdd.screenplay.GivenWhenThen.then;
+import static net.serenitybdd.screenplay.GivenWhenThen.*;
 import static net.serenitybdd.screenplay.matchers.ConsequenceMatchers.displays;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
@@ -33,8 +31,12 @@ import static org.hamcrest.core.Is.is;
 public class LearnAboutTheApplication {
 
     private Actor james = Actor.named("James");
-    @Managed private WebDriver hisBrowser;
-    @Before public void jamesCanBrowseTheWeb() {
+
+    @Managed
+    private WebDriver hisBrowser;
+
+    @Before
+    public void jamesCanBrowseTheWeb() {
         james.can(BrowseTheWeb.with(hisBrowser));
     }
 

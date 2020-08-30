@@ -5,7 +5,6 @@ import net.serenitybdd.demos.todos.screenplay.user_interface.TodoListItem;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Question;
 import net.serenitybdd.screenplay.annotations.Subject;
-import net.serenitybdd.screenplay.questions.SelectedStatus;
 import net.serenitybdd.screenplay.targets.Target;
 
 @Subject("The item status for '#itemName'")
@@ -17,7 +16,8 @@ public class TheItemStatus implements Question<TodoStatus> {
     public TodoStatus answeredBy(Actor actor) {
         Target completeItemButton = TodoListItem.COMPLETE_ITEM.of(itemName);
 
-        Boolean itemChecked = SelectedStatus.of(completeItemButton).viewedBy(actor).as(Boolean.class);
+        Boolean itemChecked = completeItemButton.resolveFor(actor).isSelected();
+
         return TodoStatus.from(itemChecked);
     }
 

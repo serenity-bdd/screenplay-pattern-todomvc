@@ -5,13 +5,10 @@ import net.serenitybdd.demos.todos.pageobjects.pages.TodoListPage;
 import net.thucydides.core.ThucydidesSystemProperty;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.util.EnvironmentVariables;
-import org.assertj.core.api.SoftAssertions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import static java.util.Arrays.asList;
 import static net.serenitybdd.demos.todos.pageobjects.model.TodoStatus.Active;
 import static net.serenitybdd.demos.todos.pageobjects.model.TodoStatus.Completed;
-import static net.thucydides.core.ThucydidesSystemProperty.WEBDRIVER_BASE_URL;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;

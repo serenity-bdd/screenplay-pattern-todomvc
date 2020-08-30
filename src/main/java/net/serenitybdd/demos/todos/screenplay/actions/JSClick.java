@@ -1,7 +1,7 @@
 package net.serenitybdd.demos.todos.screenplay.actions;
 
-import net.serenitybdd.screenplay.Action;
 import net.serenitybdd.screenplay.Actor;
+import net.serenitybdd.screenplay.Interaction;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.serenitybdd.screenplay.targets.Target;
 import net.thucydides.core.annotations.Step;
@@ -12,7 +12,7 @@ import static net.serenitybdd.screenplay.Tasks.instrumented;
 /**
  * An example of a custom WebDriver Action.
  */
-public class JSClick implements Action {
+public class JSClick implements Interaction {
 
     private final Target target;
 
@@ -27,7 +27,7 @@ public class JSClick implements Action {
         BrowseTheWeb.as(theActor).evaluateJavascript("arguments[0].click()", targetElement);
     }
 
-    public static Action on(Target target) {
+    public static Interaction on(Target target) {
         return instrumented(JSClick.class, target);
     }
 

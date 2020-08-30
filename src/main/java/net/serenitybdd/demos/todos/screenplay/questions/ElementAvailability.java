@@ -6,7 +6,7 @@ import static java.lang.Boolean.TRUE;
 public enum ElementAvailability {
     Available(TRUE), Unavailable(FALSE);
 
-    private Boolean isAvailable;
+    private final Boolean isAvailable;
 
     ElementAvailability(Boolean isAvailable) {
         this.isAvailable = isAvailable;

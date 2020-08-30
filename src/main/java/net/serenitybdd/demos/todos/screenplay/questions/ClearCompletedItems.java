@@ -10,14 +10,12 @@ import static net.serenitybdd.screenplay.questions.ValueOf.the;
 
 @Subject("the 'Clear Completed' option")
 public class ClearCompletedItems implements Question<ElementAvailability> {
-
     @Override
     public ElementAvailability answeredBy(Actor actor) {
         return ElementAvailability.from(
-                the(Visibility.of(TodoList.CLEAR_COMPLETED).viewedBy(actor))
+                TodoList.CLEAR_COMPLETED.resolveFor(actor).isCurrentlyVisible()
         );
     }
-
     public static ClearCompletedItems option() {
         return new ClearCompletedItems();
     }

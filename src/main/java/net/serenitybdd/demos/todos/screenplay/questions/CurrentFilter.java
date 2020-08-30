@@ -2,22 +2,14 @@ package net.serenitybdd.demos.todos.screenplay.questions;
 
 import net.serenitybdd.demos.todos.screenplay.model.TodoStatusFilter;
 import net.serenitybdd.demos.todos.screenplay.user_interface.TodoList;
-import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Question;
-import net.serenitybdd.screenplay.annotations.Subject;
 import net.serenitybdd.screenplay.questions.Text;
 
-@Subject("the current filter")
-public class CurrentFilter implements Question<TodoStatusFilter> {
+public class CurrentFilter {
 
-    @Override
-    public TodoStatusFilter answeredBy(Actor actor) {
+    public static Question<TodoStatusFilter> selected() {
         return Text.of(TodoList.SELECTED_FILTER)
-                .viewedBy(actor)
+                .describedAs("the current filter")
                 .asEnum(TodoStatusFilter.class);
-    }
-
-    public static CurrentFilter selected() {
-        return new CurrentFilter();
     }
 }

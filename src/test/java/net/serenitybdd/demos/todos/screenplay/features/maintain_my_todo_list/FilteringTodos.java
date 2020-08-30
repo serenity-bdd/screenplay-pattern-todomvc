@@ -16,13 +16,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
-import static net.serenitybdd.demos.todos.screenplay.model.TodoStatusFilter.Active;
-import static net.serenitybdd.demos.todos.screenplay.model.TodoStatusFilter.All;
-import static net.serenitybdd.demos.todos.screenplay.model.TodoStatusFilter.Completed;
+import static net.serenitybdd.demos.todos.screenplay.model.TodoStatusFilter.*;
 import static net.serenitybdd.screenplay.GivenWhenThen.*;
-import static org.hamcrest.Matchers.contains;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.not;
+import static org.hamcrest.Matchers.*;
 
 @RunWith(SerenityRunner.class)
 @WithTags({

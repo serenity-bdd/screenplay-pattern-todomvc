@@ -2,13 +2,15 @@ package net.serenitybdd.demos.todos.cucumber.steps;
 
 
 import com.google.common.base.Splitter;
-import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.ParameterType;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import net.serenitybdd.core.annotations.events.*;
+import net.serenitybdd.core.annotations.events.AfterExample;
+import net.serenitybdd.core.annotations.events.AfterScenario;
+import net.serenitybdd.core.annotations.events.BeforeExample;
+import net.serenitybdd.core.annotations.events.BeforeScenario;
 import net.serenitybdd.demos.todos.cucumber.MissingTodoItemsException;
 import net.serenitybdd.demos.todos.screenplay.model.TodoStatusFilter;
 import net.serenitybdd.demos.todos.screenplay.questions.TheItems;
@@ -17,14 +19,13 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
 import net.thucydides.core.model.TestOutcome;
-import net.thucydides.core.steps.BaseStepListener;
-import net.thucydides.core.steps.StepEventBus;
 
 import java.util.List;
 
 import static java.util.Collections.EMPTY_LIST;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
-import static net.serenitybdd.screenplay.actors.OnStage.*;
+import static net.serenitybdd.screenplay.actors.OnStage.setTheStage;
+import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasItem;
 
@@ -35,6 +36,10 @@ public class TodoUserSteps {
         setTheStage(new OnlineCast());
     }
 
+    @Before
+    public void cucumberBeforeScenario() {
+        System.out.println("CUCUMBER BEFORE");
+    }
     //
     // These methods illustrate the Cucumber lifecycle methods available in Serenity
     //
