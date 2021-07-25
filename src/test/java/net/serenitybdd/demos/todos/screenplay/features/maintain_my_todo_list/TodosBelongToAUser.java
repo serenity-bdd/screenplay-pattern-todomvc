@@ -16,7 +16,7 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.*;
-import static org.hamcrest.Matchers.contains;
+    import static org.hamcrest.Matchers.contains;
 
 @RunWith(SerenityRunner.class)
 @WithTag("Screenplay pattern")
