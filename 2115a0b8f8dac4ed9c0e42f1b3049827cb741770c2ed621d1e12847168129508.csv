@@ -1,6 +1,0 @@
-"Story","Title","Result","Date","Stability","Duration (s)"
-"Add new todos","Should be able to add the first todo item","SUCCESS","2018-10-15T18:49:57.031+05:30[Asia/Kolkata]","0.0","9.12"
-"Add new todos","Should be able to add additional todo items","SUCCESS","2018-10-15T18:50:06.565+05:30[Asia/Kolkata]","0.0","11.04"
-"Add new todos","Adding an item to an empty list in Cucumber","SUCCESS","2018-10-15T18:36:17.257+05:30[Asia/Kolkata]","0.0","11.06"
-"Add new todos","Adding an item to a list with other items in Cucumber","SUCCESS","2018-10-15T18:36:28.367+05:30[Asia/Kolkata]","0.0","13.7"
-"Add new todos","Adding items to several peoples lists in Cucumber","SUCCESS","2018-10-15T18:36:42.118+05:30[Asia/Kolkata]","0.0","28.49"

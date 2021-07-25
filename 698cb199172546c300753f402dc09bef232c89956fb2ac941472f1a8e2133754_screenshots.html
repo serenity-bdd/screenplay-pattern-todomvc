@@ -26,27 +26,49 @@
 <!--[if IE 7]>
 <!--<link rel="stylesheet" href="font-awesome/css/font-awesome-ie7.min.css">-->
 
-<link rel="stylesheet" href="fontawesome-free-5.3.1-web/css/all.css">
-<link rel="stylesheet" href="fontawesome-free-5.3.1-web/css/v4-shims.css">
+<link rel="stylesheet" type="text/css" href="fontawesome-free-5.7.2-web/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="fontawesome-free-5.7.2-web/css/v4-shims.min.css">
 
 <!-- JQuery -->
-<script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script><link rel="stylesheet" href="chartist/chartist-plugin-tooltip/dist/chartist-plugin-tooltip.css">
-<link rel="stylesheet" href="chartist/dist/chartist.min.css">
+<script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script><link rel="stylesheet" type="text/css" href="chartist/chartist-plugin-tooltip/dist/chartist-plugin-tooltip.min.css">
+<link rel="stylesheet" type="text/css" href="chartist/dist/chartist.min.css">
 <script src="chartist/dist/chartist.min.js"></script>
-<script src="chartist/chartist-plugin-tooltip/dist/chartist-plugin-tooltip.js"></script>
+<script src="chartist/chartist-plugin-tooltip/dist/chartist-plugin-tooltip.min.js"></script>
 <!-- Required Stylesheets -->
 <link href="bootstrap-treeview/dist/bootstrap-treeview.min.css" rel="stylesheet">
 
 <!-- Required Javascript -->
 <script src="bootstrap-treeview/dist/bootstrap-treeview.min.js"></script><!-- DataTables -->
-<link type="text/css" href="datatables/1.10.19/datatables.min.css" rel="stylesheet" />
-<script type="text/javascript" src="datatables/1.10.19/datatables.min.js"></script>
+<link type="text/css" href="datatables/1.10.20/datatables.min.css" rel="stylesheet" />
+<script type="text/javascript" src="datatables/1.10.20/datatables.min.js"></script>
+<script type="text/javascript" src="datatables/1.10.20/time-elapsed-dhms.js"></script>
 
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <script src="bootstrap/js/bootstrap.min.js"></script>
 
-<script type="text/javascript" src="datatables/1.10.19/datatables.bootstrap4.min.js"></script>
-<link type="text/css" href="datatables/1.10.19/datatables.bootstrap4.min.css" rel="stylesheet" />
+<script type="text/javascript" src="datatables/1.10.20/datatables.bootstrap4.min.js"></script>
+<link type="text/css" href="datatables/1.10.20/datatables.bootstrap4.min.css" rel="stylesheet" />
+
+<script>
+    jQuery.fn.dataTable.ext.type.order['time-elapsed-dhms-pre'] = function(data) {
+
+        var matches = data.match(/^(\d+(?:\.\d+)?)\s*([a-z]+)/i);
+        var multipliers = {
+            ms: 1,
+            s: 1000,
+            m: 60000,
+            h: 3600000,
+            d: 86400000
+        };
+
+        if (matches) {
+            var multiplier = multipliers[matches[2].toLowerCase()];
+            return parseFloat(matches[1]) * multiplier;
+        } else {
+            return -1;
+        };
+    };
+</script>
 <link rel="stylesheet" href="css/core.css"/>
 <link rel="stylesheet" href="css/link.css"/>
 <link type="text/css" media="screen" href="css/screen.css" rel="Stylesheet"/><!-- Nivo Slider -->
@@ -94,7 +116,10 @@
     <div id="topbanner">
         <div id="logo"><a href="index.html"><img src="images/serenity-logo.png" border="0"/></a></div>
         <div id="projectname-banner" style="float:right">
-            <span class="projectname">Demo Project using Serenity and Cucumber</span>
+            <span class="projectname">
+                <span class="projecttitle">Demo Project using Serenity and Cucumber</span>
+                <span class="projectsubtitle"></span>
+            </span>
         </div>
     </div>
 </div>
@@ -105,7 +130,7 @@
             <span class="breadcrumbs">
                 <a href="index.html">Home</a>
                 > <span class="truncate-40"><a
-                    href="bf6f78310aabbdb388a0288ff18f5612f1e7e06d43e84809f3628e91aca9e202.html">Complete A Todo</a></span>
+                    href="127b1aab591e31a38885b786963fe85750adbd415b0e5b974c1526cdb0c2f9dd.html">Complete A Todo</a></span>
                 > <span class="truncate-60"><a
                     href="698cb199172546c300753f402dc09bef232c89956fb2ac941472f1a8e2133754.html">Should be able to complete a todo with page objects </a></span>
                 > Screenshots
@@ -132,7 +157,7 @@
             <a href="576946480b52ad056d6f5bddf874399c83582ecf90963cc074a14c70580e7d9f.html"><i class="fa fa-comments-o"></i> Features</a>
         </li>
     </ul>
-    <span class="date-and-time"><a href="build-info.html"><i class="fa fa-info-circle"></i></a> Report generated 15-10-2018 18:38</span>
+    <span class="date-and-time"><a href="build-info.html"><i class="fa fa-info-circle"></i></a> Report generated 25-07-2021 20:09</span>
     <br style="clear:left"/>
 </div>
 
@@ -148,8 +173,8 @@
                             <div>
                                 <h3 class="discreet-story-header">
                                     <i class="fa fa-2x fa-comments-o"></i>
-                                    <span class="story-header-title">Complete A Todo</span>
-                                    <span class="badge tag-badge" style="">Story</span>
+                                    <span class="story-header-title">Complete A Todo </span>
+                                    <span class="badge tag-badge" style="">Feature</span>
                                 </h3>
 
                                 <div class="discreet-requirement-narrative-title">
@@ -179,7 +204,7 @@
                 <table class="outcome-header">
                     <tr>
                         <td colspan="2" class="test-title-bar">
-                            <span class="outcome-icon"><i class='fa fa-check-circle-o success-icon fa-2x' title='SUCCESS'></i></span>
+                            <span class="outcome-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon fa-2x' title='SUCCESS'></i></a></span>
                             <span class="test-case-title">
                                 <span class="success-color">Should be able to complete a todo with page objects
                                     <span class="related-issue-title"></span>
@@ -200,16 +225,17 @@
     <div id="contenttilttle">
         <div class="slider-wrapper theme-default">
             <div id="slider">
-                <img src="aacc8efa1c09a1c974622f8ff778479c0e62e9509919eaacab628b96162fb75d.png" title="Starts with a todo list containing: {Walk the dog,Put out the garbage}" width="1600"/>
-                <img src="4b090ee259fac8e4e493fc0f09759f1816d771c62951d00e7cda5302ead769c8.png" title="Starts with a todo list containing: {Walk the dog,Put out the garbage}" width="1600"/>
-                <img src="376bccf7162d0bc656e527e4524ed70278297f2e8d68b7aa67ced0fac1e42a0a.png" title="Adds todo items called: {Walk the dog,Put out the garbage}" width="1600"/>
-                <img src="8b7f3781c6ab0e269b36bf3b49826498bf189b0a3d711fcf7d10c582de0867c0.png" title="Adds todo items called: {Walk the dog,Put out the garbage}" width="1600"/>
-                <img src="376bccf7162d0bc656e527e4524ed70278297f2e8d68b7aa67ced0fac1e42a0a.png" title="Adds a todo item called: Walk the dog" width="1600"/>
-                <img src="c4a96d087e7fbbe802d6768dd3e55c5d4b38dadf54ec068367a6eddf3525e05e.png" title="Adds a todo item called: Walk the dog" width="1600"/>
-                <img src="c4a96d087e7fbbe802d6768dd3e55c5d4b38dadf54ec068367a6eddf3525e05e.png" title="Adds a todo item called: Put out the garbage" width="1600"/>
-                <img src="8b7f3781c6ab0e269b36bf3b49826498bf189b0a3d711fcf7d10c582de0867c0.png" title="Adds a todo item called: Put out the garbage" width="1600"/>
-                <img src="2e73cbc74df7c96161799949100bbe1825e0323feecb77efbf7ecd95ca5d032e.png" title="Completes: Walk the dog" width="1600"/>
-                <img src="2af00543a3dc55a9f6992f581544756c367e8e2d2c5187132b7986faf2b42f44.png" title="Should see that that following item is marked as complete: Walk the dog: <span class='success-color'>SUCCESS</span>" width="1600"/>
+                <img src="ca9c8d3c14df543d77f6e84dab4fca0a7f3e5a3e8ceec4600ee212ed1f8775ff.png" title=" Starts with a todo list containing: {Walk the dog,Put out the garbage}" width="800"/>
+                <img src="ca9c8d3c14df543d77f6e84dab4fca0a7f3e5a3e8ceec4600ee212ed1f8775ff.png" title=" Adds todo items called: {Walk the dog,Put out the garbage}" width="800"/>
+                <img src="ca9c8d3c14df543d77f6e84dab4fca0a7f3e5a3e8ceec4600ee212ed1f8775ff.png" title=" Adds a todo item called: Walk the dog" width="800"/>
+                <img src="c666cb751ddfe7a708e4d96c2985fa4a5c670859f9c4724b67b39dd66921b02e.png" title=" Adds a todo item called: Walk the dog (completed)" width="800"/>
+                <img src="c666cb751ddfe7a708e4d96c2985fa4a5c670859f9c4724b67b39dd66921b02e.png" title=" Adds a todo item called: Put out the garbage" width="800"/>
+                <img src="9fc956efbbcd523c38b7dcb6b5f8a5f85de6eea277cbdcc55c7e030677885fcc.png" title=" Adds a todo item called: Put out the garbage (completed)" width="800"/>
+                <img src="9fc956efbbcd523c38b7dcb6b5f8a5f85de6eea277cbdcc55c7e030677885fcc.png" title=" Adds todo items called: {Walk the dog,Put out the garbage} (completed)" width="800"/>
+                <img src="9fc956efbbcd523c38b7dcb6b5f8a5f85de6eea277cbdcc55c7e030677885fcc.png" title=" Starts with a todo list containing: {Walk the dog,Put out the garbage} (completed)" width="800"/>
+                <img src="8b4635d75d287b50f0c5dd5a60da5853dc8f395b3ada5384589867362dbf2ab0.png" title=" Completes: Walk the dog" width="800"/>
+                <img src="8b4635d75d287b50f0c5dd5a60da5853dc8f395b3ada5384589867362dbf2ab0.png" title=" Should see that that following item is marked as complete: Walk the dog" width="800"/>
+                <img src="be6f2ae4927260780375c0e7439c6a653aaf8936f9f9e3ce9a7d48cc967f0a89.png" title=" Should see that the number of items left is: 1: <span class='success-color'>SUCCESS</span>" width="800"/>
             </div>
         </div>
 
@@ -218,7 +244,7 @@
 </div>
 <div id="beforefooter"></div>
 <div id="bottomfooter">
-    <span class="version">Serenity BDD version 2.0.5</span>
+    <span class="version">Serenity BDD version 2.3.30</span>
 </div>
 </body>
 </html>

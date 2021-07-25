@@ -1,3 +1,3 @@
 "Story","Title","Result","Date","Stability","Duration (s)"
-"Completing todos","Mark a task as completed in Cucumber","SUCCESS","2018-10-15T18:34:58.481+05:30[Asia/Kolkata]","0.0","14.47"
-"Completing todos","List of completed items should be empty if nothing has been completed","SUCCESS","2018-10-15T18:35:13.006+05:30[Asia/Kolkata]","0.0","16.91"
+"Completing todos","Mark a task as completed","SUCCESS","2021-07-25T20:09:46.006Z[Etc/UTC]","0.0","4.56"
+"Completing todos","List of completed items should be empty if nothing has been completed","SUCCESS","2021-07-25T20:09:50.647Z[Etc/UTC]","0.0","7.06"

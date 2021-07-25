@@ -1,3 +1,0 @@
-"Story","Title","Result","Date","Stability","Duration (s)"
-"Filtering todos","View **only completed items** #123 in Cucumber","SUCCESS","2018-10-15T18:35:29.971+05:30[Asia/Kolkata]","0.0","15.26"
-"Filtering todos","Viewing items **by status** in Cucumber","SUCCESS","2018-10-15T18:35:45.285+05:30[Asia/Kolkata]","0.0","31.7"

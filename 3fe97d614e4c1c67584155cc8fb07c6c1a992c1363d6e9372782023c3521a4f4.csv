@@ -1,4 +1,0 @@
-"Story","Title","Result","Date","Stability","Duration (s)"
-"Filtering todos","Should be able to view both complete and incomplete todos with page objects","SUCCESS","2018-10-15T18:39:20.474+05:30[Asia/Kolkata]","0.0","12.4"
-"Filtering todos","Should be able to view only completed todos with page objects","SUCCESS","2018-10-15T18:39:32.926+05:30[Asia/Kolkata]","0.0","12.09"
-"Filtering todos","Should be able to view only incomplete todos with page objects","SUCCESS","2018-10-15T18:39:45.072+05:30[Asia/Kolkata]","0.0","12.12"

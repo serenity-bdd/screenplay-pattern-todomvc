@@ -23,51 +23,99 @@
 <!--[if IE 7]>
 <!--<link rel="stylesheet" href="font-awesome/css/font-awesome-ie7.min.css">-->
 
-<link rel="stylesheet" href="fontawesome-free-5.3.1-web/css/all.css">
-<link rel="stylesheet" href="fontawesome-free-5.3.1-web/css/v4-shims.css">
+<link rel="stylesheet" type="text/css" href="fontawesome-free-5.7.2-web/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="fontawesome-free-5.7.2-web/css/v4-shims.min.css">
 
 <!-- JQuery -->
-<script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script><link rel="stylesheet" href="chartist/chartist-plugin-tooltip/dist/chartist-plugin-tooltip.css">
-<link rel="stylesheet" href="chartist/dist/chartist.min.css">
+<script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script><link rel="stylesheet" type="text/css" href="chartist/chartist-plugin-tooltip/dist/chartist-plugin-tooltip.min.css">
+<link rel="stylesheet" type="text/css" href="chartist/dist/chartist.min.css">
 <script src="chartist/dist/chartist.min.js"></script>
-<script src="chartist/chartist-plugin-tooltip/dist/chartist-plugin-tooltip.js"></script>
+<script src="chartist/chartist-plugin-tooltip/dist/chartist-plugin-tooltip.min.js"></script>
 <!-- Required Stylesheets -->
 <link href="bootstrap-treeview/dist/bootstrap-treeview.min.css" rel="stylesheet">
 
 <!-- Required Javascript -->
 <script src="bootstrap-treeview/dist/bootstrap-treeview.min.js"></script><!-- DataTables -->
-<link type="text/css" href="datatables/1.10.19/datatables.min.css" rel="stylesheet" />
-<script type="text/javascript" src="datatables/1.10.19/datatables.min.js"></script>
+<link type="text/css" href="datatables/1.10.20/datatables.min.css" rel="stylesheet" />
+<script type="text/javascript" src="datatables/1.10.20/datatables.min.js"></script>
+<script type="text/javascript" src="datatables/1.10.20/time-elapsed-dhms.js"></script>
 
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <script src="bootstrap/js/bootstrap.min.js"></script>
 
-<script type="text/javascript" src="datatables/1.10.19/datatables.bootstrap4.min.js"></script>
-<link type="text/css" href="datatables/1.10.19/datatables.bootstrap4.min.css" rel="stylesheet" />
+<script type="text/javascript" src="datatables/1.10.20/datatables.bootstrap4.min.js"></script>
+<link type="text/css" href="datatables/1.10.20/datatables.bootstrap4.min.css" rel="stylesheet" />
+
+<script>
+    jQuery.fn.dataTable.ext.type.order['time-elapsed-dhms-pre'] = function(data) {
+
+        var matches = data.match(/^(\d+(?:\.\d+)?)\s*([a-z]+)/i);
+        var multipliers = {
+            ms: 1,
+            s: 1000,
+            m: 60000,
+            h: 3600000,
+            d: 86400000
+        };
+
+        if (matches) {
+            var multiplier = multipliers[matches[2].toLowerCase()];
+            return parseFloat(matches[1]) * multiplier;
+        } else {
+            return -1;
+        };
+    };
+</script>
 <link rel="stylesheet" href="css/core.css"/>
 <link rel="stylesheet" href="css/link.css"/>
 <link type="text/css" media="screen" href="css/screen.css" rel="Stylesheet"/><!-- JQuery-UI -->
 <link type="text/css" href="jqueryui/1.11.2-start/jquery-ui.min.css" rel="Stylesheet" />
 <script type="text/javascript" src="jqueryui/1.11.2-start/jquery-ui.min.js"></script><!-- DataTables -->
-<link type="text/css" href="datatables/1.10.19/datatables.min.css" rel="stylesheet" />
-<script type="text/javascript" src="datatables/1.10.19/datatables.min.js"></script>
+<link type="text/css" href="datatables/1.10.20/datatables.min.css" rel="stylesheet" />
+<script type="text/javascript" src="datatables/1.10.20/datatables.min.js"></script>
+<script type="text/javascript" src="datatables/1.10.20/time-elapsed-dhms.js"></script>
 
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <script src="bootstrap/js/bootstrap.min.js"></script>
 
-<script type="text/javascript" src="datatables/1.10.19/datatables.bootstrap4.min.js"></script>
-<link type="text/css" href="datatables/1.10.19/datatables.bootstrap4.min.css" rel="stylesheet" />
+<script type="text/javascript" src="datatables/1.10.20/datatables.bootstrap4.min.js"></script>
+<link type="text/css" href="datatables/1.10.20/datatables.bootstrap4.min.css" rel="stylesheet" />
+
+<script>
+    jQuery.fn.dataTable.ext.type.order['time-elapsed-dhms-pre'] = function(data) {
+
+        var matches = data.match(/^(\d+(?:\.\d+)?)\s*([a-z]+)/i);
+        var multipliers = {
+            ms: 1,
+            s: 1000,
+            m: 60000,
+            h: 3600000,
+            d: 86400000
+        };
+
+        if (matches) {
+            var multiplier = multipliers[matches[2].toLowerCase()];
+            return parseFloat(matches[1]) * multiplier;
+        } else {
+            return -1;
+        };
+    };
+</script>
 <!-- ImgPreview -->
 <script src="scripts/imgpreview.full.jquery.js" type="text/javascript"></script>
 </head>
 
-
 <body class="results-page">
+
+
 <div id="topheader">
     <div id="topbanner">
         <div id="logo"><a href="index.html"><img src="images/serenity-logo.png" border="0"/></a></div>
         <div id="projectname-banner" style="float:right">
-            <span class="projectname">Demo Project using Serenity and Cucumber</span>
+            <span class="projectname">
+                <span class="projecttitle">Demo Project using Serenity and Cucumber</span>
+                <span class="projectsubtitle"></span>
+            </span>
         </div>
     </div>
 </div>
@@ -78,6 +126,8 @@
         <span class="breadcrumbs">
             <a href="index.html" class="breadcrumbs">Home</a>
 
+            > <a href="6754ed30773116911442e38ebe772acd8c029076cd1b60c9588abd4c26ff3a12.html">Maintain My Todo List</a>
+            > <a href="29a1aa75be558f91902023be408f4aeba0187fa981acbe3e69aaa0a9af2e60d2.html">Delete Todos</a>
         > Should see deleting a todo decreases the remaining items count with page objects
         </span>
         </div>
@@ -102,7 +152,7 @@
             <a href="576946480b52ad056d6f5bddf874399c83582ecf90963cc074a14c70580e7d9f.html"><i class="fa fa-comments-o"></i> Features</a>
         </li>
     </ul>
-    <span class="date-and-time"><a href="build-info.html"><i class="fa fa-info-circle"></i></a> Report generated 15-10-2018 18:38</span>
+    <span class="date-and-time"><a href="build-info.html"><i class="fa fa-info-circle"></i></a> Report generated 25-07-2021 20:09</span>
     <br style="clear:left"/>
 </div>
     <div class="clr"></div>
@@ -114,26 +164,23 @@
                 <table class="outcome-header">
                     <tr>
                         <td>
-                            <div>
-                                <h3 class="discreet-story-header">
-                                    <i class="fa fa-2x fa-comments-o"></i>
-                                    <span class="story-header-title">Delete Todos</span>
-                                </h3>
+                                <div>
+                                    <h3 class="discreet-story-header">
+                                        <i class="fa fa-2x fa-comments-o"></i>
+                                        <span class="story-header-title">Delete Todos </span>
+                                    </h3>
 
-                                <div class="discreet-requirement-narrative-title">
-                                    
                                 </div>
-                            </div>
 
                         </td>
                         <td valign="top">
-                            <p class="tag">
-                                <span class="badge tag-badge" style="background:default;">
+                                <p class="tag">
+                                    <span class="badge tag-badge" style="background:default;">
                                     <i class="fa fa-tag"></i>&nbsp;<a class="tagLink" style="background:default;"
                                                                       href="2abd80711f92a1b61030fbe84d995b322acd3452eb5b4fcf38175b2465223530.html">Pageobjects Pattern
                                     (tag)</a>
                                 </span>
-                            </p>
+                                </p>
                         </td>
                     </tr>
                 </table>
@@ -142,13 +189,14 @@
                 <table class="outcome-header">
                     <tr>
                         <td colspan="2" class="test-title-bar">
-                            <span class="outcome-icon"><i class='fa fa-check-circle-o success-icon fa-2x' title='SUCCESS'></i></span>
+                            <span class="outcome-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon fa-2x' title='SUCCESS'></i></a></span>
                             <span class="test-case-title">
                                 <span class="success-color">
                                     Should see deleting a todo decreases the remaining items count with page objects
                                         <span class="related-issue-title"></span>
                                 </span>
                             </span>
+
                         </td>
                     </tr>
                 </table>
@@ -169,206 +217,277 @@
         <div>
             <table class="step-table">
                 <tr class="step-titles">
-                    <th width="65">                        &nbsp;
+                    <th width="65">
                     </th>
-
-                    <th width="%" class="step-description-column greentext">
+                    <th class="step-description-column greentext">
                         Steps
                     </th>
-                    <th width="120" class="greentext">Screenshot</th>
-                    <th width="110" class="greentext">Outcome</th>
-                    <th width="80" class="greentext">Duration</th>
+
+                        <th width="150" class="greentext">Screenshots</th>
+                    <th width="130" class="greentext">Outcome</th>
+                    <th width="100" class="greentext"><i title="Duration" class="far fa-clock"></i></th>
                 </tr>
                 <tr class="step-table-separator">
                     <td colspan="5"></td>
                 </tr>
-                <tr class="test-SUCCESS">
-                    <td width="60" class="step-icon">
-                        <a name="0"/>
-                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0')"
-                               style="display:block">
-                                <i class="fa fa-plus-square-o imgstepSection0 success-icon"
-                                   style="margin-left: 20px; float:left;  padding-right:5px"></i>
-                            </a>
-                    </td>
-                    <td>
-                        <div class="step-description">
-                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0')"
-                               style="display:block;">
-                            <span class="top-level-step">
-                                Starts with a todo list containing: {Walk the dog,Put out the garbage}
-                            </span>
-                            </a>
 
-                        </div>
-                    </td>
-                        <td width="100" class="SUCCESS-text">
-                                <a href="687012da6fea1d59dcf4300d2baf19a3491a16012b1240f66eb96fac52e9e9f6_screenshots.html#screenshots?screenshot=0">
-                                    <!-- Added invalid href-attribute to img for imgpreviewer -->
-                                    <img src="823043cc69fa0111cd770e3912bcf8b960e99f417291c5aaabaa644237dc007e.png"
-                                         href="823043cc69fa0111cd770e3912bcf8b960e99f417291c5aaabaa644237dc007e.png"
-                                         class="screenshot"
-                                         width="48" height="48"/>
+                    <tr class="test-SUCCESS">
+
+                        <td width="50" class="step-icon">
+                            <a name="0"></a>
+                                <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0')"
+                                   style="display:block">
+                                    <i class="fa fa-plus-square-o imgstepSection0 success-icon"
+                                       style="margin-left: 20px; float:left; padding-right:5px"></i>
                                 </a>
                         </td>
-                    <td width="100"><span class="top-level-step">SUCCESS</span></td>
-                    <td width="100"><span class="top-level-step">8.64s</span></td>
-                </tr>
-                    <tr>
-                    <td colspan="5">
-                    <table id="stepSection0" style="display:none; width:100%">
 
-                <tr class="test-SUCCESS">
-                    <td width="60" class="step-icon">
-                        
-                            <span style="margin-left: 40px; margin-right: 5px;"
-                                  class="nested-icon"><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></span>
-                    </td>
-                    <td>
-                        <div class="step-description">
-                            <span class="nested-step">
-                                Adds todo items called: {Walk the dog,Put out the garbage}
-                            </span>
+                        <td class="step-description-column">
+                            <div class="step-description">
+                                <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0')"
+                                   style="display:block;">
+                                    <span class="top-level-step">
+                                                Starts with a todo list containing: {Walk the dog,Put out the garbage}
+                                        </span>
+                                </a>
+                                <span class="evidence">
+                                </span>
+                            </div>
+                        </td>
 
-                        </div>
-                    </td>
-                        <td width="100" class="SUCCESS-text">
-                                <a href="687012da6fea1d59dcf4300d2baf19a3491a16012b1240f66eb96fac52e9e9f6_screenshots.html#screenshots?screenshot=1">
-                                    <!-- Added invalid href-attribute to img for imgpreviewer -->
-                                    <img src="4b0a1e13c7b2e42c13b838bdfb27599e19e760ecb708730053aff4b0e3e1972e.png"
-                                         href="4b0a1e13c7b2e42c13b838bdfb27599e19e760ecb708730053aff4b0e3e1972e.png"
-                                         class="screenshot"
-                                         width="48" height="48"/>
+                            <td width="160" class="SUCCESS-text">
+                                    <a href="687012da6fea1d59dcf4300d2baf19a3491a16012b1240f66eb96fac52e9e9f6_screenshots.html#screenshots?screenshot=0">
+                                        <img src="ca9c8d3c14df543d77f6e84dab4fca0a7f3e5a3e8ceec4600ee212ed1f8775ff.png"
+                                             href="ca9c8d3c14df543d77f6e84dab4fca0a7f3e5a3e8ceec4600ee212ed1f8775ff.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                                    <i class="fas fa-arrow-right"></i>
+
+                                    <a href="687012da6fea1d59dcf4300d2baf19a3491a16012b1240f66eb96fac52e9e9f6_screenshots.html#screenshots?screenshot=7">
+                                        <img src="9fc956efbbcd523c38b7dcb6b5f8a5f85de6eea277cbdcc55c7e030677885fcc.png"
+                                             href="9fc956efbbcd523c38b7dcb6b5f8a5f85de6eea277cbdcc55c7e030677885fcc.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                            </td>
+                        <td width="130"><span class="top-level-step">SUCCESS</span></td>
+                        <td width="100"><span class="top-level-step">1.9s</span></td>
+                    </tr>
+                        <tr>
+                            <td colspan="5">
+                                <table id="stepSection0" class="step-table-nested" style="display:none;">
+
+                    <tr class="test-SUCCESS">
+
+                        <td width="70" class="step-icon">
+                            <a name="0-0"></a>
+                                <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0-0')"
+                                   style="display:block">
+                                    <i class="fa fa-plus-square-o imgstepSection0-0 success-icon"
+                                       style="margin-left: 40px; float:left; padding-right:5px"></i>
                                 </a>
                         </td>
-                    <td width="100"><span class="nested-step">SUCCESS</span></td>
-                    <td width="100"><span class="nested-step">1.95s</span></td>
-                </tr>
-                <tr class="test-SUCCESS">
-                    <td width="60" class="step-icon">
-                        
-                            <span style="margin-left: 60px; margin-right: 5px;"
-                                  class="nested-group-icon"><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></span>
-                    </td>
-                    <td>
-                        <div class="step-description">
-                            <span class="nested-group-step">
-                                Adds a todo item called: Walk the dog
-                            </span>
 
-                        </div>
-                    </td>
-                        <td width="100" class="SUCCESS-text">
-                                <a href="687012da6fea1d59dcf4300d2baf19a3491a16012b1240f66eb96fac52e9e9f6_screenshots.html#screenshots?screenshot=3">
-                                    <!-- Added invalid href-attribute to img for imgpreviewer -->
-                                    <img src="9d6461fac659bb8d832a3319452a6826def93872d4496cd0b908533cce073d98.png"
-                                         href="9d6461fac659bb8d832a3319452a6826def93872d4496cd0b908533cce073d98.png"
-                                         class="screenshot"
-                                         width="48" height="48"/>
+                        <td class="step-description-column">
+                            <div class="step-description">
+                                <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0-0')"
+                                   style="display:block;">
+                                    <span class="nested-step">
+                                                Adds todo items called: {Walk the dog,Put out the garbage}
+                                        </span>
                                 </a>
+                                <span class="evidence">
+                                </span>
+                            </div>
                         </td>
-                    <td width="100"><span class="nested-group-step">SUCCESS</span></td>
-                    <td width="100"><span class="nested-group-step">0.75s</span></td>
-                </tr>
-                <tr class="test-SUCCESS">
-                    <td width="60" class="step-icon">
-                        
-                            <span style="margin-left: 60px; margin-right: 5px;"
-                                  class="nested-group-icon"><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></span>
-                    </td>
-                    <td>
-                        <div class="step-description">
-                            <span class="nested-group-step">
-                                Adds a todo item called: Put out the garbage
-                            </span>
 
-                        </div>
-                    </td>
-                        <td width="100" class="SUCCESS-text">
-                                <a href="687012da6fea1d59dcf4300d2baf19a3491a16012b1240f66eb96fac52e9e9f6_screenshots.html#screenshots?screenshot=5">
-                                    <!-- Added invalid href-attribute to img for imgpreviewer -->
-                                    <img src="4b0a1e13c7b2e42c13b838bdfb27599e19e760ecb708730053aff4b0e3e1972e.png"
-                                         href="4b0a1e13c7b2e42c13b838bdfb27599e19e760ecb708730053aff4b0e3e1972e.png"
-                                         class="screenshot"
-                                         width="48" height="48"/>
-                                </a>
+                            <td width="160" class="SUCCESS-text">
+                                    <a href="687012da6fea1d59dcf4300d2baf19a3491a16012b1240f66eb96fac52e9e9f6_screenshots.html#screenshots?screenshot=1">
+                                        <img src="ca9c8d3c14df543d77f6e84dab4fca0a7f3e5a3e8ceec4600ee212ed1f8775ff.png"
+                                             href="ca9c8d3c14df543d77f6e84dab4fca0a7f3e5a3e8ceec4600ee212ed1f8775ff.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                                    <i class="fas fa-arrow-right"></i>
+
+                                    <a href="687012da6fea1d59dcf4300d2baf19a3491a16012b1240f66eb96fac52e9e9f6_screenshots.html#screenshots?screenshot=6">
+                                        <img src="9fc956efbbcd523c38b7dcb6b5f8a5f85de6eea277cbdcc55c7e030677885fcc.png"
+                                             href="9fc956efbbcd523c38b7dcb6b5f8a5f85de6eea277cbdcc55c7e030677885fcc.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                            </td>
+                        <td width="130"><span class="nested-step">SUCCESS</span></td>
+                        <td width="100"><span class="nested-step">0.88s</span></td>
+                    </tr>
+                        <tr>
+                            <td colspan="5">
+                                <table id="stepSection0-0" class="step-table-nested" style="display:none;">
+
+                    <tr class="test-SUCCESS">
+
+                        <td width="90" class="step-icon">
+                            <a name="0-0-0"></a>
+                                <span style="margin-left: 60px;"
+                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
+                                </span>
                         </td>
-                    <td width="100"><span class="nested-group-step">SUCCESS</span></td>
-                    <td width="100"><span class="nested-group-step">0.64s</span></td>
-                </tr>
 
-
-                    </table>
-                    </td>
-                    <tr>
-                <tr class="test-SUCCESS">
-                    <td width="60" class="step-icon">
-                        <a name="1"/>
-                            <span style="margin-left: 20px; margin-right: 5px;"
-                                  class="top-level-icon"><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></span>
-                    </td>
-                    <td>
-                        <div class="step-description">
-                            <span class="top-level-step">
-                                Deletes: Walk the dog
-                            </span>
-
-                        </div>
-                    </td>
-                        <td width="100" class="SUCCESS-text">
-                                <a href="687012da6fea1d59dcf4300d2baf19a3491a16012b1240f66eb96fac52e9e9f6_screenshots.html#screenshots?screenshot=7">
-                                    <!-- Added invalid href-attribute to img for imgpreviewer -->
-                                    <img src="70b66b081ecbdba80e49d13516a90ac94a9cd3664f1839d951b7b8304439d175.png"
-                                         href="70b66b081ecbdba80e49d13516a90ac94a9cd3664f1839d951b7b8304439d175.png"
-                                         class="screenshot"
-                                         width="48" height="48"/>
-                                </a>
+                        <td class="step-description-column">
+                            <div class="step-description">
+                                    <span class="nested-group-step">
+                                                Adds a todo item called: Walk the dog
+                                        </span>
+                                <span class="evidence">
+                                </span>
+                            </div>
                         </td>
-                    <td width="100"><span class="top-level-step">SUCCESS</span></td>
-                    <td width="100"><span class="top-level-step">0.58s</span></td>
-                </tr>
-                <tr class="test-SUCCESS">
-                    <td width="60" class="step-icon">
-                        <a name="2"/>
-                            <span style="margin-left: 20px; margin-right: 5px;"
-                                  class="top-level-icon"><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></span>
-                    </td>
-                    <td>
-                        <div class="step-description">
-                            <span class="top-level-step">
-                                Should see that the number of items left is: 1
-                            </span>
 
-                        </div>
-                    </td>
-                        <td width="100" class="SUCCESS-text">
-                                <a href="687012da6fea1d59dcf4300d2baf19a3491a16012b1240f66eb96fac52e9e9f6_screenshots.html#screenshots?screenshot=8">
-                                    <!-- Added invalid href-attribute to img for imgpreviewer -->
-                                    <img src="e4cad85b1d6e13d7a4c604854797b2a704d7417a572cf67efc5f36ba25b8ad8c.png"
-                                         href="e4cad85b1d6e13d7a4c604854797b2a704d7417a572cf67efc5f36ba25b8ad8c.png"
-                                         class="screenshot"
-                                         width="48" height="48"/>
-                                </a>
+                            <td width="160" class="SUCCESS-text">
+                                    <a href="687012da6fea1d59dcf4300d2baf19a3491a16012b1240f66eb96fac52e9e9f6_screenshots.html#screenshots?screenshot=2">
+                                        <img src="ca9c8d3c14df543d77f6e84dab4fca0a7f3e5a3e8ceec4600ee212ed1f8775ff.png"
+                                             href="ca9c8d3c14df543d77f6e84dab4fca0a7f3e5a3e8ceec4600ee212ed1f8775ff.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                                    <i class="fas fa-arrow-right"></i>
+
+                                    <a href="687012da6fea1d59dcf4300d2baf19a3491a16012b1240f66eb96fac52e9e9f6_screenshots.html#screenshots?screenshot=3">
+                                        <img src="c666cb751ddfe7a708e4d96c2985fa4a5c670859f9c4724b67b39dd66921b02e.png"
+                                             href="c666cb751ddfe7a708e4d96c2985fa4a5c670859f9c4724b67b39dd66921b02e.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                            </td>
+                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                        <td width="100"><span class="nested-group-step">0.39s</span></td>
+                    </tr>
+                    <tr class="test-SUCCESS">
+
+                        <td width="90" class="step-icon">
+                            <a name="0-0-1"></a>
+                                <span style="margin-left: 60px;"
+                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
+                                </span>
                         </td>
-                    <td width="100"><span class="top-level-step">SUCCESS</span></td>
-                    <td width="100"><span class="top-level-step">0.56s</span></td>
-                </tr>
+
+                        <td class="step-description-column">
+                            <div class="step-description">
+                                    <span class="nested-group-step">
+                                                Adds a todo item called: Put out the garbage
+                                        </span>
+                                <span class="evidence">
+                                </span>
+                            </div>
+                        </td>
+
+                            <td width="160" class="SUCCESS-text">
+                                    <a href="687012da6fea1d59dcf4300d2baf19a3491a16012b1240f66eb96fac52e9e9f6_screenshots.html#screenshots?screenshot=4">
+                                        <img src="c666cb751ddfe7a708e4d96c2985fa4a5c670859f9c4724b67b39dd66921b02e.png"
+                                             href="c666cb751ddfe7a708e4d96c2985fa4a5c670859f9c4724b67b39dd66921b02e.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                                    <i class="fas fa-arrow-right"></i>
+
+                                    <a href="687012da6fea1d59dcf4300d2baf19a3491a16012b1240f66eb96fac52e9e9f6_screenshots.html#screenshots?screenshot=5">
+                                        <img src="9fc956efbbcd523c38b7dcb6b5f8a5f85de6eea277cbdcc55c7e030677885fcc.png"
+                                             href="9fc956efbbcd523c38b7dcb6b5f8a5f85de6eea277cbdcc55c7e030677885fcc.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                            </td>
+                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                        <td width="100"><span class="nested-group-step">0.34s</span></td>
+                    </tr>
+
+                                </table>
+                            </td>
+                        </tr>
+
+                                </table>
+                            </td>
+                        </tr>
+                    <tr class="test-SUCCESS">
+
+                        <td width="50" class="step-icon">
+                            <a name="1"></a>
+                                <span style="margin-left: 20px;"
+                                      class="top-level-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                        </td>
+
+                        <td class="step-description-column">
+                            <div class="step-description">
+                                    <span class="top-level-step">
+                                                Deletes: Walk the dog
+                                        </span>
+                                <span class="evidence">
+                                </span>
+                            </div>
+                        </td>
+
+                            <td width="160" class="SUCCESS-text">
+
+                                    <a href="687012da6fea1d59dcf4300d2baf19a3491a16012b1240f66eb96fac52e9e9f6_screenshots.html#screenshots?screenshot=9">
+                                        <img src="9fc956efbbcd523c38b7dcb6b5f8a5f85de6eea277cbdcc55c7e030677885fcc.png"
+                                             href="9fc956efbbcd523c38b7dcb6b5f8a5f85de6eea277cbdcc55c7e030677885fcc.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                            </td>
+                        <td width="130"><span class="top-level-step">SUCCESS</span></td>
+                        <td width="100"><span class="top-level-step">0.04s</span></td>
+                    </tr>
+                    <tr class="test-SUCCESS">
+
+                        <td width="50" class="step-icon">
+                            <a name="2"></a>
+                                <span style="margin-left: 20px;"
+                                      class="top-level-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                        </td>
+
+                        <td class="step-description-column">
+                            <div class="step-description">
+                                    <span class="top-level-step">
+                                                Should see that the number of items left is: 1
+                                        </span>
+                                <span class="evidence">
+                                </span>
+                            </div>
+                        </td>
+
+                            <td width="160" class="SUCCESS-text">
+
+                                    <a href="687012da6fea1d59dcf4300d2baf19a3491a16012b1240f66eb96fac52e9e9f6_screenshots.html#screenshots?screenshot=11">
+                                        <img src="9c39660a45b9ab58547c2d5a959f836e6992582555e70a350660a5804e4898c7.png"
+                                             href="9c39660a45b9ab58547c2d5a959f836e6992582555e70a350660a5804e4898c7.png"
+                                             class="screenshot"
+                                             width="48" height="48"/>
+                                    </a>
+                            </td>
+                        <td width="130"><span class="top-level-step">SUCCESS</span></td>
+                        <td width="100"><span class="top-level-step">0.18s</span></td>
+                    </tr>
                 <tr class="test-SUCCESS">
-                    <td colspan="3"></td>
-                    <td width="100"><span class="top-level-step"><em>SUCCESS</em></span></td>
-                    <td width="100"><span class="top-level-step"><em>9.93s</em></span></td>
+                        <td colspan="3"></td>
+                    <td width="130"><span class="top-level-step"><em>SUCCESS</em></span></td>
+                    <td width="100"><span class="top-level-step"><em>2.28s</em></span></td>
                 </tr>
 
             </table>
         </div>
     </div>
+
     <div id="beforefooter"></div>
 
 
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
-                <span class="version">Serenity BDD version 2.0.5</span>
+                <span class="version">Serenity BDD version 2.3.30</span>
             </div>
         </div>
     </div>
@@ -382,8 +501,7 @@
                     return "images/minus.png";
                 });
 
-            }
-            else {
+            } else {
                 $(".img" + divId).attr("src", function () {
                     return "images/plus.png";
                 });
@@ -407,7 +525,7 @@
         //]]>
     </script>
     <div id="imgPreviewContainer" style="position: absolute; top: 612px; left: 355px; display: none; " class=""><img
-            src="" style="display: none; "></div>
+                src="" style="display: none; "></div>
     <div id="imgPreviewContainer2" style="position: absolute; top: 925px; left: 320px; display: none; " class="">
         <img style="width: 200px; display: none; " src=""></div>
     <div id="imgPreviewWithStyles" style="position: absolute; top: 1272px; left: 321px; display: none; " class="">
@@ -415,5 +533,6 @@
     <div id="imgPreviewWithStyles2" style="display: none; position: absolute; "><img style="height: 200px; "></div>
     <div id="imgPreviewWithStyles3" style="display: none; position: absolute; "><img style="height: 200px; "></div>
 
+</div>
 </body>
 </html>

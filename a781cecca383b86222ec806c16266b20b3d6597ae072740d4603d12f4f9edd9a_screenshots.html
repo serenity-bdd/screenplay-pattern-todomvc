@@ -26,27 +26,49 @@
 <!--[if IE 7]>
 <!--<link rel="stylesheet" href="font-awesome/css/font-awesome-ie7.min.css">-->
 
-<link rel="stylesheet" href="fontawesome-free-5.3.1-web/css/all.css">
-<link rel="stylesheet" href="fontawesome-free-5.3.1-web/css/v4-shims.css">
+<link rel="stylesheet" type="text/css" href="fontawesome-free-5.7.2-web/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="fontawesome-free-5.7.2-web/css/v4-shims.min.css">
 
 <!-- JQuery -->
-<script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script><link rel="stylesheet" href="chartist/chartist-plugin-tooltip/dist/chartist-plugin-tooltip.css">
-<link rel="stylesheet" href="chartist/dist/chartist.min.css">
+<script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script><link rel="stylesheet" type="text/css" href="chartist/chartist-plugin-tooltip/dist/chartist-plugin-tooltip.min.css">
+<link rel="stylesheet" type="text/css" href="chartist/dist/chartist.min.css">
 <script src="chartist/dist/chartist.min.js"></script>
-<script src="chartist/chartist-plugin-tooltip/dist/chartist-plugin-tooltip.js"></script>
+<script src="chartist/chartist-plugin-tooltip/dist/chartist-plugin-tooltip.min.js"></script>
 <!-- Required Stylesheets -->
 <link href="bootstrap-treeview/dist/bootstrap-treeview.min.css" rel="stylesheet">
 
 <!-- Required Javascript -->
 <script src="bootstrap-treeview/dist/bootstrap-treeview.min.js"></script><!-- DataTables -->
-<link type="text/css" href="datatables/1.10.19/datatables.min.css" rel="stylesheet" />
-<script type="text/javascript" src="datatables/1.10.19/datatables.min.js"></script>
+<link type="text/css" href="datatables/1.10.20/datatables.min.css" rel="stylesheet" />
+<script type="text/javascript" src="datatables/1.10.20/datatables.min.js"></script>
+<script type="text/javascript" src="datatables/1.10.20/time-elapsed-dhms.js"></script>
 
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <script src="bootstrap/js/bootstrap.min.js"></script>
 
-<script type="text/javascript" src="datatables/1.10.19/datatables.bootstrap4.min.js"></script>
-<link type="text/css" href="datatables/1.10.19/datatables.bootstrap4.min.css" rel="stylesheet" />
+<script type="text/javascript" src="datatables/1.10.20/datatables.bootstrap4.min.js"></script>
+<link type="text/css" href="datatables/1.10.20/datatables.bootstrap4.min.css" rel="stylesheet" />
+
+<script>
+    jQuery.fn.dataTable.ext.type.order['time-elapsed-dhms-pre'] = function(data) {
+
+        var matches = data.match(/^(\d+(?:\.\d+)?)\s*([a-z]+)/i);
+        var multipliers = {
+            ms: 1,
+            s: 1000,
+            m: 60000,
+            h: 3600000,
+            d: 86400000
+        };
+
+        if (matches) {
+            var multiplier = multipliers[matches[2].toLowerCase()];
+            return parseFloat(matches[1]) * multiplier;
+        } else {
+            return -1;
+        };
+    };
+</script>
 <link rel="stylesheet" href="css/core.css"/>
 <link rel="stylesheet" href="css/link.css"/>
 <link type="text/css" media="screen" href="css/screen.css" rel="Stylesheet"/><!-- Nivo Slider -->
@@ -94,7 +116,10 @@
     <div id="topbanner">
         <div id="logo"><a href="index.html"><img src="images/serenity-logo.png" border="0"/></a></div>
         <div id="projectname-banner" style="float:right">
-            <span class="projectname">Demo Project using Serenity and Cucumber</span>
+            <span class="projectname">
+                <span class="projecttitle">Demo Project using Serenity and Cucumber</span>
+                <span class="projectsubtitle"></span>
+            </span>
         </div>
     </div>
 </div>
@@ -105,7 +130,7 @@
             <span class="breadcrumbs">
                 <a href="index.html">Home</a>
                 > <span class="truncate-40"><a
-                    href="72569109b74b6d6ba16a9d2e5283a67319ed824e64c8fed955ed9bbb23e24609.html">Add New Todos</a></span>
+                    href="8a3c538fb0c4c17cde2e1222380acfde784c86450334fc2aaff8274399bc6c50.html">Add New Todos</a></span>
                 > <span class="truncate-60"><a
                     href="a781cecca383b86222ec806c16266b20b3d6597ae072740d4603d12f4f9edd9a.html">Should be able to add additional todo items with page objects </a></span>
                 > Screenshots
@@ -132,7 +157,7 @@
             <a href="576946480b52ad056d6f5bddf874399c83582ecf90963cc074a14c70580e7d9f.html"><i class="fa fa-comments-o"></i> Features</a>
         </li>
     </ul>
-    <span class="date-and-time"><a href="build-info.html"><i class="fa fa-info-circle"></i></a> Report generated 15-10-2018 18:37</span>
+    <span class="date-and-time"><a href="build-info.html"><i class="fa fa-info-circle"></i></a> Report generated 25-07-2021 20:09</span>
     <br style="clear:left"/>
 </div>
 
@@ -148,8 +173,8 @@
                             <div>
                                 <h3 class="discreet-story-header">
                                     <i class="fa fa-2x fa-comments-o"></i>
-                                    <span class="story-header-title">Add New Todos</span>
-                                    <span class="badge tag-badge" style="">Story</span>
+                                    <span class="story-header-title">Add New Todos </span>
+                                    <span class="badge tag-badge" style="">Feature</span>
                                 </h3>
 
                                 <div class="discreet-requirement-narrative-title">
@@ -179,7 +204,7 @@
                 <table class="outcome-header">
                     <tr>
                         <td colspan="2" class="test-title-bar">
-                            <span class="outcome-icon"><i class='fa fa-check-circle-o success-icon fa-2x' title='SUCCESS'></i></span>
+                            <span class="outcome-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon fa-2x' title='SUCCESS'></i></a></span>
                             <span class="test-case-title">
                                 <span class="success-color">Should be able to add additional todo items with page objects
                                     <span class="related-issue-title"></span>
@@ -200,16 +225,16 @@
     <div id="contenttilttle">
         <div class="slider-wrapper theme-default">
             <div id="slider">
-                <img src="823043cc69fa0111cd770e3912bcf8b960e99f417291c5aaabaa644237dc007e.png" title="Starts with a todo list containing: {Walk the dog,Put out the garbage}" width="1600"/>
-                <img src="9911f41bad01933244db7448a4831926a4aa572cdf2a3ee57404f9c2f516c734.png" title="Adds todo items called: {Walk the dog,Put out the garbage}" width="1600"/>
-                <img src="4b0a1e13c7b2e42c13b838bdfb27599e19e760ecb708730053aff4b0e3e1972e.png" title="Adds todo items called: {Walk the dog,Put out the garbage}" width="1600"/>
-                <img src="9911f41bad01933244db7448a4831926a4aa572cdf2a3ee57404f9c2f516c734.png" title="Adds a todo item called: Walk the dog" width="1600"/>
-                <img src="9d6461fac659bb8d832a3319452a6826def93872d4496cd0b908533cce073d98.png" title="Adds a todo item called: Walk the dog" width="1600"/>
-                <img src="9d6461fac659bb8d832a3319452a6826def93872d4496cd0b908533cce073d98.png" title="Adds a todo item called: Put out the garbage" width="1600"/>
-                <img src="4b0a1e13c7b2e42c13b838bdfb27599e19e760ecb708730053aff4b0e3e1972e.png" title="Adds a todo item called: Put out the garbage" width="1600"/>
-                <img src="4b0a1e13c7b2e42c13b838bdfb27599e19e760ecb708730053aff4b0e3e1972e.png" title="Adds a todo item called: Buy some milk" width="1600"/>
-                <img src="faa4a310b4f235f52fb27d445b7f44d65a06119e24c8f614acdc05a552171063.png" title="Adds a todo item called: Buy some milk" width="1600"/>
-                <img src="d640a1b7b13e647865d6a84c746a30309495395f5fb618e5a3e4e2c1f5ed363a.png" title="Should see that displayed items contain: {Walk the dog,Put out the garbage,Buy some milk}: <span class='success-color'>SUCCESS</span>" width="1600"/>
+                <img src="ca9c8d3c14df543d77f6e84dab4fca0a7f3e5a3e8ceec4600ee212ed1f8775ff.png" title=" Starts with a todo list containing: {Walk the dog,Put out the garbage}" width="800"/>
+                <img src="ca9c8d3c14df543d77f6e84dab4fca0a7f3e5a3e8ceec4600ee212ed1f8775ff.png" title=" Adds todo items called: {Walk the dog,Put out the garbage}" width="800"/>
+                <img src="ca9c8d3c14df543d77f6e84dab4fca0a7f3e5a3e8ceec4600ee212ed1f8775ff.png" title=" Adds a todo item called: Walk the dog" width="800"/>
+                <img src="c666cb751ddfe7a708e4d96c2985fa4a5c670859f9c4724b67b39dd66921b02e.png" title=" Adds a todo item called: Walk the dog (completed)" width="800"/>
+                <img src="c666cb751ddfe7a708e4d96c2985fa4a5c670859f9c4724b67b39dd66921b02e.png" title=" Adds a todo item called: Put out the garbage" width="800"/>
+                <img src="9fc956efbbcd523c38b7dcb6b5f8a5f85de6eea277cbdcc55c7e030677885fcc.png" title=" Adds a todo item called: Put out the garbage (completed)" width="800"/>
+                <img src="9fc956efbbcd523c38b7dcb6b5f8a5f85de6eea277cbdcc55c7e030677885fcc.png" title=" Adds todo items called: {Walk the dog,Put out the garbage} (completed)" width="800"/>
+                <img src="9fc956efbbcd523c38b7dcb6b5f8a5f85de6eea277cbdcc55c7e030677885fcc.png" title=" Starts with a todo list containing: {Walk the dog,Put out the garbage} (completed)" width="800"/>
+                <img src="39bbbf58870fe8b6b8af32984420ddedfce2a64e07e8bd9137ba23cc9c317229.png" title=" Adds a todo item called: Buy some milk" width="800"/>
+                <img src="39bbbf58870fe8b6b8af32984420ddedfce2a64e07e8bd9137ba23cc9c317229.png" title=" Should see that displayed items contain: {Walk the dog,Put out the garbage,Buy some milk}: <span class='success-color'>SUCCESS</span>" width="800"/>
             </div>
         </div>
 
@@ -218,7 +243,7 @@
 </div>
 <div id="beforefooter"></div>
 <div id="bottomfooter">
-    <span class="version">Serenity BDD version 2.0.5</span>
+    <span class="version">Serenity BDD version 2.3.30</span>
 </div>
 </body>
 </html>

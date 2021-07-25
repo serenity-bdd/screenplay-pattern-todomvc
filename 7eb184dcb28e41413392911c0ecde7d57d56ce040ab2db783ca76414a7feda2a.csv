@@ -1,7 +1,0 @@
-"Story","Title","Result","Date","Stability","Duration (s)"
-"Toggle all todos","Should see how many items todo when all are toggled to incomplete","SUCCESS","2018-10-15T18:50:20.683+05:30[Asia/Kolkata]","0.0","10.55"
-"Toggle all todos","Should be able to quickly complete all todos","SUCCESS","2018-10-15T18:50:31.287+05:30[Asia/Kolkata]","0.0","11.87"
-"Toggle all todos","Should be able to toggle status of all todos","SUCCESS","2018-10-15T18:50:43.215+05:30[Asia/Kolkata]","0.0","12.67"
-"Toggle all todos","Should see that there are zero items todo when all are toggled complete","SUCCESS","2018-10-15T18:50:55.938+05:30[Asia/Kolkata]","0.0","11.44"
-"Complete a todo","Should be able to complete a todo","SUCCESS","2018-10-15T18:51:07.614+05:30[Asia/Kolkata]","0.0","13.54"
-"Complete a todo","Should see the number of todos decrease when an item is completed","SUCCESS","2018-10-15T18:51:21.204+05:30[Asia/Kolkata]","0.0","11.84"

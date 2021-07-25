@@ -1,3 +1,5 @@
 "Story","Title","Result","Date","Stability","Duration (s)"
-"Clear completed todos","Should not be able to clear completed todos if none are complete","SUCCESS","2018-10-15T18:52:01.22+05:30[Asia/Kolkata]","0.0","12.23"
-"Clear completed todos","Should be able to clear completed todos","SUCCESS","2018-10-15T18:52:13.506+05:30[Asia/Kolkata]","0.0","12.56"
+"Clear completed todos","Should not be able to clear completed todos if none are complete","SUCCESS","2021-07-25T20:09:17.184Z[Etc/UTC]","0.0","2.57"
+"Clear completed todos","Should be able to clear completed todos","SUCCESS","2021-07-25T20:09:17.352Z[Etc/UTC]","0.0","3.12"
+"Clear completed todos","Should not be able to clear completed todos if none are complete with page objects","SUCCESS","2021-07-25T20:09:39.958Z[Etc/UTC]","0.0","2.24"
+"Clear completed todos","Should be able to clear completed todos with page objects","SUCCESS","2021-07-25T20:09:40.105Z[Etc/UTC]","0.0","2.59"

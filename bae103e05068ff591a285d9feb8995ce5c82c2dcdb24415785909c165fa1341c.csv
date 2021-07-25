@@ -1,3 +1,0 @@
-"Story","Title","Result","Date","Stability","Duration (s)"
-"Delete todos","Should be able to delete todos","SUCCESS","2018-10-15T18:51:33.182+05:30[Asia/Kolkata]","0.0","15.3"
-"Delete todos","Should see deleting a todo decreases the remaining items count","SUCCESS","2018-10-15T18:51:48.538+05:30[Asia/Kolkata]","0.0","12.56"

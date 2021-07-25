@@ -1,4 +1,0 @@
-"Story","Title","Result","Date","Stability","Duration (s)"
-"Filtering todos","Should be able to view only incomplete todos","SUCCESS","2018-10-15T18:32:30.615+05:30[Asia/Kolkata]","0.0","15.04"
-"Filtering todos","Should be able to view only completed todos","SUCCESS","2018-10-15T18:32:45.713+05:30[Asia/Kolkata]","0.0","13.34"
-"Filtering todos","Should be able to view both complete and incomplete todos","SUCCESS","2018-10-15T18:32:59.106+05:30[Asia/Kolkata]","0.0","16.65"
