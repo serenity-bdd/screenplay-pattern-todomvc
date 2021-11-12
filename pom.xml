@@ -18,6 +18,7 @@
         <encoding>UTF-8</encoding>
         <serenity.test.root></serenity.test.root>
         <tags></tags>
+        <name>Serenity Shutterbug 1.x integration</name>
     </properties>
 
     <repositories>
@@ -47,6 +48,11 @@
     </pluginRepositories>
 
     <dependencies>
+        <dependency>
+            <groupId>net.serenity-bdd</groupId>
+            <artifactId>serenity-shutterbug1x</artifactId>
+            <version>${serenity.version}</version>
+        </dependency>
         <dependency>
             <groupId>net.serenity-bdd</groupId>
             <artifactId>serenity-core</artifactId>
