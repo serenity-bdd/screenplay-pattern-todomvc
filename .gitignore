@@ -9,3 +9,4 @@ target/
 .DS_Store
 .gradle
 build
+/todomvc-master.zip.crdownload

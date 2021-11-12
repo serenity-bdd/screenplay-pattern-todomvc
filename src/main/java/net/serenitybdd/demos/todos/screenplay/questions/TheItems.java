@@ -11,9 +11,13 @@ import java.util.List;
  */
 public class TheItems {
     public static Question<List<String>> displayed() {
-        return Text.of(TodoList.ITEMS)
+//        return Text.of(TodoList.ITEMS)
+//                .describedAs("the items displayed")
+//                .asAList();
+
+        return Text.ofEach(TodoList.ITEMS)
                 .describedAs("the items displayed")
-                .asAList();
+                .asListOf(String.class);
     }
 
     public static Question<Integer> leftCount() {

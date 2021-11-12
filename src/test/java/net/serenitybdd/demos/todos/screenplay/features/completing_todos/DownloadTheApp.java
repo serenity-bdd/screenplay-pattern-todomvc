@@ -43,7 +43,7 @@ public class DownloadTheApp {
 
         givenThat(james).wasAbleTo(Open.url("http://todomvc.com/"));
 
-        List<String> dl;
+//        List<String> dl;
 
         when(james).attemptsTo(
                 Click.on(By.linkText("Download"))

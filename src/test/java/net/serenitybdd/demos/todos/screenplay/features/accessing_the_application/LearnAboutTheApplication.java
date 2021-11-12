@@ -27,6 +27,7 @@ import static org.hamcrest.core.Is.is;
 @WithTags({
         @WithTag("Screenplay pattern"),
         @WithTag("version:RELEASE-1"),
+        @WithTag("Smoke:LeanTheApplication"),
 })
 public class LearnAboutTheApplication {
 

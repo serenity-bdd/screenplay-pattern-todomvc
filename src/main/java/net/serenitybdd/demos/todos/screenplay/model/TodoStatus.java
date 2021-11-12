@@ -14,7 +14,9 @@ public enum TodoStatus {
 
     public static TodoStatus from(Boolean itemChecked) {
         for (TodoStatus todoStatus : values()) {
-            if(todoStatus.whenChecked == itemChecked) { return todoStatus; }
+            if(todoStatus.whenChecked == itemChecked) {
+                return todoStatus;
+            }
         }
         throw new IllegalArgumentException("Illegal value " + itemChecked);
     }

@@ -11,9 +11,9 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <serenity.version>2.3.30</serenity.version>
-        <serenity.maven.version>2.3.30</serenity.maven.version>
-        <serenity.cucumber.version>2.3.13</serenity.cucumber.version>
+        <serenity.version>3.0.5</serenity.version>
+        <serenity.maven.version>3.0.5</serenity.maven.version>
+        <serenity.cucumber.version>2.6.0</serenity.cucumber.version>
         <parallel.tests>4</parallel.tests>
         <encoding>UTF-8</encoding>
         <serenity.test.root></serenity.test.root>
@@ -28,6 +28,11 @@
             <id>central</id>
             <name>bintray</name>
             <url>https://jcenter.bintray.com</url>
+        </repository>
+        <repository>
+            <id>maven_central</id>
+            <name>Maven Central</name>
+            <url>https://repo.maven.apache.org/maven2/</url>
         </repository>
     </repositories>
     <pluginRepositories>
@@ -80,7 +85,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <version>4.13.2</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -111,7 +116,7 @@
             </plugin>
             <plugin>
                 <artifactId>maven-failsafe-plugin</artifactId>
-                <version>2.22.1</version>
+                <version>3.0.0-M5</version>
                 <configuration>
                     <includes>
                         <include>**/features/**/*.java</include>

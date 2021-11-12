@@ -25,6 +25,7 @@ import static org.hamcrest.Matchers.is;
 @WithTags({
         @WithTag("Screenplay pattern"),
         @WithTag("version:RELEASE-2"),
+        @WithTag("smoke:ListTodo"),
 })
 public class ClearCompletedTodos {
 

@@ -9,6 +9,6 @@ public class Placeholder {
         return Attribute.of(TodoList.WHAT_NEEDS_TO_BE_DONE)
                         .named("placeholder")
                         .describedAs("the placeholder text")
-                        .asAString();
+                        .asString();
     }
 }
