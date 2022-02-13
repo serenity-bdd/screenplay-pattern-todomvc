@@ -1,5 +1,0 @@
-"Story","Title","Result","Date","Stability","Duration (s)"
-"Toggle all todos","Should be able to quickly complete all todos with page objects","SUCCESS","2022-02-13T09:29:33.181918632Z[Etc/UTC]","0.0","1.0"
-"Deleting todos","Should be able to delete todos with page objects","SUCCESS","2022-02-13T09:29:39.884385276Z[Etc/UTC]","0.0","0.96"
-"Deleting todos","Should see deleting a todo decreases the remaining items count with page objects","SUCCESS","2022-02-13T09:29:40.954323983Z[Etc/UTC]","0.0","0.94"
-"Clear completed todos","Should not be able to clear completed todos if none are complete with page objects","SUCCESS","2022-02-13T09:29:43.401023825Z[Etc/UTC]","0.0","0.93"
