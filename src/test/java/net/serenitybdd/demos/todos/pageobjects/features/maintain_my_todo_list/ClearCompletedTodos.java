@@ -15,18 +15,24 @@ public class ClearCompletedTodos {
 
     @Managed WebDriver driver;
 
-    @Steps   TodoUserSteps james;
+    @Steps(shared = true)
+    TodoUserSteps james;
 
     @Test
     public void should_be_able_to_clear_completed_todos_with_page_objects() {
 
-        james.starts_with_a_todo_list_containing("Walk the dog", "Put out the garbage");
+        try {
+            james.starts_with_a_todo_list_containing("Walk the dog", "Put out the garbage");
 
-        james.completes("Walk the dog");
+            james.completes("Walk the dog");
 
-        james.clears_completed_items();
+            james.clears_completed_items();
 
-        james.should_see_that_displayed_items_contain("Put out the garbage");
+            james.should_see_that_displayed_items_contain("Put out the garbage");
+        } catch(Exception e) {
+            e.printStackTrace();
+            throw e;
+        }
     }
 
     @Test

@@ -16,7 +16,8 @@ public class FilteringTodos {
 
     @Managed WebDriver driver;
 
-    @Steps   TodoUserSteps james;
+    @Steps(shared = true)
+    TodoUserSteps james;
 
     @Test
     public void should_be_able_to_view_only_completed_todos_with_page_objects() {

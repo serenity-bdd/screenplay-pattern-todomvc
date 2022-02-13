@@ -11,11 +11,12 @@ import org.openqa.selenium.WebDriver;
 
 @RunWith(SerenityRunner.class)
 @WithTag("PageObjects pattern")
-public class DeleteTodos {
+public class DeleteingTodos {
 
     @Managed WebDriver driver;
 
-    @Steps   TodoUserSteps james;
+    @Steps(shared = true)
+    TodoUserSteps james;
 
     @Test
     public void should_be_able_to_delete_todos_with_page_objects() {

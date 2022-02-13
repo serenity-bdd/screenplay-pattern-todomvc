@@ -14,10 +14,10 @@ import org.openqa.selenium.WebDriver;
 })
 public class ToggleAllTodos {
 
-    @Managed//(driver = "chrome", options = "--headless")
+    @Managed
     WebDriver driver;
 
-    @Steps
+    @Steps(shared = true)
     TodoUserSteps james;
 
     @Test

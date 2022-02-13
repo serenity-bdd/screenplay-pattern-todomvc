@@ -23,11 +23,15 @@ import static org.hamcrest.Matchers.contains;
         @WithTag("Screenplay pattern"),
         @WithTag("version:RELEASE-1"),
 })
-public class DeleteTodos {
+public class DeletingTodos {
 
-    @Managed private WebDriver hisBrowser;
+    @Managed
+    private WebDriver hisBrowser;
+
     private Actor james = Actor.named("James");
-    @Before public void jamesCanBrowseTheWeb() {
+
+    @Before
+    public void jamesCanBrowseTheWeb() {
         james.can(BrowseTheWeb.with(hisBrowser));
     }
 
@@ -36,9 +40,7 @@ public class DeleteTodos {
 
         givenThat(james).wasAbleTo(Start.withATodoListContaining("Walk the dog", "Put out the garbage"));
 
-        when(james).attemptsTo(
-                DeleteAnItem.called("Walk the dog")
-        );
+        when(james).attemptsTo(DeleteAnItem.called("Walk the dog"));
 
         then(james).should(seeThat(TheItems.displayed(), contains("Put out the garbage")));
     }

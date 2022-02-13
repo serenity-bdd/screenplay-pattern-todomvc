@@ -36,39 +36,11 @@ public class TodoUserSteps {
         setTheStage(new OnlineCast());
     }
 
-    @Before
-    public void cucumberBeforeScenario() {
-        System.out.println("CUCUMBER BEFORE");
-    }
-    //
-    // These methods illustrate the Cucumber lifecycle methods available in Serenity
-    //
-    @BeforeScenario
-    public void beforeScenario(TestOutcome outcome) {
-        System.out.println("BEFORE SCENARIO " + outcome.getName());
-    }
-
-    @BeforeScenario
-    public void beforeAScenario() {
-        System.out.println("BEFORE SCENARIO");
-    }
-
-    @BeforeExample
-    public void beforeExample() {
-        System.out.println("BEFORE EXAMPLE");
-    }
-
     @AfterExample
     public void deleteAllTheTasks() {
-        System.out.println("AFTER EXAMPLE");
         theActorInTheSpotlight().attemptsTo(
                 DeleteAllTheItems.onThePage()
         );
-    }
-
-    @AfterScenario
-    public void afterScenario(TestOutcome outcome) {
-        System.out.println("AFTER SCENARIO " + outcome.getName());
     }
 
     @ParameterType(".*")

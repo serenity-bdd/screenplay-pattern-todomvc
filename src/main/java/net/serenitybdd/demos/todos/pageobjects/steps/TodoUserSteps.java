@@ -30,15 +30,16 @@ public class TodoUserSteps {
         starts_with_a_todo_list_containing();
     }
 
-    EnvironmentVariables environmentVariables;
     @Step
     public void starts_with_a_todo_list_containing(String... items) {
         todoListPage.openApplication();
 
-        String baseUrl = ThucydidesSystemProperty.WEBDRIVER_BASE_URL.from(environmentVariables);
-
-
-        adds_todo_items_called(items);
+        try {
+            adds_todo_items_called(items);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        }
     }
 
     @Step
