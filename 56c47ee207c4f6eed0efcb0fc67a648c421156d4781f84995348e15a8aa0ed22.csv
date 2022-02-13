@@ -1,5 +1,0 @@
-"Story","Title","Result","Date","Stability","Duration (s)"
-"Toggle all todos","Should be able to toggle status of all todos with page objects","SUCCESS","2021-07-25T20:09:25.344Z[Etc/UTC]","0.0","4.67"
-"Toggle all todos","Should be able to quickly complete all todos with page objects","SUCCESS","2021-07-25T20:09:25.546Z[Etc/UTC]","0.0","4.89"
-"Toggle all todos","Should see that there are zero items todo when all are toggled complete with page objects","SUCCESS","2021-07-25T20:09:25.793Z[Etc/UTC]","0.0","4.41"
-"Toggle all todos","Should see how many items todo when all are toggled to incomplete with page objects","SUCCESS","2021-07-25T20:09:26.002Z[Etc/UTC]","0.0","4.57"

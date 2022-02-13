@@ -1,3 +1,0 @@
-"Story","Title","Result","Date","Stability","Duration (s)"
-"Clear completed todos","Should not be able to clear completed todos if none are complete","SUCCESS","2021-07-25T20:09:17.184Z[Etc/UTC]","0.0","2.57"
-"Clear completed todos","Should be able to clear completed todos","SUCCESS","2021-07-25T20:09:17.352Z[Etc/UTC]","0.0","3.12"

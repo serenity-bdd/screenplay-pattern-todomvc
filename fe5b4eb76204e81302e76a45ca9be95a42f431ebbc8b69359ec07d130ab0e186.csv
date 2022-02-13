@@ -1,0 +1,5 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Learn about the application","Should be able to identify the application","SUCCESS","2022-02-13T09:25:10.864631238Z[Etc/UTC]","0.0","0.93"
+"Learn about the application","Should see how to begin","SUCCESS","2022-02-13T09:25:11.900584286Z[Etc/UTC]","0.0","0.76"
+"Add new todos","Should be able to add the first todo item","SUCCESS","2022-02-13T09:25:08.243638531Z[Etc/UTC]","0.0","0.9"
+"Add new todos","Adding an item to an empty list in Cucumber","SUCCESS","2022-02-13T09:24:30.097123697Z[Etc/UTC]","0.0","0.97"

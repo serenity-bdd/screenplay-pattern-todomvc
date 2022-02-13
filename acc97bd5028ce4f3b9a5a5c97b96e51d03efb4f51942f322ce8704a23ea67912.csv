@@ -1,3 +1,0 @@
-"Story","Title","Result","Date","Stability","Duration (s)"
-"Add new todos","Should be able to add the first todo item","SUCCESS","2021-07-25T20:08:42.903Z[Etc/UTC]","0.0","3.28"
-"Add new todos","Should be able to add additional todo items","SUCCESS","2021-07-25T20:08:43.19Z[Etc/UTC]","0.0","3.84"

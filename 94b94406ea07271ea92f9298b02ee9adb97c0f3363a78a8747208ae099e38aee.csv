@@ -1,5 +1,0 @@
-"Story","Title","Result","Date","Stability","Duration (s)"
-"Delete todos","Should see deleting a todo decreases the remaining items count","SUCCESS","2021-07-25T20:09:05.122Z[Etc/UTC]","0.0","2.53"
-"Delete todos","Should be able to delete todos","SUCCESS","2021-07-25T20:09:05.292Z[Etc/UTC]","0.0","2.45"
-"Delete todos","Should see deleting a todo decreases the remaining items count with page objects","SUCCESS","2021-07-25T20:09:33.025Z[Etc/UTC]","0.0","2.28"
-"Delete todos","Should be able to delete todos with page objects","SUCCESS","2021-07-25T20:09:33.172Z[Etc/UTC]","0.0","1.76"

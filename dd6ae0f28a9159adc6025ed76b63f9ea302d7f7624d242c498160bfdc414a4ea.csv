@@ -1,3 +1,0 @@
-"Story","Title","Result","Date","Stability","Duration (s)"
-"Clear completed todos","Should not be able to clear completed todos if none are complete with page objects","SUCCESS","2021-07-25T20:09:39.958Z[Etc/UTC]","0.0","2.24"
-"Clear completed todos","Should be able to clear completed todos with page objects","SUCCESS","2021-07-25T20:09:40.105Z[Etc/UTC]","0.0","2.59"

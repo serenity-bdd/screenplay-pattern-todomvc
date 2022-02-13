@@ -1,5 +1,0 @@
-"Story","Title","Result","Date","Stability","Duration (s)"
-"Learn about the application","Should be able to identify the application","SUCCESS","2021-07-25T20:09:20.63Z[Etc/UTC]","0.0","1.6"
-"Learn about the application","Should see how to begin","SUCCESS","2021-07-25T20:09:20.778Z[Etc/UTC]","0.0","1.25"
-"Learn about the application","Should be able to identify the application with page objects","SUCCESS","2021-07-25T20:09:42.819Z[Etc/UTC]","0.0","2.64"
-"Learn about the application","Should see how to begin with page objects","SUCCESS","2021-07-25T20:09:42.958Z[Etc/UTC]","0.0","2.43"

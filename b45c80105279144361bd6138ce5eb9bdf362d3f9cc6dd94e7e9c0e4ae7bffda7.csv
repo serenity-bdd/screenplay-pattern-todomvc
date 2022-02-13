@@ -1,4 +1,0 @@
-"Story","Title","Result","Date","Stability","Duration (s)"
-"Complete a todo","Should be able to complete a todo with page objects","SUCCESS","2021-07-25T20:09:30.731Z[Etc/UTC]","0.0","2.26"
-"Add new todos","Should be able to add additional todo items with page objects","SUCCESS","2021-07-25T20:09:22.346Z[Etc/UTC]","0.0","2.74"
-"Add new todos","Test to resolve issue #616172","SUCCESS","2021-07-25T20:09:22.535Z[Etc/UTC]","0.0","2.68"

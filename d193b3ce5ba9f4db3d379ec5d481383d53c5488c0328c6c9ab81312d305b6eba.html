@@ -22,31 +22,19 @@
 <meta name="msapplication-TileColor" content="#ffffff">
 <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
-<!--[if IE 7]>
-<!--<link rel="stylesheet" href="font-awesome/css/font-awesome-ie7.min.css">-->
-
-<link rel="stylesheet" type="text/css" href="fontawesome-free-5.7.2-web/css/all.min.css">
-<link rel="stylesheet" type="text/css" href="fontawesome-free-5.7.2-web/css/v4-shims.min.css">
-
-<!-- JQuery -->
-<script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script><link rel="stylesheet" type="text/css" href="chartist/chartist-plugin-tooltip/dist/chartist-plugin-tooltip.min.css">
-<link rel="stylesheet" type="text/css" href="chartist/dist/chartist.min.css">
-<script src="chartist/dist/chartist.min.js"></script>
-<script src="chartist/chartist-plugin-tooltip/dist/chartist-plugin-tooltip.min.js"></script>
-<!-- Required Stylesheets -->
+<link rel="stylesheet" href="bootstrap-icons/font/bootstrap-icons.css"><!-- JQuery -->
+<script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script><!-- Required Stylesheets -->
 <link href="bootstrap-treeview/dist/bootstrap-treeview.min.css" rel="stylesheet">
 
 <!-- Required Javascript -->
 <script src="bootstrap-treeview/dist/bootstrap-treeview.min.js"></script><!-- DataTables -->
-<link type="text/css" href="datatables/1.10.20/datatables.min.css" rel="stylesheet" />
-<script type="text/javascript" src="datatables/1.10.20/datatables.min.js"></script>
-<script type="text/javascript" src="datatables/1.10.20/time-elapsed-dhms.js"></script>
+<link type="text/css" href="datatables/1.11.3/datatables.min.css" rel="stylesheet" />
+<script type="text/javascript" src="datatables/1.11.3/datatables.min.js"></script>
+<script type="text/javascript" src="datatables/1.11.3/time-elapsed-dhms.js"></script>
 
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <script src="bootstrap/js/bootstrap.min.js"></script>
 
-<script type="text/javascript" src="datatables/1.10.20/datatables.bootstrap4.min.js"></script>
-<link type="text/css" href="datatables/1.10.20/datatables.bootstrap4.min.css" rel="stylesheet" />
 
 <script>
     jQuery.fn.dataTable.ext.type.order['time-elapsed-dhms-pre'] = function(data) {
@@ -70,18 +58,25 @@
 </script>
 <link rel="stylesheet" href="css/core.css"/>
 <link rel="stylesheet" href="css/link.css"/>
-<link type="text/css" media="screen" href="css/screen.css" rel="Stylesheet"/><!-- JQuery-UI -->
+<link type="text/css" media="screen" href="css/screen.css" rel="Stylesheet"/>
+<!--CHART.JS-->
+<script src="chartjs/chart.js"></script>
+<script src="chartjs/chartjs-plugin-datalabels@2.0.0"></script>
+<script src="chartjs/patternomaly.min.js"></script>
+<script>
+    // Register the plugin to all charts:
+    Chart.register(ChartDataLabels);
+</script>
+<!-- JQuery-UI -->
 <link type="text/css" href="jqueryui/1.11.2-start/jquery-ui.min.css" rel="Stylesheet" />
 <script type="text/javascript" src="jqueryui/1.11.2-start/jquery-ui.min.js"></script><!-- DataTables -->
-<link type="text/css" href="datatables/1.10.20/datatables.min.css" rel="stylesheet" />
-<script type="text/javascript" src="datatables/1.10.20/datatables.min.js"></script>
-<script type="text/javascript" src="datatables/1.10.20/time-elapsed-dhms.js"></script>
+<link type="text/css" href="datatables/1.11.3/datatables.min.css" rel="stylesheet" />
+<script type="text/javascript" src="datatables/1.11.3/datatables.min.js"></script>
+<script type="text/javascript" src="datatables/1.11.3/time-elapsed-dhms.js"></script>
 
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <script src="bootstrap/js/bootstrap.min.js"></script>
 
-<script type="text/javascript" src="datatables/1.10.20/datatables.bootstrap4.min.js"></script>
-<link type="text/css" href="datatables/1.10.20/datatables.bootstrap4.min.css" rel="stylesheet" />
 
 <script>
     jQuery.fn.dataTable.ext.type.order['time-elapsed-dhms-pre'] = function(data) {
@@ -103,6 +98,7 @@
         };
     };
 </script>
+
 
 
 
@@ -134,12 +130,12 @@
             });
 
             $('#evidence-table').DataTable(
-                    {
-                        searching: false,
-                        ordering: false,
-                        paging: false,
-                        info: false
-                    }
+                {
+                    searching: false,
+                    ordering: false,
+                    paging: false,
+                    info: false
+                }
             );
 
 
@@ -148,15 +144,16 @@
             $("#requirements-tabs").tabs();
             $("#test-tabs").tabs();
 
-            var requirementsTree = [{"text":"Record todos","type":"capability","href":"d193b3ce5ba9f4db3d379ec5d481383d53c5488c0328c6c9ab81312d305b6eba.html","nodes":[{"text":"Add new todos","type":"feature","href":"8a3c538fb0c4c17cde2e1222380acfde784c86450334fc2aaff8274399bc6c50.html","nodes":[],"selectable":false,"tags":["\u003ca href\u003d\u0027##beforetable\u0027\u003e\u003ci class\u003d\u0027fa fa-check-circle-o success-icon \u0027 title\u003d\u0027SUCCESS\u0027\u003e\u003c/i\u003e\u003c/a\u003e","\u003cspan class\u003d\u0027feature-count\u0027\u003e7 scenarios\u003c/span\u003e"]}],"selectable":false,"tags":["","\u003cspan class\u003d\u0027feature-count\u0027\u003e2 features\u003c/span\u003e"]}];
+            var requirementsTree = [{"text":"Record todos","type":"capability","href":"d193b3ce5ba9f4db3d379ec5d481383d53c5488c0328c6c9ab81312d305b6eba.html","nodes":[{"text":"Add new todos","type":"feature","href":"8a3c538fb0c4c17cde2e1222380acfde784c86450334fc2aaff8274399bc6c50.html","nodes":[],"selectable":false,"tags":["\u003ca href\u003d\u0027##beforetable\u0027\u003e\u003ci class\u003d\u0027bi bi-check-circle-fill success-icon \u0027 title\u003d\u0027SUCCESS\u0027\u003e\u003c/i\u003e\u003c/a\u003e","\u003cspan class\u003d\u0027feature-count\u0027\u003e7 scenarios\u003c/span\u003e"]}],"selectable":false,"tags":["\u003ca href\u003d\u0027##beforetable\u0027\u003e\u003ci class\u003d\u0027bi bi-check-circle-fill success-icon \u0027 title\u003d\u0027SUCCESS\u0027\u003e\u003c/i\u003e\u003c/a\u003e","\u003cspan class\u003d\u0027feature-count\u0027\u003e2 features\u003c/span\u003e"]}];
 
             $('#tree').treeview({
                 data: requirementsTree,
                 enableLinks: true,
+                levels: 10,
                 showTags: true,
-                expandIcon: "glyphicon glyphicon-folder-close",
-                collapseIcon: "glyphicon glyphicon-folder-open",
-                emptyIcon: "glyphicon glyphicon-book"
+                expandIcon: "bi bi-journal-plus",
+                collapseIcon: "bi bi-journal-minus",
+                emptyIcon: "bi bi-journal"
             });
 
         });
@@ -172,6 +169,7 @@
         });
     </script>
 </head>
+
 
 <body class="results-page">
 <div id="topheader">
@@ -195,7 +193,7 @@
 
 
 
-                > <span class="truncate-40">Record Todos</span>
+                    > <span class="truncate-40">Record Todos</span>
 
             </span>
         </div>
@@ -208,19 +206,19 @@
 <div>
     <ul class="nav nav-tabs" role="tablist">
         <li >
-            <a href="index.html"><i class="fa fa-check-square-o"></i> Overall Test Results</a>
+            <a href="index.html"><i class="bi bi-journal-check"></i> Overall Test Results</a>
         </li>
         <li >
-            <a href="capabilities.html"><i class="fa fa-book"></i> Requirements</a>
+            <a href="capabilities.html"><i class="bi bi-journal-text"></i> Requirements</a>
         </li>
         <li class="active">
-            <a href="#"><i class="fa fa-comments-o"></i> Capabilities</a>
+            <a href="#"><i class="bi bi-chat-text"></i> Capabilities</a>
         </li>
         <li >
-            <a href="576946480b52ad056d6f5bddf874399c83582ecf90963cc074a14c70580e7d9f.html"><i class="fa fa-comments-o"></i> Features</a>
+            <a href="576946480b52ad056d6f5bddf874399c83582ecf90963cc074a14c70580e7d9f.html"><i class="bi bi-chat-text"></i> Features</a>
         </li>
     </ul>
-    <span class="date-and-time"><a href="build-info.html"><i class="fa fa-info-circle"></i></a> Report generated 25-07-2021 20:08</span>
+    <span class="date-and-time"><a href="build-info.html"><i class="bi bi-info-circle"></i></a> Report generated 13-02-2022 09:24</span>
     <br style="clear:left"/>
 </div>
 
@@ -229,490 +227,253 @@
     <div id="beforetable"></div>
     <div id="results-dashboard">
         <div class="table">
-                <div class=row">
-                    <div class="col-sm-12">
-                        <div>
-                            <div clas="table">
-                                <div class="row">
+            <div class=row">
+                <div class="col-sm-12">
+                    <div>
+                        <div clas="table">
+                            <div class="row">
                                     <div class="col-sm-12">
-                                    <span>
-                                            <h2><i class="fa fa-book"></i> Capability:  Record Todos</h2>
+                                        <span>
+                                            <h2><i class="bi bi-book"></i> Capability:  Record Todos</h2>
                                         </span>
-                                </div>
-                                </div>
+                                    </div>
                                 </div>
                             </div>
+                        </div>
                             <div class="requirementNarrativeTitle">
                                 
                             </div>
 
-                        </div>
                     </div>
+                </div>
 
 
-            <div class="row">
-                <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-12">
 
-                    <!-- Requirements result tabs -->
-                    <ul class="nav nav-tabs">
-                        <li class="active">
-                            <a data-toggle="tab" href="#specs"><i class="fas fa-comments"></i> Specifications</a>
-                        </li>
-                        <li>
-                            <a data-toggle="tab" href="#results"><i class="fas fa-tachometer-alt"></i> Test Results</a>
-                        </li>
-                    </ul>
+                        <!-- Requirements result tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active">
+                                <a data-toggle="tab" href="#specs"><i class="bi bi-journal-text"></i> Specifications</a>
+                            </li>
+                            <li>
+                                <a data-toggle="tab" href="#results"><i class="bi bi-speedometer"></i> Test Results</a>
+                            </li>
+                        </ul>
 
-                    <!-- Specifications and Results tabs -->
-                    <div class="card border">
-                        <div class="tab-content" id="pills-tabContent">
-                            <div id="specs" class="tab-pane fade in active">
-                                <div class="container-fluid">
-                                    <div class="row">
-                                        <div class="col-sm-12">
+                        <!-- Specifications and Results tabs -->
+                        <div class="card border">
+                            <div class="tab-content" id="pills-tabContent">
+                                <div id="specs" class="tab-pane fade in active">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-sm-12">
 
-                                            <h3>Requirements Overview</h3>
+                                                    <h3>Requirements Overview</h3>
 
-                                            <div id="tree"></div>
+                                                    <div id="tree"></div>
 
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+
+                                <div id="results" class="tab-pane fade">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <!-- PIE CHART -->
+                                                    <div class="chart-container" style="position: relative; width:30vw">
+                                                        <canvas id="resultChart" width="300" height="300"></canvas>
+                                                    </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <h4><i class="bi bi-check-square"></i> Test Outcomes</h4>
+                                                <!-- Severity bar chart -->
+                                                <div class="chart-container" style="position: relative; width:30vw">
+                                                    <canvas id="severityChart" width="300" height="300"></canvas>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <h4><i class="bi bi-graph-up"></i> Test Performance</h4>
+
+                                                <!-- Duration bar chart -->
+                                                <div class="chart-container" style="position: relative; width:30vw">
+                                                    <canvas id="durationChart" width="300" height="300"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <h3><i class="bi bi-gear"></i> Automated Tests</h3>
+
+                                                    <table class="scenario-result-table table"
+                                                           id="scenario-results">
+                                                        <thead>
+                                                        <tr>
+                                                                <th>feature</th>
+                                                            <th class="test-name-column">Scenario</th>
+                                                            <th>Steps</th>
+                                                            <th>Started</th>
+                                                            <th>Duration</th>
+                                                            <th>Result</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr class="scenario-result SUCCESS">
+                                                                    <td>
+                                                                            <a href="8a3c538fb0c4c17cde2e1222380acfde784c86450334fc2aaff8274399bc6c50.html">Add new todos</a>
+                                                                    </td>
+                                                                <td>
+                                                                        <a href="c0031a00cd1bf7c4c94df45cf4fdb1835c988ee79ffdcaf5537b722359543291.html">Test to resolve issue #616172</a>
+                                                                </td>
+                                                                <td>3</td>
+                                                                <td>09:24:38</td>
+                                                                <td>1s 821ms</td>
+                                                                <td>
+                                                                        <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                            style="display:none">SUCCESS</span>
+                                                                                                                                    </td>
+                                                            </tr>
+                                                            <tr class="scenario-result SUCCESS">
+                                                                    <td>
+                                                                            <a href="8a3c538fb0c4c17cde2e1222380acfde784c86450334fc2aaff8274399bc6c50.html">Add new todos</a>
+                                                                    </td>
+                                                                <td>
+                                                                        <a href="a781cecca383b86222ec806c16266b20b3d6597ae072740d4603d12f4f9edd9a.html">Should be able to add additional todo items with page objects</a>
+                                                                </td>
+                                                                <td>3</td>
+                                                                <td>09:24:40</td>
+                                                                <td>1s 478ms</td>
+                                                                <td>
+                                                                        <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                            style="display:none">SUCCESS</span>
+                                                                                                                                    </td>
+                                                            </tr>
+                                                            <tr class="scenario-result SUCCESS">
+                                                                    <td>
+                                                                            <a href="8a3c538fb0c4c17cde2e1222380acfde784c86450334fc2aaff8274399bc6c50.html">Add new todos</a>
+                                                                    </td>
+                                                                <td>
+                                                                        <a href="d082746569f1850b330bf15006a08a481b73c87b68af9da91b203b0f19d4f0fb.html">Should be able to add the first todo item</a>
+                                                                </td>
+                                                                <td>3</td>
+                                                                <td>09:25:08</td>
+                                                                <td>896ms</td>
+                                                                <td>
+                                                                        <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                            style="display:none">SUCCESS</span>
+                                                                                                                                    </td>
+                                                            </tr>
+                                                            <tr class="scenario-result SUCCESS">
+                                                                    <td>
+                                                                            <a href="8a3c538fb0c4c17cde2e1222380acfde784c86450334fc2aaff8274399bc6c50.html">Add new todos</a>
+                                                                    </td>
+                                                                <td>
+                                                                        <a href="2128e8df1285a18524ec40ce1790bb690f8d3f6e8ef4fc48e33a15f7e7f5866c.html">Should be able to add additional todo items</a>
+                                                                </td>
+                                                                <td>3</td>
+                                                                <td>09:25:09</td>
+                                                                <td>1s 450ms</td>
+                                                                <td>
+                                                                        <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                            style="display:none">SUCCESS</span>
+                                                                                                                                    </td>
+                                                            </tr>
+                                                            <tr class="scenario-result SUCCESS">
+                                                                    <td>
+                                                                            <a href="8a3c538fb0c4c17cde2e1222380acfde784c86450334fc2aaff8274399bc6c50.html">Add new todos</a>
+                                                                    </td>
+                                                                <td>
+                                                                        <a href="c6311261ad65c634633fba50e2099c459e67d7a63452e84119ce6088119f3ca1.html">Adding an item to an empty list in Cucumber</a>
+                                                                </td>
+                                                                <td>3</td>
+                                                                <td>09:24:30</td>
+                                                                <td>967ms</td>
+                                                                <td>
+                                                                        <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                            style="display:none">SUCCESS</span>
+                                                                                                                                    </td>
+                                                            </tr>
+                                                            <tr class="scenario-result SUCCESS">
+                                                                    <td>
+                                                                            <a href="8a3c538fb0c4c17cde2e1222380acfde784c86450334fc2aaff8274399bc6c50.html">Add new todos</a>
+                                                                    </td>
+                                                                <td>
+                                                                        <a href="38b6d55c947496e6d6aa34d225ed3898937686dc4501a5a69f75ea0388d78d20.html">Adding an item to a list with other items in Cucumber</a>
+                                                                </td>
+                                                                <td>3</td>
+                                                                <td>09:24:31</td>
+                                                                <td>1s 458ms</td>
+                                                                <td>
+                                                                        <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                            style="display:none">SUCCESS</span>
+                                                                                                                                    </td>
+                                                            </tr>
+                                                            <tr class="scenario-result SUCCESS">
+                                                                    <td>
+                                                                            <a href="8a3c538fb0c4c17cde2e1222380acfde784c86450334fc2aaff8274399bc6c50.html">Add new todos</a>
+                                                                    </td>
+                                                                <td>
+                                                                        <a href="3e02f32a1bd29f62a5833d42660c5643a663fd187579db32fcd23da2c4cab305.html">Adding items to several peoples lists in Cucumber</a>
+                                                                </td>
+                                                                <td>5</td>
+                                                                <td>09:24:32</td>
+                                                                <td>2s 709ms</td>
+                                                                <td>
+                                                                        <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                            style="display:none">SUCCESS</span>
+                                                                                                                                    </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <h3><i class="bi bi-hand-index-thumb"></i> Manual Tests</h3>
+
+                                                    No manual tests were recorded
+
+                                            </div>
+                                        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <h3>Tags</h3>
+                    <div class="card">
+                        <div class="card-body">
+                            <div>
+                                    <a href="2abd80711f92a1b61030fbe84d995b322acd3452eb5b4fcf38175b2465223530.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Pageobjects Pattern&nbsp;&nbsp;&nbsp;2
+                                    </span>
+                                    </a>
+                                    <a href="053b54a36df6819388f81474e5a2d572a44c9aabf4446457afe50ab397e81910.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Screenplay Pattern&nbsp;&nbsp;&nbsp;2
+                                    </span>
+                                    </a>
+                                    <a href="980553ab65ac3a80cb226527d564bcf09dfb50e9d5c6245f24578a314fb4b271.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Cucumber&nbsp;&nbsp;&nbsp;3
+                                    </span>
+                                    </a>
+                                    <a href="d0e3033e1d4fd450bad910c731185f5c272a3350c68ca7cf2b9537e0aceae6af.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Adding&nbsp;&nbsp;&nbsp;3
+                                    </span>
+                                    </a>
                             </div>
-
-                            <div id="results" class="tab-pane fade">
-                                <div class="container-fluid">
-                                    <div class="row">
-                                        <div class="col-sm-4">
-
-                                            <div style="width:300px;" class="chart-container automated-and-manual-results">
-                                                <div class="ct-chart ct-square"></div>
-                                            </div>
-                                            <script>
-
-                                                var labels = ['100%', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
-                                                // Our series array that contains series objects or in this case series data arrays
-
-                                                var series = [{meta: 'Passing tests (automated)', value: 7}, {meta: 'Passing tests (manual)', value: 0}, {meta: 'Pending tests (automated)', value: 0}, {meta: 'Pending tests (manual)', value: 0}, {meta: 'Ignored tests (automated)', value: 0}, {meta: 'Ignored tests (manual)', value: 0}, {meta: 'Skipped tests (automated)', value: 0}, {meta: 'Skipped tests (manual)', value: 0}, {meta: 'Failing tests (automated)', value: 0}, {meta: 'Failing tests (manual)', value: 0}, {meta: 'Broken tests (automated)', value: 0}, {meta: 'Broken tests (manual)', value: 0}, {meta: 'Compromised tests (automated)', value: 0}, {meta: 'Compromised tests (manual)', value: 0}];
-
-                                                // As options we currently only set a static size of 300x200 px. We can also omit this and use aspect ratio containers
-                                                // as you saw in the previous example
-                                                var options = {
-                                                    width: 350,
-                                                    height: 300
-                                                };
-
-                                                $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-                                                    new Chartist.Pie('.ct-chart', {
-                                                        series: series,
-                                                        labels: labels,
-                                                    }, {
-                                                        donut: true,
-                                                        donutWidth: 60,
-                                                        donutSolid: true,
-                                                        startAngle: 270,
-                                                        showLabel: true
-                                                    }, options);
-                                                });
-
-                                            </script>
-                                        </div>
-                                        <div class="col-sm-8">
-
-                                        <table class="table">
-                                            <thead>
-                                            <tr>
-                                                <th scope="col">Scenario Results (including rows of test data)</th>
-                                                <th scope="col" colspan="2" class="automated-stats">
-                                                    Automated
-                                                </th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            <tr>
-                                                                    <td class="aggregate-result-count">
-                                                                        <a href="2f95572f6c6594a9c7022151284a2a1c5fc07ea4b9bc78ec8a28c2f1cc3e107a.html"><i
-                                                                                class='fa fa-check-circle-o success-icon'></i>&nbsp;Passing</a>
-                                                                    </td>
-                                                <td class="automated-stats">7</td>
-                                                <td class="automated-stats">100%</td>
-                                            </tr>
-                                            <tr>
-                                                                    <td class="aggregate-result-count"><i
-                                                                            class='fa fa-stop-circle-o pending-icon'></i>&nbsp;Pending
-                                                                    </td>
-                                                <td class="automated-stats">0</td>
-                                                <td class="automated-stats"> </td>
-                                            </tr>
-                                            <tr>
-                                                                <td class="aggregate-result-count"><i
-                                                                        class='fa fa-ban ignored-icon'></i>&nbsp;Ignored
-                                                                </td>
-                                                <td class="automated-stats">0</td>
-                                                <td class="automated-stats"> </td>
-                                            </tr>
-                                            <tr>
-                                                                <td class="aggregate-result-count"><i
-                                                                        class='fa fa-fast-forward skip-icon'></i>&nbsp;Skipped
-                                                                </td>
-                                                <td class="automated-stats">0</td>
-                                                <td class="automated-stats"> </td>
-                                            </tr>
-                                            <tr>
-                                                                            <td colspan="3"><i
-                                                                                class='fa fa-times failure-icon'></i>&nbsp;<em>Unsuccessful</em></a>
-                                                                            </td>
-
-                                            </tr>
-
-                                            <tr>
-                                                                <td class="aggregate-result-count indented-error-category">
-                                                                    <i
-                                                                            class='fa fa-times-circle failure-icon'></i>&nbsp;Failed
-                                                                </td>
-                                                <td class="automated-stats">0</td>
-                                                <td class="automated-stats"> </td>
-                                            <tr>
-                                                                <td class="aggregate-result-count indented-error-category">
-                                                                    <i
-                                                                            class='fa fa-exclamation-triangle error-icon'></i>&nbsp;Broken
-                                                                </td>
-                                                <td class="automated-stats">0</td>
-                                                <td class="automated-stats"> </td>
-                                            <tr>
-                                                                <td class="aggregate-result-count indented-error-category">
-                                                                    <i
-                                                                            class='fa fa-chain-broken compromised-icon'></i>&nbsp;Compromised
-                                                                </td>
-                                                <td class="automated-stats">0</td>
-                                                <td class="automated-stats"> </td>
-                                            </tr>
-                                            <tr class="summary-stats">
-                                                <td class="aggregate-result-count">Total</td>
-                                                <td class="automated-stats">7</td>
-                                                <td class="automated-stats"></td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    </div>
-
-                                        <div class="row">
-                                            <div class="col-sm-12">
-                                                <table class="table">
-                                                    <thead>
-                                                    <tr>
-                                                        <th>Execution Time</th>
-                                                        <th>Clock Time</th>
-                                                        <th>Fastest Test</th>
-                                                        <th>Slowest Test</th>
-                                                        <th>Average Execution Time</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    <tr>
-                                                        <td>26s</td>
-                                                        <td> 1m 12s</td>
-                                                        <td>2s</td>
-                                                        <td>5s</td>
-                                                        <td>3s</td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="row">
-                                            <div class="col-sm-12">
-                                                <h3><i class="fas fa-clipboard-check"></i> Functional Coverage</h3>
-
-
-
-<h4 class="requireent-type-heading">Features</h4>
-
-<table class="scenario-result table" id="req-results-table">
-    <thead>
-        <tr>
-            <th class="requirement-name-column" width="60%">Feature</th>
-            <th>ID</th>
-            <th>Automated Tests</th>
-                <th>Manual Tests</th>
-            <th>Results</th>
-            <th>Coverage</th>
-        </tr>
-    </thead>
-    <tbody>
-
-
-        <tr>
-
-
-            <td> 
-                <a href="8a3c538fb0c4c17cde2e1222380acfde784c86450334fc2aaff8274399bc6c50.html">Add new todos</a></span>
-            </td>
-            <td> 
-                
-            </td>
-            <td>7</td>
-            <td>0</td>
-            <td>
-                <span class="status_icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a></span>
-                <span style="display:none">1</span>
-            </td>
-
-            <td width="165px">
-
-
-<table>
-    <tr>
-        <td width="40px" style="padding-top:4px;">
-            <div class="small" style="text-align:right;">100%</div>
-        </td>
-        <td style="min-width:12.5em;">
-            <div class="progress">
-                <div class="progress-bar" role="progressbar"
-                     style="width: 100%; background-color:#30cb23;"
-                     aria-valuenow="7"
-                     aria-valuemin="0"
-                     aria-valuemax="7"
-                     title="  - Total tests: 7
-  - Passing tests: 7 (100%)
-  - Failing tests: 0 (0%)
-  - Tests with errors: 0 (0%)
-  - Compromised tests 0 (0%)
-  - Pending tests: 0 (0%)
-  - Ignored or skipped tests: 0 (0%)">
-                </div>
-                <div class="progress-bar" role="progressbar"
-                     style="width: 0%; background-color:#A2C4EC;"
-                     aria-valuenow="0"
-                     aria-valuemin="0"
-                     aria-valuemax="7"
-                     title="  - Total tests: 7
-  - Passing tests: 7 (100%)
-  - Failing tests: 0 (0%)
-  - Tests with errors: 0 (0%)
-  - Compromised tests 0 (0%)
-  - Pending tests: 0 (0%)
-  - Ignored or skipped tests: 0 (0%)">
-                </div>
-                <div class="progress-bar" role="progressbar"
-                     style="width: 0%; background-color:darkgrey;"
-                     aria-valuenow="0"
-                     aria-valuemin="0"
-                     aria-valuemax="7"
-                     title="  - Total tests: 7
-  - Passing tests: 7 (100%)
-  - Failing tests: 0 (0%)
-  - Tests with errors: 0 (0%)
-  - Compromised tests 0 (0%)
-  - Pending tests: 0 (0%)
-  - Ignored or skipped tests: 0 (0%)">
-                </div>
-                <div class="progress-bar" role="progressbar"
-                     style="width: 0%; background-color:#EEE098;"
-                     aria-valuenow="0"
-                     aria-valuemin="0"
-                     aria-valuemax="7"
-                     title="  - Total tests: 7
-  - Passing tests: 7 (100%)
-  - Failing tests: 0 (0%)
-  - Tests with errors: 0 (0%)
-  - Compromised tests 0 (0%)
-  - Pending tests: 0 (0%)
-  - Ignored or skipped tests: 0 (0%)">
-                </div>
-                <div class="progress-bar" role="progressbar"
-                     style="width: 0%; background-color:#f8001f;"
-                     aria-valuenow="0"
-                     aria-valuemin="0"
-                     aria-valuemax="7"
-                     title="  - Total tests: 7
-  - Passing tests: 7 (100%)
-  - Failing tests: 0 (0%)
-  - Tests with errors: 0 (0%)
-  - Compromised tests 0 (0%)
-  - Pending tests: 0 (0%)
-  - Ignored or skipped tests: 0 (0%)">
-                </div>
-                <div class="progress-bar" role="progressbar"
-                     style="width: 0%; background-color:darkorange;"
-                     aria-valuenow="0"
-                     aria-valuemin="0"
-                     aria-valuemax="7"
-                     title="  - Total tests: 7
-  - Passing tests: 7 (100%)
-  - Failing tests: 0 (0%)
-  - Tests with errors: 0 (0%)
-  - Compromised tests 0 (0%)
-  - Pending tests: 0 (0%)
-  - Ignored or skipped tests: 0 (0%)">
-                </div>
-                <div class="progress-bar" role="progressbar"
-                     style="width: 0%; background-color:fuchsia;"
-                     aria-valuenow="0"
-                     aria-valuemin="0"
-                     aria-valuemax="7"
-                     title="  - Total tests: 7
-  - Passing tests: 7 (100%)
-  - Failing tests: 0 (0%)
-  - Tests with errors: 0 (0%)
-  - Compromised tests 0 (0%)
-  - Pending tests: 0 (0%)
-  - Ignored or skipped tests: 0 (0%)">
-                </div>
+                        </div>
+                    </div>
             </div>
-        </td>
-    </tr>
-</table>
-            </td>
-
-        </tr>
-    </tbody>
-</table>
-
-
-
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-sm-12">
-                                                <h3><i class="fas fa-cogs"></i> Automated Tests</h3>
-
-                                            <table class="scenario-result-table table" id="scenario-results">
-                                                <thead>
-                                                <tr>
-                                                    <th>feature</th>
-                                                    <th class="test-name-column">Scenario</th>
-                                                    <th>Steps</th>
-                                                    <th>Start Time</th>
-                                                    <th>Duration</th>
-                                                    <th>Result</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                <tr class="scenario-result SUCCESS">
-                                                    <td>
-                                                            <a href="8a3c538fb0c4c17cde2e1222380acfde784c86450334fc2aaff8274399bc6c50.html">Add new todos</a>
-                                                    </td>
-                                                    <td>
-                                                            <a href="a781cecca383b86222ec806c16266b20b3d6597ae072740d4603d12f4f9edd9a.html">Should be able to add additional todo items with page objects</a>
-                                                    </td>
-                                                    <td>3</td>
-                                                    <td>20:09:22</td>
-                                                    <td>2s 743ms</td>
-                                                    <td>
-                                                            <a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a> <span
-                                                                style="display:none">SUCCESS</span>
-                                                    </td>
-                                                </tr>
-                                                <tr class="scenario-result SUCCESS">
-                                                    <td>
-                                                            <a href="8a3c538fb0c4c17cde2e1222380acfde784c86450334fc2aaff8274399bc6c50.html">Add new todos</a>
-                                                    </td>
-                                                    <td>
-                                                            <a href="c0031a00cd1bf7c4c94df45cf4fdb1835c988ee79ffdcaf5537b722359543291.html">Test to resolve issue #616172</a>
-                                                    </td>
-                                                    <td>3</td>
-                                                    <td>20:09:22</td>
-                                                    <td>2s 680ms</td>
-                                                    <td>
-                                                            <a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a> <span
-                                                                style="display:none">SUCCESS</span>
-                                                    </td>
-                                                </tr>
-                                                <tr class="scenario-result SUCCESS">
-                                                    <td>
-                                                            <a href="8a3c538fb0c4c17cde2e1222380acfde784c86450334fc2aaff8274399bc6c50.html">Add new todos</a>
-                                                    </td>
-                                                    <td>
-                                                            <a href="d082746569f1850b330bf15006a08a481b73c87b68af9da91b203b0f19d4f0fb.html">Should be able to add the first todo item</a>
-                                                    </td>
-                                                    <td>3</td>
-                                                    <td>20:08:42</td>
-                                                    <td>3s 279ms</td>
-                                                    <td>
-                                                            <a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a> <span
-                                                                style="display:none">SUCCESS</span>
-                                                    </td>
-                                                </tr>
-                                                <tr class="scenario-result SUCCESS">
-                                                    <td>
-                                                            <a href="8a3c538fb0c4c17cde2e1222380acfde784c86450334fc2aaff8274399bc6c50.html">Add new todos</a>
-                                                    </td>
-                                                    <td>
-                                                            <a href="2128e8df1285a18524ec40ce1790bb690f8d3f6e8ef4fc48e33a15f7e7f5866c.html">Should be able to add additional todo items</a>
-                                                    </td>
-                                                    <td>3</td>
-                                                    <td>20:08:43</td>
-                                                    <td>3s 841ms</td>
-                                                    <td>
-                                                            <a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a> <span
-                                                                style="display:none">SUCCESS</span>
-                                                    </td>
-                                                </tr>
-                                                <tr class="scenario-result SUCCESS">
-                                                    <td>
-                                                            <a href="8a3c538fb0c4c17cde2e1222380acfde784c86450334fc2aaff8274399bc6c50.html">Add new todos</a>
-                                                    </td>
-                                                    <td>
-                                                            <a href="c6311261ad65c634633fba50e2099c459e67d7a63452e84119ce6088119f3ca1.html">Adding an item to an empty list in Cucumber</a>
-                                                    </td>
-                                                    <td>3</td>
-                                                    <td>20:09:46</td>
-                                                    <td>3s 745ms</td>
-                                                    <td>
-                                                            <a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a> <span
-                                                                style="display:none">SUCCESS</span>
-                                                    </td>
-                                                </tr>
-                                                <tr class="scenario-result SUCCESS">
-                                                    <td>
-                                                            <a href="8a3c538fb0c4c17cde2e1222380acfde784c86450334fc2aaff8274399bc6c50.html">Add new todos</a>
-                                                    </td>
-                                                    <td>
-                                                            <a href="38b6d55c947496e6d6aa34d225ed3898937686dc4501a5a69f75ea0388d78d20.html">Adding an item to a list with other items in Cucumber</a>
-                                                    </td>
-                                                    <td>3</td>
-                                                    <td>20:09:50</td>
-                                                    <td>4s 920ms</td>
-                                                    <td>
-                                                            <a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a> <span
-                                                                style="display:none">SUCCESS</span>
-                                                    </td>
-                                                </tr>
-                                                <tr class="scenario-result SUCCESS">
-                                                    <td>
-                                                            <a href="8a3c538fb0c4c17cde2e1222380acfde784c86450334fc2aaff8274399bc6c50.html">Add new todos</a>
-                                                    </td>
-                                                    <td>
-                                                            <a href="3e02f32a1bd29f62a5833d42660c5643a663fd187579db32fcd23da2c4cab305.html">Adding items to several peoples lists in Cucumber</a>
-                                                    </td>
-                                                    <td>5</td>
-                                                    <td>20:09:55</td>
-                                                    <td>5s 149ms</td>
-                                                    <td>
-                                                            <a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a> <span
-                                                                style="display:none">SUCCESS</span>
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-sm-12">
-                                                <h3><i class="fas fa-edit"></i> Manual Tests</h3>
-
-                                                No manual tests were recorded
-
-                                            </div>
-                                        </div>
-
+        </div>
                                     </div>
                                 </div>
                             </div>
@@ -721,12 +482,266 @@
                 </div>
             </div>
         </div>
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <span class="version">Serenity BDD version 2.3.30</span>
-                    </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <span class="version">Serenity BDD version 3.2.0</span>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+<!-- Chart data -->
+    <!-- PIE CHART -->
+    <script>
+
+        // The results pie chart
+        const outcomeChartCtx = document.getElementById('resultChart');
+
+        // Options define for display value on top of bars
+        const outcomeDetailsReports = [
+            { title: 'Passing Scenarios', link: "2f95572f6c6594a9c7022151284a2a1c5fc07ea4b9bc78ec8a28c2f1cc3e107a.html" },
+            { title: 'Pending Scenarios', link: "171f29804e6ae0c9397aae22ff3a5a40a1a109812992a69d6eba1d528ff4f557.html" },
+            { title: 'Ignored Scenarios', link: "ec131eea8a12c7bd748a61f42540c7c47e545761949d2d9044d2afeba8501d94.html" },
+            { title: 'Skipped Scenarios', link: "1eb8c9f983498c3c7a4b3ffb9b927e6ea68b06da1fc3bfe6cc9763b41a888e00.html" },
+            { title: 'Aborted Scenarios',  link: "8cb0dd109c5d1dea72eac191544aeb2975267a759aa636479aec7e32a3857305.html"},
+            { title: 'Failed Scenarios', link: "88faaad14feb6c13bd76c63eeb39e65590037e9f9b26db78f1370f8e3ec8b60c.html"  },
+            { title: 'Broken Scenarios', link: "a5569386ab7fcc412f5e3937e529fd8b68caec7fed181493210f21a37ab769c7.html"    },
+            { title: 'Compromised Scenarios',  link: "d023fbda68256ecc8165879a4ffb6ef73df4a9340bacb48b0e058784cadacf6e.html" },
+        ]
+        const outcomeData = {
+            labels: ['Passing', 'Pending', 'Ignored', 'Skipped', 'Aborted', 'Failed', 'Broken', 'Compromised'],
+            datasets: [{
+                label: 'Test Results',
+                fill: false,
+                data: [{meta: 'Passing tests (automated)', value: 7}, {meta: 'Passing tests (manual)', value: 0}, {meta: 'Pending tests (automated)', value: 0}, {meta: 'Pending tests (manual)', value: 0}, {meta: 'Ignored tests (automated)', value: 0}, {meta: 'Ignored tests (manual)', value: 0}, {meta: 'Skipped tests (automated)', value: 0}, {meta: 'Skipped tests (manual)', value: 0}, {meta: 'Aborted tests (automated)', value: 0}, {meta: 'Aborted tests (manual)', value: 0}, {meta: 'Failing tests (automated)', value: 0}, {meta: 'Failing tests (manual)', value: 0}, {meta: 'Broken tests (automated)', value: 0}, {meta: 'Broken tests (manual)', value: 0}, {meta: 'Compromised tests (automated)', value: 0}, {meta: 'Compromised tests (manual)', value: 0}],
+                backgroundColor: ['rgba(153,204,51,0.5)','rgba(165, 199, 238, 0.5)','rgba(168, 168, 168, 0.5)','rgba(238, 224, 152, 0.75)','rgba(255, 153, 102, 0.5)','rgba(255, 22, 49, 0.5)','rgba(255, 97, 8, 0.5)','rgba(255, 104, 255, 0.5)'],
+                borderColor: ['rgba(153,204,51,1)','rgba(165, 199, 238, 1)','rgba(168, 168, 168, 1)','rgba(238, 224, 152, 1)','rgba(255, 153, 102, 1)','rgba(255, 22, 49, 1)','rgba(255, 97, 8, 1)','rgba(255, 104, 255, 1)'],
+                borderWidth: 1,
+            }]
+        }
+        const outcomeOptions = {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'bottom'
+                },
+                // Change options for ALL labels of THIS CHART
+                datalabels: {
+                    color: '#444444',
+                    'font.weight': 'bold',
+                    formatter: (value, ctx) => {
+                        let sum = 0;
+                        let dataArr = ctx.chart.data.datasets[0].data;
+                        dataArr.map(data => {
+                            sum += data;
+                        });
+                        let percentage = (value * 100 / sum).toFixed(0) + "%";
+                        if (percentage === '0%') {
+                            return '';
+                        } else {
+                            return percentage;
+                        }
+                    },
+                },
+            }
+        }
+
+        const outcomeChart = new Chart(outcomeChartCtx, {
+            type: 'doughnut',
+            data: outcomeData,
+            options: outcomeOptions,
+            plugins: [
+                {
+                    id: 'text',
+                    beforeDraw: function (chart, a, b) {
+                        var width = chart.width,
+                            height = chart.height,
+                            ctx = chart.ctx;
+
+                        ctx.restore();
+                        var fontSize = (height / 200).toFixed(1);
+                        ctx.font = fontSize + "em sans-serif";
+                        ctx.textBaseline = "middle";
+
+                        var text = "100%"
+                        textX = 10 + Math.round((width - ctx.measureText(text).width) / 2);
+                        textY = (height / 2) - 40;
+
+                        ctx.fillText(text, textX, textY);
+                        ctx.save();
+                    }
+                }]
+        });
+
+        function clickHandler(click) {
+            const points = outcomeChart.getElementsAtEventForMode(click, 'nearest', {intersect: true}, true);
+            if (points.length) {
+                const firstPoint = points[0];
+                window.open(outcomeDetailsReports[firstPoint.index].link, "_self")
+
+            }
+        }
+        outcomeChartCtx.onclick = clickHandler;
+    </script>
+    <!-- END PIE CHART -->
+
+    <!-- SUMMARY BAR CHART -->
+    <script>
+
+        // The Severity bar chart
+        const severityChartCtx = document.getElementById('severityChart');
+
+        // Options define for display value on top of bars
+
+        const severityDetailsReports = [
+            { title: 'Passing Scenarios', link: "2f95572f6c6594a9c7022151284a2a1c5fc07ea4b9bc78ec8a28c2f1cc3e107a.html" },
+            { title: 'Pending Scenarios', link: "171f29804e6ae0c9397aae22ff3a5a40a1a109812992a69d6eba1d528ff4f557.html" },
+            { title: 'Ignored Scenarios', link: "ec131eea8a12c7bd748a61f42540c7c47e545761949d2d9044d2afeba8501d94.html" },
+            { title: 'Skipped Scenarios', link: "1eb8c9f983498c3c7a4b3ffb9b927e6ea68b06da1fc3bfe6cc9763b41a888e00.html" },
+            { title: 'Aborted Scenarios',  link: "8cb0dd109c5d1dea72eac191544aeb2975267a759aa636479aec7e32a3857305.html"},
+            { title: 'Failed Scenarios', link: "88faaad14feb6c13bd76c63eeb39e65590037e9f9b26db78f1370f8e3ec8b60c.html"  },
+            { title: 'Broken Scenarios', link: "a5569386ab7fcc412f5e3937e529fd8b68caec7fed181493210f21a37ab769c7.html"    },
+            { title: 'Compromised Scenarios',  link: "d023fbda68256ecc8165879a4ffb6ef73df4a9340bacb48b0e058784cadacf6e.html" },
+        ]
+        const severityData = {
+            labels: ['Passing', 'Pending', 'Ignored', 'Skipped', 'Aborted', 'Failed', 'Broken', 'Compromised'],
+            datasets: [
+                {
+                    label: 'Automated',
+                    data: [7,0,0,0,0,0,0,0],
+                    backgroundColor: ['rgba(153,204,51,0.5)','rgba(165, 199, 238, 0.5)','rgba(168, 168, 168, 0.5)','rgba(238, 224, 152, 0.75)','rgba(255, 153, 102, 0.5)','rgba(255, 22, 49, 0.5)','rgba(255, 97, 8, 0.5)','rgba(255, 104, 255, 0.5)'],
+                    borderColor: ['rgba(153,204,51,1)','rgba(165, 199, 238, 1)','rgba(168, 168, 168, 1)','rgba(238, 224, 152, 1)','rgba(255, 153, 102, 1)','rgba(255, 22, 49, 1)','rgba(255, 97, 8, 1)','rgba(255, 104, 255, 1)'],
+                    borderWidth: 1
+                },
+                {
+                    label: 'Manual',
+                    data: [0,0,0,0,0,0,0,0],
+                    backgroundColor: ['rgba(153,204,51,0.25)','rgba(165, 199, 238, 0.25)','rgba(168, 168, 168, 0.25)','rgba(238, 224, 152, 0.375)','rgba(255, 153, 102, 0.25)','rgba(255, 22, 49, 0.25)','rgba(255, 97, 8, 0.25)','rgba(255, 104, 255, 0.25)'],
+                    borderColor: ['rgba(153,204,51,1)','rgba(165, 199, 238, 1)','rgba(168, 168, 168, 1)','rgba(238, 224, 152, 1)','rgba(255, 153, 102, 1)','rgba(255, 22, 49, 1)','rgba(255, 97, 8, 1)','rgba(255, 104, 255, 1)'],
+                    borderWidth: 1
+                },
+
+            ]
+        }
+        const severityOptions = {
+            responsive: true,
+            skipNull: true,
+            scales: {
+                x: {
+                    stacked: true,
+                },
+                y: {
+                    stacked: true,
+                }
+            },
+            plugins: {
+                // Change options for ALL labels of THIS CHART
+                datalabels: {
+                    color: '#444444',
+                    'font.weight': 'bold',
+                    formatter: (value, ctx) => {
+                        if (value === 0) {
+                            return '';
+                        } else {
+                            return value;
+                        }
+                    },
+                }
+            }
+        }
+        const severityChart = new Chart(severityChartCtx, {
+            type: 'bar',
+            data: severityData,
+            options: severityOptions
+        });
+
+        function clickHandler(click) {
+            const points = severityChart.getElementsAtEventForMode(click, 'nearest', {intersect: true}, true);
+            if (points.length) {
+                const firstPoint = points[0];
+                window.open(severityDetailsReports[firstPoint.index].link, "_self")
+
+            }
+        }
+        severityChartCtx.onclick = clickHandler;
+    </script>
+    <!-- END SUMMARY CHART -->
+
+    <!-- DURATION CHART -->
+    <script>
+
+        // Options define for display value on top of bars
+        const durationDetailsReports = [
+                {title: "Under 1 second", link: "16643fe55d39cdb1ec8d4c1c957f4a5e47eb7d180700cf8623d0ed685beefaf0.html"},
+                {title: "1 to 10 seconds", link: "1543aacbf3a9859806103f46ff5de3f1f3dc5be42cd9a9d5a7d9ce1834ce47ac.html"},
+                {title: "10 to 30 seconds", link: "7b1c0f45fc27f893c38eeb467d4ed8901f125f42815316bd2fb5d4e0eb2f3741.html"},
+                {title: "30 to 60 seconds", link: "9431e0fbbf306ac31116bee16ce85e7770795f424a34380e3d94b90277bf6185.html"},
+                {title: "1 to 2 minutes", link: "e5ac319c7c4cabfdccbe8c63df10982b80b0633a86eebc9aade46dc9900dfc45.html"},
+                {title: "2 to 5 minutes", link: "733d2f9dc7113e1d8df11b07c4c6bed34f49534c0769bccb1f3000cedec3d664.html"},
+                {title: "5 to 10 minutes", link: "7e90a0bef4f84092a14a62a9377ea8c4c261b9587788f5efe2cf221d4dcc43ce.html"},
+                {title: "10 minutes or over", link: "54636c77d1ed99d6f7278464e5967b6f6412f8c3096d6f680af457dd2fc7b62b.html"},
+        ]
+        // The Severity bar chart
+        const durationChartCtx = document.getElementById('durationChart');
+
+        // Options define for display value on top of bars
+
+        const durationData = {
+            labels: ['Under 1 second','1 to 10 seconds','10 to 30 seconds','30 to 60 seconds','1 to 2 minutes','2 to 5 minutes','5 to 10 minutes','10 minutes or over'],
+            datasets: [{
+                label: 'Number of tests per duration',
+                fill: false,
+                data: ['2','5','0','0','0','0','0','0'],
+                backgroundColor: 'rgba(83, 146, 255,0.5)',
+                borderColor: 'rgba(83, 146, 255, 1)',
+            }]
+        }
+        const durationOptions = {
+            responsive: true,
+            plugins: {
+                // Change options for ALL labels of THIS CHART
+                datalabels: {
+                    color: '#444444',
+                    'font.weight': 'bold',
+                    formatter: (value, ctx) => {
+                        if (value > 0) {
+                            return value;
+                        } else {
+                            return '';
+                        }
+                    },
+                },
+                tooltip: {
+                    enabled: true,
+                    usePointStyle: true,
+                    callbacks: {
+                        label: (data) => {
+                            return data.parsed.y + ' tests'
+                        }
+                    },
+                },
+            },
+        }
+
+        const durationChart = new Chart(durationChartCtx, {
+            type: 'bar',
+            data: durationData,
+            options: durationOptions
+        });
+
+        function durationClickHandler(click) {
+            const points = durationChart.getElementsAtEventForMode(click, 'nearest', {intersect: true}, true);
+            if (points.length) {
+                const firstPoint = points[0];
+                window.open(durationDetailsReports[firstPoint.index].link, "_self")
+
+            }
+        }
+
+        durationChartCtx.onclick = durationClickHandler;
+    </script>
+    <!-- END DURATION CHART -->
 </body>
 </html>

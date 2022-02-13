@@ -22,31 +22,19 @@
 <meta name="msapplication-TileColor" content="#ffffff">
 <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
-<!--[if IE 7]>
-<!--<link rel="stylesheet" href="font-awesome/css/font-awesome-ie7.min.css">-->
-
-<link rel="stylesheet" type="text/css" href="fontawesome-free-5.7.2-web/css/all.min.css">
-<link rel="stylesheet" type="text/css" href="fontawesome-free-5.7.2-web/css/v4-shims.min.css">
-
-<!-- JQuery -->
-<script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script><link rel="stylesheet" type="text/css" href="chartist/chartist-plugin-tooltip/dist/chartist-plugin-tooltip.min.css">
-<link rel="stylesheet" type="text/css" href="chartist/dist/chartist.min.css">
-<script src="chartist/dist/chartist.min.js"></script>
-<script src="chartist/chartist-plugin-tooltip/dist/chartist-plugin-tooltip.min.js"></script>
-<!-- Required Stylesheets -->
+<link rel="stylesheet" href="bootstrap-icons/font/bootstrap-icons.css"><!-- JQuery -->
+<script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script><!-- Required Stylesheets -->
 <link href="bootstrap-treeview/dist/bootstrap-treeview.min.css" rel="stylesheet">
 
 <!-- Required Javascript -->
 <script src="bootstrap-treeview/dist/bootstrap-treeview.min.js"></script><!-- DataTables -->
-<link type="text/css" href="datatables/1.10.20/datatables.min.css" rel="stylesheet" />
-<script type="text/javascript" src="datatables/1.10.20/datatables.min.js"></script>
-<script type="text/javascript" src="datatables/1.10.20/time-elapsed-dhms.js"></script>
+<link type="text/css" href="datatables/1.11.3/datatables.min.css" rel="stylesheet" />
+<script type="text/javascript" src="datatables/1.11.3/datatables.min.js"></script>
+<script type="text/javascript" src="datatables/1.11.3/time-elapsed-dhms.js"></script>
 
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <script src="bootstrap/js/bootstrap.min.js"></script>
 
-<script type="text/javascript" src="datatables/1.10.20/datatables.bootstrap4.min.js"></script>
-<link type="text/css" href="datatables/1.10.20/datatables.bootstrap4.min.css" rel="stylesheet" />
 
 <script>
     jQuery.fn.dataTable.ext.type.order['time-elapsed-dhms-pre'] = function(data) {
@@ -70,18 +58,25 @@
 </script>
 <link rel="stylesheet" href="css/core.css"/>
 <link rel="stylesheet" href="css/link.css"/>
-<link type="text/css" media="screen" href="css/screen.css" rel="Stylesheet"/><!-- JQuery-UI -->
+<link type="text/css" media="screen" href="css/screen.css" rel="Stylesheet"/>
+<!--CHART.JS-->
+<script src="chartjs/chart.js"></script>
+<script src="chartjs/chartjs-plugin-datalabels@2.0.0"></script>
+<script src="chartjs/patternomaly.min.js"></script>
+<script>
+    // Register the plugin to all charts:
+    Chart.register(ChartDataLabels);
+</script>
+<!-- JQuery-UI -->
 <link type="text/css" href="jqueryui/1.11.2-start/jquery-ui.min.css" rel="Stylesheet" />
 <script type="text/javascript" src="jqueryui/1.11.2-start/jquery-ui.min.js"></script><!-- DataTables -->
-<link type="text/css" href="datatables/1.10.20/datatables.min.css" rel="stylesheet" />
-<script type="text/javascript" src="datatables/1.10.20/datatables.min.js"></script>
-<script type="text/javascript" src="datatables/1.10.20/time-elapsed-dhms.js"></script>
+<link type="text/css" href="datatables/1.11.3/datatables.min.css" rel="stylesheet" />
+<script type="text/javascript" src="datatables/1.11.3/datatables.min.js"></script>
+<script type="text/javascript" src="datatables/1.11.3/time-elapsed-dhms.js"></script>
 
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <script src="bootstrap/js/bootstrap.min.js"></script>
 
-<script type="text/javascript" src="datatables/1.10.20/datatables.bootstrap4.min.js"></script>
-<link type="text/css" href="datatables/1.10.20/datatables.bootstrap4.min.css" rel="stylesheet" />
 
 <script>
     jQuery.fn.dataTable.ext.type.order['time-elapsed-dhms-pre'] = function(data) {
@@ -103,6 +98,7 @@
         };
     };
 </script>
+
 
 
 
@@ -134,12 +130,12 @@
             });
 
             $('#evidence-table').DataTable(
-                    {
-                        searching: false,
-                        ordering: false,
-                        paging: false,
-                        info: false
-                    }
+                {
+                    searching: false,
+                    ordering: false,
+                    paging: false,
+                    info: false
+                }
             );
 
 
@@ -148,15 +144,16 @@
             $("#requirements-tabs").tabs();
             $("#test-tabs").tabs();
 
-            var requirementsTree = [{"text":"Clear completed todos","type":"feature","href":"199a15111835abe4a0c7e69245913bb7773d26f2d418ade245c933944cd97c0e.html","nodes":[],"selectable":false,"tags":["","\u003cspan class\u003d\u0027feature-count\u0027\u003e4 scenarios\u003c/span\u003e"]}];
+            var requirementsTree = [{"text":"Clear completed todos","type":"feature","href":"199a15111835abe4a0c7e69245913bb7773d26f2d418ade245c933944cd97c0e.html","nodes":[],"selectable":false,"tags":["\u003ca href\u003d\u0027##beforetable\u0027\u003e\u003ci class\u003d\u0027bi bi-check-circle-fill success-icon \u0027 title\u003d\u0027SUCCESS\u0027\u003e\u003c/i\u003e\u003c/a\u003e","\u003cspan class\u003d\u0027feature-count\u0027\u003e4 scenarios\u003c/span\u003e"]}];
 
             $('#tree').treeview({
                 data: requirementsTree,
                 enableLinks: true,
+                levels: 10,
                 showTags: true,
-                expandIcon: "glyphicon glyphicon-folder-close",
-                collapseIcon: "glyphicon glyphicon-folder-open",
-                emptyIcon: "glyphicon glyphicon-book"
+                expandIcon: "bi bi-journal-plus",
+                collapseIcon: "bi bi-journal-minus",
+                emptyIcon: "bi bi-journal"
             });
 
         });
@@ -172,6 +169,7 @@
         });
     </script>
 </head>
+
 
 <body class="results-page">
 <div id="topheader">
@@ -196,7 +194,7 @@
                 > <a href="6754ed30773116911442e38ebe772acd8c029076cd1b60c9588abd4c26ff3a12.html">Maintain My Todo List</a>
 
 
-                > <span class="truncate-40">Clear Completed Todos</span>
+                    > <span class="truncate-40">Clear Completed Todos</span>
 
             </span>
         </div>
@@ -209,19 +207,19 @@
 <div>
     <ul class="nav nav-tabs" role="tablist">
         <li >
-            <a href="index.html"><i class="fa fa-check-square-o"></i> Overall Test Results</a>
+            <a href="index.html"><i class="bi bi-journal-check"></i> Overall Test Results</a>
         </li>
         <li >
-            <a href="capabilities.html"><i class="fa fa-book"></i> Requirements</a>
+            <a href="capabilities.html"><i class="bi bi-journal-text"></i> Requirements</a>
         </li>
         <li >
-            <a href="7ea0a5e2d679b9deeda9910ae4a9bcd3a281e0d908303a9e16e486103e98880c.html"><i class="fa fa-comments-o"></i> Capabilities</a>
+            <a href="7ea0a5e2d679b9deeda9910ae4a9bcd3a281e0d908303a9e16e486103e98880c.html"><i class="bi bi-chat-text"></i> Capabilities</a>
         </li>
         <li class="active">
-            <a href="#"><i class="fa fa-comments-o"></i> Features</a>
+            <a href="#"><i class="bi bi-chat-text"></i> Features</a>
         </li>
     </ul>
-    <span class="date-and-time"><a href="build-info.html"><i class="fa fa-info-circle"></i></a> Report generated 25-07-2021 20:09</span>
+    <span class="date-and-time"><a href="build-info.html"><i class="bi bi-info-circle"></i></a> Report generated 13-02-2022 09:25</span>
     <br style="clear:left"/>
 </div>
 
@@ -230,500 +228,429 @@
     <div id="beforetable"></div>
     <div id="results-dashboard">
         <div class="table">
-                <div class=row">
-                    <div class="col-sm-12">
-                        <div>
-                            <div clas="table">
-                                <div class="row">
-                                    <div class="col-sm-8">
-                                    <span>
-                                            <h2><i class="fa fa-book"></i> Feature:  Clear Completed Todos</h2>
+            <div class=row">
+                <div class="col-sm-12">
+                    <div>
+                        <div clas="table">
+                            <div class="row">
+                                <div class="col-sm-8">
+                                        <span>
+                                            <h2><i class="bi bi-book"></i> Feature:  Clear Completed Todos</h2>
                                         </span>
-                                </div>
-                                    <div class="col-sm-4">
+                                    </div>
+                                        <div class="col-sm-4">
                                         <span class="feature-tags">
                                                 <p class="tag">
                                                     <span class="badge tag-badge" style="background:default;">
-                                                        <i class="fa fa-tag"></i>&nbsp;<a class="tagLink"
+                                                        <i class="bi bi-tag-fill"></i>&nbsp;<a class="tagLink"
+                                                                                          style="background:default;"
+                                                                                          href="6c5512236937b92cd7a296b24edb966c2bd94be46b8910f8b129a42d6150eb25.html">1 To 10 Seconds
+                                                        (Duration)</a>
+                                                    </span>
+                                                </p>
+                                                <p class="tag">
+                                                    <span class="badge tag-badge" style="background:default;">
+                                                        <i class="bi bi-tag-fill"></i>&nbsp;<a class="tagLink"
                                                                                           style="background:default;"
                                                                                           href="2abd80711f92a1b61030fbe84d995b322acd3452eb5b4fcf38175b2465223530.html">Pageobjects Pattern
                                                         (tag)</a>
                                                     </span>
                                                 </p>
                                         </span>
-                                    </div>
-                                </div>
+                                        </div>
                                 </div>
                             </div>
+                        </div>
                             <div class="requirementNarrativeTitle">
                                 
                             </div>
 
-                        </div>
                     </div>
+                </div>
 
 
-            <div class="row">
-                <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-12">
 
-                    <!-- Requirements result tabs -->
-                    <ul class="nav nav-tabs">
-                        <li class="active">
-                            <a data-toggle="tab" href="#specs"><i class="fas fa-comments"></i> Specifications</a>
-                        </li>
-                        <li>
-                            <a data-toggle="tab" href="#results"><i class="fas fa-tachometer-alt"></i> Test Results</a>
-                        </li>
-                    </ul>
+                        <!-- Requirements result tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active">
+                                <a data-toggle="tab" href="#specs"><i class="bi bi-journal-text"></i> Specifications</a>
+                            </li>
+                            <li>
+                                <a data-toggle="tab" href="#results"><i class="bi bi-speedometer"></i> Test Results</a>
+                            </li>
+                        </ul>
 
-                    <!-- Specifications and Results tabs -->
-                    <div class="card border">
-                        <div class="tab-content" id="pills-tabContent">
-                            <div id="specs" class="tab-pane fade in active">
-                                <div class="container-fluid">
-                                    <div class="row">
-                                        <div class="col-sm-12">
+                        <!-- Specifications and Results tabs -->
+                        <div class="card border">
+                            <div class="tab-content" id="pills-tabContent">
+                                <div id="specs" class="tab-pane fade in active">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-sm-12">
 
-
-
-                                            <h3>Scenarios</h3>
-                                            <div id="toc">
-                                                <table class="table" id="toc-table">
-                                                        <tr>
-                                                            <td style="width:95%;" class="toc-title">
-                                                                <a href="#b9fb2af52bc2b5aebe40512ab828066870e4fb0a30e1731615cc3b2ed3fa4d8a" title="View scenario details" >Should not be able to clear completed todos if none are complete</a>
-
-
-                                                            </td>
-                                                            <td style="width:5%;">
-                                                                <table>
-                                                                    <tr>
-                                                                        <td>
-                                                                            <a style="margin-left:0.5em;padding-right: 1.5em;"
-                                                                               href="390b85aa6fce434981c57b44828df08945279dbd8e2609c8de08fc5f5022cec7.html"
-                                                                               title="View test results">
-                                                                            <a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
-                                                                            </a>
-
-                                                                        
-                                                                        </td>
-                                                                        <td>
-                                                                            <a style="margin-left:0.5em;padding-right: 1.5em;"
-                                                                               href="390b85aa6fce434981c57b44828df08945279dbd8e2609c8de08fc5f5022cec7.html"
-                                                                               title="View test results">
-                                                                                <i class="fas fa-search-plus"></i>
-                                                                            </a>
-                                                                        </td>
-                                                                    </tr>
-                                                                </table>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td style="width:95%;" class="toc-title">
-                                                                <a href="#e7ce563b4e548936a22674aa160fe76a3e2edfe00c6c1b2a3ce31f693e4685e8" title="View scenario details" >Should be able to clear completed todos</a>
+                                                    <!--- TOC --->
+                                                    <div id="toc">
+                                                        <h3>Overview</h3>
+                                                        <table class="table" id="toc-table">
+                                                                        <tr>
+                                                                            <td style="width:95%;" class="toc-title">
+                                                                                <span class="orphan-scenario-toc-entry">
+                                                                                    <a href="#b9fb2af52bc2b5aebe40512ab828066870e4fb0a30e1731615cc3b2ed3fa4d8a"
+                                                                                       title="View scenario details">
+                                                                                        <i class="bi bi-chat-dots"></i> Scenario: Should not be able to clear completed todos if none are complete
+                                                                                    </a>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td style="width:5%;">
+                                                                                <table>
+                                                                                    <tr>
+                                                                                        <td class="icons-bar">
+                                                                                            <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                                               href="390b85aa6fce434981c57b44828df08945279dbd8e2609c8de08fc5f5022cec7.html"
+                                                                                               title="View test results">
+                                                                                                <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                                                </a>
 
 
-                                                            </td>
-                                                            <td style="width:5%;">
-                                                                <table>
-                                                                    <tr>
-                                                                        <td>
-                                                                            <a style="margin-left:0.5em;padding-right: 1.5em;"
-                                                                               href="509d684729e5f069940636f0fd2e24783700f063a22e17edf67b2255b6a31700.html"
-                                                                               title="View test results">
-                                                                            <a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
-                                                                            </a>
-
-                                                                        
-                                                                        </td>
-                                                                        <td>
-                                                                            <a style="margin-left:0.5em;padding-right: 1.5em;"
-                                                                               href="509d684729e5f069940636f0fd2e24783700f063a22e17edf67b2255b6a31700.html"
-                                                                               title="View test results">
-                                                                                <i class="fas fa-search-plus"></i>
-                                                                            </a>
-                                                                        </td>
-                                                                    </tr>
-                                                                </table>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td style="width:95%;" class="toc-title">
-                                                                <a href="#cb5f80eb5aa1171c090544ea326a2ac321ce684ac55c03c7a484f286949261d4" title="View scenario details" >Should not be able to clear completed todos if none are complete with page objects</a>
-
-
-                                                            </td>
-                                                            <td style="width:5%;">
-                                                                <table>
-                                                                    <tr>
-                                                                        <td>
-                                                                            <a style="margin-left:0.5em;padding-right: 1.5em;"
-                                                                               href="30a1e88ba272a627f5d213b552267a2618b0b2495b5849424846096823ac9080.html"
-                                                                               title="View test results">
-                                                                            <a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
-                                                                            </a>
-
-                                                                        
-                                                                        </td>
-                                                                        <td>
-                                                                            <a style="margin-left:0.5em;padding-right: 1.5em;"
-                                                                               href="30a1e88ba272a627f5d213b552267a2618b0b2495b5849424846096823ac9080.html"
-                                                                               title="View test results">
-                                                                                <i class="fas fa-search-plus"></i>
-                                                                            </a>
-                                                                        </td>
-                                                                    </tr>
-                                                                </table>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td style="width:95%;" class="toc-title">
-                                                                <a href="#046c238e04fce13b605df22666a573465e2a08624ac0ba51a696c2996ef92cb7" title="View scenario details" >Should be able to clear completed todos with page objects</a>
+                                                                                                <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                                                   href="390b85aa6fce434981c57b44828df08945279dbd8e2609c8de08fc5f5022cec7.html"
+                                                                                                   title="View test results">
+                                                                                                    <i class="bi bi-eyeglasses"></i>
+                                                                                                </a>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td style="width:95%;" class="toc-title">
+                                                                                <span class="orphan-scenario-toc-entry">
+                                                                                    <a href="#e7ce563b4e548936a22674aa160fe76a3e2edfe00c6c1b2a3ce31f693e4685e8"
+                                                                                       title="View scenario details">
+                                                                                        <i class="bi bi-chat-dots"></i> Scenario: Should be able to clear completed todos
+                                                                                    </a>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td style="width:5%;">
+                                                                                <table>
+                                                                                    <tr>
+                                                                                        <td class="icons-bar">
+                                                                                            <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                                               href="509d684729e5f069940636f0fd2e24783700f063a22e17edf67b2255b6a31700.html"
+                                                                                               title="View test results">
+                                                                                                <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                                                </a>
 
 
-                                                            </td>
-                                                            <td style="width:5%;">
-                                                                <table>
-                                                                    <tr>
-                                                                        <td>
-                                                                            <a style="margin-left:0.5em;padding-right: 1.5em;"
-                                                                               href="6490417f6d6891ba28623e57e85c9bd10203688ea0ea72ad29dda64226e2ddbb.html"
-                                                                               title="View test results">
-                                                                            <a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
-                                                                            </a>
+                                                                                                <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                                                   href="509d684729e5f069940636f0fd2e24783700f063a22e17edf67b2255b6a31700.html"
+                                                                                                   title="View test results">
+                                                                                                    <i class="bi bi-eyeglasses"></i>
+                                                                                                </a>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td style="width:95%;" class="toc-title">
+                                                                                <span class="orphan-scenario-toc-entry">
+                                                                                    <a href="#046c238e04fce13b605df22666a573465e2a08624ac0ba51a696c2996ef92cb7"
+                                                                                       title="View scenario details">
+                                                                                        <i class="bi bi-chat-dots"></i> Scenario: Should be able to clear completed todos with page objects
+                                                                                    </a>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td style="width:5%;">
+                                                                                <table>
+                                                                                    <tr>
+                                                                                        <td class="icons-bar">
+                                                                                            <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                                               href="6490417f6d6891ba28623e57e85c9bd10203688ea0ea72ad29dda64226e2ddbb.html"
+                                                                                               title="View test results">
+                                                                                                <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                                                </a>
 
-                                                                        
-                                                                        </td>
-                                                                        <td>
-                                                                            <a style="margin-left:0.5em;padding-right: 1.5em;"
-                                                                               href="6490417f6d6891ba28623e57e85c9bd10203688ea0ea72ad29dda64226e2ddbb.html"
-                                                                               title="View test results">
-                                                                                <i class="fas fa-search-plus"></i>
-                                                                            </a>
-                                                                        </td>
-                                                                    </tr>
-                                                                </table>
-                                                            </td>
-                                                        </tr>
-                                                </table>
 
+                                                                                                <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                                                   href="6490417f6d6891ba28623e57e85c9bd10203688ea0ea72ad29dda64226e2ddbb.html"
+                                                                                                   title="View test results">
+                                                                                                    <i class="bi bi-eyeglasses"></i>
+                                                                                                </a>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td style="width:95%;" class="toc-title">
+                                                                                <span class="orphan-scenario-toc-entry">
+                                                                                    <a href="#cb5f80eb5aa1171c090544ea326a2ac321ce684ac55c03c7a484f286949261d4"
+                                                                                       title="View scenario details">
+                                                                                        <i class="bi bi-chat-dots"></i> Scenario: Should not be able to clear completed todos if none are complete with page objects
+                                                                                    </a>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td style="width:5%;">
+                                                                                <table>
+                                                                                    <tr>
+                                                                                        <td class="icons-bar">
+                                                                                            <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                                               href="30a1e88ba272a627f5d213b552267a2618b0b2495b5849424846096823ac9080.html"
+                                                                                               title="View test results">
+                                                                                                <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                                                </a>
+
+
+                                                                                                <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                                                   href="30a1e88ba272a627f5d213b552267a2618b0b2495b5849424846096823ac9080.html"
+                                                                                                   title="View test results">
+                                                                                                    <i class="bi bi-eyeglasses"></i>
+                                                                                                </a>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                        </table>
+                                                    </div>
+                                                    <!--- END OF TOC --->
+
+                                                    <h3>Scenarios</h3>
+
+                                                        <a name="ddd5b1ee-f7f8-4b9a-9623-a77565d5c296"></a>
+
+
+                                                            <div class="scenario-docs card" id="b9fb2af52bc2b5aebe40512ab828066870e4fb0a30e1731615cc3b2ed3fa4d8a">
+                                                                <div class="scenario-docs card-header success"
+                                                                     style="min-height:1.5em;">
+                                                                    <div>
+                                                            <span class="scenario-heading">
+                                                                <a href="390b85aa6fce434981c57b44828df08945279dbd8e2609c8de08fc5f5022cec7.html"
+                                                                   title="View test results">Scenario: Should not be able to clear completed todos if none are complete</a>
+                                                            </span>
+                                                                        <span class="scenario-result-icon">
+                                                                
+
+                                                                                <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                            </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="scenario-docs card-body">
+                                                                        <p>James starts with a todo list containing Walk the dog, Put out the garbage</p>
+                                                                        <p>Then the 'Clear Completed' option should be (Unavailable)</p>
+                                                                    <div class="examples">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="scenario-docs card" id="e7ce563b4e548936a22674aa160fe76a3e2edfe00c6c1b2a3ce31f693e4685e8">
+                                                                <div class="scenario-docs card-header success"
+                                                                     style="min-height:1.5em;">
+                                                                    <div>
+                                                            <span class="scenario-heading">
+                                                                <a href="509d684729e5f069940636f0fd2e24783700f063a22e17edf67b2255b6a31700.html"
+                                                                   title="View test results">Scenario: Should be able to clear completed todos</a>
+                                                            </span>
+                                                                        <span class="scenario-result-icon">
+                                                                
+
+                                                                                <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                            </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="scenario-docs card-body">
+                                                                        <p>James starts with a todo list containing Walk the dog, Put out the garbage</p>
+                                                                        <p>James completes the item called: Walk the dog</p>
+                                                                        <p>James clears all the completed items</p>
+                                                                        <p>Then the items displayed should be iterable containing ['Put out the garbage']</p>
+                                                                    <div class="examples">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="scenario-docs card" id="046c238e04fce13b605df22666a573465e2a08624ac0ba51a696c2996ef92cb7">
+                                                                <div class="scenario-docs card-header success"
+                                                                     style="min-height:1.5em;">
+                                                                    <div>
+                                                            <span class="scenario-heading">
+                                                                <a href="6490417f6d6891ba28623e57e85c9bd10203688ea0ea72ad29dda64226e2ddbb.html"
+                                                                   title="View test results">Scenario: Should be able to clear completed todos with page objects</a>
+                                                            </span>
+                                                                        <span class="scenario-result-icon">
+                                                                
+
+                                                                                <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                            </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="scenario-docs card-body">
+                                                                        <p>Starts with a todo list containing: {Walk the dog,Put out the garbage}</p>
+                                                                        <p>Completes: Walk the dog</p>
+                                                                        <p>Clears completed items</p>
+                                                                        <p>Should see that displayed items contain: {Put out the garbage}</p>
+                                                                    <div class="examples">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="scenario-docs card" id="cb5f80eb5aa1171c090544ea326a2ac321ce684ac55c03c7a484f286949261d4">
+                                                                <div class="scenario-docs card-header success"
+                                                                     style="min-height:1.5em;">
+                                                                    <div>
+                                                            <span class="scenario-heading">
+                                                                <a href="30a1e88ba272a627f5d213b552267a2618b0b2495b5849424846096823ac9080.html"
+                                                                   title="View test results">Scenario: Should not be able to clear completed todos if none are complete with page objects</a>
+                                                            </span>
+                                                                        <span class="scenario-result-icon">
+                                                                
+
+                                                                                <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                            </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="scenario-docs card-body">
+                                                                        <p>Starts with a todo list containing: {Walk the dog,Put out the garbage}</p>
+                                                                        <p>Should see that the clear completed items option is not visible</p>
+                                                                    <div class="examples">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                             </div>
-
-                                            <h3>Scenario details</h3>
-
-                                                <div class="scenario-docs card" id="b9fb2af52bc2b5aebe40512ab828066870e4fb0a30e1731615cc3b2ed3fa4d8a">
-                                                    <div class="scenario-docs card-header success" style="min-height:1.5em;">
-                                                        <div>
-                                                            <span class="scenario-heading">
-                                                                <a href="390b85aa6fce434981c57b44828df08945279dbd8e2609c8de08fc5f5022cec7.html" title="View test results">Should not be able to clear completed todos if none are complete</a>
-                                                            </span>
-                                                            <span class="scenario-result-icon">
-                                                                
-
-                                                                    <a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="scenario-docs card-body">
-                                                            <p>James starts with a todo list containing Walk the dog, Put out the garbage</p>
-                                                            <p>Then the 'Clear Completed' option should be (Unavailable)</p>
-                                                        <div class="examples">
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="scenario-docs card" id="e7ce563b4e548936a22674aa160fe76a3e2edfe00c6c1b2a3ce31f693e4685e8">
-                                                    <div class="scenario-docs card-header success" style="min-height:1.5em;">
-                                                        <div>
-                                                            <span class="scenario-heading">
-                                                                <a href="509d684729e5f069940636f0fd2e24783700f063a22e17edf67b2255b6a31700.html" title="View test results">Should be able to clear completed todos</a>
-                                                            </span>
-                                                            <span class="scenario-result-icon">
-                                                                
-
-                                                                    <a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="scenario-docs card-body">
-                                                            <p>James starts with a todo list containing Walk the dog, Put out the garbage</p>
-                                                            <p>James completes the item called: Walk the dog</p>
-                                                            <p>James clears all the completed items</p>
-                                                            <p>Then the items displayed should be iterable containing ['Put out the garbage']</p>
-                                                        <div class="examples">
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="scenario-docs card" id="cb5f80eb5aa1171c090544ea326a2ac321ce684ac55c03c7a484f286949261d4">
-                                                    <div class="scenario-docs card-header success" style="min-height:1.5em;">
-                                                        <div>
-                                                            <span class="scenario-heading">
-                                                                <a href="30a1e88ba272a627f5d213b552267a2618b0b2495b5849424846096823ac9080.html" title="View test results">Should not be able to clear completed todos if none are complete with page objects</a>
-                                                            </span>
-                                                            <span class="scenario-result-icon">
-                                                                
-
-                                                                    <a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="scenario-docs card-body">
-                                                            <p>Starts with a todo list containing: {Walk the dog,Put out the garbage}</p>
-                                                            <p>Should see that the clear completed items option is not visible</p>
-                                                        <div class="examples">
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="scenario-docs card" id="046c238e04fce13b605df22666a573465e2a08624ac0ba51a696c2996ef92cb7">
-                                                    <div class="scenario-docs card-header success" style="min-height:1.5em;">
-                                                        <div>
-                                                            <span class="scenario-heading">
-                                                                <a href="6490417f6d6891ba28623e57e85c9bd10203688ea0ea72ad29dda64226e2ddbb.html" title="View test results">Should be able to clear completed todos with page objects</a>
-                                                            </span>
-                                                            <span class="scenario-result-icon">
-                                                                
-
-                                                                    <a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="scenario-docs card-body">
-                                                            <p>Starts with a todo list containing: {Walk the dog,Put out the garbage}</p>
-                                                            <p>Completes: Walk the dog</p>
-                                                            <p>Clears completed items</p>
-                                                            <p>Should see that displayed items contain: {Put out the garbage}</p>
-                                                        <div class="examples">
-                                                        </div>
-                                                    </div>
-                                                </div>
                                         </div>
                                     </div>
                                 </div>
+
+                                <div id="results" class="tab-pane fade">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <!-- PIE CHART -->
+                                                    <div class="chart-container" style="position: relative; width:30vw">
+                                                        <canvas id="resultChart" width="300" height="300"></canvas>
+                                                    </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <h4><i class="bi bi-check-square"></i> Test Outcomes</h4>
+                                                <!-- Severity bar chart -->
+                                                <div class="chart-container" style="position: relative; width:30vw">
+                                                    <canvas id="severityChart" width="300" height="300"></canvas>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <h4><i class="bi bi-graph-up"></i> Test Performance</h4>
+
+                                                <!-- Duration bar chart -->
+                                                <div class="chart-container" style="position: relative; width:30vw">
+                                                    <canvas id="durationChart" width="300" height="300"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <h3><i class="bi bi-gear"></i> Automated Tests</h3>
+
+                                                    <table class="scenario-result-table table"
+                                                           id="scenario-results">
+                                                        <thead>
+                                                        <tr>
+                                                            <th class="test-name-column">Scenario</th>
+                                                            <th>Steps</th>
+                                                            <th>Started</th>
+                                                            <th>Duration</th>
+                                                            <th>Result</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr class="scenario-result SUCCESS">
+                                                                <td>
+                                                                        <a href="390b85aa6fce434981c57b44828df08945279dbd8e2609c8de08fc5f5022cec7.html">Should not be able to clear completed todos if none are complete</a>
+                                                                </td>
+                                                                <td>2</td>
+                                                                <td>09:25:40</td>
+                                                                <td>1s 120ms</td>
+                                                                <td>
+                                                                        <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                            style="display:none">SUCCESS</span>
+                                                                                                                                    </td>
+                                                            </tr>
+                                                            <tr class="scenario-result SUCCESS">
+                                                                <td>
+                                                                        <a href="509d684729e5f069940636f0fd2e24783700f063a22e17edf67b2255b6a31700.html">Should be able to clear completed todos</a>
+                                                                </td>
+                                                                <td>4</td>
+                                                                <td>09:25:41</td>
+                                                                <td>1s 461ms</td>
+                                                                <td>
+                                                                        <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                            style="display:none">SUCCESS</span>
+                                                                                                                                    </td>
+                                                            </tr>
+                                                            <tr class="scenario-result SUCCESS">
+                                                                <td>
+                                                                        <a href="6490417f6d6891ba28623e57e85c9bd10203688ea0ea72ad29dda64226e2ddbb.html">Should be able to clear completed todos with page objects</a>
+                                                                </td>
+                                                                <td>4</td>
+                                                                <td>09:25:02</td>
+                                                                <td>1s 462ms</td>
+                                                                <td>
+                                                                        <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                            style="display:none">SUCCESS</span>
+                                                                                                                                    </td>
+                                                            </tr>
+                                                            <tr class="scenario-result SUCCESS">
+                                                                <td>
+                                                                        <a href="30a1e88ba272a627f5d213b552267a2618b0b2495b5849424846096823ac9080.html">Should not be able to clear completed todos if none are complete with page objects</a>
+                                                                </td>
+                                                                <td>2</td>
+                                                                <td>09:25:04</td>
+                                                                <td>1s 065ms</td>
+                                                                <td>
+                                                                        <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                            style="display:none">SUCCESS</span>
+                                                                                                                                    </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <h3><i class="bi bi-hand-index-thumb"></i> Manual Tests</h3>
+
+                                                    No manual tests were recorded
+
+                                            </div>
+                                        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <h3>Tags</h3>
+                    <div class="card">
+                        <div class="card-body">
+                            <div>
+                                    <a href="053b54a36df6819388f81474e5a2d572a44c9aabf4446457afe50ab397e81910.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Screenplay Pattern&nbsp;&nbsp;&nbsp;2
+                                    </span>
+                                    </a>
+                                    <a href="2abd80711f92a1b61030fbe84d995b322acd3452eb5b4fcf38175b2465223530.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Pageobjects Pattern&nbsp;&nbsp;&nbsp;2
+                                    </span>
+                                    </a>
                             </div>
-
-                            <div id="results" class="tab-pane fade">
-                                <div class="container-fluid">
-                                    <div class="row">
-                                        <div class="col-sm-4">
-
-                                            <div style="width:300px;" class="chart-container automated-and-manual-results">
-                                                <div class="ct-chart ct-square"></div>
-                                            </div>
-                                            <script>
-
-                                                var labels = ['100%', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
-                                                // Our series array that contains series objects or in this case series data arrays
-
-                                                var series = [{meta: 'Passing tests (automated)', value: 4}, {meta: 'Passing tests (manual)', value: 0}, {meta: 'Pending tests (automated)', value: 0}, {meta: 'Pending tests (manual)', value: 0}, {meta: 'Ignored tests (automated)', value: 0}, {meta: 'Ignored tests (manual)', value: 0}, {meta: 'Skipped tests (automated)', value: 0}, {meta: 'Skipped tests (manual)', value: 0}, {meta: 'Failing tests (automated)', value: 0}, {meta: 'Failing tests (manual)', value: 0}, {meta: 'Broken tests (automated)', value: 0}, {meta: 'Broken tests (manual)', value: 0}, {meta: 'Compromised tests (automated)', value: 0}, {meta: 'Compromised tests (manual)', value: 0}];
-
-                                                // As options we currently only set a static size of 300x200 px. We can also omit this and use aspect ratio containers
-                                                // as you saw in the previous example
-                                                var options = {
-                                                    width: 350,
-                                                    height: 300
-                                                };
-
-                                                $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-                                                    new Chartist.Pie('.ct-chart', {
-                                                        series: series,
-                                                        labels: labels,
-                                                    }, {
-                                                        donut: true,
-                                                        donutWidth: 60,
-                                                        donutSolid: true,
-                                                        startAngle: 270,
-                                                        showLabel: true
-                                                    }, options);
-                                                });
-
-                                            </script>
-                                        </div>
-                                        <div class="col-sm-8">
-
-                                        <table class="table">
-                                            <thead>
-                                            <tr>
-                                                <th scope="col">Scenario Results (including rows of test data)</th>
-                                                <th scope="col" colspan="2" class="automated-stats">
-                                                    Automated
-                                                </th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            <tr>
-                                                                    <td class="aggregate-result-count">
-                                                                        <a href="b45b4a0f94db7f0d5ea7d05e941e5a6ef5e4ad7c76c48f62a026a71d346dab05.html"><i
-                                                                                class='fa fa-check-circle-o success-icon'></i>&nbsp;Passing</a>
-                                                                    </td>
-                                                <td class="automated-stats">4</td>
-                                                <td class="automated-stats">100%</td>
-                                            </tr>
-                                            <tr>
-                                                                    <td class="aggregate-result-count"><i
-                                                                            class='fa fa-stop-circle-o pending-icon'></i>&nbsp;Pending
-                                                                    </td>
-                                                <td class="automated-stats">0</td>
-                                                <td class="automated-stats"> </td>
-                                            </tr>
-                                            <tr>
-                                                                <td class="aggregate-result-count"><i
-                                                                        class='fa fa-ban ignored-icon'></i>&nbsp;Ignored
-                                                                </td>
-                                                <td class="automated-stats">0</td>
-                                                <td class="automated-stats"> </td>
-                                            </tr>
-                                            <tr>
-                                                                <td class="aggregate-result-count"><i
-                                                                        class='fa fa-fast-forward skip-icon'></i>&nbsp;Skipped
-                                                                </td>
-                                                <td class="automated-stats">0</td>
-                                                <td class="automated-stats"> </td>
-                                            </tr>
-                                            <tr>
-                                                                            <td colspan="3"><i
-                                                                                class='fa fa-times failure-icon'></i>&nbsp;<em>Unsuccessful</em></a>
-                                                                            </td>
-
-                                            </tr>
-
-                                            <tr>
-                                                                <td class="aggregate-result-count indented-error-category">
-                                                                    <i
-                                                                            class='fa fa-times-circle failure-icon'></i>&nbsp;Failed
-                                                                </td>
-                                                <td class="automated-stats">0</td>
-                                                <td class="automated-stats"> </td>
-                                            <tr>
-                                                                <td class="aggregate-result-count indented-error-category">
-                                                                    <i
-                                                                            class='fa fa-exclamation-triangle error-icon'></i>&nbsp;Broken
-                                                                </td>
-                                                <td class="automated-stats">0</td>
-                                                <td class="automated-stats"> </td>
-                                            <tr>
-                                                                <td class="aggregate-result-count indented-error-category">
-                                                                    <i
-                                                                            class='fa fa-chain-broken compromised-icon'></i>&nbsp;Compromised
-                                                                </td>
-                                                <td class="automated-stats">0</td>
-                                                <td class="automated-stats"> </td>
-                                            </tr>
-                                            <tr class="summary-stats">
-                                                <td class="aggregate-result-count">Total</td>
-                                                <td class="automated-stats">4</td>
-                                                <td class="automated-stats"></td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    </div>
-
-                                        <div class="row">
-                                            <div class="col-sm-12">
-                                                <table class="table">
-                                                    <thead>
-                                                    <tr>
-                                                        <th>Execution Time</th>
-                                                        <th>Clock Time</th>
-                                                        <th>Fastest Test</th>
-                                                        <th>Slowest Test</th>
-                                                        <th>Average Execution Time</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    <tr>
-                                                        <td>10s</td>
-                                                        <td>22s</td>
-                                                        <td>2s</td>
-                                                        <td>3s</td>
-                                                        <td>2s</td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="row">
-                                            <div class="col-sm-12">
-                                                <h3><i class="fas fa-cogs"></i> Automated Tests</h3>
-
-                                            <table class="scenario-result-table table" id="scenario-results">
-                                                <thead>
-                                                <tr>
-                                                    <th class="test-name-column">Scenario</th>
-                                                    <th>Steps</th>
-                                                    <th>Start Time</th>
-                                                    <th>Duration</th>
-                                                    <th>Result</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                <tr class="scenario-result SUCCESS">
-                                                    <td>
-                                                            <a href="390b85aa6fce434981c57b44828df08945279dbd8e2609c8de08fc5f5022cec7.html">Should not be able to clear completed todos if none are complete</a>
-                                                    </td>
-                                                    <td>2</td>
-                                                    <td>20:09:17</td>
-                                                    <td>2s 570ms</td>
-                                                    <td>
-                                                            <a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a> <span
-                                                                style="display:none">SUCCESS</span>
-                                                    </td>
-                                                </tr>
-                                                <tr class="scenario-result SUCCESS">
-                                                    <td>
-                                                            <a href="509d684729e5f069940636f0fd2e24783700f063a22e17edf67b2255b6a31700.html">Should be able to clear completed todos</a>
-                                                    </td>
-                                                    <td>4</td>
-                                                    <td>20:09:17</td>
-                                                    <td>3s 117ms</td>
-                                                    <td>
-                                                            <a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a> <span
-                                                                style="display:none">SUCCESS</span>
-                                                    </td>
-                                                </tr>
-                                                <tr class="scenario-result SUCCESS">
-                                                    <td>
-                                                            <a href="30a1e88ba272a627f5d213b552267a2618b0b2495b5849424846096823ac9080.html">Should not be able to clear completed todos if none are complete with page objects</a>
-                                                    </td>
-                                                    <td>2</td>
-                                                    <td>20:09:39</td>
-                                                    <td>2s 244ms</td>
-                                                    <td>
-                                                            <a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a> <span
-                                                                style="display:none">SUCCESS</span>
-                                                    </td>
-                                                </tr>
-                                                <tr class="scenario-result SUCCESS">
-                                                    <td>
-                                                            <a href="6490417f6d6891ba28623e57e85c9bd10203688ea0ea72ad29dda64226e2ddbb.html">Should be able to clear completed todos with page objects</a>
-                                                    </td>
-                                                    <td>4</td>
-                                                    <td>20:09:40</td>
-                                                    <td>2s 593ms</td>
-                                                    <td>
-                                                            <a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a> <span
-                                                                style="display:none">SUCCESS</span>
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-sm-12">
-                                                <h3><i class="fas fa-edit"></i> Manual Tests</h3>
-
-                                                No manual tests were recorded
-
-                                            </div>
-                                        </div>
-
+                        </div>
+                    </div>
+            </div>
+        </div>
                                     </div>
                                 </div>
                             </div>
@@ -732,12 +659,266 @@
                 </div>
             </div>
         </div>
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <span class="version">Serenity BDD version 2.3.30</span>
-                    </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <span class="version">Serenity BDD version 3.2.0</span>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+<!-- Chart data -->
+    <!-- PIE CHART -->
+    <script>
+
+        // The results pie chart
+        const outcomeChartCtx = document.getElementById('resultChart');
+
+        // Options define for display value on top of bars
+        const outcomeDetailsReports = [
+            { title: 'Passing Scenarios', link: "b45b4a0f94db7f0d5ea7d05e941e5a6ef5e4ad7c76c48f62a026a71d346dab05.html" },
+            { title: 'Pending Scenarios', link: "d5067ccf0896b97f0e7a729dfc2f04ec83799fc3e51b403d4e9ce51bb4a8a991.html" },
+            { title: 'Ignored Scenarios', link: "543a0e75affa1f40f12f98b34fed0de05de69bbbae4aa9f84e55f4edff71f14b.html" },
+            { title: 'Skipped Scenarios', link: "0a4a287c27cb6bc813c80b329344caa985176cbfeeacb8fc22c814bd329595f2.html" },
+            { title: 'Aborted Scenarios',  link: "547f741b809a486993c8f8460a9f9d8e396359a6f855b2a8bf7031607826414d.html"},
+            { title: 'Failed Scenarios', link: "1ddb48a137ebecf24b807e3e1e7ffadf47766b17e99918ea27f69bf59d1b2b6a.html"  },
+            { title: 'Broken Scenarios', link: "72c3f49f2f0829589e2bb3300dc495e7da53b5a77b53d420640b57b01543e1ed.html"    },
+            { title: 'Compromised Scenarios',  link: "bd08b5e0a1aecc88c38847d4a5061a3bea1c84c77fe693789a62ebf7511969fd.html" },
+        ]
+        const outcomeData = {
+            labels: ['Passing', 'Pending', 'Ignored', 'Skipped', 'Aborted', 'Failed', 'Broken', 'Compromised'],
+            datasets: [{
+                label: 'Test Results',
+                fill: false,
+                data: [{meta: 'Passing tests (automated)', value: 4}, {meta: 'Passing tests (manual)', value: 0}, {meta: 'Pending tests (automated)', value: 0}, {meta: 'Pending tests (manual)', value: 0}, {meta: 'Ignored tests (automated)', value: 0}, {meta: 'Ignored tests (manual)', value: 0}, {meta: 'Skipped tests (automated)', value: 0}, {meta: 'Skipped tests (manual)', value: 0}, {meta: 'Aborted tests (automated)', value: 0}, {meta: 'Aborted tests (manual)', value: 0}, {meta: 'Failing tests (automated)', value: 0}, {meta: 'Failing tests (manual)', value: 0}, {meta: 'Broken tests (automated)', value: 0}, {meta: 'Broken tests (manual)', value: 0}, {meta: 'Compromised tests (automated)', value: 0}, {meta: 'Compromised tests (manual)', value: 0}],
+                backgroundColor: ['rgba(153,204,51,0.5)','rgba(165, 199, 238, 0.5)','rgba(168, 168, 168, 0.5)','rgba(238, 224, 152, 0.75)','rgba(255, 153, 102, 0.5)','rgba(255, 22, 49, 0.5)','rgba(255, 97, 8, 0.5)','rgba(255, 104, 255, 0.5)'],
+                borderColor: ['rgba(153,204,51,1)','rgba(165, 199, 238, 1)','rgba(168, 168, 168, 1)','rgba(238, 224, 152, 1)','rgba(255, 153, 102, 1)','rgba(255, 22, 49, 1)','rgba(255, 97, 8, 1)','rgba(255, 104, 255, 1)'],
+                borderWidth: 1,
+            }]
+        }
+        const outcomeOptions = {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'bottom'
+                },
+                // Change options for ALL labels of THIS CHART
+                datalabels: {
+                    color: '#444444',
+                    'font.weight': 'bold',
+                    formatter: (value, ctx) => {
+                        let sum = 0;
+                        let dataArr = ctx.chart.data.datasets[0].data;
+                        dataArr.map(data => {
+                            sum += data;
+                        });
+                        let percentage = (value * 100 / sum).toFixed(0) + "%";
+                        if (percentage === '0%') {
+                            return '';
+                        } else {
+                            return percentage;
+                        }
+                    },
+                },
+            }
+        }
+
+        const outcomeChart = new Chart(outcomeChartCtx, {
+            type: 'doughnut',
+            data: outcomeData,
+            options: outcomeOptions,
+            plugins: [
+                {
+                    id: 'text',
+                    beforeDraw: function (chart, a, b) {
+                        var width = chart.width,
+                            height = chart.height,
+                            ctx = chart.ctx;
+
+                        ctx.restore();
+                        var fontSize = (height / 200).toFixed(1);
+                        ctx.font = fontSize + "em sans-serif";
+                        ctx.textBaseline = "middle";
+
+                        var text = "100%"
+                        textX = 10 + Math.round((width - ctx.measureText(text).width) / 2);
+                        textY = (height / 2) - 40;
+
+                        ctx.fillText(text, textX, textY);
+                        ctx.save();
+                    }
+                }]
+        });
+
+        function clickHandler(click) {
+            const points = outcomeChart.getElementsAtEventForMode(click, 'nearest', {intersect: true}, true);
+            if (points.length) {
+                const firstPoint = points[0];
+                window.open(outcomeDetailsReports[firstPoint.index].link, "_self")
+
+            }
+        }
+        outcomeChartCtx.onclick = clickHandler;
+    </script>
+    <!-- END PIE CHART -->
+
+    <!-- SUMMARY BAR CHART -->
+    <script>
+
+        // The Severity bar chart
+        const severityChartCtx = document.getElementById('severityChart');
+
+        // Options define for display value on top of bars
+
+        const severityDetailsReports = [
+            { title: 'Passing Scenarios', link: "b45b4a0f94db7f0d5ea7d05e941e5a6ef5e4ad7c76c48f62a026a71d346dab05.html" },
+            { title: 'Pending Scenarios', link: "d5067ccf0896b97f0e7a729dfc2f04ec83799fc3e51b403d4e9ce51bb4a8a991.html" },
+            { title: 'Ignored Scenarios', link: "543a0e75affa1f40f12f98b34fed0de05de69bbbae4aa9f84e55f4edff71f14b.html" },
+            { title: 'Skipped Scenarios', link: "0a4a287c27cb6bc813c80b329344caa985176cbfeeacb8fc22c814bd329595f2.html" },
+            { title: 'Aborted Scenarios',  link: "547f741b809a486993c8f8460a9f9d8e396359a6f855b2a8bf7031607826414d.html"},
+            { title: 'Failed Scenarios', link: "1ddb48a137ebecf24b807e3e1e7ffadf47766b17e99918ea27f69bf59d1b2b6a.html"  },
+            { title: 'Broken Scenarios', link: "72c3f49f2f0829589e2bb3300dc495e7da53b5a77b53d420640b57b01543e1ed.html"    },
+            { title: 'Compromised Scenarios',  link: "bd08b5e0a1aecc88c38847d4a5061a3bea1c84c77fe693789a62ebf7511969fd.html" },
+        ]
+        const severityData = {
+            labels: ['Passing', 'Pending', 'Ignored', 'Skipped', 'Aborted', 'Failed', 'Broken', 'Compromised'],
+            datasets: [
+                {
+                    label: 'Automated',
+                    data: [4,0,0,0,0,0,0,0],
+                    backgroundColor: ['rgba(153,204,51,0.5)','rgba(165, 199, 238, 0.5)','rgba(168, 168, 168, 0.5)','rgba(238, 224, 152, 0.75)','rgba(255, 153, 102, 0.5)','rgba(255, 22, 49, 0.5)','rgba(255, 97, 8, 0.5)','rgba(255, 104, 255, 0.5)'],
+                    borderColor: ['rgba(153,204,51,1)','rgba(165, 199, 238, 1)','rgba(168, 168, 168, 1)','rgba(238, 224, 152, 1)','rgba(255, 153, 102, 1)','rgba(255, 22, 49, 1)','rgba(255, 97, 8, 1)','rgba(255, 104, 255, 1)'],
+                    borderWidth: 1
+                },
+                {
+                    label: 'Manual',
+                    data: [0,0,0,0,0,0,0,0],
+                    backgroundColor: ['rgba(153,204,51,0.25)','rgba(165, 199, 238, 0.25)','rgba(168, 168, 168, 0.25)','rgba(238, 224, 152, 0.375)','rgba(255, 153, 102, 0.25)','rgba(255, 22, 49, 0.25)','rgba(255, 97, 8, 0.25)','rgba(255, 104, 255, 0.25)'],
+                    borderColor: ['rgba(153,204,51,1)','rgba(165, 199, 238, 1)','rgba(168, 168, 168, 1)','rgba(238, 224, 152, 1)','rgba(255, 153, 102, 1)','rgba(255, 22, 49, 1)','rgba(255, 97, 8, 1)','rgba(255, 104, 255, 1)'],
+                    borderWidth: 1
+                },
+
+            ]
+        }
+        const severityOptions = {
+            responsive: true,
+            skipNull: true,
+            scales: {
+                x: {
+                    stacked: true,
+                },
+                y: {
+                    stacked: true,
+                }
+            },
+            plugins: {
+                // Change options for ALL labels of THIS CHART
+                datalabels: {
+                    color: '#444444',
+                    'font.weight': 'bold',
+                    formatter: (value, ctx) => {
+                        if (value === 0) {
+                            return '';
+                        } else {
+                            return value;
+                        }
+                    },
+                }
+            }
+        }
+        const severityChart = new Chart(severityChartCtx, {
+            type: 'bar',
+            data: severityData,
+            options: severityOptions
+        });
+
+        function clickHandler(click) {
+            const points = severityChart.getElementsAtEventForMode(click, 'nearest', {intersect: true}, true);
+            if (points.length) {
+                const firstPoint = points[0];
+                window.open(severityDetailsReports[firstPoint.index].link, "_self")
+
+            }
+        }
+        severityChartCtx.onclick = clickHandler;
+    </script>
+    <!-- END SUMMARY CHART -->
+
+    <!-- DURATION CHART -->
+    <script>
+
+        // Options define for display value on top of bars
+        const durationDetailsReports = [
+                {title: "Under 1 second", link: "dd639a094cbd75523992024885ad3471d15d7f177b619b952b2c26f83676e3d3.html"},
+                {title: "1 to 10 seconds", link: "c2d42d5859967db6300d709d37788b7c40b84be49f1cbc09132bc4703c45906c.html"},
+                {title: "10 to 30 seconds", link: "c2722f6dabc6e33cd4ead67f6587225061a5c1f30dd6bb4f1c7c8f6b8999737f.html"},
+                {title: "30 to 60 seconds", link: "1d087c7c1f65f6c93efbc871799e72f9e57d408aa1fa83b6309391c25ddce462.html"},
+                {title: "1 to 2 minutes", link: "4c4d20927be58e14828d695564d5a145f087b098247376131fba238647347567.html"},
+                {title: "2 to 5 minutes", link: "cf26dc3995d38c3f57aae79f27a2f08b0145ac374a2d70e1f6e525bbb6247d4b.html"},
+                {title: "5 to 10 minutes", link: "b40c7bb6326cf1043130955b3296661dafa3920353607e3ca41089b6a9709027.html"},
+                {title: "10 minutes or over", link: "ee873b8ce656cff46bbf8531c10ae331aedbd03ebbd13c93a0a3878efb7bf1b0.html"},
+        ]
+        // The Severity bar chart
+        const durationChartCtx = document.getElementById('durationChart');
+
+        // Options define for display value on top of bars
+
+        const durationData = {
+            labels: ['Under 1 second','1 to 10 seconds','10 to 30 seconds','30 to 60 seconds','1 to 2 minutes','2 to 5 minutes','5 to 10 minutes','10 minutes or over'],
+            datasets: [{
+                label: 'Number of tests per duration',
+                fill: false,
+                data: ['0','4','0','0','0','0','0','0'],
+                backgroundColor: 'rgba(83, 146, 255,0.5)',
+                borderColor: 'rgba(83, 146, 255, 1)',
+            }]
+        }
+        const durationOptions = {
+            responsive: true,
+            plugins: {
+                // Change options for ALL labels of THIS CHART
+                datalabels: {
+                    color: '#444444',
+                    'font.weight': 'bold',
+                    formatter: (value, ctx) => {
+                        if (value > 0) {
+                            return value;
+                        } else {
+                            return '';
+                        }
+                    },
+                },
+                tooltip: {
+                    enabled: true,
+                    usePointStyle: true,
+                    callbacks: {
+                        label: (data) => {
+                            return data.parsed.y + ' tests'
+                        }
+                    },
+                },
+            },
+        }
+
+        const durationChart = new Chart(durationChartCtx, {
+            type: 'bar',
+            data: durationData,
+            options: durationOptions
+        });
+
+        function durationClickHandler(click) {
+            const points = durationChart.getElementsAtEventForMode(click, 'nearest', {intersect: true}, true);
+            if (points.length) {
+                const firstPoint = points[0];
+                window.open(durationDetailsReports[firstPoint.index].link, "_self")
+
+            }
+        }
+
+        durationChartCtx.onclick = durationClickHandler;
+    </script>
+    <!-- END DURATION CHART -->
 </body>
 </html>
