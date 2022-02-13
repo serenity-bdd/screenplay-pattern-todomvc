@@ -1,1 +1,1 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><testsuite errors="0" failures="0" name="Deleting todos" skipped="0" tests="2" time="5.06" timestamp="2022-02-13 09:34:43"><testcase name="Delete an active item"/><testcase name="Delete all the items"/></testsuite>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><testsuite errors="0" failures="0" name="Deleting todos" skipped="0" tests="2" time="4.42" timestamp="2022-02-13 09:37:13"><testcase name="Delete an active item"/><testcase name="Delete all the items"/></testsuite>

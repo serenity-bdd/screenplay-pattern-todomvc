@@ -1,1 +1,1 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><testsuite errors="0" failures="0" name="Filtering todos" skipped="0" tests="4" time="6.32" timestamp="2022-02-13 09:34:49"><testcase name="View only the completed items"/><testcase name="Viewing the items by status"/></testsuite>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><testsuite errors="0" failures="0" name="Filtering todos" skipped="0" tests="4" time="5.18" timestamp="2022-02-13 09:37:18"><testcase name="View only the completed items"/><testcase name="Viewing the items by status"/></testsuite>
