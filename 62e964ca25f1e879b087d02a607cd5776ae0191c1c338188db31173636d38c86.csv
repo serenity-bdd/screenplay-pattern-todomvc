@@ -1,4 +1,5 @@
 "Story","Title","Result","Date","Stability","Duration (s)"
-"Learn about the application","Should be able to identify the application","SUCCESS","2022-02-13T09:25:10.864631238Z[Etc/UTC]","0.0","0.93"
-"Learn about the application","Should see how to begin","SUCCESS","2022-02-13T09:25:11.900584286Z[Etc/UTC]","0.0","0.76"
-"Add new todos","Should be able to add the first todo item","SUCCESS","2022-02-13T09:25:08.243638531Z[Etc/UTC]","0.0","0.9"
+"Learn about the application","Should be able to identify the application","SUCCESS","2022-02-13T09:29:46.543997569Z[Etc/UTC]","0.0","0.87"
+"Learn about the application","Should see how to begin","SUCCESS","2022-02-13T09:29:47.523303575Z[Etc/UTC]","0.0","0.59"
+"Toggle all todos","Should be able to quickly complete all todos with page objects","SUCCESS","2022-02-13T09:29:33.181918632Z[Etc/UTC]","0.0","1.0"
+"Add new todos","Should be able to add the first todo item","SUCCESS","2022-02-13T09:29:44.499448273Z[Etc/UTC]","0.0","0.78"
