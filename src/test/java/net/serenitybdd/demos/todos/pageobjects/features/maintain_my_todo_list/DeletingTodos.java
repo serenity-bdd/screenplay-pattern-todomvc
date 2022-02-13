@@ -11,7 +11,7 @@ import org.openqa.selenium.WebDriver;
 
 @RunWith(SerenityRunner.class)
 @WithTag("PageObjects pattern")
-public class DeleteingTodos {
+public class DeletingTodos {
 
     @Managed WebDriver driver;
 
