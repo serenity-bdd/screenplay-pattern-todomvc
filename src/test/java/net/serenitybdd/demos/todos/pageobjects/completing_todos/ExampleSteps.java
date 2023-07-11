@@ -1,4 +1,4 @@
-package net.serenitybdd.demos.todos.pageobjects.features.completing_todos;
+package net.serenitybdd.demos.todos.pageobjects.completing_todos;
 
 import net.thucydides.core.annotations.Step;
 

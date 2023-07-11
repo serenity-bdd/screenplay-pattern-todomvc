@@ -8,17 +8,14 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.core.annotations.events.AfterExample;
-import net.serenitybdd.core.annotations.events.AfterScenario;
-import net.serenitybdd.core.annotations.events.BeforeExample;
-import net.serenitybdd.core.annotations.events.BeforeScenario;
 import net.serenitybdd.demos.todos.cucumber.MissingTodoItemsException;
+import net.serenitybdd.demos.todos.screenplay.tasks.CompleteItem;
 import net.serenitybdd.demos.todos.screenplay.model.TodoStatusFilter;
 import net.serenitybdd.demos.todos.screenplay.questions.TheItems;
 import net.serenitybdd.demos.todos.screenplay.tasks.*;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
-import net.thucydides.core.model.TestOutcome;
 
 import java.util.List;
 
@@ -68,6 +65,11 @@ public class TodoUserSteps {
         actor.wasAbleTo(Start.withATodoListContaining(items));
     }
 
+    @When("{actor} completes the task called {string}")
+    public void completesTask(Actor actor, String item) {
+        actor.attemptsTo(CompleteItem.called(item));
+    }
+
     @When("{actor} adds {string} to his/her list")
     public void adds_to_his_list(Actor actor, String item) {
         actor.attemptsTo(AddATodoItem.called(item));
@@ -100,13 +102,6 @@ public class TodoUserSteps {
     @Then("his/her todo list should be empty")
     public void todo_list_should_be_empty() {
         theActorInTheSpotlight().should(seeThat(TheItems.displayed(), equalTo(EMPTY_LIST)));
-    }
-
-    @Then("^s?he (?:completes|has completed) the task called '(.*)'$")
-    public void completes_task_called(String item) {
-        theActorInTheSpotlight().attemptsTo(
-                CompleteItem.called(item)
-        );
     }
 
     @When("{actor} filters her list to show only {filter} tasks")

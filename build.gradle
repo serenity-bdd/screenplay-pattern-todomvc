@@ -12,7 +12,8 @@ buildscript {
         }
     }
     dependencies {
-        classpath "net.serenity-bdd:serenity-gradle-plugin:3.2.0"
+        classpath "net.serenity-bdd:serenity-gradle-plugin:3.9.0"
+        classpath "net.serenity-bdd:serenity-core:3.9.0"
     }
 }
 
@@ -27,7 +28,7 @@ targetCompatibility = 16
 
 ext {
     slf4jVersion = '1.7.7'
-    serenityCoreVersion = '3.2.0'
+    serenityCoreVersion = '3.9.0'
     junitVersion = '4.13.1'
     assertJVersion = '3.22.0'
     logbackVersion = '1.2.10'
@@ -36,6 +37,7 @@ ext {
 dependencies {
     implementation "ch.qos.logback:logback-classic:${logbackVersion}",
             "net.serenity-bdd:serenity-core:${serenityCoreVersion}",
+            "net.serenity-bdd:serenity-junit:${serenityCoreVersion}",
             "net.serenity-bdd:serenity-cucumber:${serenityCoreVersion}",
             "net.serenity-bdd:serenity-screenplay:${serenityCoreVersion}",
             "net.serenity-bdd:serenity-screenplay-webdriver:${serenityCoreVersion}"
@@ -53,7 +55,7 @@ test {
 
 serenity {
     // Specify the root package of any JUnit acceptance tests
-    testRoot = "swaglabs"
+    testRoot = "net.serenitybdd.demos.todos"
 
     // Specify the root directory of any Cucumber feature files
     requirementsDir = "src/test/resources/features"

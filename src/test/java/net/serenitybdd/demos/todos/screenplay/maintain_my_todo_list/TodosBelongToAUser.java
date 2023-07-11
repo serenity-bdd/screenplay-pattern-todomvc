@@ -1,4 +1,4 @@
-package net.serenitybdd.demos.todos.screenplay.features.maintain_my_todo_list;
+package net.serenitybdd.demos.todos.screenplay.maintain_my_todo_list;
 
 import net.serenitybdd.demos.todos.screenplay.questions.TheItems;
 import net.serenitybdd.demos.todos.screenplay.tasks.Clear;

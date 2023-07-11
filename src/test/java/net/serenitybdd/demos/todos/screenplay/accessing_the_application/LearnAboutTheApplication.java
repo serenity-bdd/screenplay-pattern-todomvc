@@ -1,4 +1,4 @@
-package net.serenitybdd.demos.todos.screenplay.features.accessing_the_application;
+package net.serenitybdd.demos.todos.screenplay.accessing_the_application;
 
 import net.serenitybdd.demos.todos.screenplay.questions.Application;
 import net.serenitybdd.demos.todos.screenplay.questions.Placeholder;

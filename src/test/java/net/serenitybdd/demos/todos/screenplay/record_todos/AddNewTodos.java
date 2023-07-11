@@ -1,4 +1,4 @@
-package net.serenitybdd.demos.todos.screenplay.features.record_todos;
+package net.serenitybdd.demos.todos.screenplay.record_todos;
 import net.serenitybdd.demos.todos.screenplay.questions.TheItems;
 import net.serenitybdd.demos.todos.screenplay.tasks.AddATodoItem;
 import net.serenitybdd.demos.todos.screenplay.tasks.Start;

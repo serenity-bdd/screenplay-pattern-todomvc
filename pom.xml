@@ -11,9 +11,9 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <serenity.version>3.2.0</serenity.version>
-        <serenity.maven.version>3.2.0</serenity.maven.version>
-        <serenity.cucumber.version>3.2.0</serenity.cucumber.version>
+        <serenity.version>3.9.0</serenity.version>
+        <serenity.maven.version>3.9.0</serenity.maven.version>
+        <serenity.cucumber.version>3.9.0</serenity.cucumber.version>
         <parallel.tests>4</parallel.tests>
         <encoding>UTF-8</encoding>
         <serenity.test.root></serenity.test.root>
@@ -87,7 +87,8 @@
                 <version>3.0.0-M5</version>
                 <configuration>
                     <includes>
-                        <include>**/features/**/*.java</include>
+                        <include>**/pageobjects/**/*.java</include>
+                        <include>**/screenplay/**/*.java</include>
                         <include>**/cucumber/*.java</include>
                     </includes>
                     <excludes>
@@ -110,8 +111,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
                 <configuration>
-                    <source>16</source>
-                    <target>16</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
             <plugin>

@@ -1,4 +1,4 @@
-package net.serenitybdd.demos.todos.pageobjects.features.maintain_my_todo_list;
+package net.serenitybdd.demos.todos.pageobjects.maintain_my_todo_list;
 
 import net.serenitybdd.demos.todos.pageobjects.steps.TodoUserSteps;
 import net.serenitybdd.junit.runners.SerenityRunner;
