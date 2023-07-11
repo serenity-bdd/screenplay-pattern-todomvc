@@ -1,0 +1,8 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"ClearCompletedTodos","Should not be able to clear completed todos if none are complete","SUCCESS","2023-07-11T05:54:54.998857901Z[Etc/UTC]","0.0","1.0"
+"ClearCompletedTodos","Should be able to clear completed todos","SUCCESS","2023-07-11T05:54:56.10372925Z[Etc/UTC]","0.0","1.21"
+"DeletingTodos","Should see deleting a todo decreases the remaining items count","SUCCESS","2023-07-11T05:54:53.875821249Z[Etc/UTC]","0.0","1.03"
+"FilteringTodos","Should be able to view only incomplete todos","SUCCESS","2023-07-11T05:54:48.185406473Z[Etc/UTC]","0.0","1.49"
+"FilteringTodos","Should be able to view only completed todos","SUCCESS","2023-07-11T05:54:49.788846958Z[Etc/UTC]","0.0","1.34"
+"FilteringTodos","Should be able to view both complete and incomplete todos","SUCCESS","2023-07-11T05:54:51.233383132Z[Etc/UTC]","0.0","1.42"
+"TodosBelongToAUser","Should not affect todos belonging to another user","SUCCESS","2023-07-11T05:54:57.454690464Z[Etc/UTC]","0.0","2.14"

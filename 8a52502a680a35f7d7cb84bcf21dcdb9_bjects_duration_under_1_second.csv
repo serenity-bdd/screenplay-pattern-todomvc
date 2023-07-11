@@ -1,0 +1,4 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"ToggleAllTodos","Should see that there are zero items todo when all are toggled complete with page objects","SUCCESS","2023-07-11T05:55:13.747345176Z[Etc/UTC]","0.0","0.99"
+"ClearCompletedTodos","Should not be able to clear completed todos if none are complete with page objects","SUCCESS","2023-07-11T05:55:23.728012597Z[Etc/UTC]","0.0","0.97"
+"DeletingTodos","Should see deleting a todo decreases the remaining items count with page objects","SUCCESS","2023-07-11T05:55:21.3302196Z[Etc/UTC]","0.0","0.97"

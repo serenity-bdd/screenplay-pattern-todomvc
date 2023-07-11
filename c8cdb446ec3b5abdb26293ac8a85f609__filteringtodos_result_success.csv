@@ -1,0 +1,4 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"FilteringTodos","Should be able to view only incomplete todos","SUCCESS","2023-07-11T05:54:48.185406473Z[Etc/UTC]","0.0","1.49"
+"FilteringTodos","Should be able to view only completed todos","SUCCESS","2023-07-11T05:54:49.788846958Z[Etc/UTC]","0.0","1.34"
+"FilteringTodos","Should be able to view both complete and incomplete todos","SUCCESS","2023-07-11T05:54:51.233383132Z[Etc/UTC]","0.0","1.42"

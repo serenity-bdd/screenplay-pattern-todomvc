@@ -1,0 +1,5 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"LearnAboutTheApplication","Should be able to identify the application","SUCCESS","2023-07-11T05:54:30.784920049Z[Etc/UTC]","0.0","0.82"
+"LearnAboutTheApplication","Should see how to begin","SUCCESS","2023-07-11T05:54:31.710273648Z[Etc/UTC]","0.0","0.6"
+"DeletingTodos","Should be able to delete todos","SUCCESS","2023-07-11T05:54:52.798929798Z[Etc/UTC]","0.0","0.97"
+"AddNewTodos","Should be able to add the first todo item","SUCCESS","2023-07-11T05:54:28.470840308Z[Etc/UTC]","0.0","0.86"

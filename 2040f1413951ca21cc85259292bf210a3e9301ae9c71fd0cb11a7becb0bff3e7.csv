@@ -1,7 +1,0 @@
-"Story","Title","Result","Date","Stability","Duration (s)"
-"Deleting todos","Should be able to delete todos","SUCCESS","2022-02-13T09:51:56.854347448Z[Etc/UTC]","0.0","1.26"
-"Deleting todos","Should see deleting a todo decreases the remaining items count","SUCCESS","2022-02-13T09:51:58.222582983Z[Etc/UTC]","0.0","1.36"
-"Deleting todos","Delete an active item","SUCCESS","2022-02-13T09:50:39.606759141Z[Etc/UTC]","0.0","1.51"
-"Deleting todos","Delete all the items","SUCCESS","2022-02-13T09:50:41.233984783Z[Etc/UTC]","0.0","3.57"
-"Deleting todos","Should be able to delete todos with page objects","SUCCESS","2022-02-13T09:51:25.102394374Z[Etc/UTC]","0.0","1.18"
-"Deleting todos","Should see deleting a todo decreases the remaining items count with page objects","SUCCESS","2022-02-13T09:51:26.389574601Z[Etc/UTC]","0.0","1.14"
