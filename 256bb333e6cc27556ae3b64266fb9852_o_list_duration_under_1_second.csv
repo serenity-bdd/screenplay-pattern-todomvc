@@ -1,2 +1,4 @@
 "Story","Title","Result","Date","Stability","Duration (s)"
-"DeletingTodos","Should be able to delete todos","SUCCESS","2023-07-11T05:54:52.798929798Z[Etc/UTC]","0.0","0.97"
+"ClearCompletedTodos","Should not be able to clear completed todos if none are complete","SUCCESS","2023-07-11T06:26:42.645355002Z[Etc/UTC]","0.0","0.85"
+"DeletingTodos","Should be able to delete todos","SUCCESS","2023-07-11T06:26:40.564529101Z[Etc/UTC]","0.0","0.91"
+"DeletingTodos","Should see deleting a todo decreases the remaining items count","SUCCESS","2023-07-11T06:26:41.583582389Z[Etc/UTC]","0.0","0.92"

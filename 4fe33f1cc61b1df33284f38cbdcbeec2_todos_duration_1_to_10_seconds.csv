@@ -1,2 +1,0 @@
-"Story","Title","Result","Date","Stability","Duration (s)"
-"DeletingTodos","Should see deleting a todo decreases the remaining items count","SUCCESS","2023-07-11T05:54:53.875821249Z[Etc/UTC]","0.0","1.03"

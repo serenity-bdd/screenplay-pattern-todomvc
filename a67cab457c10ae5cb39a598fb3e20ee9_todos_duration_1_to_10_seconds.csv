@@ -1,3 +1,2 @@
 "Story","Title","Result","Date","Stability","Duration (s)"
-"AddNewTodos","Test to resolve issue #616172","SUCCESS","2023-07-11T05:54:59.840161827Z[Etc/UTC]","0.0","1.52"
-"AddNewTodos","Should be able to add additional todo items with page objects","SUCCESS","2023-07-11T05:55:01.467371934Z[Etc/UTC]","0.0","1.07"
+"AddNewTodos","Test to resolve issue #616172","SUCCESS","2023-07-11T06:26:46.95122213Z[Etc/UTC]","0.0","1.28"
