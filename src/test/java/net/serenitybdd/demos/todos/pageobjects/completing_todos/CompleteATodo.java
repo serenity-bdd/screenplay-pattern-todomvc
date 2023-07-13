@@ -1,5 +1,6 @@
 package net.serenitybdd.demos.todos.pageobjects.completing_todos;
 
+import net.serenitybdd.core.steps.UIInteractions;
 import net.serenitybdd.demos.todos.pageobjects.steps.TodoUserSteps;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
@@ -18,10 +19,8 @@ import org.openqa.selenium.WebDriver;
 })
 public class CompleteATodo {
 
-    @Managed(uniqueSession = true)
-    WebDriver driver;
-
-    @Steps   TodoUserSteps james;
+    @Steps
+    TodoUserSteps james;
 
     @Before
     public void setup()

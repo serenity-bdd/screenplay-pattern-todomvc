@@ -1,5 +1,6 @@
 package net.serenitybdd.demos.todos.pageobjects.steps;
 
+import net.serenitybdd.core.steps.UIInteractions;
 import net.serenitybdd.demos.todos.pageobjects.model.TodoStatusFilter;
 import net.serenitybdd.demos.todos.pageobjects.pages.TodoListPage;
 import net.thucydides.core.ThucydidesSystemProperty;
@@ -17,7 +18,7 @@ import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsCollectionContaining.hasItems;
 
 
-public class TodoUserSteps {
+public class TodoUserSteps extends UIInteractions {
 
     TodoListPage todoListPage;
 
