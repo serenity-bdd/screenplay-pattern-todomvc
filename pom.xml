@@ -11,9 +11,9 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <serenity.version>3.9.0</serenity.version>
-        <serenity.maven.version>3.9.0</serenity.maven.version>
-        <serenity.cucumber.version>3.9.0</serenity.cucumber.version>
+        <serenity.version>3.9.1</serenity.version>
+        <serenity.maven.version>3.9.1</serenity.maven.version>
+        <serenity.cucumber.version>3.9.1</serenity.cucumber.version>
         <parallel.tests>8</parallel.tests>
         <encoding>UTF-8</encoding>
         <serenity.test.root></serenity.test.root>
@@ -84,18 +84,18 @@
             </plugin>
             <plugin>
                 <artifactId>maven-failsafe-plugin</artifactId>
-                <version>3.0.0-M5</version>
+                <version>3.1.2</version>
                 <configuration>
                     <includes>
                         <include>**/pageobjects/**/*.java</include>
-                        <include>**/screenplay/**/*.java</include>
+                        <include>**/screenplay*/**/*.java</include>
                         <include>**/cucumber/*.java</include>
                     </includes>
                     <excludes>
                         <exclude>**/*WithFailures.java</exclude>
                     </excludes>
-<!--                    <parallel>classes</parallel>-->
-<!--                    <useUnlimitedThreads>true</useUnlimitedThreads>-->
+                    <!--                    <parallel>classes</parallel>-->
+                    <!--                    <useUnlimitedThreads>true</useUnlimitedThreads>-->
                 </configuration>
                 <executions>
                     <execution>
@@ -130,6 +130,13 @@
                             <goal>aggregate</goal>
                         </goals>
                     </execution>
+                    <execution>
+                        <id>check-gherkin</id>
+                        <phase>process-test-resources</phase>
+                        <goals>
+                            <goal>check-gherkin</goal>
+                        </goals>
+                    </execution>
                 </executions>
                 <dependencies>
                     <dependency>
@@ -154,7 +161,7 @@
                 <plugins>
                     <plugin>
                         <artifactId>maven-failsafe-plugin</artifactId>
-                        <version>3.0.0-M5</version>
+                        <version>3.1.2</version>
                         <configuration>
                             <includes>
                                 <include>**/*WithFailures.java</include>
@@ -178,7 +185,7 @@
                 <plugins>
                     <plugin>
                         <artifactId>maven-failsafe-plugin</artifactId>
-                        <version>3.0.0-M5</version>
+                        <version>3.1.2</version>
                         <configuration>
                             <includes>
                                 <include>**/CucumberTestSuite.java</include>
