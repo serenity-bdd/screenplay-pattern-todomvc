@@ -1,4 +1,4 @@
 "Story","Title","Result","Date","Stability","Duration (s)"
-"FilteringTodos","Should be able to view only incomplete todos","SUCCESS","2023-07-11T06:26:36.642269156Z[Etc/UTC]","0.0","1.18"
-"FilteringTodos","Should be able to view only completed todos","SUCCESS","2023-07-11T06:26:37.905978558Z[Etc/UTC]","0.0","1.19"
-"FilteringTodos","Should be able to view both complete and incomplete todos","SUCCESS","2023-07-11T06:26:39.207620567Z[Etc/UTC]","0.0","1.25"
+"FilteringTodos","Should be able to view only incomplete todos","SUCCESS","2023-07-15T18:40:49.808171686Z[Etc/UTC]","0.0","1.38"
+"FilteringTodos","Should be able to view only completed todos","SUCCESS","2023-07-15T18:40:51.294089359Z[Etc/UTC]","0.0","1.16"
+"FilteringTodos","Should be able to view both complete and incomplete todos","SUCCESS","2023-07-15T18:40:52.560764003Z[Etc/UTC]","0.0","1.3"

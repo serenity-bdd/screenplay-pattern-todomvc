@@ -1,4 +1,4 @@
 "Story","Title","Result","Date","Stability","Duration (s)"
-"FilteringTodos","Should be able to view both complete and incomplete todos with page objects","SUCCESS","2023-07-11T06:27:00.92271165Z[Etc/UTC]","0.0","1.27"
-"FilteringTodos","Should be able to view only completed todos with page objects","SUCCESS","2023-07-11T06:27:02.295318572Z[Etc/UTC]","0.0","1.1"
-"FilteringTodos","Should be able to view only incomplete todos with page objects","SUCCESS","2023-07-11T06:27:03.498362017Z[Etc/UTC]","0.0","1.1"
+"FilteringTodos","Should be able to view both complete and incomplete todos with page objects","SUCCESS","2023-07-15T18:41:15.585806343Z[Etc/UTC]","0.0","1.23"
+"FilteringTodos","Should be able to view only completed todos with page objects","SUCCESS","2023-07-15T18:41:16.921520925Z[Etc/UTC]","0.0","1.09"
+"FilteringTodos","Should be able to view only incomplete todos with page objects","SUCCESS","2023-07-15T18:41:18.117865796Z[Etc/UTC]","0.0","1.14"

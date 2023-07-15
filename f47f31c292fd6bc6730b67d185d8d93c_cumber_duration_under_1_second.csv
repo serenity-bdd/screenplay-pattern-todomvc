@@ -1,4 +1,4 @@
 "Story","Title","Result","Date","Stability","Duration (s)"
-"Filtering todos","Viewing the items by status","SUCCESS","2023-07-11T06:26:10.252884069Z[Etc/UTC]","0.0","3.12"
-"Filtering todos","Viewing the items by status","SUCCESS","2023-07-11T06:26:10.252884069Z[Etc/UTC]","0.0","3.12"
-"Add new todos","Adding an item to an empty list in Cucumber","SUCCESS","2023-07-11T06:26:13.480684073Z[Etc/UTC]","0.0","0.77"
+"Filtering todos","Viewing the items by status","SUCCESS","2023-07-15T18:40:22.661620387Z[Etc/UTC]","0.0","3.13"
+"Filtering todos","Viewing the items by status","SUCCESS","2023-07-15T18:40:22.661620387Z[Etc/UTC]","0.0","3.13"
+"Add new todos","Adding an item to an empty list in Cucumber","SUCCESS","2023-07-15T18:40:25.900234879Z[Etc/UTC]","0.0","0.76"

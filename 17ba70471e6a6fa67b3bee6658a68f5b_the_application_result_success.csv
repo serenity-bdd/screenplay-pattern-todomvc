@@ -1,4 +1,4 @@
 "Story","Title","Result","Date","Stability","Duration (s)"
-"AddDifferentSortsOfTodos","Should be able to add a new todo item","SUCCESS","2023-07-11T06:26:53.236817613Z[Etc/UTC]","0.0","13.6"
-"LearnAboutTheApplication","Should be able to identify the application with page objects","SUCCESS","2023-07-11T06:26:53.26306967Z[Etc/UTC]","0.0","1.14"
-"LearnAboutTheApplication","Should see how to begin with page objects","SUCCESS","2023-07-11T06:26:54.502568498Z[Etc/UTC]","0.0","1.15"
+"AddDifferentSortsOfTodos","Should be able to add a new todo item","SUCCESS","2023-07-15T18:41:07.442663509Z[Etc/UTC]","0.0","14.17"
+"LearnAboutTheApplication","Should be able to identify the application with page objects","SUCCESS","2023-07-15T18:41:07.46195807Z[Etc/UTC]","0.0","1.21"
+"LearnAboutTheApplication","Should see how to begin with page objects","SUCCESS","2023-07-15T18:41:08.780928482Z[Etc/UTC]","0.0","1.18"

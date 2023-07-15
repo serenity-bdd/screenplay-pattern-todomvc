@@ -1,2 +1,2 @@
 "Story","Title","Result","Date","Stability","Duration (s)"
-"ClearCompletedTodos","Should be able to clear completed todos with page objects","SUCCESS","2023-07-11T06:27:06.695482064Z[Etc/UTC]","0.0","1.04"
+"ClearCompletedTodos","Should be able to clear completed todos with page objects","SUCCESS","2023-07-15T18:41:21.413349748Z[Etc/UTC]","0.0","1.12"
