@@ -1,3 +1,0 @@
-"Story","Title","Result","Date","Stability","Duration (s)"
-"CompleteATodo","Should be able to complete a todo with page objects","SUCCESS","2023-07-15T18:41:10.086876244Z[Etc/UTC]","0.0","1.03"
-"ToggleAllTodos","Should be able to toggle status of all todos with page objects","SUCCESS","2023-07-15T18:41:11.244322999Z[Etc/UTC]","0.0","1.04"

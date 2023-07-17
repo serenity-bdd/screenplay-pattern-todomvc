@@ -1,3 +1,3 @@
 "Story","Title","Result","Date","Stability","Duration (s)"
-"AddNewTodos","Should be able to add the first todo item","SUCCESS","2023-07-15T18:40:30.571181478Z[Etc/UTC]","0.0","0.74"
-"AddNewTodos","Should be able to add additional todo items","SUCCESS","2023-07-15T18:40:31.424328168Z[Etc/UTC]","0.0","1.07"
+"AddNewTodos","Should be able to add the first todo item","SUCCESS","2023-07-17T12:28:40.47988835Z[Etc/UTC]","0.0","0.63"
+"AddNewTodos","Should be able to add additional todo items","SUCCESS","2023-07-17T12:28:41.219671413Z[Etc/UTC]","0.0","0.96"

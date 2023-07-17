@@ -1,3 +1,0 @@
-"Story","Title","Result","Date","Stability","Duration (s)"
-"CompleteATodo","Should be able to complete a todo","SUCCESS","2023-07-15T18:40:34.111640949Z[Etc/UTC]","0.0","1.03"
-"CompleteATodo","Should see the number of todos decrease when an item is completed","SUCCESS","2023-07-15T18:40:35.246195965Z[Etc/UTC]","0.0","1.03"
