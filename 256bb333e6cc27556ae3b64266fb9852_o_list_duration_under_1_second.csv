@@ -1,5 +1,4 @@
 "Story","Title","Result","Date","Stability","Duration (s)"
-"ClearCompletedTodos","Should not be able to clear completed todos if none are complete","SUCCESS","2023-07-17T12:29:03.320410026Z[Etc/UTC]","0.0","0.8"
-"ClearCompletedTodos","Should be able to clear completed todos","SUCCESS","2023-07-17T12:29:04.224746764Z[Etc/UTC]","0.0","0.97"
-"DeletingTodos","Should be able to delete todos","SUCCESS","2023-07-17T12:29:01.494485386Z[Etc/UTC]","0.0","0.81"
-"DeletingTodos","Should see deleting a todo decreases the remaining items count","SUCCESS","2023-07-17T12:29:02.407481101Z[Etc/UTC]","0.0","0.78"
+"ClearCompletedTodos","Should not be able to clear completed todos if none are complete","SUCCESS","2023-07-29T11:38:33.280323033Z[Etc/UTC]","0.0","0.87"
+"DeletingTodos","Should be able to delete todos","SUCCESS","2023-07-29T11:38:31.109912042Z[Etc/UTC]","0.0","0.93"
+"DeletingTodos","Should see deleting a todo decreases the remaining items count","SUCCESS","2023-07-29T11:38:32.147393073Z[Etc/UTC]","0.0","0.99"
