@@ -11,10 +11,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <serenity.version>3.9.4</serenity.version>
-        <serenity.maven.version>3.9.4</serenity.maven.version>
-        <serenity.cucumber.version>3.9.4</serenity.cucumber.version>
-        <parallel.tests>8</parallel.tests>
+        <serenity.version>3.9.8</serenity.version>
         <encoding>UTF-8</encoding>
         <serenity.test.root></serenity.test.root>
         <tags></tags>
@@ -48,7 +45,7 @@
         <dependency>
             <groupId>net.serenity-bdd</groupId>
             <artifactId>serenity-cucumber</artifactId>
-            <version>${serenity.cucumber.version}</version>
+            <version>${serenity.version}</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -79,33 +76,36 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M5</version>
                 <configuration>
-                    <skip>true</skip>
-                </configuration>
-            </plugin>
-            <plugin>
-                <artifactId>maven-failsafe-plugin</artifactId>
-                <version>3.1.2</version>
-                <configuration>
                     <includes>
                         <include>**/pageobjects/**/*.java</include>
                         <include>**/screenplay*/**/*.java</include>
                         <include>**/cucumber/*.java</include>
                     </includes>
-                    <excludes>
-                        <exclude>**/*WithFailures.java</exclude>
-                    </excludes>
-                    <!--                    <parallel>classes</parallel>-->
-                    <!--                    <useUnlimitedThreads>true</useUnlimitedThreads>-->
+<!--                    <skip>true</skip>-->
                 </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>integration-test</goal>
-                            <goal>verify</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
+<!--            <plugin>-->
+<!--                <artifactId>maven-failsafe-plugin</artifactId>-->
+<!--                <version>3.1.2</version>-->
+<!--                <configuration>-->
+<!--                    <includes>-->
+<!--                        <include>**/pageobjects/**/*.java</include>-->
+<!--                        <include>**/screenplay*/**/*.java</include>-->
+<!--                        <include>**/cucumber/*.java</include>-->
+<!--                    </includes>-->
+<!--                    <excludes>-->
+<!--                        <exclude>**/*WithFailures.java</exclude>-->
+<!--                    </excludes>-->
+<!--                </configuration>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <goals>-->
+<!--                            <goal>integration-test</goal>-->
+<!--                            <goal>verify</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -118,7 +118,7 @@
             <plugin>
                 <groupId>net.serenity-bdd.maven.plugins</groupId>
                 <artifactId>serenity-maven-plugin</artifactId>
-                <version>${serenity.maven.version}</version>
+                <version>${serenity.version}</version>
                 <configuration>
                     <tags>${tags}</tags>
                 </configuration>
