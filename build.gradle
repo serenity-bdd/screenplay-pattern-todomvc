@@ -12,7 +12,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath "net.serenity-bdd:serenity-gradle-plugin:3.9.4"
+        classpath "net.serenity-bdd:serenity-gradle-plugin:3.9.8"
     }
 }
 
@@ -22,12 +22,12 @@ apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: "net.serenity-bdd.serenity-gradle-plugin"
 
-sourceCompatibility = 16
-targetCompatibility = 16
+sourceCompatibility = 18
+targetCompatibility = 18
 
 ext {
     slf4jVersion = '1.7.7'
-    serenityCoreVersion = '3.9.4'
+    serenityCoreVersion = '3.9.8'
     junitVersion = '4.13.1'
     assertJVersion = '3.22.0'
     logbackVersion = '1.2.10'
