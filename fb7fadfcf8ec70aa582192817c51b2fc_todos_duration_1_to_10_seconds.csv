@@ -1,4 +1,4 @@
 "Story","Title","Result","Date","Stability","Duration (s)"
-"CompleteATodo","Should be able to complete a todo","SUCCESS","2023-08-01T05:39:12.079280166Z[Etc/UTC]","0.0","1.05"
-"CompleteATodo","Should see the number of todos decrease when an item is completed","SUCCESS","2023-08-01T05:39:13.238586858Z[Etc/UTC]","0.0","1.01"
-"DownloadTheApp","Should see the number of todos decrease when an item is completed","SUCCESS","2023-08-01T05:39:14.391194568Z[Etc/UTC]","0.0","1.04"
+"CompleteATodo","Should be able to complete a todo","SUCCESS","2023-08-01T05:39:26.49179943Z[Etc/UTC]","0.0","1.27"
+"CompleteATodo","Should see the number of todos decrease when an item is completed","SUCCESS","2023-08-01T05:39:27.865339752Z[Etc/UTC]","0.0","1.24"
+"DownloadTheApp","Should see the number of todos decrease when an item is completed","SUCCESS","2023-08-01T05:39:29.276293926Z[Etc/UTC]","0.0","1.14"
