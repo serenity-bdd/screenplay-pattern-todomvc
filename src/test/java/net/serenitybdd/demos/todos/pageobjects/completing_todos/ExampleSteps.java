@@ -1,6 +1,6 @@
 package net.serenitybdd.demos.todos.pageobjects.completing_todos;
 
-import net.thucydides.core.annotations.Step;
+import net.serenitybdd.annotations.Step;
 
 public class ExampleSteps {
 

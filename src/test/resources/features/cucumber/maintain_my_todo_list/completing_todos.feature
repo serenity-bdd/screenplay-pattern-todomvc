@@ -16,4 +16,3 @@ Feature: Completing todos
     Given that Jane has a todo list containing Buy some milk, Walk the dog
     When she filters her list to show only Completed tasks
     Then her todo list should be empty
-
