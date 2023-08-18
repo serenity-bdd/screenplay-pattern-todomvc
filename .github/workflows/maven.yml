@@ -22,6 +22,11 @@ jobs:
         java-version: '17'
         distribution: 'adopt'
 
+    - name: Install Chrome for Testing and its driver
+      run: |
+        npm i puppeteer
+        npx @puppeteer/browsers install chrome@stable
+
     - name: Build with Maven
       run: mvn verify --file pom.xml
 
