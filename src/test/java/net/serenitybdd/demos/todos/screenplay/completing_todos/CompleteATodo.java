@@ -4,6 +4,7 @@ import net.serenitybdd.demos.todos.screenplay.questions.TheItemStatus;
 import net.serenitybdd.demos.todos.screenplay.questions.TheItems;
 import net.serenitybdd.demos.todos.screenplay.tasks.CompleteItem;
 import net.serenitybdd.demos.todos.screenplay.tasks.Start;
+import net.serenitybdd.demos.todos.screenplay.tasks.ToggleStatus;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
@@ -140,6 +141,20 @@ public class CompleteATodo {
                 Ensure.that(TheItems.leftCount()).isEqualTo(1)
         );
     }
+
+    @Test
+    public void should_be_able_to_toggle_the_status_of_all_todos() {
+        james.attemptsTo(
+                Start.withATodoListContaining("Walk the dog", "Put out the garbage"),
+                ToggleStatus.ofAllItems(),
+
+                Ensure.that(TheItemStatus.forTheItemCalled("Walk the dog")).isEqualTo(Completed),
+                Ensure.that(TheItemStatus.forTheItemCalled("Put out the garbage")).isEqualTo(Completed),
+                Ensure.that(TheItems.leftCount()).isEqualTo(0)
+        );
+    }
+
+
 
     @Test
     public void should_see_the_number_of_todos_decrease_when_an_item_is_completed() {
