@@ -1,1 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><testsuite errors="0" failures="0" name="Deleting todos" skipped="0" tests="2" time="4.72" timestamp="2023-08-01 05:39:06"><testcase name="Delete an active item"/><testcase name="Delete all the items"/></testsuite>

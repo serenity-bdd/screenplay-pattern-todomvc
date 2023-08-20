@@ -1,0 +1,4 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"ToggleAllTodos","Should see how many items todo when all are toggled to incomplete with page objects","SUCCESS","2023-08-20T07:03:36.158060013Z[Etc/UTC]","0.0","0.83"
+"ToggleAllTodos","Should see that there are zero items todo when all are toggled complete with page objects","SUCCESS","2023-08-20T07:03:37.300129131Z[Etc/UTC]","0.0","0.83"
+"ToggleAllTodos","Should be able to quickly complete all todos with page objects","SUCCESS","2023-08-20T07:03:38.455528347Z[Etc/UTC]","0.0","0.78"
