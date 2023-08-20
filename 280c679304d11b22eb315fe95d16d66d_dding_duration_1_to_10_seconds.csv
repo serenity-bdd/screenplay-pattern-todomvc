@@ -1,3 +1,0 @@
-"Story","Title","Result","Date","Stability","Duration (s)"
-"Add new todos","Adding an item to an empty list in Cucumber","SUCCESS","2023-08-20T07:03:24.781381231Z[Etc/UTC]","0.0","4.91"
-"Add new todos","Adding an item to a list with other items in Cucumber","SUCCESS","2023-08-20T07:03:29.595596289Z[Etc/UTC]","0.0","4.15"
