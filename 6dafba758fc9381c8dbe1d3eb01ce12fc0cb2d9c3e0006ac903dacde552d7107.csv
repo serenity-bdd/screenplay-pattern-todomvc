@@ -1,4 +1,0 @@
-"Story","Title","Result","Date","Stability","Duration (s)"
-"FilteringTodos","Should be able to view both complete and incomplete todos with page objects","SUCCESS","2023-08-24T18:42:46.462588424Z[Etc/UTC]","0.0","0.86"
-"FilteringTodos","Should be able to view only completed todos with page objects","SUCCESS","2023-08-24T18:42:48.502373472Z[Etc/UTC]","0.0","0.85"
-"FilteringTodos","Should be able to view only incomplete todos with page objects","SUCCESS","2023-08-24T18:42:50.492914578Z[Etc/UTC]","0.0","0.82"

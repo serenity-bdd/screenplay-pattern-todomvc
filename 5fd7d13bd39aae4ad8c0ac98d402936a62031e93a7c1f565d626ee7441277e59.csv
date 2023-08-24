@@ -1,3 +1,3 @@
 "Story","Title","Result","Date","Stability","Duration (s)"
-"ClearCompletedTodos","Should not be able to clear completed todos if none are complete","SUCCESS","2023-08-24T18:43:31.716753861Z[Etc/UTC]","0.0","0.48"
-"ClearCompletedTodos","Should be able to clear completed todos","SUCCESS","2023-08-24T18:43:33.092311871Z[Etc/UTC]","0.0","0.53"
+"ClearCompletedTodos","Should not be able to clear completed todos if none are complete","SUCCESS","2023-08-24T18:44:25.599787923Z[Etc/UTC]","0.0","0.61"
+"ClearCompletedTodos","Should be able to clear completed todos","SUCCESS","2023-08-24T18:44:27.686956231Z[Etc/UTC]","0.0","0.58"
