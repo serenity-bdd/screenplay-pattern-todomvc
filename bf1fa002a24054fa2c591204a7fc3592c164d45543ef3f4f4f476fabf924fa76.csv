@@ -1,0 +1,8 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Completing todos","List of completed items should be empty if nothing has been completed","SUCCESS","2023-08-24T18:42:15.471299601Z[Etc/UTC]","0.0","14.68"
+"Completing todos","Mark a task as completed","SUCCESS","2023-08-24T18:42:17.062124575Z[Etc/UTC]","0.0","13.39"
+"Deleting todos","Delete all the items","SUCCESS","2023-08-24T18:42:16.619852831Z[Etc/UTC]","0.0","12.74"
+"Deleting todos","Delete an active item","SUCCESS","2023-08-24T18:42:16.646823138Z[Etc/UTC]","0.0","10.51"
+"Filtering todos","Viewing the items by status","SUCCESS","2023-08-24T18:42:17.267134784Z[Etc/UTC]","0.0","12.59"
+"Filtering todos","Viewing the items by status","SUCCESS","2023-08-24T18:42:17.267134784Z[Etc/UTC]","0.0","12.59"
+"Filtering todos","View only the completed items","SUCCESS","2023-08-24T18:42:18.697636926Z[Etc/UTC]","0.0","11.26"

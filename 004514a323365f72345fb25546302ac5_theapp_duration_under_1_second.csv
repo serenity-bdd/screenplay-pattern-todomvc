@@ -1,3 +1,0 @@
-"Story","Title","Result","Date","Stability","Duration (s)"
-"DownloadTheApp","Should see the number of todos decrease when an item is completed","SUCCESS","2023-08-20T07:04:14.833983525Z[Etc/UTC]","0.0","0.53"
-"DownloadTheApp","Should be able to download the application","SUCCESS","2023-08-20T07:04:16.018102361Z[Etc/UTC]","0.0","0.88"

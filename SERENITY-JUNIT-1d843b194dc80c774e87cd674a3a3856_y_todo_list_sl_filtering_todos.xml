@@ -1,1 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><testsuite errors="0" failures="0" name="Filtering todos" skipped="0" tests="4" time="26.15" timestamp="2023-08-20 07:03:34"><testcase name="Viewing the items by status"/><testcase name="View only the completed items"/></testsuite>
