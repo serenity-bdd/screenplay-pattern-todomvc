@@ -1,5 +1,6 @@
 package net.serenitybdd.demos.todos.screenplay.tasks;
 
+import net.serenitybdd.annotations.WithDriver;
 import net.serenitybdd.demos.todos.screenplay.user_interface.TodoList;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
