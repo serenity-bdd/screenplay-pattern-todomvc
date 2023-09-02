@@ -11,7 +11,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <serenity.version>4.0.0-beta-6</serenity.version>
+        <serenity.version>4.0.1</serenity.version>
         <encoding>UTF-8</encoding>
         <serenity.test.root></serenity.test.root>
         <tags></tags>
@@ -107,31 +107,31 @@
                         <include>**/screenplay*/**/*.java</include>
                         <include>**/cucumber/*.java</include>
                     </includes>
-<!--                    <skip>true</skip>-->
+                    <skip>true</skip>
                 </configuration>
             </plugin>
-<!--            <plugin>-->
-<!--                <artifactId>maven-failsafe-plugin</artifactId>-->
-<!--                <version>3.1.2</version>-->
-<!--                <configuration>-->
-<!--                    <includes>-->
-<!--                        <include>**/pageobjects/**/*.java</include>-->
-<!--                        <include>**/screenplay*/**/*.java</include>-->
-<!--                        <include>**/cucumber/*.java</include>-->
-<!--                    </includes>-->
-<!--                    <excludes>-->
-<!--                        <exclude>**/*WithFailures.java</exclude>-->
-<!--                    </excludes>-->
-<!--                </configuration>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <goals>-->
-<!--                            <goal>integration-test</goal>-->
-<!--                            <goal>verify</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
+            <plugin>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>3.1.2</version>
+                <configuration>
+                    <includes>
+                        <include>**/pageobjects/**/*.java</include>
+                        <include>**/screenplay*/**/*.java</include>
+                        <include>**/cucumber/*.java</include>
+                    </includes>
+                    <excludes>
+                        <exclude>**/*WithFailures.java</exclude>
+                    </excludes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
