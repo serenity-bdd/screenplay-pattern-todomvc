@@ -1,30 +1,23 @@
 package net.serenitybdd.demos.todos.pageobjects.completing_todos;
 
-import net.serenitybdd.core.steps.UIInteractions;
-import net.serenitybdd.demos.todos.pageobjects.steps.TodoUserSteps;
-import net.serenitybdd.junit.runners.SerenityRunner;
-import net.serenitybdd.annotations.Managed;
 import net.serenitybdd.annotations.Steps;
-import net.serenitybdd.annotations.WithTag;
-import net.serenitybdd.annotations.WithTags;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.openqa.selenium.WebDriver;
+import net.serenitybdd.demos.todos.pageobjects.steps.TodoUserSteps;
+import net.serenitybdd.junit5.SerenityJUnit5Extension;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
-@RunWith(SerenityRunner.class)
-@WithTags({
-        @WithTag("PageObjects pattern"),
-        @WithTag("version:RELEASE-2"),
-})
+@ExtendWith(SerenityJUnit5Extension.class)
+@Tag("PageObjects")
+@Tag("version:RELEASE-3")
 public class CompleteATodo {
 
     @Steps
     TodoUserSteps james;
 
-    @Before
-    public void setup()
-    {
+    @BeforeEach
+    public void setup() {
         james.starts_with_a_todo_list_containing("Walk the dog", "Put out the garbage");
     }
 

@@ -1,17 +1,17 @@
 package net.serenitybdd.demos.todos.pageobjects.maintain_my_todo_list;
 
-import net.serenitybdd.demos.todos.pageobjects.model.TodoStatusFilter;
-import net.serenitybdd.demos.todos.pageobjects.steps.TodoUserSteps;
-import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.annotations.Managed;
 import net.serenitybdd.annotations.Steps;
-import net.serenitybdd.annotations.WithTag;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import net.serenitybdd.demos.todos.pageobjects.model.TodoStatusFilter;
+import net.serenitybdd.demos.todos.pageobjects.steps.TodoUserSteps;
+import net.serenitybdd.junit5.SerenityJUnit5Extension;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
 
-@RunWith(SerenityRunner.class)
-@WithTag("PageObjects pattern")
+@ExtendWith(SerenityJUnit5Extension.class)
+@Tag("PageObjects")
 public class FilteringTodos {
 
     @Managed WebDriver driver;

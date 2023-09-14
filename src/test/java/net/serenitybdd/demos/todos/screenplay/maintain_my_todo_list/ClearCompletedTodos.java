@@ -6,13 +6,17 @@ import net.serenitybdd.demos.todos.screenplay.tasks.Clear;
 import net.serenitybdd.demos.todos.screenplay.tasks.CompleteItem;
 import net.serenitybdd.demos.todos.screenplay.tasks.Start;
 import net.serenitybdd.junit.runners.SerenityRunner;
+import net.serenitybdd.junit5.SerenityJUnit5Extension;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.serenitybdd.annotations.Managed;
 import net.serenitybdd.annotations.WithTag;
 import net.serenitybdd.annotations.WithTags;
 import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
@@ -21,16 +25,14 @@ import static net.serenitybdd.screenplay.GivenWhenThen.*;
 import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.is;
 
-@RunWith(SerenityRunner.class)
-@WithTags({
-        @WithTag("Screenplay pattern"),
-        @WithTag("version:RELEASE-2"),
-})
+@ExtendWith(SerenityJUnit5Extension.class)
+@Tag("Screenplay")
 public class ClearCompletedTodos {
 
     @Managed private WebDriver hisBrowser;
     private Actor james = Actor.named("James");
-    @Before public void jamesCanBrowseTheWeb() {
+    @BeforeEach
+    public void jamesCanBrowseTheWeb() {
         james.can(BrowseTheWeb.with(hisBrowser));
     }
 

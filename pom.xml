@@ -11,7 +11,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <serenity.version>4.0.1</serenity.version>
+        <serenity.version>4.0.8</serenity.version>
         <encoding>UTF-8</encoding>
         <serenity.test.root></serenity.test.root>
         <tags></tags>
@@ -25,6 +25,11 @@
         <dependency>
             <groupId>net.serenity-bdd</groupId>
             <artifactId>serenity-junit</artifactId>
+            <version>${serenity.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.serenity-bdd</groupId>
+            <artifactId>serenity-junit5</artifactId>
             <version>${serenity.version}</version>
         </dependency>
         <dependency>

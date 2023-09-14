@@ -1,0 +1,38 @@
+version: "3"
+services:
+  selenium-hub:
+    image: selenium/hub
+    ports:
+      - "4444:4444"
+
+  chrome-node1:
+    image: timbru31/node-chrome
+    depends_on:
+      - selenium-hub
+    environment:
+      - HUB_HOST=selenium-hub
+      - HUB_PORT=4444
+
+  chrome-node2:
+    image: timbru31/node-chrome
+    depends_on:
+      - selenium-hub
+    environment:
+      - HUB_HOST=selenium-hub
+      - HUB_PORT=4444
+
+  firefox-node1:
+    image: seleniarm/node-firefox
+    depends_on:
+      - selenium-hub
+    environment:
+      - HUB_HOST=selenium-hub
+      - HUB_PORT=4444
+
+  firefox-node2:
+    image: seleniarm/node-firefox
+    depends_on:
+      - selenium-hub
+    environment:
+      - HUB_HOST=selenium-hub
+      - HUB_PORT=4444

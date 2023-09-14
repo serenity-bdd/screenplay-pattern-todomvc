@@ -1,17 +1,17 @@
 package net.serenitybdd.demos.todos.pageobjects.record_todos;
 
+import net.serenitybdd.annotations.Managed;
+import net.serenitybdd.annotations.Steps;
 import net.serenitybdd.demos.todos.pageobjects.steps.TodoUserSteps;
-import net.serenitybdd.junit.runners.SerenityRunner;
-import net.serenitybdd.annotations.*;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import net.serenitybdd.junit5.SerenityJUnit5Extension;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
 
-@RunWith(SerenityRunner.class)
-@WithTags({
-        @WithTag("PageObjects pattern"),
-        @WithTag("version:RELEASE-2"),
-})
+@ExtendWith(SerenityJUnit5Extension.class)
+@Tag("PageObjects")
 public class AddNewTodos {
 
     @Managed WebDriver driver;
@@ -19,7 +19,7 @@ public class AddNewTodos {
     @Steps   TodoUserSteps james;
 
     @Test
-    @Title("Test to resolve issue #616172")
+    @DisplayName("Test to resolve issue #616172")
     public void should_be_able_to_add_the_first_todo_item_with_page_objects() {
 
         james.starts_with_an_empty_todo_list();

@@ -1,20 +1,17 @@
 package net.serenitybdd.demos.todos.pageobjects.accessing_the_application;
 
 import net.serenitybdd.demos.todos.pageobjects.steps.TodoUserSteps;
-import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.annotations.Managed;
 import net.serenitybdd.annotations.Steps;
-import net.serenitybdd.annotations.WithTag;
-import net.serenitybdd.annotations.WithTags;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import net.serenitybdd.junit5.SerenityJUnit5Extension;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
 
-@RunWith(SerenityRunner.class)
-@WithTags({
-        @WithTag("PageObjects pattern"),
-        @WithTag("version:RELEASE-1"),
-})
+@ExtendWith(SerenityJUnit5Extension.class)
+@Tag("PageObjects")
+@Tag("version:RELEASE-3")
 public class LearnAboutTheApplication {
 
     @Managed WebDriver driver;
