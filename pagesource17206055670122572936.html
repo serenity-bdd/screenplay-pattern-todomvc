@@ -1,0 +1,159 @@
+<html lang='en'><head><link href='prism/prism.css' rel='stylesheet' /></head><body><script src='prism/prism.js'></script><body><div><pre><code class='language-html'>&lt;html lang="en" data-framework="angularjs"&gt;<br/>
+ &lt;head&gt;<br/>
+  &lt;style type="text/css"&gt;@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}&lt;/style&gt;<br/>
+  &lt;meta charset="utf-8"&gt;<br/>
+  &lt;title&gt;AngularJS • TodoMVC&lt;/title&gt;<br/>
+  &lt;link rel="stylesheet" href="node_modules/todomvc-common/base.css"&gt;<br/>
+  &lt;link rel="stylesheet" href="node_modules/todomvc-app-css/index.css"&gt;<br/>
+  &lt;style&gt;[ng-cloak] { display: none; }&lt;/style&gt;<br/>
+  &lt;meta http-equiv="origin-trial" content="AymqwRC7u88Y4JPvfIF2F37QKylC04248hLCdJAsh8xgOfe/dVJPV3XS3wLFca1ZMVOtnBfVjaCMTVudWM//5g4AAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjk1MTY3OTk5LCJpc1RoaXJkUGFydHkiOnRydWV9"&gt;<br/>
+ &lt;/head&gt;<br/>
+ &lt;body ng-app="todomvc" class="learn-bar ng-scope"&gt;<br/>
+  &lt;aside class="learn"&gt;<br/>
+   &lt;header&gt;<br/>
+    &lt;h3&gt;AngularJS&lt;/h3&gt;&lt;span class="source-links"&gt; &lt;h5&gt;Example&lt;/h5&gt;&lt;a href="https://github.com/tastejs/todomvc/tree/gh-pages/examples/angularjs"&gt;Source&lt;/a&gt; &lt;h5&gt;Require.js &amp; AngularJS&lt;/h5&gt;&lt;a class="demo-link" data-type="local" href="https://todomvc.com/examples/angularjs_require"&gt;Demo&lt;/a&gt;, &lt;a href="https://github.com/tastejs/todomvc/tree/gh-pages/examples/angularjs_require"&gt;Source&lt;/a&gt; &lt;h5&gt;TypeScript &amp; AngularJS&lt;/h5&gt;&lt;a class="demo-link" data-type="local" href="https://todomvc.com/examples/typescript-angular"&gt;Demo&lt;/a&gt;, &lt;a href="https://github.com/tastejs/todomvc/tree/gh-pages/examples/typescript-angular"&gt;Source&lt;/a&gt; &lt;h5&gt;Google Cloud Platform + Express&lt;/h5&gt;&lt;a class="demo-link" data-type="external" href="http://gcloud-todos.appspot.com"&gt;Demo&lt;/a&gt;, &lt;a href="https://github.com/GoogleCloudPlatform/gcloud-node-todos"&gt;Source&lt;/a&gt; &lt;h5&gt;Angular2&lt;/h5&gt;&lt;a class="demo-link" data-type="local" href="https://todomvc.com/examples/angular2"&gt;Demo&lt;/a&gt;, &lt;a href="https://github.com/tastejs/todomvc/tree/gh-pages/examples/angular2"&gt;Source&lt;/a&gt; &lt;/span&gt;<br/>
+   &lt;/header&gt;<br/>
+   &lt;hr&gt;<br/>
+   &lt;blockquote class="quote speech-bubble"&gt;<br/>
+    &lt;p&gt;HTML is great for declaring static documents, but it falters when we try to use it for declaring dynamic views in web-applications. AngularJS lets you extend HTML vocabulary for your application. The resulting environment is extraordinarily expressive, readable, and quick to develop.&lt;/p&gt;<br/>
+    &lt;footer&gt;&lt;a href="http://angularjs.org"&gt;AngularJS&lt;/a&gt;<br/>
+    &lt;/footer&gt;<br/>
+   &lt;/blockquote&gt;<br/>
+   &lt;hr&gt;<br/>
+   &lt;h4&gt;Official Resources&lt;/h4&gt;<br/>
+   &lt;ul&gt;<br/>
+    &lt;li&gt;&lt;a href="http://docs.angularjs.org/tutorial"&gt;Tutorial&lt;/a&gt;&lt;/li&gt;<br/>
+    &lt;li&gt;&lt;a href="http://docs.angularjs.org/api"&gt;API Reference&lt;/a&gt;&lt;/li&gt;<br/>
+    &lt;li&gt;&lt;a href="http://docs.angularjs.org/guide"&gt;Developer Guide&lt;/a&gt;&lt;/li&gt;<br/>
+    &lt;li&gt;&lt;a href="https://www.madewithangular.com/"&gt;Applications built with AngularJS&lt;/a&gt;&lt;/li&gt;<br/>
+    &lt;li&gt;&lt;a href="http://blog.angularjs.org"&gt;Blog&lt;/a&gt;&lt;/li&gt;<br/>
+    &lt;li&gt;&lt;a href="http://docs.angularjs.org/misc/faq"&gt;FAQ&lt;/a&gt;&lt;/li&gt;<br/>
+    &lt;li&gt;&lt;a href="https://www.youtube.com/user/angularjs"&gt;Videos&lt;/a&gt;&lt;/li&gt;<br/>
+   &lt;/ul&gt;<br/>
+   &lt;h4&gt;Articles and Guides&lt;/h4&gt;<br/>
+   &lt;ul&gt;<br/>
+    &lt;li&gt;&lt;a href="https://www.codeschool.com/courses/shaping-up-with-angular-js"&gt;Code School AngularJS course&lt;/a&gt;&lt;/li&gt;<br/>
+    &lt;li&gt;&lt;a href="http://net.tutsplus.com/tutorials/javascript-ajax/5-awesome-angularjs-features"&gt;5 Awesome AngularJS Features&lt;/a&gt;&lt;/li&gt;<br/>
+    &lt;li&gt;&lt;a href="http://briantford.com/blog/angular-yeoman.html"&gt;Using Yeoman with AngularJS&lt;/a&gt;&lt;/li&gt;<br/>
+    &lt;li&gt;&lt;a href="http://stephenplusplus.github.io/meangular"&gt;me&amp;ngular - an introduction to MVW&lt;/a&gt;&lt;/li&gt;<br/>
+   &lt;/ul&gt;<br/>
+   &lt;h4&gt;Community&lt;/h4&gt;<br/>
+   &lt;ul&gt;<br/>
+    &lt;li&gt;&lt;a href="http://www.youtube.com/playlist?list=PL1w1q3fL4pmgqpzb-XhG7Clgi67d_OHXz"&gt;Walkthroughs and Tutorials on YouTube&lt;/a&gt;&lt;/li&gt;<br/>
+    &lt;li&gt;&lt;a href="https://groups.google.com/forum/?fromgroups#!forum/angular"&gt;Google Groups mailing list&lt;/a&gt;&lt;/li&gt;<br/>
+    &lt;li&gt;&lt;a href="http://stackoverflow.com/questions/tagged/angularjs"&gt;angularjs on Stack Overflow&lt;/a&gt;&lt;/li&gt;<br/>
+    &lt;li&gt;&lt;a href="https://twitter.com/angularjs"&gt;AngularJS on Twitter&lt;/a&gt;&lt;/li&gt;<br/>
+    &lt;li&gt;&lt;a href="https://plus.google.com/+AngularJS/posts"&gt;AngularjS on Google+&lt;/a&gt;&lt;/li&gt;<br/>
+   &lt;/ul&gt;<br/>
+   &lt;footer&gt;<br/>
+    &lt;hr&gt;&lt;em&gt;If you have other helpful links to share, or find any of the links above no longer work, please &lt;a href="https://github.com/tastejs/todomvc/issues"&gt;let us know&lt;/a&gt;.&lt;/em&gt;<br/>
+   &lt;/footer&gt;<br/>
+  &lt;/aside&gt;&lt;!-- ngView: undefined --&gt;&lt;ng-view class="ng-scope"&gt;<br/>
+   &lt;section class="todoapp ng-scope"&gt;<br/>
+    &lt;header class="header"&gt;<br/>
+     &lt;h1&gt;todos&lt;/h1&gt;<br/>
+     &lt;form class="todo-form ng-valid ng-dirty ng-submitted" ng-submit="addTodo()"&gt;&lt;input class="new-todo ng-untouched ng-valid ng-dirty" placeholder="What needs to be done?" ng-model="newTodo" ng-disabled="saving" autofocus&gt;<br/>
+     &lt;/form&gt;<br/>
+    &lt;/header&gt;<br/>
+    &lt;section class="main" ng-show="todos.length"&gt;&lt;input id="toggle-all" class="toggle-all ng-pristine ng-untouched ng-valid" type="checkbox" ng-model="allChecked" ng-click="markAll(allChecked)"&gt; &lt;label for="toggle-all"&gt;Mark all as complete&lt;/label&gt;<br/>
+     &lt;ul class="todo-list"&gt;&lt;!-- ngRepeat: todo in todos | filter:statusFilter track by $index --&gt;<br/>
+      &lt;li ng-repeat="todo in todos | filter:statusFilter track by $index" ng-class="{completed: todo.completed, editing: todo == editedTodo}" class="ng-scope"&gt;<br/>
+       &lt;div class="view"&gt;&lt;input class="toggle ng-pristine ng-untouched ng-valid" type="checkbox" ng-model="todo.completed" ng-change="toggleCompleted(todo)"&gt; &lt;label ng-dblclick="editTodo(todo)" class="ng-binding"&gt;Walk the dog&lt;/label&gt; &lt;button class="destroy" ng-click="removeTodo(todo)"&gt;&lt;/button&gt;<br/>
+       &lt;/div&gt;<br/>
+       &lt;form ng-submit="saveEdits(todo, 'submit')" class="ng-pristine ng-valid"&gt;&lt;input class="edit ng-pristine ng-untouched ng-valid" ng-trim="false" ng-model="todo.title" todo-escape="revertEdits(todo)" ng-blur="saveEdits(todo, 'blur')" todo-focus="todo == editedTodo"&gt;<br/>
+       &lt;/form&gt;&lt;/li&gt;&lt;!-- end ngRepeat: todo in todos | filter:statusFilter track by $index --&gt;<br/>
+      &lt;li ng-repeat="todo in todos | filter:statusFilter track by $index" ng-class="{completed: todo.completed, editing: todo == editedTodo}" class="ng-scope"&gt;<br/>
+       &lt;div class="view"&gt;&lt;input class="toggle ng-pristine ng-untouched ng-valid" type="checkbox" ng-model="todo.completed" ng-change="toggleCompleted(todo)"&gt; &lt;label ng-dblclick="editTodo(todo)" class="ng-binding"&gt;Put out the garbage&lt;/label&gt; &lt;button class="destroy" ng-click="removeTodo(todo)"&gt;&lt;/button&gt;<br/>
+       &lt;/div&gt;<br/>
+       &lt;form ng-submit="saveEdits(todo, 'submit')" class="ng-pristine ng-valid"&gt;&lt;input class="edit ng-pristine ng-untouched ng-valid" ng-trim="false" ng-model="todo.title" todo-escape="revertEdits(todo)" ng-blur="saveEdits(todo, 'blur')" todo-focus="todo == editedTodo"&gt;<br/>
+       &lt;/form&gt;&lt;/li&gt;&lt;!-- end ngRepeat: todo in todos | filter:statusFilter track by $index --&gt;<br/>
+      &lt;li ng-repeat="todo in todos | filter:statusFilter track by $index" ng-class="{completed: todo.completed, editing: todo == editedTodo}" class="ng-scope"&gt;<br/>
+       &lt;div class="view"&gt;&lt;input class="toggle ng-pristine ng-untouched ng-valid" type="checkbox" ng-model="todo.completed" ng-change="toggleCompleted(todo)"&gt; &lt;label ng-dblclick="editTodo(todo)" class="ng-binding"&gt;Buy some milk&lt;/label&gt; &lt;button class="destroy" ng-click="removeTodo(todo)"&gt;&lt;/button&gt;<br/>
+       &lt;/div&gt;<br/>
+       &lt;form ng-submit="saveEdits(todo, 'submit')" class="ng-pristine ng-valid"&gt;&lt;input class="edit ng-pristine ng-untouched ng-valid" ng-trim="false" ng-model="todo.title" todo-escape="revertEdits(todo)" ng-blur="saveEdits(todo, 'blur')" todo-focus="todo == editedTodo"&gt;<br/>
+       &lt;/form&gt;&lt;/li&gt;&lt;!-- end ngRepeat: todo in todos | filter:statusFilter track by $index --&gt;<br/>
+     &lt;/ul&gt;<br/>
+    &lt;/section&gt;<br/>
+    &lt;footer class="footer" ng-show="todos.length"&gt;&lt;span class="todo-count"&gt;&lt;strong class="ng-binding"&gt;3&lt;/strong&gt;<br/>
+      &lt;ng-pluralize count="remainingCount" when="{ one: 'item left', other: 'items left' }"&gt;<br/>
+       items left<br/>
+      &lt;/ng-pluralize&gt; &lt;/span&gt;<br/>
+     &lt;ul class="filters"&gt;<br/>
+      &lt;li&gt;&lt;a ng-class="{selected: status == ''} " href="#/" class="selected"&gt;All&lt;/a&gt;&lt;/li&gt;<br/>
+      &lt;li&gt;&lt;a ng-class="{selected: status == 'active'}" href="#/active"&gt;Active&lt;/a&gt;&lt;/li&gt;<br/>
+      &lt;li&gt;&lt;a ng-class="{selected: status == 'completed'}" href="#/completed"&gt;Completed&lt;/a&gt;&lt;/li&gt;<br/>
+     &lt;/ul&gt;&lt;button class="clear-completed ng-hide" ng-click="clearCompletedTodos()" ng-show="completedCount"&gt;Clear completed&lt;/button&gt;<br/>
+    &lt;/footer&gt;<br/>
+   &lt;/section&gt;<br/>
+   &lt;footer class="info ng-scope"&gt;<br/>
+    &lt;p&gt;Double-click to edit a todo&lt;/p&gt;<br/>
+    &lt;p&gt;Credits: &lt;a href="http://twitter.com/cburgdorf"&gt;Christoph Burgdorf&lt;/a&gt;, &lt;a href="http://ericbidelman.com"&gt;Eric Bidelman&lt;/a&gt;, &lt;a href="http://jacobmumm.com"&gt;Jacob Mumm&lt;/a&gt; and &lt;a href="http://blog.igorminar.com"&gt;Igor Minar&lt;/a&gt;&lt;/p&gt;<br/>
+    &lt;p&gt;Part of &lt;a href="http://todomvc.com"&gt;TodoMVC&lt;/a&gt;&lt;/p&gt;<br/>
+   &lt;/footer&gt;<br/>
+  &lt;/ng-view&gt;<br/>
+  &lt;script type="text/javascript" async src="https://www.googletagmanager.com/gtag/js?id=G-T3XWXPZX5B&amp;cx=c&amp;_slc=1"&gt;&lt;/script&gt;<br/>
+  &lt;script async src="https://www.google-analytics.com/analytics.js"&gt;&lt;/script&gt;<br/>
+  &lt;script type="text/ng-template" id="todomvc-index.html"&gt;<br/>
+			&lt;section class="todoapp"&gt;<br/>
+				&lt;header class="header"&gt;<br/>
+					&lt;h1&gt;todos&lt;/h1&gt;<br/>
+					&lt;form class="todo-form" ng-submit="addTodo()"&gt;<br/>
+						&lt;input class="new-todo" placeholder="What needs to be done?" ng-model="newTodo" ng-disabled="saving" autofocus&gt;<br/>
+					&lt;/form&gt;<br/>
+				&lt;/header&gt;<br/>
+				&lt;section class="main" ng-show="todos.length" ng-cloak&gt;<br/>
+					&lt;input id="toggle-all" class="toggle-all" type="checkbox" ng-model="allChecked" ng-click="markAll(allChecked)"&gt;<br/>
+					&lt;label for="toggle-all"&gt;Mark all as complete&lt;/label&gt;<br/>
+					&lt;ul class="todo-list"&gt;<br/>
+						&lt;li ng-repeat="todo in todos | filter:statusFilter track by $index" ng-class="{completed: todo.completed, editing: todo == editedTodo}"&gt;<br/>
+							&lt;div class="view"&gt;<br/>
+								&lt;input class="toggle" type="checkbox" ng-model="todo.completed" ng-change="toggleCompleted(todo)"&gt;<br/>
+								&lt;label ng-dblclick="editTodo(todo)"&gt;{{todo.title}}&lt;/label&gt;<br/>
+								&lt;button class="destroy" ng-click="removeTodo(todo)"&gt;&lt;/button&gt;<br/>
+							&lt;/div&gt;<br/>
+							&lt;form ng-submit="saveEdits(todo, 'submit')"&gt;<br/>
+								&lt;input class="edit" ng-trim="false" ng-model="todo.title" todo-escape="revertEdits(todo)" ng-blur="saveEdits(todo, 'blur')" todo-focus="todo == editedTodo"&gt;<br/>
+							&lt;/form&gt;<br/>
+						&lt;/li&gt;<br/>
+					&lt;/ul&gt;<br/>
+				&lt;/section&gt;<br/>
+				&lt;footer class="footer" ng-show="todos.length" ng-cloak&gt;<br/>
+					&lt;span class="todo-count"&gt;&lt;strong&gt;{{remainingCount}}&lt;/strong&gt;<br/>
+						&lt;ng-pluralize count="remainingCount" when="{ one: 'item left', other: 'items left' }"&gt;&lt;/ng-pluralize&gt;<br/>
+					&lt;/span&gt;<br/>
+					&lt;ul class="filters"&gt;<br/>
+						&lt;li&gt;<br/>
+							&lt;a ng-class="{selected: status == ''} " href="#/"&gt;All&lt;/a&gt;<br/>
+						&lt;/li&gt;<br/>
+						&lt;li&gt;<br/>
+							&lt;a ng-class="{selected: status == 'active'}" href="#/active"&gt;Active&lt;/a&gt;<br/>
+						&lt;/li&gt;<br/>
+						&lt;li&gt;<br/>
+							&lt;a ng-class="{selected: status == 'completed'}" href="#/completed"&gt;Completed&lt;/a&gt;<br/>
+						&lt;/li&gt;<br/>
+					&lt;/ul&gt;<br/>
+					&lt;button class="clear-completed" ng-click="clearCompletedTodos()" ng-show="completedCount"&gt;Clear completed&lt;/button&gt;<br/>
+				&lt;/footer&gt;<br/>
+			&lt;/section&gt;<br/>
+			&lt;footer class="info"&gt;<br/>
+				&lt;p&gt;Double-click to edit a todo&lt;/p&gt;<br/>
+				&lt;p&gt;Credits:<br/>
+					&lt;a href="http://twitter.com/cburgdorf"&gt;Christoph Burgdorf&lt;/a&gt;,<br/>
+					&lt;a href="http://ericbidelman.com"&gt;Eric Bidelman&lt;/a&gt;,<br/>
+					&lt;a href="http://jacobmumm.com"&gt;Jacob Mumm&lt;/a&gt; and<br/>
+					&lt;a href="http://blog.igorminar.com"&gt;Igor Minar&lt;/a&gt;<br/>
+				&lt;/p&gt;<br/>
+				&lt;p&gt;Part of &lt;a href="http://todomvc.com"&gt;TodoMVC&lt;/a&gt;&lt;/p&gt;<br/>
+			&lt;/footer&gt;<br/>
+		&lt;/script&gt;<br/>
+  &lt;script src="node_modules/todomvc-common/base.js"&gt;&lt;/script&gt;<br/>
+  &lt;script src="node_modules/angular/angular.js"&gt;&lt;/script&gt;<br/>
+  &lt;script src="node_modules/angular-route/angular-route.js"&gt;&lt;/script&gt;<br/>
+  &lt;script src="node_modules/angular-resource/angular-resource.js"&gt;&lt;/script&gt;<br/>
+  &lt;script src="js/app.js"&gt;&lt;/script&gt;<br/>
+  &lt;script src="js/controllers/todoCtrl.js"&gt;&lt;/script&gt;<br/>
+  &lt;script src="js/services/todoStorage.js"&gt;&lt;/script&gt;<br/>
+  &lt;script src="js/directives/todoFocus.js"&gt;&lt;/script&gt;<br/>
+  &lt;script src="js/directives/todoEscape.js"&gt;&lt;/script&gt;<br/>
+ &lt;/body&gt;<br/>
+&lt;/html&gt;</code></pre></div></body></html>
