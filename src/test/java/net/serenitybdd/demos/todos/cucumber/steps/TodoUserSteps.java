@@ -3,6 +3,7 @@ package net.serenitybdd.demos.todos.cucumber.steps;
 
 import com.google.common.base.Splitter;
 import io.cucumber.java.Before;
+import io.cucumber.java.BeforeAll;
 import io.cucumber.java.ParameterType;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -13,6 +14,7 @@ import net.serenitybdd.demos.todos.screenplay.tasks.CompleteItem;
 import net.serenitybdd.demos.todos.screenplay.model.TodoStatusFilter;
 import net.serenitybdd.demos.todos.screenplay.questions.TheItems;
 import net.serenitybdd.demos.todos.screenplay.tasks.*;
+import net.serenitybdd.model.buildinfo.BuildInfo;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
@@ -27,6 +29,15 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasItem;
 
 public class TodoUserSteps {
+
+    @BeforeAll
+    public static void recordToggles() {
+        BuildInfo.section("Toggles").setProperty("toggle1", "on");
+        BuildInfo.section("Toggles").setProperty("toggle2", "on");
+
+        BuildInfo.section("Versions").setProperty("service 1", "1.2.3");
+        BuildInfo.section("Versions").setProperty("service 2", "1.2.4");
+    }
 
     @Before
     public void set_the_stage() {
