@@ -12,7 +12,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath "net.serenity-bdd:serenity-gradle-plugin:4.0.8"
+        classpath "net.serenity-bdd:serenity-gradle-plugin:4.0.12"
     }
 }
 
@@ -22,13 +22,13 @@ apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: "net.serenity-bdd.serenity-gradle-plugin"
 
-sourceCompatibility = 18
-targetCompatibility = 18
+sourceCompatibility = 16
+targetCompatibility = 16
 
 ext {
-    SERENITY_VERSION = '4.0.8'
+    SERENITY_VERSION = '4.0.12'
     JUNIT_PLATFORM_VERSION = '1.10.0'
-    CUCUMBER_JUNIT_PLATFORM_VERSION = '7.13.0'
+    CUCUMBER_JUNIT_PLATFORM_VERSION = '7.14.0'
     JUNIT_JUPITER_VERSION = '5.10.0'
     JUNIT_VINTAGE_VERSION = '5.10.0'
     LOGBACK_CLASSIC_VERSION = '1.2.10'
