@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><testsuite errors="0" failures="0" name="Completing todos" skipped="0" tests="2" time="9.27" timestamp="2023-09-18 12:12:51"><testcase name="Mark a task as completed"/><testcase name="List of completed items should be empty if nothing has been completed"/></testsuite>
