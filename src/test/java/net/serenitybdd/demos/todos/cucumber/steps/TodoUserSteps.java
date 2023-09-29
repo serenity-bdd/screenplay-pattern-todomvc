@@ -10,7 +10,6 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.core.annotations.events.AfterExample;
 import net.serenitybdd.demos.todos.cucumber.MissingTodoItemsException;
-import net.serenitybdd.demos.todos.screenplay.tasks.CompleteItem;
 import net.serenitybdd.demos.todos.screenplay.model.TodoStatusFilter;
 import net.serenitybdd.demos.todos.screenplay.questions.TheItems;
 import net.serenitybdd.demos.todos.screenplay.tasks.*;

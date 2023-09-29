@@ -1,7 +1,9 @@
 package net.serenitybdd.demos.todos.pageobjects.completing_todos;
 
+import net.serenitybdd.annotations.Issues;
+import net.serenitybdd.annotations.Managed;
+import net.serenitybdd.annotations.Steps;
 import net.serenitybdd.demos.todos.pageobjects.steps.TodoUserSteps;
-import net.serenitybdd.annotations.*;
 import net.serenitybdd.junit5.SerenityJUnit5Extension;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;

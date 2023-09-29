@@ -3,6 +3,7 @@ package net.serenitybdd.demos.todos.screenplay.tasks;
 import com.google.common.base.Joiner;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
+import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Open;
 
 import java.util.Arrays;
