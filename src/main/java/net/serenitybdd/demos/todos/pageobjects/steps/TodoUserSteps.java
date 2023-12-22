@@ -1,11 +1,14 @@
 package net.serenitybdd.demos.todos.pageobjects.steps;
 
 import net.serenitybdd.core.steps.UIInteractions;
+import net.serenitybdd.demos.todos.pageobjects.model.TodoStatus;
 import net.serenitybdd.demos.todos.pageobjects.model.TodoStatusFilter;
 import net.serenitybdd.demos.todos.pageobjects.pages.TodoListPage;
 import net.thucydides.model.ThucydidesSystemProperty;
 import net.serenitybdd.annotations.Step;
 import net.thucydides.model.util.EnvironmentVariables;
+import org.assertj.core.api.Assertions;
+import org.assertj.core.api.SoftAssertions;
 
 import static java.util.Arrays.asList;
 import static net.serenitybdd.demos.todos.pageobjects.model.TodoStatus.Active;
@@ -108,7 +111,6 @@ public class TodoUserSteps extends UIInteractions {
 
     @Step
     public void should_see_that_the_number_of_items_left_is(int expected) {
-
         assertThat(todoListPage.numberOfItemsLeft(), is(expected));
     }
 

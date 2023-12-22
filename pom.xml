@@ -11,7 +11,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <serenity.version>4.0.15</serenity.version>
+        <serenity.version>4.0.30</serenity.version>
         <encoding>UTF-8</encoding>
         <serenity.test.root></serenity.test.root>
         <tags></tags>
@@ -83,12 +83,6 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>net.serenity-bdd</groupId>
-            <artifactId>serenity-saucelabs</artifactId>
-            <version>${serenity.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>1.2.10</version>
@@ -97,7 +91,11 @@
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>3.22.0</version>
-            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.opentest4j</groupId>
+            <artifactId>opentest4j</artifactId>
+            <version>1.2.0</version>
         </dependency>
     </dependencies>
     <build>
@@ -178,6 +176,36 @@
             <properties>
                 <webdriver.base.url>http://localhost:8080/angularjs/#/</webdriver.base.url>
             </properties>
+        </profile>
+        <profile>
+            <id>browserstack</id>
+            <dependencies>
+                <dependency>
+                    <groupId>net.serenity-bdd</groupId>
+                    <artifactId>serenity-browserstack</artifactId>
+                    <version>${serenity.version}</version>
+                </dependency>
+            </dependencies>
+        </profile>
+        <profile>
+            <id>lambdatest</id>
+            <dependencies>
+                <dependency>
+                    <groupId>net.serenity-bdd</groupId>
+                    <artifactId>serenity-lambdatest</artifactId>
+                    <version>${serenity.version}</version>
+                </dependency>
+            </dependencies>
+        </profile>
+        <profile>
+            <id>saucelabs</id>
+            <dependencies>
+                <dependency>
+                    <groupId>net.serenity-bdd</groupId>
+                    <artifactId>serenity-saucelabs</artifactId>
+                    <version>${serenity.version}</version>
+                </dependency>
+            </dependencies>
         </profile>
         <profile>
             <id>failing</id>
