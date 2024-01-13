@@ -7,7 +7,7 @@ Feature: Filtering todos
   I want to be to view all of things I have completed
 
   Scenario Outline: Viewing the items by status
-    Given that Jane has a todo list containing <tasks>
+   Given Jane has a todo list containing <tasks>
     And she completes the task called "Walk the dog"
     When she filters her list to show only <filter> tasks
     Then her todo list should contain <expected>

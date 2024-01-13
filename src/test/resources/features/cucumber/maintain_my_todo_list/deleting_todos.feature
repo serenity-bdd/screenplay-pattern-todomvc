@@ -7,12 +7,12 @@ Feature: Deleting todos
   I want to be to delete the tasks once I am done with them
 
   Scenario: Delete an active item
-    Given that Jane has a todo list containing Buy some milk, Walk the dog
+   Given Jane has a todo list containing Buy some milk, Walk the dog
     When she deletes the task called 'Walk the dog'
     Then her todo list should contain Buy some milk
 
   Scenario: Delete all the items
-    Given that Jane has a todo list containing Buy some milk, Walk the dog
+   Given Jane has a todo list containing Buy some milk, Walk the dog
     When she deletes the task called 'Walk the dog'
     And she deletes the task called 'Buy some milk'
     Then her todo list should be empty

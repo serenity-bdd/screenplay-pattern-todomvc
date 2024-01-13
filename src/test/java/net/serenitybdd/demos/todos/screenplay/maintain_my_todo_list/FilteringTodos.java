@@ -1,6 +1,7 @@
 package net.serenitybdd.demos.todos.screenplay.maintain_my_todo_list;
 
 import net.serenitybdd.annotations.Managed;
+import net.serenitybdd.demos.todos.screenplay.model.TodoStatusFilter;
 import net.serenitybdd.demos.todos.screenplay.questions.CurrentFilter;
 import net.serenitybdd.demos.todos.screenplay.questions.TheItems;
 import net.serenitybdd.demos.todos.screenplay.tasks.CompleteItem;
@@ -13,8 +14,16 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.openqa.selenium.WebDriver;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Stream;
+
+import static java.util.Arrays.asList;
 import static net.serenitybdd.demos.todos.screenplay.model.TodoStatusFilter.*;
 import static net.serenitybdd.screenplay.GivenWhenThen.*;
 import static org.hamcrest.Matchers.*;
@@ -60,18 +69,29 @@ public class FilteringTodos {
         and(james).should(seeThat(CurrentFilter.selected(), is(Active)));
     }
 
-    @Test
-    public void should_be_able_to_view_both_complete_and_incomplete_todos() {
-
-        givenThat(james).wasAbleTo(Start.withATodoListContaining("Walk the dog", "Put out the garbage"));
+    @ParameterizedTest
+    @MethodSource("todoTestData")
+    public void should_be_able_to_view_various_todo_combinations(String completeItem,
+                                                                 String incompleteItem,
+                                                                 TodoStatusFilter filterOption,
+                                                                 List<String> filteredItems) {
+        givenThat(james).wasAbleTo(Start.withATodoListContaining(completeItem, incompleteItem));
 
         when(james).attemptsTo(
-            CompleteItem.called("Walk the dog"),
-            FilterItems.toShow(Active),
-            FilterItems.toShow(All)
+                CompleteItem.called(completeItem),
+                FilterItems.toShow(filterOption)
         );
 
-        then(james).should(seeThat(TheItems.displayed(), contains("Walk the dog", "Put out the garbage")));
-        and(james).should(seeThat(CurrentFilter.selected(), is(All)));
+        then(james).should(seeThat(TheItems.displayed(), contains(filteredItems.toArray(new String[]{}))));
+        and(james).should(seeThat(CurrentFilter.selected(), is(filterOption)));
+    }
+
+    private static Stream<Arguments> todoTestData() {
+        return Stream.of(
+                Arguments.of("Walk the dog", "Put out the garbage", All, asList("Walk the dog", "Put out the garbage")),
+                Arguments.of("Walk the dog", "Put out the garbage", Active, asList("Put out the garbage")),
+                Arguments.of("Walk the dog", "Put out the garbage", Completed, asList("Walk the dog"))
+                // Add more combinations of items and filter options here
+        );
     }
 }

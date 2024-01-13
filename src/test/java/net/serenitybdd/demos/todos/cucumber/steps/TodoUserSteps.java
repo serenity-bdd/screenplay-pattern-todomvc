@@ -10,22 +10,27 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.core.annotations.events.AfterExample;
 import net.serenitybdd.demos.todos.cucumber.MissingTodoItemsException;
+import net.serenitybdd.demos.todos.screenplay.model.TodoStatus;
 import net.serenitybdd.demos.todos.screenplay.model.TodoStatusFilter;
+import net.serenitybdd.demos.todos.screenplay.questions.TheItemStatus;
 import net.serenitybdd.demos.todos.screenplay.questions.TheItems;
 import net.serenitybdd.demos.todos.screenplay.tasks.*;
 import net.serenitybdd.model.buildinfo.BuildInfo;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
+import net.serenitybdd.screenplay.ensure.Ensure;
+import net.serenitybdd.screenplay.waits.Wait;
 
 import java.util.List;
 
 import static java.util.Collections.EMPTY_LIST;
+import static net.serenitybdd.demos.todos.screenplay.model.TodoStatus.Completed;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.setTheStage;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.hasItem;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.Matchers.*;
 
 public class TodoUserSteps {
 
@@ -70,7 +75,7 @@ public class TodoUserSteps {
         actor.wasAbleTo(Start.withAnEmptyTodoList());
     }
 
-    @Given("that {actor} has a todo list containing {items}")
+    @Given("{actor} has a todo list containing {items}")
     public void that_James_has_an_empty_todo_list(Actor actor, List<String> items) {
         actor.wasAbleTo(Start.withATodoListContaining(items));
     }
@@ -78,6 +83,26 @@ public class TodoUserSteps {
     @When("{actor} completes the task called {string}")
     public void completesTask(Actor actor, String item) {
         actor.attemptsTo(CompleteItem.called(item));
+    }
+
+    @Then("{actor} remaining todo count should be {int}")
+    public void checkRemainingTodoCount(Actor actor, int count) {
+        actor.attemptsTo(Ensure.that(TheItems.leftCount()).isEqualTo(count));
+
+        // ALTERNATIVE VERSION:
+        int itemCount = actor.asksFor(TheItems.leftCount());
+        assertThat(itemCount).isEqualTo(count);
+    }
+
+    @Then("the {string} task should be shown as {}")
+    public void checkRemainingTodoCount(String taskName, TodoStatus status) {
+        theActorInTheSpotlight().attemptsTo(
+                Ensure.that(TheItemStatus.forTheItemCalled(taskName)).isEqualTo(status)
+        );
+
+        // ALTERNATIVE VERSION:
+        TodoStatus currentStatus = theActorInTheSpotlight().asksFor(TheItemStatus.forTheItemCalled(taskName));
+        assertThat(currentStatus).isEqualTo(status);
     }
 
     @When("{actor} adds {string} to his/her list")
@@ -104,8 +129,11 @@ public class TodoUserSteps {
 
     @Then("{actor}'s todo list should contain {items}")
     public void a_users_todo_list_should_contain(Actor actor, List<String> expectedItems) {
-        actor.should(seeThat(TheItems.displayed(), equalTo(expectedItems))
-                .orComplainWith(MissingTodoItemsException.class, "Missing todos " + expectedItems));
+        actor.attemptsTo(
+                Wait.until(TheItems.displayed(), is(not(empty()))),
+                Ensure.that(TheItems.displayed()).containsElementsFrom(expectedItems)
+                        .withReportedError("Missing todos " + expectedItems)
+        );
     }
 
 
