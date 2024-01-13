@@ -1,0 +1,2247 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Serenity Reports</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" href="bootstrap-icons/bootstrap-icons.css">
+<!-- JQuery -->
+<script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script><!-- Required Stylesheets -->
+<link href="bootstrap-treeview/dist/bootstrap-treeview.min.css" rel="stylesheet">
+
+<!-- Required Javascript -->
+<script src="bootstrap-treeview/dist/bootstrap-treeview.min.js"></script><!-- DataTables -->
+<link type="text/css" href="datatables/1.13.1/datatables.min.css" rel="stylesheet" />
+<script type="text/javascript" src="datatables/1.13.1/datatables.min.js"></script>
+<script type="text/javascript" src="datatables/1.13.1/time-elapsed-dhms.js"></script>
+
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+
+<script>
+    jQuery.fn.dataTable.ext.type.order['time-elapsed-dhms-pre'] = function(data) {
+
+        var matches = data.match(/^(\d+(?:\.\d+)?)\s*([a-z]+)/i);
+        var multipliers = {
+            ms: 1,
+            s: 1000,
+            m: 60000,
+            h: 3600000,
+            d: 86400000
+        };
+
+        if (matches) {
+            var multiplier = multipliers[matches[2].toLowerCase()];
+            return parseFloat(matches[1]) * multiplier;
+        } else {
+            return -1;
+        };
+    };
+</script>
+<link rel="stylesheet" href="css/core.css"/>
+<link rel="stylesheet" href="css/link.css"/>
+<link type="text/css" media="screen" href="css/screen.css" rel="Stylesheet"/>
+<!--CHART.JS-->
+<script src="chartjs/chart.js"></script>
+<script src="chartjs/chartjs-plugin-datalabels@2.0.0.min.js"></script>
+<script src="chartjs/patternomaly.min.js"></script>
+<script>
+    // Register the plugin to all charts:
+    Chart.register(ChartDataLabels);
+</script>
+<!-- JQuery-UI -->
+<link type="text/css" href="jqueryui/1.11.2-start/jquery-ui.min.css" rel="Stylesheet" />
+<script type="text/javascript" src="jqueryui/1.11.2-start/jquery-ui.min.js"></script><!-- DataTables -->
+<link type="text/css" href="datatables/1.13.1/datatables.min.css" rel="stylesheet" />
+<script type="text/javascript" src="datatables/1.13.1/datatables.min.js"></script>
+<script type="text/javascript" src="datatables/1.13.1/time-elapsed-dhms.js"></script>
+
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+
+<script>
+    jQuery.fn.dataTable.ext.type.order['time-elapsed-dhms-pre'] = function(data) {
+
+        var matches = data.match(/^(\d+(?:\.\d+)?)\s*([a-z]+)/i);
+        var multipliers = {
+            ms: 1,
+            s: 1000,
+            m: 60000,
+            h: 3600000,
+            d: 86400000
+        };
+
+        if (matches) {
+            var multiplier = multipliers[matches[2].toLowerCase()];
+            return parseFloat(matches[1]) * multiplier;
+        } else {
+            return -1;
+        };
+    };
+</script>
+
+
+
+
+    <script class="code" type="text/javascript">$(document).ready(function () {
+
+            $("#scenario-results").DataTable({
+                "order": [[0, "asc",], [1, "asc",], [2, "asc",]],
+                "language": {
+                    searchPlaceholder: "Filter",
+                    search: ""
+                },
+                columnDefs: [
+                    {type: 'time-elapsed-dhms', targets: 5}
+                ]
+            })
+            $("#manual-scenario-results").DataTable({
+                "order": [[0, "asc",], [1, "asc",]],
+                "language": {
+                    searchPlaceholder: "Filter",
+                    search: ""
+                },
+            })
+
+            // Results table
+            $('#test-results-table').DataTable({
+                "order": [[0, "asc",], [3, "asc",]],
+                "pageLength": 10,
+                "lengthMenu": [[10, 25, 50, 100, 200, -1], [10, 25, 50, 100, 200, "All"]]
+            });
+
+            $('#evidence-table').DataTable({
+                searching: false,
+                paging: false,
+                info: false
+            });
+
+            $(".feature-coverage-table").DataTable({
+                searching: true,
+                paging: false,
+                info: false
+            });
+
+            $(".feature-coverage-table-with-pagination").DataTable({
+                searching: true,
+                order: [[0, "asc",]],
+                pageLength: 10,
+                language: {
+                    searchPlaceholder: "Filter",
+                    search: ""
+                }
+            });
+        });
+    </script>
+</head>
+
+<body class="results-page">
+<div id="topheader">
+    <div id="topbanner">
+        <div id="logo"><a href="index.html"><img src="images/serenity-logo.png" border="0"/></a></div>
+        <div id="projectname-banner" style="float:right">
+            <span class="projectname">
+                <span class="projecttitle">Serenity BDD TodoMVC</span>
+                <span class="projectsubtitle"></span>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="middlecontent">
+
+
+    <div id="contenttop">
+        <div class="middlebg">
+        <span class="breadcrumbs"><a href="index.html">Home</a>
+                    > Context 
+                > <span class="truncate-60">
+                Chrome, Linux
+            </span>
+        </span>
+        </div>
+        <div class="rightbg"></div>
+    </div>
+
+    <div class="clr"></div>
+    <!--/* starts second table*/-->
+<div>
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#"><i class="bi bi-journal-check"></i> Overall Test Results</a>
+        </li>
+        <li >
+            <a href="capabilities.html"><i class="bi bi-journal-text"></i> Requirements</a>
+        </li>
+        <li >
+            <a href="dafb266f68444cb7f2451c923d70c1428ac45470c361842b818e6daa9bcd4fa8.html"><i class="bi bi-chat-text"></i> Themes</a>
+        </li>
+        <li >
+            <a href="7ea0a5e2d679b9deeda9910ae4a9bcd3a281e0d908303a9e16e486103e98880c.html"><i class="bi bi-chat-text"></i> Capabilities</a>
+        </li>
+        <li >
+            <a href="576946480b52ad056d6f5bddf874399c83582ecf90963cc074a14c70580e7d9f.html"><i class="bi bi-chat-text"></i> Features</a>
+        </li>
+    </ul>
+    <span class="date-and-time"><a href="build-info.html"><i class="bi bi-info-circle"></i></a> Report generated 13-01-2024 14:13:51</span>
+    <br style="clear:left"/>
+</div>
+    <div class="clr"></div>
+    <div id="beforetable"></div>
+    <div id="results-dashboard">
+        <div class="middlb">
+            <div class="table">
+
+                <h2><i class='bi bi-tags'></i> Context: Chrome, Linux</h2>
+                <table class='overview'>
+                    <tr>
+                        <td width="375px" valign="top">
+                            <div class="test-count-summary">
+                                <div class="test-count-title">
+                                    50 tests
+
+                                     |
+                                        <a href="46b54d9084ba9783130da16408afb27a4e4620f6bd966e731510c7395b9ddf5c.csv" title="Download CSV"> <i class="bi bi-cloud-arrow-down"
+                                                                                        title="Download CSV"></i></a>
+
+
+                                </div>
+                            </div>
+
+                            <div>
+                                <ul class="nav nav-tabs">
+                                    <li class="active">
+                                        <a data-toggle="tab" href="#summary"><i class="bi bi-house-door"></i>
+                                            Summary</a>
+                                    </li>
+                                    <li>
+                                        <a data-toggle="tab" href="#tests"><i class="bi bi-speedometer"></i> Test
+                                            Results</a>
+                                    </li>
+                                </ul>
+
+
+                                <div class="card border">
+                                    <div class="tab-content" id="pills-tabContent">
+                                        <div id="summary" class="tab-pane fade in active">
+                                            <div class="container-fluid">
+                                                <div class="dashboard-charts row">
+                                                    <div class="col-lg-4 col-md-6 col-sm-9">
+                                                        <!-- PIE CHART -->
+                                                        <h4><i class="bi bi-pie-chart"></i> Overview</h4>
+                                                            <div class="chart-container">
+                                                                <canvas id="resultChart" height="200px"></canvas>
+                                                            </div>
+                                                    </div>
+                                                    <div class="col-lg-4 col-md-6 col-sm-9">
+                                                        <h4><i class="bi bi-check-square"></i> Test Outcomes</h4>
+                                                        <!-- Severity bar chart -->
+                                                        <div class="chart-container">
+                                                            <canvas id="severityChart" height="200px"></canvas>
+                                                        </div>
+                                                    </div>
+                                                        <div class="col-lg-4 col-md-6 col-sm-9">
+                                                            <h4><i class="bi bi-graph-up"></i> Test Performance</h4>
+
+                                                            <!-- Duration bar chart -->
+                                                            <div class="chart-container">
+                                                                <canvas id="durationChart" height="200px"></canvas>
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                        <div class="col-lg-8 col-md-8 col-sm-9">
+                                                            <!-- High level coverage bar chart -->
+                                                            <div class="chart-container">
+                                                                <h3><i class="bi bi-reception-3"></i> Functional
+                                                                    Coverage Overview</h3>
+                                                                <h4>Features</h4>
+                                                                <canvas id="coverageChart"></canvas>
+                                                            </div>
+                                                        </div>
+                                                    <div class="col-lg-4 col-md-4 col-sm-6">
+    <div>
+        <h3><i class="bi bi-speedometer2"></i> Key Statistics</h3>
+        <div>
+            <table class="table table-striped table-hover">
+                <tbody>
+                <tr scope="row">
+                    <td>
+                        <i class="bi bi-card-checklist"></i> Number of Scenarios
+                    </td>
+                    <td>45</td>
+                </tr>
+                <tr scope="row">
+                    <td>
+                        <i class="bi bi-caret-right"></i> Total Number of Test Cases
+                    </td>
+                    <td>50</td>
+                </tr>
+                <tr scope="row">
+                    <td>
+                        <i class="bi bi-flag-fill"></i> Tests Started
+                    </td>
+                    <td>Jan 13, 2024 14:13:20</td>
+                </tr>
+                <tr scope="row">
+                    <td>
+                        <i class="bi bi-stop-circle"></i> Tests
+                        Finished
+                    </td>
+                    <td>Jan 13, 2024 14:13:54</td>
+                </tr>
+                <tr scope="row">
+                    <td>
+                        <i class="bi bi-stopwatch"></i> Total
+                        Duration
+                    </td>
+                    <td>33s</td>
+                </tr>
+                <tr scope="row">
+                    <td>
+                        <i class="bi bi-trophy"></i> Fastest Test
+                    </td>
+                    <td>828ms</td>
+                </tr>
+                <tr scope="row">
+                    <td>
+                        <i class="bi bi-skip-start"></i> Slowest
+                        Test
+                    </td>
+                    <td>7s</td>
+                </tr>
+                <tr scope="row">
+                    <td>
+                        <i class="bi bi-stopwatch"></i> Average
+                        Execution Time
+                    </td>
+                    <td>2s</td>
+                </tr>
+                <tr scope="row">
+                    <td>
+                        <i class="bi bi-stopwatch-fill"></i> Total
+                        Execution Time
+                    </td>
+                    <td> 1m 31s</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="container-fluid">
+                                                    <div class="row">
+                                                        <div class="col-sm-11">
+                                                            <h3>Functional Coverage Details</h3>
+
+
+                                                                    <h4>Features</h4>
+
+                                                                    <table class="table feature-coverage-table-with-pagination"
+                                                                           id="Feature">
+                                                                        <thead>
+                                                                        <tr>
+                                                                            <th>Feature</th>
+                                                                            <th style="width:1em;">Scenarios</th>
+                                                                            <th style="width:1em;">Test&nbsp;Cases</th>
+                                                                            <th style="width:1em;">%&nbsp;Pass</th>
+                                                                            <th style="width:1em;">Result</th>
+                                                                            <th>Coverage</th>
+                                                                        </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                            <a href="675a2fbd7e926dc4386404460dfed5d64f7e56a3c0206e92b287e893ea3ef9b1.html"> Cucumber > maintain my todo list > Completing todos</a>
+                                                                                    </td>
+                                                                                    <td>5</td>
+                                                                                    <td>6</td>
+                                                                                    <td>100%</td>
+                                                                                    <td>
+                                                                                            <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="progress">
+                                                                                                <div class="progress-bar"
+                                                                                                     role="progressbar"
+                                                                                                     style="width: 100%; background-color: #b0cf73"
+                                                                                                     aria-valuenow="6"
+                                                                                                     title="100% success"
+                                                                                                     aria-valuemin="0"
+                                                                                                     aria-valuemax="100">
+                                                                                                </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                            <a href="b3f706bf8f247d9c100b9e130fc05544b762809ce18613516306cff20a75fd9d.html"> Cucumber > maintain my todo list > Deleting todos</a>
+                                                                                    </td>
+                                                                                    <td>2</td>
+                                                                                    <td>2</td>
+                                                                                    <td>100%</td>
+                                                                                    <td>
+                                                                                            <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="progress">
+                                                                                                <div class="progress-bar"
+                                                                                                     role="progressbar"
+                                                                                                     style="width: 100%; background-color: #b0cf73"
+                                                                                                     aria-valuenow="2"
+                                                                                                     title="100% success"
+                                                                                                     aria-valuemin="0"
+                                                                                                     aria-valuemax="100">
+                                                                                                </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                            <a href="7077e374b487fe487d82eab3224c4a716cfa62ebc84bcc58828d7a6f35471354.html"> Cucumber > maintain my todo list > Filtering todos</a>
+                                                                                    </td>
+                                                                                    <td>1</td>
+                                                                                    <td>3</td>
+                                                                                    <td>100%</td>
+                                                                                    <td>
+                                                                                            <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="progress">
+                                                                                                <div class="progress-bar"
+                                                                                                     role="progressbar"
+                                                                                                     style="width: 100%; background-color: #b0cf73"
+                                                                                                     aria-valuenow="3"
+                                                                                                     title="100% success"
+                                                                                                     aria-valuemin="0"
+                                                                                                     aria-valuemax="100">
+                                                                                                </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                            <a href="5655a252d959d384f717ce1515a9e368b8f57bcddb623d457e89b64c333e4fda.html"> Cucumber > record todos > Add new todos</a>
+                                                                                    </td>
+                                                                                    <td>3</td>
+                                                                                    <td>3</td>
+                                                                                    <td>100%</td>
+                                                                                    <td>
+                                                                                            <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="progress">
+                                                                                                <div class="progress-bar"
+                                                                                                     role="progressbar"
+                                                                                                     style="width: 100%; background-color: #b0cf73"
+                                                                                                     aria-valuenow="3"
+                                                                                                     title="100% success"
+                                                                                                     aria-valuemin="0"
+                                                                                                     aria-valuemax="100">
+                                                                                                </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                            <a href="fc6d6b11273ca8dc0923978323811fd4507072aa6571485ae24f42a2bd5577fb.html"> Pageobjects > accessing the application > Learn about the application</a>
+                                                                                    </td>
+                                                                                    <td>2</td>
+                                                                                    <td>2</td>
+                                                                                    <td>100%</td>
+                                                                                    <td>
+                                                                                            <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="progress">
+                                                                                                <div class="progress-bar"
+                                                                                                     role="progressbar"
+                                                                                                     style="width: 100%; background-color: #b0cf73"
+                                                                                                     aria-valuenow="2"
+                                                                                                     title="100% success"
+                                                                                                     aria-valuemin="0"
+                                                                                                     aria-valuemax="100">
+                                                                                                </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                            <a href="5d761a5e7c7d3a6be48dcc28bb2467ddf8b352b19783dff741aba89a705fdf03.html"> Pageobjects > completing todos > Complete a todo</a>
+                                                                                    </td>
+                                                                                    <td>1</td>
+                                                                                    <td>1</td>
+                                                                                    <td>100%</td>
+                                                                                    <td>
+                                                                                            <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="progress">
+                                                                                                <div class="progress-bar"
+                                                                                                     role="progressbar"
+                                                                                                     style="width: 100%; background-color: #b0cf73"
+                                                                                                     aria-valuenow="1"
+                                                                                                     title="100% success"
+                                                                                                     aria-valuemin="0"
+                                                                                                     aria-valuemax="100">
+                                                                                                </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                            <a href="fd5980370be8d13ff490ebddc14a546c87af4c684aa4024bb33297d51a5a1d12.html"> Pageobjects > completing todos > Toggle all todos</a>
+                                                                                    </td>
+                                                                                    <td>4</td>
+                                                                                    <td>4</td>
+                                                                                    <td>100%</td>
+                                                                                    <td>
+                                                                                            <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="progress">
+                                                                                                <div class="progress-bar"
+                                                                                                     role="progressbar"
+                                                                                                     style="width: 100%; background-color: #b0cf73"
+                                                                                                     aria-valuenow="4"
+                                                                                                     title="100% success"
+                                                                                                     aria-valuemin="0"
+                                                                                                     aria-valuemax="100">
+                                                                                                </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                            <a href="4356d9cfe25d6e22f473d024a074ad06ded4a4726fc7b1d559f9975bff2bc19b.html"> Pageobjects > maintain my todo list > Clear completed todos</a>
+                                                                                    </td>
+                                                                                    <td>2</td>
+                                                                                    <td>2</td>
+                                                                                    <td>100%</td>
+                                                                                    <td>
+                                                                                            <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="progress">
+                                                                                                <div class="progress-bar"
+                                                                                                     role="progressbar"
+                                                                                                     style="width: 100%; background-color: #b0cf73"
+                                                                                                     aria-valuenow="2"
+                                                                                                     title="100% success"
+                                                                                                     aria-valuemin="0"
+                                                                                                     aria-valuemax="100">
+                                                                                                </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                            <a href="87c2ec25c15954703a8a5dc5b2405d8e88d88948c2d8ad14d09edbc40bc8d107.html"> Pageobjects > maintain my todo list > Deleting todos</a>
+                                                                                    </td>
+                                                                                    <td>2</td>
+                                                                                    <td>2</td>
+                                                                                    <td>100%</td>
+                                                                                    <td>
+                                                                                            <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="progress">
+                                                                                                <div class="progress-bar"
+                                                                                                     role="progressbar"
+                                                                                                     style="width: 100%; background-color: #b0cf73"
+                                                                                                     aria-valuenow="2"
+                                                                                                     title="100% success"
+                                                                                                     aria-valuemin="0"
+                                                                                                     aria-valuemax="100">
+                                                                                                </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                            <a href="490af42e89f9d05fb66e223ff737cefd7b35c5b876e506a7823388dc4c9f3dea.html"> Pageobjects > maintain my todo list > Filtering todos</a>
+                                                                                    </td>
+                                                                                    <td>3</td>
+                                                                                    <td>3</td>
+                                                                                    <td>100%</td>
+                                                                                    <td>
+                                                                                            <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="progress">
+                                                                                                <div class="progress-bar"
+                                                                                                     role="progressbar"
+                                                                                                     style="width: 100%; background-color: #b0cf73"
+                                                                                                     aria-valuenow="3"
+                                                                                                     title="100% success"
+                                                                                                     aria-valuemin="0"
+                                                                                                     aria-valuemax="100">
+                                                                                                </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                            <a href="bb7a868d8ec46ecec60d434bcb7d6177f1d241645125b877cb2322e2ffd4ef23.html"> Pageobjects > record todos > Add new todos</a>
+                                                                                    </td>
+                                                                                    <td>2</td>
+                                                                                    <td>2</td>
+                                                                                    <td>100%</td>
+                                                                                    <td>
+                                                                                            <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="progress">
+                                                                                                <div class="progress-bar"
+                                                                                                     role="progressbar"
+                                                                                                     style="width: 100%; background-color: #b0cf73"
+                                                                                                     aria-valuenow="2"
+                                                                                                     title="100% success"
+                                                                                                     aria-valuemin="0"
+                                                                                                     aria-valuemax="100">
+                                                                                                </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                            <a href="bb1bef04f5495f9d00c5d4f99fc52f7ea08fd0381cce630d8c8b45e1c779b932.html"> Screenplay > accessing the application > Learn about the application</a>
+                                                                                    </td>
+                                                                                    <td>2</td>
+                                                                                    <td>2</td>
+                                                                                    <td>100%</td>
+                                                                                    <td>
+                                                                                            <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="progress">
+                                                                                                <div class="progress-bar"
+                                                                                                     role="progressbar"
+                                                                                                     style="width: 100%; background-color: #b0cf73"
+                                                                                                     aria-valuenow="2"
+                                                                                                     title="100% success"
+                                                                                                     aria-valuemin="0"
+                                                                                                     aria-valuemax="100">
+                                                                                                </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                            <a href="99c417da16d797ee6e7e29174b9af433d1144e5506116f2fc76a9ca44586f925.html"> Screenplay > completing todos > Complete a todo</a>
+                                                                                    </td>
+                                                                                    <td>6</td>
+                                                                                    <td>6</td>
+                                                                                    <td>100%</td>
+                                                                                    <td>
+                                                                                            <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="progress">
+                                                                                                <div class="progress-bar"
+                                                                                                     role="progressbar"
+                                                                                                     style="width: 100%; background-color: #b0cf73"
+                                                                                                     aria-valuenow="6"
+                                                                                                     title="100% success"
+                                                                                                     aria-valuemin="0"
+                                                                                                     aria-valuemax="100">
+                                                                                                </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                            <a href="a9ef7c19cf25e1e8424df345da55eb5a3a4722191e4874d7311f8a9a587c5464.html"> Screenplay > maintain my todo list > Clear completed todos</a>
+                                                                                    </td>
+                                                                                    <td>2</td>
+                                                                                    <td>2</td>
+                                                                                    <td>100%</td>
+                                                                                    <td>
+                                                                                            <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="progress">
+                                                                                                <div class="progress-bar"
+                                                                                                     role="progressbar"
+                                                                                                     style="width: 100%; background-color: #b0cf73"
+                                                                                                     aria-valuenow="2"
+                                                                                                     title="100% success"
+                                                                                                     aria-valuemin="0"
+                                                                                                     aria-valuemax="100">
+                                                                                                </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                            <a href="a7266d2706da755e292bb1113dbc32c9397ecbf22b7d4be5860e55d4fc3a9fba.html"> Screenplay > maintain my todo list > Deleting todos</a>
+                                                                                    </td>
+                                                                                    <td>2</td>
+                                                                                    <td>2</td>
+                                                                                    <td>100%</td>
+                                                                                    <td>
+                                                                                            <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="progress">
+                                                                                                <div class="progress-bar"
+                                                                                                     role="progressbar"
+                                                                                                     style="width: 100%; background-color: #b0cf73"
+                                                                                                     aria-valuenow="2"
+                                                                                                     title="100% success"
+                                                                                                     aria-valuemin="0"
+                                                                                                     aria-valuemax="100">
+                                                                                                </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                            <a href="c93dcbddcae36438f6869cbb0f1dd7ae0c4832d5a4a64d6386c69a785ef3c009.html"> Screenplay > maintain my todo list > Filtering todos</a>
+                                                                                    </td>
+                                                                                    <td>3</td>
+                                                                                    <td>5</td>
+                                                                                    <td>100%</td>
+                                                                                    <td>
+                                                                                            <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="progress">
+                                                                                                <div class="progress-bar"
+                                                                                                     role="progressbar"
+                                                                                                     style="width: 100%; background-color: #b0cf73"
+                                                                                                     aria-valuenow="5"
+                                                                                                     title="100% success"
+                                                                                                     aria-valuemin="0"
+                                                                                                     aria-valuemax="100">
+                                                                                                </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                            <a href="8a2528df3074e8697e4e80fbebc7b478d669cb9fe8e8e5fbc501118d3d5b5011.html"> Screenplay > maintain my todo list > Todos belong to a user</a>
+                                                                                    </td>
+                                                                                    <td>1</td>
+                                                                                    <td>1</td>
+                                                                                    <td>100%</td>
+                                                                                    <td>
+                                                                                            <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="progress">
+                                                                                                <div class="progress-bar"
+                                                                                                     role="progressbar"
+                                                                                                     style="width: 100%; background-color: #b0cf73"
+                                                                                                     aria-valuenow="1"
+                                                                                                     title="100% success"
+                                                                                                     aria-valuemin="0"
+                                                                                                     aria-valuemax="100">
+                                                                                                </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                            <a href="34fb289e4cea690ab1e2d6f4edbb412cb21a79ccc5c713af4d74db4d5851fc24.html"> Screenplay > record todos > Add new todos</a>
+                                                                                    </td>
+                                                                                    <td>2</td>
+                                                                                    <td>2</td>
+                                                                                    <td>100%</td>
+                                                                                    <td>
+                                                                                            <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="progress">
+                                                                                                <div class="progress-bar"
+                                                                                                     role="progressbar"
+                                                                                                     style="width: 100%; background-color: #b0cf73"
+                                                                                                     aria-valuenow="2"
+                                                                                                     title="100% success"
+                                                                                                     aria-valuemin="0"
+                                                                                                     aria-valuemax="100">
+                                                                                                </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                        </div>
+                                                    </div>
+
+                                            </div>
+                                            <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <h3>Tags</h3>
+                    <div class="card">
+                        <div class="card-body">
+                            <div>
+                                    <a href="a0f9911b879b54a7819be5ec0f37fcf90ea7d8cfac3180275d26ca4b75526ab2.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Page Objects&nbsp;&nbsp;&nbsp;16
+                                    </span>
+                                    </a>
+                                    <a href="1a067281f08658ac6c668d1f525eeada9cc5ed39ad7a4d652c30b2778694a272.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Filtering&nbsp;&nbsp;&nbsp;3
+                                    </span>
+                                    </a>
+                                    <a href="d0e3033e1d4fd450bad910c731185f5c272a3350c68ca7cf2b9537e0aceae6af.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Adding&nbsp;&nbsp;&nbsp;3
+                                    </span>
+                                    </a>
+                                    <a href="028fb69bf25996e445f66d6323cf7c1d294bfbbb15ca870736473bd3facac897.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Deleting&nbsp;&nbsp;&nbsp;2
+                                    </span>
+                                    </a>
+                                    <a href="08fe31b4cedcca88014566e2926c79ff53b30818f68b6c102890ece9afcee9b3.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Completing&nbsp;&nbsp;&nbsp;6
+                                    </span>
+                                    </a>
+                                    <a href="4679f997e5629a343e8c9ea08da2b295ab1804a6eb6ec5eb7fecad6541c1ee1b.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Screenplay&nbsp;&nbsp;&nbsp;17
+                                    </span>
+                                    </a>
+                                    <a href="980553ab65ac3a80cb226527d564bcf09dfb50e9d5c6245f24578a314fb4b271.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Cucumber&nbsp;&nbsp;&nbsp;14
+                                    </span>
+                                    </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                                <h5 class="card-title">Context</h5>
+                            <div>
+                                    <a href="46b54d9084ba9783130da16408afb27a4e4620f6bd966e731510c7395b9ddf5c.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Chrome, Linux&nbsp;&nbsp;&nbsp;50
+                                    </span>
+                                    </a>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+                                            </div>
+                                        </div>
+                                        <div id="tests" class="tab-pane fade">
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+    <div>
+        <h3><i class="bi bi-speedometer2"></i> Key Statistics</h3>
+        <div>
+            <table class="table table-striped table-hover">
+                <tbody>
+                <tr scope="row">
+                    <td>
+                        <i class="bi bi-card-checklist"></i> Number of Scenarios
+                    </td>
+                    <td>45</td>
+                    <td>
+                        <i class="bi bi-stopwatch"></i> Total
+                        Duration
+                    </td>
+                    <td>33s</td>
+                </tr>
+                <tr scope="row">
+                    <td>
+                        <i class="bi bi-caret-right"></i> Total Number of Test Cases
+                    </td>
+                    <td>50</td>
+                    <td>
+                        <i class="bi bi-trophy"></i> Fastest Test
+                    </td>
+                    <td>828ms</td>
+                </tr>
+                <tr scope="row">
+                    <td>
+                        <i class="bi bi-person"></i> Number of Manual Test Cases
+                    </td>
+                    <td>0</td>
+                    <td>
+                        <i class="bi bi-skip-start"></i> Slowest
+                        Test
+                    </td>
+                    <td>7s</td>
+                </tr>
+                <tr scope="row">
+                    <td>
+                        <i class="bi bi-flag-fill"></i> Tests Started
+                    </td>
+                    <td>Jan 13, 2024 14:13:20</td>
+                    <td>
+                        <i class="bi bi-stopwatch"></i> Average
+                        Execution Time
+                    </td>
+                    <td>2s</td>
+                </tr>
+                <tr scope="row">
+                    <td>
+                        <i class="bi bi-stop-circle"></i> Tests
+                        Finished
+                    </td>
+                    <td>Jan 13, 2024 14:13:54</td>
+                    <td>
+                        <i class="bi bi-stopwatch-fill"></i> Total
+                        Execution Time
+                    </td>
+                    <td> 1m 31s</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+                                                        <h3><i class="bi bi-gear"></i> Automated Scenarios</h3>
+
+                                                            <table class="scenario-result-table table"
+                                                                   id="scenario-results">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th>feature</th>
+                                                                    <th class="test-name-column">Scenario</th>
+                                                                    <th>Context</th>
+                                                                    <th>Steps</th>
+                                                                    <th>Started</th>
+                                                                    <th>Total Duration</th>
+                                                                    <th>Result</th>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr class="scenario-result SUCCESS">
+                                                                        <td>
+                                                                                <a href="675a2fbd7e926dc4386404460dfed5d64f7e56a3c0206e92b287e893ea3ef9b1.html">Completing todos</a>
+                                                                        </td>
+                                                                        <td data-order="The todo count should keep track of how many todos remain">
+                                                                                    <a href="8c7e215e9f3a1f26e37753938a53a650afbf3e48b25c4329026c066c24790008.html">The todo count should keep track of how many todos remain</a>
+                                                                        </td>
+                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
+                                                                        </td>
+                                                                        <td>4</td>
+                                                                        <td data-order="1705155200">14:13:20</td>
+                                                                        <td>5s 810ms</td>
+                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                    style="display:none">SUCCESS</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="scenario-result SUCCESS">
+                                                                        <td>
+                                                                                <a href="675a2fbd7e926dc4386404460dfed5d64f7e56a3c0206e92b287e893ea3ef9b1.html">Completing todos</a>
+                                                                        </td>
+                                                                        <td data-order="The list of completed items should be empty if nothing has been completed">
+                                                                                    <a href="11e124e0fb7eaee2c3fb4419e893bde4c7776142f75acb30e9849fe1e73469bc.html">The list of completed items should be empty if nothing has been completed</a>
+                                                                        </td>
+                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
+                                                                        </td>
+                                                                        <td>3</td>
+                                                                        <td data-order="1705155206">14:13:26</td>
+                                                                        <td>4s 444ms</td>
+                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                    style="display:none">SUCCESS</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="scenario-result SUCCESS">
+                                                                        <td>
+                                                                                <a href="675a2fbd7e926dc4386404460dfed5d64f7e56a3c0206e92b287e893ea3ef9b1.html">Completing todos</a>
+                                                                        </td>
+                                                                        <td data-order="When a task is completed it remains in the main list">
+                                                                                    <a href="6fac2b2fe3ce09b39e434c7d0284a66035893cf66c966e8f377324f67f87016b.html">When a task is completed it remains in the main list</a>
+                                                                        </td>
+                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
+                                                                        </td>
+                                                                        <td>4</td>
+                                                                        <td data-order="1705155208">14:13:28</td>
+                                                                        <td>2s 961ms</td>
+                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                    style="display:none">SUCCESS</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="scenario-result SUCCESS">
+                                                                        <td>
+                                                                                <a href="675a2fbd7e926dc4386404460dfed5d64f7e56a3c0206e92b287e893ea3ef9b1.html">Completing todos</a>
+                                                                        </td>
+                                                                        <td data-order="Completed tasks should appear in the Completed list">
+                                                                                    <a href="9b5393c66664ee63bc2c6b9f4c6991c5124a0ab4dbf51d4458546c11fd0b0419.html">Completed tasks should appear in the Completed list</a>
+                                                                        </td>
+                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
+                                                                        </td>
+                                                                        <td>4</td>
+                                                                        <td data-order="1705155209">14:13:29</td>
+                                                                        <td>2s 315ms</td>
+                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                    style="display:none">SUCCESS</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="scenario-result SUCCESS">
+                                                                        <td>
+                                                                                <a href="675a2fbd7e926dc4386404460dfed5d64f7e56a3c0206e92b287e893ea3ef9b1.html">Completing todos</a>
+                                                                        </td>
+                                                                        <td data-order="Completed tasks should be shown as Completed">
+                                                                            <i class="bi bi-table"
+                                                                               title="Data Driven Scenario"> <a
+                                                                                        href="7d802b1618bdfe7b3b5da1f3f30d1f0f74bac86bd8fa3af0615103a6333316f4.html">Completed tasks should be shown as Completed</a>
+                                                                                <br/>
+                                                                                    <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> 2 passing test cases
+                                                                                    <br/>
+                                                                        </td>
+                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
+                                                                        </td>
+                                                                        <td>3</td>
+                                                                        <td data-order="1705155210">14:13:30</td>
+                                                                        <td>2s 076ms</td>
+                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                    style="display:none">SUCCESS</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="scenario-result SUCCESS">
+                                                                        <td>
+                                                                                <a href="b3f706bf8f247d9c100b9e130fc05544b762809ce18613516306cff20a75fd9d.html">Deleting todos</a>
+                                                                        </td>
+                                                                        <td data-order="Delete all the items">
+                                                                                    <a href="bcdfc710cec3f3afe958f3d46bf1fe9d6db2892970595e4b445973591dfcf9d9.html">Delete all the items</a>
+                                                                        </td>
+                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
+                                                                        </td>
+                                                                        <td>4</td>
+                                                                        <td data-order="1705155200">14:13:20</td>
+                                                                        <td>7s 127ms</td>
+                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                    style="display:none">SUCCESS</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="scenario-result SUCCESS">
+                                                                        <td>
+                                                                                <a href="b3f706bf8f247d9c100b9e130fc05544b762809ce18613516306cff20a75fd9d.html">Deleting todos</a>
+                                                                        </td>
+                                                                        <td data-order="Delete an active item">
+                                                                                    <a href="8e8103d24152b59e482d71065e9c0003799cf28a540b975a7ba29ca7155568e0.html">Delete an active item</a>
+                                                                        </td>
+                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
+                                                                        </td>
+                                                                        <td>3</td>
+                                                                        <td data-order="1705155207">14:13:27</td>
+                                                                        <td>2s 162ms</td>
+                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                    style="display:none">SUCCESS</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="scenario-result SUCCESS">
+                                                                        <td>
+                                                                                <a href="7077e374b487fe487d82eab3224c4a716cfa62ebc84bcc58828d7a6f35471354.html">Filtering todos</a>
+                                                                        </td>
+                                                                        <td data-order="Viewing the items by status">
+                                                                            <i class="bi bi-table"
+                                                                               title="Data Driven Scenario"> <a
+                                                                                        href="8872589249dc2cd41e57fca8dcdb079a0fb565d09b8fa891261ec6b962945fbf.html">Viewing the items by status</a>
+                                                                                <br/>
+                                                                                    <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> 3 passing test cases
+                                                                                    <br/>
+                                                                        </td>
+                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
+                                                                        </td>
+                                                                        <td>4</td>
+                                                                        <td data-order="1705155200">14:13:20</td>
+                                                                        <td>5s 386ms</td>
+                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                    style="display:none">SUCCESS</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="scenario-result SUCCESS">
+                                                                        <td>
+                                                                                <a href="5655a252d959d384f717ce1515a9e368b8f57bcddb623d457e89b64c333e4fda.html">Add new todos</a>
+                                                                        </td>
+                                                                        <td data-order="Adding items to several peoples lists">
+                                                                                    <a href="53de6e2fde680d7b272d57292fe0469ebcea7dec18a95c0cac41a41329424356.html">Adding items to several peoples lists</a>
+                                                                        </td>
+                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
+                                                                        </td>
+                                                                        <td>5</td>
+                                                                        <td data-order="1705155200">14:13:20</td>
+                                                                        <td>7s 424ms</td>
+                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                    style="display:none">SUCCESS</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="scenario-result SUCCESS">
+                                                                        <td>
+                                                                                <a href="5655a252d959d384f717ce1515a9e368b8f57bcddb623d457e89b64c333e4fda.html">Add new todos</a>
+                                                                        </td>
+                                                                        <td data-order="Adding an item to a list with other items">
+                                                                                    <a href="11dc130a36e7543fc6ed668947716abb917be4c9c4b29cc7fe2314d73a59e90a.html">Adding an item to a list with other items</a>
+                                                                        </td>
+                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
+                                                                        </td>
+                                                                        <td>3</td>
+                                                                        <td data-order="1705155208">14:13:28</td>
+                                                                        <td>2s 696ms</td>
+                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                    style="display:none">SUCCESS</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="scenario-result SUCCESS">
+                                                                        <td>
+                                                                                <a href="5655a252d959d384f717ce1515a9e368b8f57bcddb623d457e89b64c333e4fda.html">Add new todos</a>
+                                                                        </td>
+                                                                        <td data-order="Adding an item to an empty list">
+                                                                                    <a href="8538a590698814253ef7fa4b2ce79a171bc60ca06352d606a554be758e210e47.html">Adding an item to an empty list</a>
+                                                                        </td>
+                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
+                                                                        </td>
+                                                                        <td>3</td>
+                                                                        <td data-order="1705155208">14:13:28</td>
+                                                                        <td>1s 541ms</td>
+                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                    style="display:none">SUCCESS</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="scenario-result SUCCESS">
+                                                                        <td>
+                                                                                <a href="fc6d6b11273ca8dc0923978323811fd4507072aa6571485ae24f42a2bd5577fb.html">LearnAboutTheApplication</a>
+                                                                        </td>
+                                                                        <td data-order="Should see how to begin with page objects">
+                                                                                    <a href="2dd827d0bfda04e0d4b63f2b04443d500aef74ce7c8062e1c180f0aa234acfba.html">Should see how to begin with page objects</a>
+                                                                        </td>
+                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
+                                                                        </td>
+                                                                        <td>2</td>
+                                                                        <td data-order="1705155215">14:13:35</td>
+                                                                        <td>1s 846ms</td>
+                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                    style="display:none">SUCCESS</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="scenario-result SUCCESS">
+                                                                        <td>
+                                                                                <a href="fc6d6b11273ca8dc0923978323811fd4507072aa6571485ae24f42a2bd5577fb.html">LearnAboutTheApplication</a>
+                                                                        </td>
+                                                                        <td data-order="Should be able to identify the application with page objects">
+                                                                                    <a href="febd7cad5abc36dba05a62bb2c5f10e22ec1e5e9a7086990da6b88dc03dede32.html">Should be able to identify the application with page objects</a>
+                                                                        </td>
+                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
+                                                                        </td>
+                                                                        <td>4</td>
+                                                                        <td data-order="1705155217">14:13:37</td>
+                                                                        <td>1s 958ms</td>
+                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                    style="display:none">SUCCESS</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="scenario-result SUCCESS">
+                                                                        <td>
+                                                                                <a href="5d761a5e7c7d3a6be48dcc28bb2467ddf8b352b19783dff741aba89a705fdf03.html">CompleteATodo</a>
+                                                                        </td>
+                                                                        <td data-order="Should be able to complete a todo with page objects">
+                                                                                    <a href="06e4ad79702df75179bf04123accdd93e3fbf8722bc26b687aba9a7af7892404.html">Should be able to complete a todo with page objects</a>
+                                                                        </td>
+                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
+                                                                        </td>
+                                                                        <td>4</td>
+                                                                        <td data-order="1705155213">14:13:33</td>
+                                                                        <td>1s 648ms</td>
+                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                    style="display:none">SUCCESS</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="scenario-result SUCCESS">
+                                                                        <td>
+                                                                                <a href="fd5980370be8d13ff490ebddc14a546c87af4c684aa4024bb33297d51a5a1d12.html">ToggleAllTodos</a>
+                                                                        </td>
+                                                                        <td data-order="Should be able to quickly complete all todos with page objects">
+                                                                                    <a href="5f358baecbbb17c5a62867d605d6fabb10dff90fdcd018f44a2cc8576d10c06c.html">Should be able to quickly complete all todos with page objects</a>
+                                                                        </td>
+                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
+                                                                        </td>
+                                                                        <td>3</td>
+                                                                        <td data-order="1705155213">14:13:33</td>
+                                                                        <td>1s 416ms</td>
+                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                    style="display:none">SUCCESS</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="scenario-result SUCCESS">
+                                                                        <td>
+                                                                                <a href="fd5980370be8d13ff490ebddc14a546c87af4c684aa4024bb33297d51a5a1d12.html">ToggleAllTodos</a>
+                                                                        </td>
+                                                                        <td data-order="Should see that there are zero items todo when all are toggled complete with page objects">
+                                                                                    <a href="f541c20107d40d535f316e5fbd6fd99239cf4cf941561b1da9cac1ea47743c50.html">Should see that there are zero items todo when all are toggled complete with page objects</a>
+                                                                        </td>
+                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
+                                                                        </td>
+                                                                        <td>3</td>
+                                                                        <td data-order="1705155215">14:13:35</td>
+                                                                        <td>1s 297ms</td>
+                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                    style="display:none">SUCCESS</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="scenario-result SUCCESS">
+                                                                        <td>
+                                                                                <a href="fd5980370be8d13ff490ebddc14a546c87af4c684aa4024bb33297d51a5a1d12.html">ToggleAllTodos</a>
+                                                                        </td>
+                                                                        <td data-order="Should see how many items todo when all are toggled to incomplete with page objects">
+                                                                                    <a href="b1f0d97053b42477c4420acf066a77ffb98521f7ad39ad73fdc4283a4de6a148.html">Should see how many items todo when all are toggled to incomplete with page objects</a>
+                                                                        </td>
+                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
+                                                                        </td>
+                                                                        <td>4</td>
+                                                                        <td data-order="1705155217">14:13:37</td>
+                                                                        <td>1s 120ms</td>
+                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                    style="display:none">SUCCESS</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="scenario-result SUCCESS">
+                                                                        <td>
+                                                                                <a href="fd5980370be8d13ff490ebddc14a546c87af4c684aa4024bb33297d51a5a1d12.html">ToggleAllTodos</a>
+                                                                        </td>
+                                                                        <td data-order="Should be able to toggle status of all todos with page objects">
+                                                                                    <a href="bd467a560d3332f34a12737adfe5f095b75266a70bf211b72e287de606e4f370.html">Should be able to toggle status of all todos with page objects</a>
+                                                                        </td>
+                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
+                                                                        </td>
+                                                                        <td>4</td>
+                                                                        <td data-order="1705155218">14:13:38</td>
+                                                                        <td>1s 253ms</td>
+                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                    style="display:none">SUCCESS</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="scenario-result SUCCESS">
+                                                                        <td>
+                                                                                <a href="4356d9cfe25d6e22f473d024a074ad06ded4a4726fc7b1d559f9975bff2bc19b.html">ClearCompletedTodos</a>
+                                                                        </td>
+                                                                        <td data-order="Should not be able to clear completed todos if none are complete with page objects">
+                                                                                    <a href="8630a602137371689f44fd60b443a934760cdf56bdf2fa59f72c6707fdec8e73.html">Should not be able to clear completed todos if none are complete with page objects</a>
+                                                                        </td>
+                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
+                                                                        </td>
+                                                                        <td>2</td>
+                                                                        <td data-order="1705155220">14:13:40</td>
+                                                                        <td>1s 278ms</td>
+                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                    style="display:none">SUCCESS</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="scenario-result SUCCESS">
+                                                                        <td>
+                                                                                <a href="4356d9cfe25d6e22f473d024a074ad06ded4a4726fc7b1d559f9975bff2bc19b.html">ClearCompletedTodos</a>
+                                                                        </td>
+                                                                        <td data-order="Should be able to clear completed todos with page objects">
+                                                                                    <a href="3628e6d111340f6e4326b4ede0ccaf5a0bd4e63074a22ab20a0e6e459ff2fe28.html">Should be able to clear completed todos with page objects</a>
+                                                                        </td>
+                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
+                                                                        </td>
+                                                                        <td>4</td>
+                                                                        <td data-order="1705155221">14:13:41</td>
+                                                                        <td>1s 174ms</td>
+                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                    style="display:none">SUCCESS</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="scenario-result SUCCESS">
+                                                                        <td>
+                                                                                <a href="87c2ec25c15954703a8a5dc5b2405d8e88d88948c2d8ad14d09edbc40bc8d107.html">DeletingTodos</a>
+                                                                        </td>
+                                                                        <td data-order="Should see deleting a todo decreases the remaining items count with page objects">
+                                                                                    <a href="82101ee70d97166ead21a09a49ada33d697bd660d12bbaa15266dd71fe6dec72.html">Should see deleting a todo decreases the remaining items count with page objects</a>
+                                                                        </td>
+                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
+                                                                        </td>
+                                                                        <td>3</td>
+                                                                        <td data-order="1705155220">14:13:40</td>
+                                                                        <td>1s 366ms</td>
+                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                    style="display:none">SUCCESS</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="scenario-result SUCCESS">
+                                                                        <td>
+                                                                                <a href="87c2ec25c15954703a8a5dc5b2405d8e88d88948c2d8ad14d09edbc40bc8d107.html">DeletingTodos</a>
+                                                                        </td>
+                                                                        <td data-order="Should be able to delete todos with page objects">
+                                                                                    <a href="6f232d9bab4871a6bff341954cf07beaa4b1cfb5037f287b5cd85f40f869c839.html">Should be able to delete todos with page objects</a>
+                                                                        </td>
+                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
+                                                                        </td>
+                                                                        <td>3</td>
+                                                                        <td data-order="1705155221">14:13:41</td>
+                                                                        <td>1s 408ms</td>
+                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                    style="display:none">SUCCESS</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="scenario-result SUCCESS">
+                                                                        <td>
+                                                                                <a href="490af42e89f9d05fb66e223ff737cefd7b35c5b876e506a7823388dc4c9f3dea.html">FilteringTodos</a>
+                                                                        </td>
+                                                                        <td data-order="Should be able to view both complete and incomplete todos with page objects">
+                                                                                    <a href="8296ce6d96941423e92da7663e1a01898b1f33ce15a08331bf7eb10dbf9ebdb3.html">Should be able to view both complete and incomplete todos with page objects</a>
+                                                                        </td>
+                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
+                                                                        </td>
+                                                                        <td>6</td>
+                                                                        <td data-order="1705155215">14:13:35</td>
+                                                                        <td>1s 450ms</td>
+                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                    style="display:none">SUCCESS</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="scenario-result SUCCESS">
+                                                                        <td>
+                                                                                <a href="490af42e89f9d05fb66e223ff737cefd7b35c5b876e506a7823388dc4c9f3dea.html">FilteringTodos</a>
+                                                                        </td>
+                                                                        <td data-order="Should be able to view only incomplete todos with page objects">
+                                                                                    <a href="7976ecf52d23a0a97d200d23e2581cb75d8f4160af6621062b6b28972b582819.html">Should be able to view only incomplete todos with page objects</a>
+                                                                        </td>
+                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
+                                                                        </td>
+                                                                        <td>6</td>
+                                                                        <td data-order="1705155215">14:13:35</td>
+                                                                        <td>1s 414ms</td>
+                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                    style="display:none">SUCCESS</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="scenario-result SUCCESS">
+                                                                        <td>
+                                                                                <a href="490af42e89f9d05fb66e223ff737cefd7b35c5b876e506a7823388dc4c9f3dea.html">FilteringTodos</a>
+                                                                        </td>
+                                                                        <td data-order="Should be able to view only completed todos with page objects">
+                                                                                    <a href="bd22d297768401bbbd3afc0c776ccddce3bfe6cc293cc1e976a787f5c5e3c120.html">Should be able to view only completed todos with page objects</a>
+                                                                        </td>
+                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
+                                                                        </td>
+                                                                        <td>6</td>
+                                                                        <td data-order="1705155218">14:13:38</td>
+                                                                        <td>1s 340ms</td>
+                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                    style="display:none">SUCCESS</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="scenario-result SUCCESS">
+                                                                        <td>
+                                                                                <a href="bb7a868d8ec46ecec60d434bcb7d6177f1d241645125b877cb2322e2ffd4ef23.html">AddNewTodos</a>
+                                                                        </td>
+                                                                        <td data-order="Should be able to add additional todo items with page objects">
+                                                                                    <a href="bade1cee9d1ded53953a61242502549561c97bbb88685a283a0a31f06cb9d7de.html">Should be able to add additional todo items with page objects</a>
+                                                                        </td>
+                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
+                                                                        </td>
+                                                                        <td>3</td>
+                                                                        <td data-order="1705155213">14:13:33</td>
+                                                                        <td>1s 449ms</td>
+                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                    style="display:none">SUCCESS</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="scenario-result SUCCESS">
+                                                                        <td>
+                                                                                <a href="bb7a868d8ec46ecec60d434bcb7d6177f1d241645125b877cb2322e2ffd4ef23.html">AddNewTodos</a>
+                                                                        </td>
+                                                                        <td data-order="Test to resolve issue #616172">
+                                                                                    <a href="bfa209faaad36f4bb745afcbc1f6964439c65fbe2472b856a76835dd10d016a2.html">Test to resolve issue #616172</a>
+                                                                        </td>
+                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
+                                                                        </td>
+                                                                        <td>3</td>
+                                                                        <td data-order="1705155213">14:13:33</td>
+                                                                        <td>2s 108ms</td>
+                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                    style="display:none">SUCCESS</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="scenario-result SUCCESS">
+                                                                        <td>
+                                                                                <a href="bb1bef04f5495f9d00c5d4f99fc52f7ea08fd0381cce630d8c8b45e1c779b932.html">LearnAboutTheApplication</a>
+                                                                        </td>
+                                                                        <td data-order="Should see how to begin">
+                                                                                    <a href="c12cccd06b5976b260cf83ef3d9527368381d80d3791479ce7b4a69c344310a0.html">Should see how to begin</a>
+                                                                        </td>
+                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
+                                                                        </td>
+                                                                        <td>2</td>
+                                                                        <td data-order="1705155223">14:13:43</td>
+                                                                        <td>940ms</td>
+                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                    style="display:none">SUCCESS</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="scenario-result SUCCESS">
+                                                                        <td>
+                                                                                <a href="bb1bef04f5495f9d00c5d4f99fc52f7ea08fd0381cce630d8c8b45e1c779b932.html">LearnAboutTheApplication</a>
+                                                                        </td>
+                                                                        <td data-order="Should be able to identify the application">
+                                                                                    <a href="e37aeed3e64d6cff61c66eac9558554d9e8a4a7df30e18de6d76e2dc23d17847.html">Should be able to identify the application</a>
+                                                                        </td>
+                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
+                                                                        </td>
+                                                                        <td>4</td>
+                                                                        <td data-order="1705155224">14:13:44</td>
+                                                                        <td>937ms</td>
+                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                    style="display:none">SUCCESS</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="scenario-result SUCCESS">
+                                                                        <td>
+                                                                                <a href="99c417da16d797ee6e7e29174b9af433d1144e5506116f2fc76a9ca44586f925.html">CompleteATodo</a>
+                                                                        </td>
+                                                                        <td data-order="Should see the number of todos decrease when an item is completed">
+                                                                                    <a href="2c7c47ef40c4a6916f8d4d48c9c5f73904171ecb3246cc9427ae3f643ea30673.html">Should see the number of todos decrease when an item is completed</a>
+                                                                        </td>
+                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
+                                                                        </td>
+                                                                        <td>3</td>
+                                                                        <td data-order="1705155220">14:13:40</td>
+                                                                        <td>967ms</td>
+                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                    style="display:none">SUCCESS</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="scenario-result SUCCESS">
+                                                                        <td>
+                                                                                <a href="99c417da16d797ee6e7e29174b9af433d1144e5506116f2fc76a9ca44586f925.html">CompleteATodo</a>
+                                                                        </td>
+                                                                        <td data-order="Should be able to complete a todo using page objects">
+                                                                                    <a href="5da3d66455243a94737524ed203acac84ced1817cc8222acada929047d47c44d.html">Should be able to complete a todo using page objects</a>
+                                                                        </td>
+                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
+                                                                        </td>
+                                                                        <td>0</td>
+                                                                        <td data-order="1705155222">14:13:42</td>
+                                                                        <td>1s 538ms</td>
+                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                    style="display:none">SUCCESS</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="scenario-result SUCCESS">
+                                                                        <td>
+                                                                                <a href="99c417da16d797ee6e7e29174b9af433d1144e5506116f2fc76a9ca44586f925.html">CompleteATodo</a>
+                                                                        </td>
+                                                                        <td data-order="Should be able to complete a todo">
+                                                                                    <a href="61100b88bc8eb91bac4e82836862f291eda78f8d64779ab1835df19cf05241a2.html">Should be able to complete a todo</a>
+                                                                        </td>
+                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
+                                                                        </td>
+                                                                        <td>4</td>
+                                                                        <td data-order="1705155223">14:13:43</td>
+                                                                        <td>1s 085ms</td>
+                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                    style="display:none">SUCCESS</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="scenario-result SUCCESS">
+                                                                        <td>
+                                                                                <a href="99c417da16d797ee6e7e29174b9af433d1144e5506116f2fc76a9ca44586f925.html">CompleteATodo</a>
+                                                                        </td>
+                                                                        <td data-order="Should be able to toggle the status of all todos">
+                                                                                    <a href="37c6bd75831af2d512f449198b5af57add9463e6ffc21b08ffeb6158ffaead17.html">Should be able to toggle the status of all todos</a>
+                                                                        </td>
+                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
+                                                                        </td>
+                                                                        <td>5</td>
+                                                                        <td data-order="1705155225">14:13:45</td>
+                                                                        <td>931ms</td>
+                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                    style="display:none">SUCCESS</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="scenario-result SUCCESS">
+                                                                        <td>
+                                                                                <a href="99c417da16d797ee6e7e29174b9af433d1144e5506116f2fc76a9ca44586f925.html">CompleteATodo</a>
+                                                                        </td>
+                                                                        <td data-order="Should be able to complete a todo using imperative code">
+                                                                                    <a href="86f1052878e8a929825ab54069abb33748fd87151b4f675a47a2a673577401b3.html">Should be able to complete a todo using imperative code</a>
+                                                                        </td>
+                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
+                                                                        </td>
+                                                                        <td>0</td>
+                                                                        <td data-order="1705155225">14:13:45</td>
+                                                                        <td>1s 310ms</td>
+                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                    style="display:none">SUCCESS</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="scenario-result SUCCESS">
+                                                                        <td>
+                                                                                <a href="99c417da16d797ee6e7e29174b9af433d1144e5506116f2fc76a9ca44586f925.html">CompleteATodo</a>
+                                                                        </td>
+                                                                        <td data-order="Should be able to complete a todo using a bdd style">
+                                                                                    <a href="987d6cc23c404106982ad05680e8ccebf429c746fe51479ec3da91346aa56ec8.html">Should be able to complete a todo using a bdd style</a>
+                                                                        </td>
+                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
+                                                                        </td>
+                                                                        <td>4</td>
+                                                                        <td data-order="1705155226">14:13:46</td>
+                                                                        <td>1s 059ms</td>
+                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                    style="display:none">SUCCESS</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="scenario-result SUCCESS">
+                                                                        <td>
+                                                                                <a href="a9ef7c19cf25e1e8424df345da55eb5a3a4722191e4874d7311f8a9a587c5464.html">ClearCompletedTodos</a>
+                                                                        </td>
+                                                                        <td data-order="Should be able to clear completed todos">
+                                                                                    <a href="7a64714035277affdf77589c5e9191384cdf5cafd7f2e60214df64f8c9480c39.html">Should be able to clear completed todos</a>
+                                                                        </td>
+                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
+                                                                        </td>
+                                                                        <td>4</td>
+                                                                        <td data-order="1705155220">14:13:40</td>
+                                                                        <td>1s 019ms</td>
+                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                    style="display:none">SUCCESS</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="scenario-result SUCCESS">
+                                                                        <td>
+                                                                                <a href="a9ef7c19cf25e1e8424df345da55eb5a3a4722191e4874d7311f8a9a587c5464.html">ClearCompletedTodos</a>
+                                                                        </td>
+                                                                        <td data-order="Should not be able to clear completed todos if none are complete">
+                                                                                    <a href="0858c5a21b266ce78288d1128e30dcf5dccf72c9019218793742ca9b86359307.html">Should not be able to clear completed todos if none are complete</a>
+                                                                        </td>
+                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
+                                                                        </td>
+                                                                        <td>2</td>
+                                                                        <td data-order="1705155222">14:13:42</td>
+                                                                        <td>1s 088ms</td>
+                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                    style="display:none">SUCCESS</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="scenario-result SUCCESS">
+                                                                        <td>
+                                                                                <a href="a7266d2706da755e292bb1113dbc32c9397ecbf22b7d4be5860e55d4fc3a9fba.html">DeletingTodos</a>
+                                                                        </td>
+                                                                        <td data-order="Should see deleting a todo decreases the remaining items count">
+                                                                                    <a href="ad887e27f9393419c343de5467b6e403197eeb1e4db6171b4a0c5e4ff384974a.html">Should see deleting a todo decreases the remaining items count</a>
+                                                                        </td>
+                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
+                                                                        </td>
+                                                                        <td>3</td>
+                                                                        <td data-order="1705155213">14:13:33</td>
+                                                                        <td>992ms</td>
+                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                    style="display:none">SUCCESS</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="scenario-result SUCCESS">
+                                                                        <td>
+                                                                                <a href="a7266d2706da755e292bb1113dbc32c9397ecbf22b7d4be5860e55d4fc3a9fba.html">DeletingTodos</a>
+                                                                        </td>
+                                                                        <td data-order="Should be able to delete todos">
+                                                                                    <a href="f47302c831b56033af085bf8c20447f9a0045eb13fcdcca4b9129413044da5d1.html">Should be able to delete todos</a>
+                                                                        </td>
+                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
+                                                                        </td>
+                                                                        <td>3</td>
+                                                                        <td data-order="1705155214">14:13:34</td>
+                                                                        <td>1s 040ms</td>
+                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                    style="display:none">SUCCESS</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="scenario-result SUCCESS">
+                                                                        <td>
+                                                                                <a href="c93dcbddcae36438f6869cbb0f1dd7ae0c4832d5a4a64d6386c69a785ef3c009.html">FilteringTodos</a>
+                                                                        </td>
+                                                                        <td data-order="Should be able to view only completed todos">
+                                                                                    <a href="ca513ebb76c152d97447f8b8c67b36fc05587d8866e6c21369af06e730a2e85b.html">Should be able to view only completed todos</a>
+                                                                        </td>
+                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
+                                                                        </td>
+                                                                        <td>6</td>
+                                                                        <td data-order="1705155223">14:13:43</td>
+                                                                        <td>828ms</td>
+                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                    style="display:none">SUCCESS</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="scenario-result SUCCESS">
+                                                                        <td>
+                                                                                <a href="c93dcbddcae36438f6869cbb0f1dd7ae0c4832d5a4a64d6386c69a785ef3c009.html">FilteringTodos</a>
+                                                                        </td>
+                                                                        <td data-order="Should be able to view only incomplete todos">
+                                                                                    <a href="bdd06d26433dd9d135ae7dbdfd1ca5933dfd1f42e1872af4f69f43d245941188.html">Should be able to view only incomplete todos</a>
+                                                                        </td>
+                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
+                                                                        </td>
+                                                                        <td>6</td>
+                                                                        <td data-order="1705155225">14:13:45</td>
+                                                                        <td>1s 113ms</td>
+                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                    style="display:none">SUCCESS</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="scenario-result SUCCESS">
+                                                                        <td>
+                                                                                <a href="c93dcbddcae36438f6869cbb0f1dd7ae0c4832d5a4a64d6386c69a785ef3c009.html">FilteringTodos</a>
+                                                                        </td>
+                                                                        <td data-order="Should be able to view various todo combinations">
+                                                                            <i class="bi bi-table"
+                                                                               title="Data Driven Scenario"> <a
+                                                                                        href="ad88981a47f219d293d3e4ab81bb6e85d4a6e66c4ef41dbbab45b74a03c171dd.html">Should be able to view various todo combinations</a>
+                                                                                <br/>
+                                                                                    <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> 3 passing test cases
+                                                                                    <br/>
+                                                                        </td>
+                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
+                                                                        </td>
+                                                                        <td>5</td>
+                                                                        <td data-order="1705155228">14:13:48</td>
+                                                                        <td>5s 845ms</td>
+                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                    style="display:none">SUCCESS</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="scenario-result SUCCESS">
+                                                                        <td>
+                                                                                <a href="8a2528df3074e8697e4e80fbebc7b478d669cb9fe8e8e5fbc501118d3d5b5011.html">TodosBelongToAUser</a>
+                                                                        </td>
+                                                                        <td data-order="Should not affect todos belonging to another user">
+                                                                                    <a href="7575efdfb649811e6172d5155c0144964f0bcd0420c059aa9359acd3e5bf9edd.html">Should not affect todos belonging to another user</a>
+                                                                        </td>
+                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
+                                                                        </td>
+                                                                        <td>5</td>
+                                                                        <td data-order="1705155217">14:13:37</td>
+                                                                        <td>1s 218ms</td>
+                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                    style="display:none">SUCCESS</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="scenario-result SUCCESS">
+                                                                        <td>
+                                                                                <a href="34fb289e4cea690ab1e2d6f4edbb412cb21a79ccc5c713af4d74db4d5851fc24.html">AddNewTodos</a>
+                                                                        </td>
+                                                                        <td data-order="Should be able to add additional todo items">
+                                                                                    <a href="858d7ba18077b3bc1625d5d48f7b21afb22c002f39d1236a54d7b8685fc85dd6.html">Should be able to add additional todo items</a>
+                                                                        </td>
+                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
+                                                                        </td>
+                                                                        <td>3</td>
+                                                                        <td data-order="1705155220">14:13:40</td>
+                                                                        <td>857ms</td>
+                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                    style="display:none">SUCCESS</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="scenario-result SUCCESS">
+                                                                        <td>
+                                                                                <a href="34fb289e4cea690ab1e2d6f4edbb412cb21a79ccc5c713af4d74db4d5851fc24.html">AddNewTodos</a>
+                                                                        </td>
+                                                                        <td data-order="Should be able to add the first todo item">
+                                                                                    <a href="f7fcf90c106bc5fba6ea8ae99086ff13ed41b1f621383deefd8fe949b435b31e.html">Should be able to add the first todo item</a>
+                                                                        </td>
+                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
+                                                                        </td>
+                                                                        <td>3</td>
+                                                                        <td data-order="1705155221">14:13:41</td>
+                                                                        <td>1s 068ms</td>
+                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                    style="display:none">SUCCESS</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <h3><i class="bi bi-hand-index-thumb"></i> Manual Tests</h3>
+
+                                                            No manual tests were recorded
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <h3>Tags</h3>
+                    <div class="card">
+                        <div class="card-body">
+                            <div>
+                                    <a href="a0f9911b879b54a7819be5ec0f37fcf90ea7d8cfac3180275d26ca4b75526ab2.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Page Objects&nbsp;&nbsp;&nbsp;16
+                                    </span>
+                                    </a>
+                                    <a href="1a067281f08658ac6c668d1f525eeada9cc5ed39ad7a4d652c30b2778694a272.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Filtering&nbsp;&nbsp;&nbsp;3
+                                    </span>
+                                    </a>
+                                    <a href="d0e3033e1d4fd450bad910c731185f5c272a3350c68ca7cf2b9537e0aceae6af.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Adding&nbsp;&nbsp;&nbsp;3
+                                    </span>
+                                    </a>
+                                    <a href="028fb69bf25996e445f66d6323cf7c1d294bfbbb15ca870736473bd3facac897.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Deleting&nbsp;&nbsp;&nbsp;2
+                                    </span>
+                                    </a>
+                                    <a href="08fe31b4cedcca88014566e2926c79ff53b30818f68b6c102890ece9afcee9b3.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Completing&nbsp;&nbsp;&nbsp;6
+                                    </span>
+                                    </a>
+                                    <a href="4679f997e5629a343e8c9ea08da2b295ab1804a6eb6ec5eb7fecad6541c1ee1b.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Screenplay&nbsp;&nbsp;&nbsp;17
+                                    </span>
+                                    </a>
+                                    <a href="980553ab65ac3a80cb226527d564bcf09dfb50e9d5c6245f24578a314fb4b271.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Cucumber&nbsp;&nbsp;&nbsp;14
+                                    </span>
+                                    </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                                <h5 class="card-title">Context</h5>
+                            <div>
+                                    <a href="46b54d9084ba9783130da16408afb27a4e4620f6bd966e731510c7395b9ddf5c.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Chrome, Linux&nbsp;&nbsp;&nbsp;50
+                                    </span>
+                                    </a>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="beforefooter"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <span class="version">Serenity BDD version 4.0.43</span>
+        </div>
+    </div>
+</div>
+
+<!-- Chart data -->
+    <!-- PIE CHART -->
+    <script>
+
+        // The results pie chart
+        const outcomeChartCtx = document.getElementById('resultChart');
+
+        // Options define for display value on top of bars
+        const outcomeDetailsReports = [
+            { title: 'Passing Test Cases', link: "8369325f85562c22ced9198fa67f80b74698042f0224555e74d42766e66cbf66.html" },
+            { title: 'Pending Test Cases', link: "ebc92924c22af1f3b7c3acb138815fbfa250eb6b6d4c3c3220b89f206a0f3481.html" },
+            { title: 'Ignored Test Cases', link: "50e82e3435bc588303a3feb4c5ef0f7b2e274f1a43b1da6f4beb95263de1eb84.html" },
+            { title: 'Skipped Test Cases', link: "fc4b545ec66892a66c755e86795aebbeaefcc0298e274038205438577c3134e3.html" },
+            { title: 'Aborted Test Cases',  link: "6ac7b14a7924f8587906bcd333b2be3f480f19741cef12d8a42df38f42d74b5b.html"},
+            { title: 'Failed Test Cases', link: "01310f848394c1ed94a080122aaa507e973c08691d13f3abbd5bf15d9435e0a2.html"  },
+            { title: 'Broken Test Cases', link: "e9edc8a9889f18d6ea8e3e3bcc6dd246fe11ad654e01d762c66c0f7cc8a952e6.html"    },
+            { title: 'Compromised Test Cases',  link: "69c0e21f8fa3b5f1a2d9436b47bc94efe520628fd5ef840068a94b74a002bf6c.html" },
+        ]
+        const outcomeData = {
+            labels: ['Passing Test Cases', 'Pending Test Cases', 'Ignored Test Cases', 'Skipped Test Cases', 'Aborted Test Cases', 'Failed Test Cases', 'Broken Test Cases', 'Compromised Test Cases','Undefined Test Cases'],
+            datasets: [{
+                label: 'Test Results',
+                fill: false,
+                data: [50,0,0,0,0,0,0,0],
+                backgroundColor: ['rgba(153,204,51,0.5)','rgba(165, 199, 238, 0.5)','rgba(168, 168, 168, 0.5)','rgba(238, 224, 152, 0.75)','rgba(255, 153, 102, 0.5)','rgba(255, 22, 49, 0.5)','rgba(255, 97, 8, 0.5)','rgba(255, 104, 255, 0.5)','rgba(83, 50, 168, 0.5)'],
+                borderColor: ['rgba(153,204,51,1)','rgba(165, 199, 238, 1)','rgba(168, 168, 168, 1)','rgba(238, 224, 152, 1)','rgba(255, 153, 102, 1)','rgba(255, 22, 49, 1)','rgba(255, 97, 8, 1)','rgba(255, 104, 255, 1)','rgba(83, 50, 168, 1)'],
+                borderWidth: 1,
+            }]
+        }
+        const outcomeOptions = {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'bottom'
+                },
+                // Change options for ALL labels of THIS CHART
+                datalabels: {
+                    color: '#444444',
+                    'font.weight': 'bold',
+                    formatter: (value, ctx) => {
+                        let sum = 0;
+                        let dataArr = ctx.chart.data.datasets[0].data;
+                        dataArr.map(data => {
+                            sum += data;
+                        });
+                        let percentage = (value * 100 / sum).toFixed(0) + "%";
+                        if (percentage === '0%' || percentage === 'NaN%') {
+                            return '';
+                        } else {
+                            return percentage;
+                        }
+                    },
+                },
+            }
+        }
+
+        const outcomeChart = new Chart(outcomeChartCtx, {
+            type: 'doughnut',
+            data: outcomeData,
+            options: outcomeOptions,
+            plugins: [
+                {
+                    id: 'text',
+                    beforeDraw: function (chart, a, b) {
+                        var width = chart.width,
+                            height = chart.height,
+                            ctx = chart.ctx;
+
+                        ctx.restore();
+                        var fontSize = (height / 200).toFixed(1);
+                        ctx.font = fontSize + "em sans-serif";
+                        ctx.textBaseline = "middle";
+
+                        var text = "100%"
+                        textX = 10 + Math.round((width - ctx.measureText(text).width) / 2);
+                        textY = (height / 2) - 40;
+
+                        ctx.fillText(text, textX, textY);
+                        ctx.save();
+                    }
+                }]
+        });
+
+        function clickHandler(click) {
+            const points = outcomeChart.getElementsAtEventForMode(click, 'nearest', {intersect: true}, true);
+            if (points.length) {
+                const firstPoint = points[0];
+                window.open(outcomeDetailsReports[firstPoint.index].link, "_self")
+
+            }
+        }
+        outcomeChartCtx.onclick = clickHandler;
+    </script>
+    <!-- END PIE CHART -->
+
+    <!-- SUMMARY BAR CHART -->
+    <script>
+
+        // The Severity bar chart
+        const severityChartCtx = document.getElementById('severityChart');
+
+        // Options define for display value on top of bars
+
+        const severityDetailsReports = [
+            { title: 'Passing Scenarios', link: "8369325f85562c22ced9198fa67f80b74698042f0224555e74d42766e66cbf66.html" },
+            { title: 'Pending Scenarios', link: "ebc92924c22af1f3b7c3acb138815fbfa250eb6b6d4c3c3220b89f206a0f3481.html" },
+            { title: 'Ignored Scenarios', link: "50e82e3435bc588303a3feb4c5ef0f7b2e274f1a43b1da6f4beb95263de1eb84.html" },
+            { title: 'Skipped Scenarios', link: "fc4b545ec66892a66c755e86795aebbeaefcc0298e274038205438577c3134e3.html" },
+            { title: 'Aborted Scenarios',  link: "6ac7b14a7924f8587906bcd333b2be3f480f19741cef12d8a42df38f42d74b5b.html"},
+            { title: 'Failed Scenarios', link: "01310f848394c1ed94a080122aaa507e973c08691d13f3abbd5bf15d9435e0a2.html"  },
+            { title: 'Broken Scenarios', link: "e9edc8a9889f18d6ea8e3e3bcc6dd246fe11ad654e01d762c66c0f7cc8a952e6.html"    },
+            { title: 'Compromised Scenarios',  link: "69c0e21f8fa3b5f1a2d9436b47bc94efe520628fd5ef840068a94b74a002bf6c.html" },
+        ]
+        const severityData = {
+            labels: ['Passing', 'Pending', 'Ignored', 'Skipped', 'Aborted', 'Failed', 'Broken', 'Compromised'],
+            datasets: [
+                {
+                    label: 'Automated',
+                    data: [50,0,0,0,0,0,0,0],
+                    backgroundColor: ['rgba(153,204,51,0.5)','rgba(165, 199, 238, 0.5)','rgba(168, 168, 168, 0.5)','rgba(238, 224, 152, 0.75)','rgba(255, 153, 102, 0.5)','rgba(255, 22, 49, 0.5)','rgba(255, 97, 8, 0.5)','rgba(255, 104, 255, 0.5)','rgba(83, 50, 168, 0.5)'],
+                    borderColor: ['rgba(153,204,51,1)','rgba(165, 199, 238, 1)','rgba(168, 168, 168, 1)','rgba(238, 224, 152, 1)','rgba(255, 153, 102, 1)','rgba(255, 22, 49, 1)','rgba(255, 97, 8, 1)','rgba(255, 104, 255, 1)','rgba(83, 50, 168, 1)'],
+                    borderWidth: 1
+                },
+                {
+                    label: 'Manual',
+                    data: [0,0,0,0,0,0,0,0],
+                    backgroundColor: ['rgba(153,204,51,0.25)','rgba(165, 199, 238, 0.25)','rgba(168, 168, 168, 0.25)','rgba(238, 224, 152, 0.375)','rgba(255, 153, 102, 0.25)','rgba(255, 22, 49, 0.25)','rgba(255, 97, 8, 0.25)','rgba(255, 104, 255, 0.25)','rgba(83, 50, 168, 0.25)'],
+                    borderColor: ['rgba(153,204,51,1)','rgba(165, 199, 238, 1)','rgba(168, 168, 168, 1)','rgba(238, 224, 152, 1)','rgba(255, 153, 102, 1)','rgba(255, 22, 49, 1)','rgba(255, 97, 8, 1)','rgba(255, 104, 255, 1)','rgba(83, 50, 168, 1)'],
+                    borderWidth: 1
+                },
+
+            ]
+        }
+        const severityOptions = {
+            responsive: true,
+            skipNull: true,
+            scales: {
+                x: {
+                    stacked: true,
+                },
+                y: {
+                    stacked: true,
+                }
+            },
+            plugins: {
+                // Change options for ALL labels of THIS CHART
+                datalabels: {
+                    color: '#444444',
+                    'font.weight': 'bold',
+                    formatter: (value, ctx) => {
+                        if (value === 0) {
+                            return '';
+                        } else {
+                            return value;
+                        }
+                    },
+                }
+            }
+        }
+        const severityChart = new Chart(severityChartCtx, {
+            type: 'bar',
+            data: severityData,
+            options: severityOptions
+        });
+
+        function clickHandler(click) {
+            const points = severityChart.getElementsAtEventForMode(click, 'nearest', {intersect: true}, true);
+            if (points.length) {
+                const firstPoint = points[0];
+                window.open(severityDetailsReports[firstPoint.index].link, "_self")
+
+            }
+        }
+        severityChartCtx.onclick = clickHandler;
+    </script>
+    <!-- END SUMMARY CHART -->
+
+    <!-- DURATION CHART -->
+    <script>
+
+        // Options define for display value on top of bars
+        const durationDetailsReports = [
+                {title: "Under 1 second", link: "1e22890d0473ac3782e77bfd41543ec78914b967de30b66212f462ab170fdc72.html"},
+                {title: "1 to 10 seconds", link: "40df0b321189f6b37521a53515f4d31d03c6f698c1af184ba1ba9b9481008a5d.html"},
+                {title: "10 to 30 seconds", link: "9e1c108d05486fa1cca0cb79cf34d6d42c0c502cebd8b13c2c2002b44886c874.html"},
+                {title: "30 to 60 seconds", link: "a63ca17127db62c1e30018f464bb5d314deef593277e14d98c8277eee38f1718.html"},
+                {title: "1 to 2 minutes", link: "46fdd598ee39a2fe303f8c7b1fc26ff69f388b19b1a2fa92af651f275ff9faf9.html"},
+                {title: "2 to 5 minutes", link: "cb4aece86e6c447bd5d3a31a3ca8603962afadf083c35265ffd1f7b7a43fa578.html"},
+                {title: "5 to 10 minutes", link: "2b9d66ef53ce4dd894aedd227452edb42a35fe1c3799d62a1b8deae234d91a3f.html"},
+                {title: "10 minutes or over", link: "b312b5b61ea1f0c8b640ca9b0fe5a70a8ffd28a20696b671e079bdfaeee7b662.html"},
+        ]
+        // The Severity bar chart
+        const durationChartCtx = document.getElementById('durationChart');
+
+        // Options define for display value on top of bars
+
+        const durationData = {
+            labels: ['Under 1 second','1 to 10 seconds','10 to 30 seconds','30 to 60 seconds','1 to 2 minutes','2 to 5 minutes','5 to 10 minutes','10 minutes or over'],
+            datasets: [{
+                label: 'Number of tests per duration',
+                fill: false,
+                data: ['7','43','0','0','0','0','0','0'],
+                backgroundColor: 'rgba(83, 146, 255,0.5)',
+                borderColor: 'rgba(83, 146, 255, 1)',
+            }]
+        }
+        const durationOptions = {
+            responsive: true,
+            plugins: {
+                // Change options for ALL labels of THIS CHART
+                datalabels: {
+                    color: '#444444',
+                    'font.weight': 'bold',
+                    formatter: (value, ctx) => {
+                        if (value > 0) {
+                            return value;
+                        } else {
+                            return '';
+                        }
+                    },
+                },
+                tooltip: {
+                    enabled: true,
+                    usePointStyle: true,
+                    callbacks: {
+                        label: (data) => {
+                            return data.parsed.y + ' tests'
+                        }
+                    },
+                },
+            },
+        }
+
+        const durationChart = new Chart(durationChartCtx, {
+            type: 'bar',
+            data: durationData,
+            options: durationOptions
+        });
+
+        function durationClickHandler(click) {
+            const points = durationChart.getElementsAtEventForMode(click, 'nearest', {intersect: true}, true);
+            if (points.length) {
+                const firstPoint = points[0];
+                window.open(durationDetailsReports[firstPoint.index].link, "_self")
+
+            }
+        }
+
+        durationChartCtx.onclick = durationClickHandler;
+    </script>
+    <!-- END DURATION CHART -->
+
+
+
+    <!-- COVERAGE BAR CHART -->
+    <script>
+
+        // The coverage bar chart
+        const coverageChartCtx = document.getElementById('coverageChart');
+
+        // Options define for display value on top of bars
+
+        const coverageReports = [
+            {
+                title: 'Completing todos',
+                result: 'SUCCESS',
+                link: "675a2fbd7e926dc4386404460dfed5d64f7e56a3c0206e92b287e893ea3ef9b1.html"
+            },
+            {
+                title: 'Deleting todos',
+                result: 'SUCCESS',
+                link: "b3f706bf8f247d9c100b9e130fc05544b762809ce18613516306cff20a75fd9d.html"
+            },
+            {
+                title: 'Filtering todos',
+                result: 'SUCCESS',
+                link: "7077e374b487fe487d82eab3224c4a716cfa62ebc84bcc58828d7a6f35471354.html"
+            },
+            {
+                title: 'Add new todos',
+                result: 'SUCCESS',
+                link: "5655a252d959d384f717ce1515a9e368b8f57bcddb623d457e89b64c333e4fda.html"
+            },
+            {
+                title: 'Learn about the application',
+                result: 'SUCCESS',
+                link: "fc6d6b11273ca8dc0923978323811fd4507072aa6571485ae24f42a2bd5577fb.html"
+            },
+            {
+                title: 'Complete a todo',
+                result: 'SUCCESS',
+                link: "5d761a5e7c7d3a6be48dcc28bb2467ddf8b352b19783dff741aba89a705fdf03.html"
+            },
+            {
+                title: 'Toggle all todos',
+                result: 'SUCCESS',
+                link: "fd5980370be8d13ff490ebddc14a546c87af4c684aa4024bb33297d51a5a1d12.html"
+            },
+            {
+                title: 'Clear completed todos',
+                result: 'SUCCESS',
+                link: "4356d9cfe25d6e22f473d024a074ad06ded4a4726fc7b1d559f9975bff2bc19b.html"
+            },
+            {
+                title: 'Deleting todos',
+                result: 'SUCCESS',
+                link: "87c2ec25c15954703a8a5dc5b2405d8e88d88948c2d8ad14d09edbc40bc8d107.html"
+            },
+            {
+                title: 'Filtering todos',
+                result: 'SUCCESS',
+                link: "490af42e89f9d05fb66e223ff737cefd7b35c5b876e506a7823388dc4c9f3dea.html"
+            },
+            {
+                title: 'Add new todos',
+                result: 'SUCCESS',
+                link: "bb7a868d8ec46ecec60d434bcb7d6177f1d241645125b877cb2322e2ffd4ef23.html"
+            },
+            {
+                title: 'Learn about the application',
+                result: 'SUCCESS',
+                link: "bb1bef04f5495f9d00c5d4f99fc52f7ea08fd0381cce630d8c8b45e1c779b932.html"
+            },
+            {
+                title: 'Complete a todo',
+                result: 'SUCCESS',
+                link: "99c417da16d797ee6e7e29174b9af433d1144e5506116f2fc76a9ca44586f925.html"
+            },
+            {
+                title: 'Clear completed todos',
+                result: 'SUCCESS',
+                link: "a9ef7c19cf25e1e8424df345da55eb5a3a4722191e4874d7311f8a9a587c5464.html"
+            },
+            {
+                title: 'Deleting todos',
+                result: 'SUCCESS',
+                link: "a7266d2706da755e292bb1113dbc32c9397ecbf22b7d4be5860e55d4fc3a9fba.html"
+            },
+            {
+                title: 'Filtering todos',
+                result: 'SUCCESS',
+                link: "c93dcbddcae36438f6869cbb0f1dd7ae0c4832d5a4a64d6386c69a785ef3c009.html"
+            },
+            {
+                title: 'Todos belong to a user',
+                result: 'SUCCESS',
+                link: "8a2528df3074e8697e4e80fbebc7b478d669cb9fe8e8e5fbc501118d3d5b5011.html"
+            },
+            {
+                title: 'Add new todos',
+                result: 'SUCCESS',
+                link: "34fb289e4cea690ab1e2d6f4edbb412cb21a79ccc5c713af4d74db4d5851fc24.html"
+            },
+        ]
+        const coverageData = {
+            labels: [
+                'Completing todos',
+                'Deleting todos',
+                'Filtering todos',
+                'Add new todos',
+                'Learn about the application',
+                'Complete a todo',
+                'Toggle all todos',
+                'Clear completed todos',
+                'Deleting todos',
+                'Filtering todos',
+                'Add new todos',
+                'Learn about the application',
+                'Complete a todo',
+                'Clear completed todos',
+                'Deleting todos',
+                'Filtering todos',
+                'Todos belong to a user',
+                'Add new todos',
+            ],
+            datasets: [
+                {
+                    label: ['Passing Tests'],
+                    data: [6,2,3,3,2,1,4,2,2,3,2,2,6,2,2,5,1,2],
+                    backgroundColor: [ 'rgba(153,204,51,0.5)' ]
+                },
+                {
+                    label: ['Pending Tests'],
+                    data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                    backgroundColor: [ 'rgba(165, 199, 238, 0.5)' ]
+                },
+                {
+                    label: ['Ignored Tests'],
+                    data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                    backgroundColor: [ 'rgba(168, 168, 168, 0.5)' ]
+                },
+                {
+                    label: ['Skipped Tests'],
+                    data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                    backgroundColor: [ 'rgba(238, 224, 152, 0.75)' ]
+                },
+                {
+                    label: ['Aborted Tests'],
+                    data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                    backgroundColor: [ 'rgba(255, 153, 102, 0.5)' ]
+                },
+                {
+                    label: ['Failed Tests'],
+                    data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                    backgroundColor: [ 'rgba(255, 22, 49, 0.5)' ]
+                },
+                {
+                    label: ['Errors'],
+                    data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                    backgroundColor: [ 'rgba(255, 97, 8, 0.5)' ]
+                },
+                {
+                    label: ['Compromised Tests'],
+                    data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                    backgroundColor: [ 'rgba(255, 104, 255, 0.5)' ]
+                },
+            ]
+        }
+        const coverageOptions = {
+            responsive: true,
+            indexAxis: 'y',
+            // barPercentage: ,
+            barThickness: 'flex',
+            maxBarThickness: 30,
+            minBarLength: 2,
+            skipNull: true,
+            scales: {
+                x: {
+                    stacked: true,
+                },
+                y: {
+                    stacked: true,
+                }
+            },
+            plugins: {
+                // Change options for ALL labels of THIS CHART
+                datalabels: {
+                    color: '#444444',
+                    'font.weight': 'bold'
+                },
+                tooltip: {
+                    enabled: true,
+                    usePointStyle: true,
+                },
+            },
+        }
+
+        const coverageChart = new Chart(coverageChartCtx, {
+            type: 'bar',
+            data: coverageData,
+            options: coverageOptions
+        });
+
+        function coverageClickHandler(click) {
+            const points = coverageChart.getElementsAtEventForMode(click, 'nearest', {intersect: true}, true);
+            if (points.length) {
+                const firstPoint = points[0];
+                if (coverageReports[firstPoint.index].link) {
+                    window.open(coverageReports[firstPoint.index].link, "_self")
+                }
+            }
+        }
+
+        coverageChartCtx.onclick = coverageClickHandler;
+    </script>
+    <!-- END COVERAGE CHART -->
+
+</body>
+</html>
