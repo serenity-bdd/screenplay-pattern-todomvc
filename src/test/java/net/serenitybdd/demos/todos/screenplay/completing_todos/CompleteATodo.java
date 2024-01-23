@@ -41,7 +41,7 @@ public class CompleteATodo {
 
     @Test
     public void should_be_able_to_complete_a_todo_using_imperative_code() {
-        driver.get("http://todomvc.com/examples/angularjs/#/");
+        driver.get("https://todomvc.com/examples/angular/dist/browser/#/all");
         driver.findElement(By.cssSelector(".new-todo")).sendKeys("Walk the dog", Keys.ENTER);
         driver.findElement(By.cssSelector(".new-todo")).sendKeys("Put out the garbage", Keys.ENTER);
         driver.findElement(
@@ -77,7 +77,7 @@ public class CompleteATodo {
         }
 
         public void open() {
-            driver.get("http://todomvc.com/examples/angularjs/#/");
+            driver.get("https://todomvc.com/examples/angular/dist/browser/#/all");
         }
 
         public void enterTodoField(String todoName) {

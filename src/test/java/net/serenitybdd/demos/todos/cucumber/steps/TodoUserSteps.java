@@ -20,6 +20,8 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
 import net.serenitybdd.screenplay.ensure.Ensure;
+import net.serenitybdd.screenplay.matchers.WebElementStateMatchers;
+import net.serenitybdd.screenplay.ui.Button;
 import net.serenitybdd.screenplay.waits.Wait;
 
 import java.util.List;
@@ -29,6 +31,8 @@ import static net.serenitybdd.demos.todos.screenplay.model.TodoStatus.Completed;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.setTheStage;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
+import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isEnabled;
+import static net.serenitybdd.screenplay.questions.WebElementQuestion.the;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.*;
 
@@ -129,13 +133,12 @@ public class TodoUserSteps {
 
     @Then("{actor}'s todo list should contain {items}")
     public void a_users_todo_list_should_contain(Actor actor, List<String> expectedItems) {
+
         actor.attemptsTo(
-                Wait.until(TheItems.displayed(), is(not(empty()))),
+                Wait.until(TheItems.displayed(), is(not(empty()))).forNoMoreThan(5).seconds(),
                 Ensure.that(TheItems.displayed()).containsElementsFrom(expectedItems)
-                        .withReportedError("Missing todos " + expectedItems)
         );
     }
-
 
     @Then("his/her todo list should be empty")
     public void todo_list_should_be_empty() {

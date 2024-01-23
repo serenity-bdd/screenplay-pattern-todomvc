@@ -25,7 +25,6 @@ public class LearnAboutTheApplication {
 
         james.should_see_the_correct_website_title();
         james.should_see_the_correct_application_heading();
-        james.should_see_the_about_section();
     }
 
     @Test

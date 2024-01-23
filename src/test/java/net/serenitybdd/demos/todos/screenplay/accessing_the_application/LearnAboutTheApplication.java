@@ -44,9 +44,8 @@ public class LearnAboutTheApplication {
 
         then(james).should(
             seeThat(Application.information(),
-                displays("title",equalTo("AngularJS • TodoMVC")),
-                displays("heading",equalTo("todos")),
-                displays("about", containsString("Credits"))
+                displays("title",equalTo("TodoMVC: Angular")),
+                displays("heading",equalTo("Todos"))
             )
         );
     }

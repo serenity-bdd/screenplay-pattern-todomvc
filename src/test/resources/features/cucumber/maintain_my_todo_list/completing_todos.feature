@@ -19,13 +19,15 @@ Feature: Completing todos
     Then her todo list should contain Walk the dog
 
   Scenario Outline: Completed tasks should be shown as Completed
-    Given Jane has a todo list containing Buy some milk, Walk the dog
+    Given Jane has a todo list containing <Initial Tasks>
     When she completes the task called "Walk the dog"
     Then the "<Task>" task should be shown as <Final Status>
     Examples:
-      | Task          | Final Status |
-      | Walk the dog  | Completed    |
-      | Buy some milk | Active       |
+      | Initial Tasks               | Task          | Final Status |
+#      |                             | Walk the dog  | Completed    |
+      | Buy some milk, Walk the dog | Walk the dog  | Completed    |
+      | Walk the dog                | Walk the dog  | Completed    |
+      | Buy some milk, Walk the dog | Buy some milk | Active       |
 
   Scenario: The list of completed items should be empty if nothing has been completed
     Given Jane has a todo list containing Buy some milk, Walk the dog

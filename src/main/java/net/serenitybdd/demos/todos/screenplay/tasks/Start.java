@@ -9,6 +9,8 @@ import net.serenitybdd.screenplay.actions.Open;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class Start {
 
     public static Performable withAnEmptyTodoList() {

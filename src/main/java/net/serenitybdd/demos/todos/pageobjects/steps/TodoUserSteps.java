@@ -136,17 +136,12 @@ public class TodoUserSteps extends UIInteractions {
 
     @Step
     public void should_see_the_correct_website_title() {
-        assertThat(todoListPage.getTitle(), is("AngularJS • TodoMVC"));
+        assertThat(todoListPage.getTitle(), is("TodoMVC: Angular"));
     }
 
     @Step
     public void should_see_the_correct_application_heading() {
-        assertThat(todoListPage.heading(), is("todos"));
-    }
-
-    @Step
-    public void should_see_the_about_section() {
-        assertThat(todoListPage.footer(), containsString("Credits"));
+        assertThat(todoListPage.heading(), is("Todos"));
     }
 
 }

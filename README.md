@@ -5,7 +5,7 @@ the [PageObject](http://martinfowler.com/bliki/PageObject.html)
 and the [Screenplay pattern](https://dzone.com/articles/page-objects-refactored-solid-steps-to-the-screenp),
 both implemented using the [Serenity BDD](http://serenity-bdd.info/#/) library and JUnit.
 
-The web tests you'll find here run against the http://todomvc.com/examples/angularjs/#/ application and are organised
+The web tests you'll find here run against the https://todomvc.com/examples/angular/dist/browser/#/all application and are organised
 by feature in packages under `src/test/java/net/serenitybdd/demos/todos/<pattern name>/features`.
 
 By default the tests run on Chrome, so make sure you have the latest chromedriver instance on your system path.
