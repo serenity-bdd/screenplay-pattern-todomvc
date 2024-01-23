@@ -154,7 +154,7 @@
             <a href="576946480b52ad056d6f5bddf874399c83582ecf90963cc074a14c70580e7d9f.html"><i class="bi bi-chat-text"></i> Features</a>
         </li>
     </ul>
-    <span class="date-and-time"><a href="build-info.html"><i class="bi bi-info-circle"></i></a> Report generated 13-01-2024 14:13</span>
+    <span class="date-and-time"><a href="build-info.html"><i class="bi bi-info-circle"></i></a> Report generated 23-01-2024 19:21</span>
     <br style="clear:left"/>
 </div>
     <div class="clr"></div>
@@ -266,7 +266,7 @@
     <div class="story-title">
         <h3 class="story-header">Scenario Outline</h3>
 
-        <div class="scenario">Given Jane has a todo list containing Buy some milk, Walk the dog<br>When she completes the task called "Walk the dog"<br>Then the "&lt;Task&gt;" task should be shown as &lt;Final Status&gt;</div>
+        <div class="scenario">Given Jane has a todo list containing &lt;Initial Tasks&gt;<br>When she completes the task called "Walk the dog"<br>Then the "&lt;Task&gt;" task should be shown as &lt;Final Status&gt;</div>
 
     </div>
 
@@ -285,6 +285,7 @@
                 <thead>
                 <tr>
                     <th>#</th>
+                        <th>Initial Tasks</th>
                         <th>Task</th>
                         <th>Final Status</th>
                 </tr>
@@ -292,6 +293,9 @@
                 <tbody>
                     <tr>
                         <td class="test-SUCCESS"><a href="#0">1</a></td>
+                            <td class="test-SUCCESS"><a
+                                        href="#0">Buy some milk, Walk the dog</a>
+                            </td>
                             <td class="test-SUCCESS"><a
                                         href="#0">Walk the dog</a>
                             </td>
@@ -302,10 +306,25 @@
                     <tr>
                         <td class="test-SUCCESS"><a href="#1">2</a></td>
                             <td class="test-SUCCESS"><a
-                                        href="#1">Buy some milk</a>
+                                        href="#1">Walk the dog</a>
                             </td>
                             <td class="test-SUCCESS"><a
-                                        href="#1">Active</a>
+                                        href="#1">Walk the dog</a>
+                            </td>
+                            <td class="test-SUCCESS"><a
+                                        href="#1">Completed</a>
+                            </td>
+                    </tr>
+                    <tr>
+                        <td class="test-SUCCESS"><a href="#2">3</a></td>
+                            <td class="test-SUCCESS"><a
+                                        href="#2">Buy some milk, Walk the dog</a>
+                            </td>
+                            <td class="test-SUCCESS"><a
+                                        href="#2">Buy some milk</a>
+                            </td>
+                            <td class="test-SUCCESS"><a
+                                        href="#2">Active</a>
                             </td>
                     </tr>
                 </tbody>
@@ -345,7 +364,7 @@
                             <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0')"
                                style="display:block;">
                                 <span class="top-level-step">
-                                                1: Completed tasks should be shown as Completed ({Task=Walk the dog, Final Status=Completed})
+                                                1: Completed tasks should be shown as Completed ({Initial Tasks=Buy some milk, Walk the dog, Task=Walk the dog, Final Status=Completed})
                                         </span>
                             </a>
                             <span class="evidence">
@@ -354,7 +373,7 @@
                     </td>
 
                     <td width="130"><span class="top-level-step">SUCCESS</span></td>
-                    <td width="100"><span class="top-level-step">1s 570ms</span></td>
+                    <td width="100"><span class="top-level-step">3s 073ms</span></td>
                 </tr>
                     <tr>
                         <td colspan="5">
@@ -384,7 +403,7 @@
                     </td>
 
                     <td width="130"><span class="nested-step">SUCCESS</span></td>
-                    <td width="100"><span class="nested-step">1s 309ms</span></td>
+                    <td width="100"><span class="nested-step">2s 582ms</span></td>
                 </tr>
                     <tr>
                         <td colspan="5">
@@ -414,7 +433,7 @@
                     </td>
 
                     <td width="130"><span class="nested-step">SUCCESS</span></td>
-                    <td width="100"><span class="nested-step">1s 295ms</span></td>
+                    <td width="100"><span class="nested-step">2s 553ms</span></td>
                 </tr>
                     <tr>
                         <td colspan="5">
@@ -439,7 +458,7 @@
                     </td>
 
                     <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                    <td width="100"><span class="nested-group-step">808ms</span></td>
+                    <td width="100"><span class="nested-group-step">1s 848ms</span></td>
                 </tr>
                 <tr class="test-SUCCESS">
 
@@ -466,7 +485,7 @@
                     </td>
 
                     <td width="130"><span class="nested-step">SUCCESS</span></td>
-                    <td width="100"><span class="nested-step">482ms</span></td>
+                    <td width="100"><span class="nested-step">697ms</span></td>
                 </tr>
                     <tr>
                         <td colspan="5">
@@ -496,7 +515,7 @@
                     </td>
 
                     <td width="130"><span class="nested-step">SUCCESS</span></td>
-                    <td width="100"><span class="nested-step">248ms</span></td>
+                    <td width="100"><span class="nested-step">458ms</span></td>
                 </tr>
                     <tr>
                         <td colspan="5">
@@ -521,7 +540,7 @@
                     </td>
 
                     <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                    <td width="100"><span class="nested-group-step">244ms</span></td>
+                    <td width="100"><span class="nested-group-step">451ms</span></td>
                 </tr>
 
                             </table>
@@ -552,7 +571,7 @@
                     </td>
 
                     <td width="130"><span class="nested-step">SUCCESS</span></td>
-                    <td width="100"><span class="nested-step">224ms</span></td>
+                    <td width="100"><span class="nested-step">225ms</span></td>
                 </tr>
                     <tr>
                         <td colspan="5">
@@ -577,7 +596,7 @@
                     </td>
 
                     <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                    <td width="100"><span class="nested-group-step">220ms</span></td>
+                    <td width="100"><span class="nested-group-step">217ms</span></td>
                 </tr>
 
                             </table>
@@ -620,7 +639,7 @@
                     </td>
 
                     <td width="130"><span class="nested-step">SUCCESS</span></td>
-                    <td width="100"><span class="nested-step">217ms</span></td>
+                    <td width="100"><span class="nested-step">214ms</span></td>
                 </tr>
                     <tr>
                         <td colspan="5">
@@ -650,7 +669,7 @@
                     </td>
 
                     <td width="130"><span class="nested-step">SUCCESS</span></td>
-                    <td width="100"><span class="nested-step">215ms</span></td>
+                    <td width="100"><span class="nested-step">211ms</span></td>
                 </tr>
                     <tr>
                         <td colspan="5">
@@ -675,7 +694,7 @@
                     </td>
 
                     <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                    <td width="100"><span class="nested-group-step">211ms</span></td>
+                    <td width="100"><span class="nested-group-step">208ms</span></td>
                 </tr>
 
                             </table>
@@ -710,7 +729,7 @@
                     </td>
 
                     <td width="130"><span class="nested-step">SUCCESS</span></td>
-                    <td width="100"><span class="nested-step">038ms</span></td>
+                    <td width="100"><span class="nested-step">040ms</span></td>
                 </tr>
                     <tr>
                         <td colspan="5">
@@ -735,7 +754,7 @@
                     </td>
 
                     <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                    <td width="100"><span class="nested-group-step">021ms</span></td>
+                    <td width="100"><span class="nested-group-step">023ms</span></td>
                 </tr>
 
                             </table>
@@ -761,7 +780,7 @@
                             <a href="javaScript:void(0)" onClick="toggleDiv('stepSection1')"
                                style="display:block;">
                                 <span class="top-level-step">
-                                                2: Completed tasks should be shown as Completed ({Task=Buy some milk, Final Status=Active})
+                                                2: Completed tasks should be shown as Completed ({Initial Tasks=Walk the dog, Task=Walk the dog, Final Status=Completed})
                                         </span>
                             </a>
                             <span class="evidence">
@@ -770,7 +789,7 @@
                     </td>
 
                     <td width="130"><span class="top-level-step">SUCCESS</span></td>
-                    <td width="100"><span class="top-level-step">1s 879ms</span></td>
+                    <td width="100"><span class="top-level-step">2s 510ms</span></td>
                 </tr>
                     <tr>
                         <td colspan="5">
@@ -791,7 +810,7 @@
                             <a href="javaScript:void(0)" onClick="toggleDiv('stepSection1-0')"
                                style="display:block;">
                                 <span class="nested-step">
-                                                Given Jane has a todo list containing Buy some milk, Walk the dog
+                                                Given Jane has a todo list containing Walk the dog
                                         </span>
                             </a>
                             <span class="evidence">
@@ -800,7 +819,7 @@
                     </td>
 
                     <td width="130"><span class="nested-step">SUCCESS</span></td>
-                    <td width="100"><span class="nested-step">1s 463ms</span></td>
+                    <td width="100"><span class="nested-step">1s 884ms</span></td>
                 </tr>
                     <tr>
                         <td colspan="5">
@@ -821,7 +840,7 @@
                             <a href="javaScript:void(0)" onClick="toggleDiv('stepSection1-0-0')"
                                style="display:block;">
                                 <span class="nested-step">
-                                                Jane starts with a todo list containing Buy some milk, Walk the dog
+                                                Jane starts with a todo list containing Walk the dog
                                         </span>
                             </a>
                             <span class="evidence">
@@ -830,7 +849,7 @@
                     </td>
 
                     <td width="130"><span class="nested-step">SUCCESS</span></td>
-                    <td width="100"><span class="nested-step">1s 453ms</span></td>
+                    <td width="100"><span class="nested-step">1s 783ms</span></td>
                 </tr>
                     <tr>
                         <td colspan="5">
@@ -855,7 +874,7 @@
                     </td>
 
                     <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                    <td width="100"><span class="nested-group-step">672ms</span></td>
+                    <td width="100"><span class="nested-group-step">1s 474ms</span></td>
                 </tr>
                 <tr class="test-SUCCESS">
 
@@ -873,7 +892,7 @@
                             <a href="javaScript:void(0)" onClick="toggleDiv('stepSection1-0-0-1')"
                                style="display:block;">
                                 <span class="nested-step">
-                                                Jane adds the todo items called: [Buy some milk, Walk the dog]
+                                                Jane adds the todo items called: [Walk the dog]
                                         </span>
                             </a>
                             <span class="evidence">
@@ -882,7 +901,7 @@
                     </td>
 
                     <td width="130"><span class="nested-step">SUCCESS</span></td>
-                    <td width="100"><span class="nested-step">774ms</span></td>
+                    <td width="100"><span class="nested-step">302ms</span></td>
                 </tr>
                     <tr>
                         <td colspan="5">
@@ -903,7 +922,7 @@
                             <a href="javaScript:void(0)" onClick="toggleDiv('stepSection1-0-0-1-0')"
                                style="display:block;">
                                 <span class="nested-step">
-                                                Jane adds a todo item called: Buy some milk
+                                                Jane adds a todo item called: Walk the dog
                                         </span>
                             </a>
                             <span class="evidence">
@@ -912,7 +931,7 @@
                     </td>
 
                     <td width="130"><span class="nested-step">SUCCESS</span></td>
-                    <td width="100"><span class="nested-step">449ms</span></td>
+                    <td width="100"><span class="nested-step">291ms</span></td>
                 </tr>
                     <tr>
                         <td colspan="5">
@@ -929,62 +948,6 @@
                     <td class="step-description-column">
                         <div class="step-description">
                                 <span class="nested-group-step">
-                                                Jane enters 'Buy some milk' then hits [RETURN] into 'What needs to be done?' field
-                                        </span>
-                            <span class="evidence">
-                                </span>
-                        </div>
-                    </td>
-
-                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                    <td width="100"><span class="nested-group-step">431ms</span></td>
-                </tr>
-
-                            </table>
-                        </td>
-                    </tr>
-                <tr class="test-SUCCESS">
-
-                    <td width="130" class="step-icon">
-                        <a name="1-0-0-1-1"></a>
-                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection1-0-0-1-1')"
-                               style="display:block">
-                                <i class="bi bi-caret-right-square imgstepSection1-0-0-1-1 success-icon"
-                                   style="margin-left: 100px; float:left; padding-right:5px"></i>
-                            </a>
-                    </td>
-
-                    <td class="step-description-column">
-                        <div class="step-description">
-                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection1-0-0-1-1')"
-                               style="display:block;">
-                                <span class="nested-step">
-                                                Jane adds a todo item called: Walk the dog
-                                        </span>
-                            </a>
-                            <span class="evidence">
-                                </span>
-                        </div>
-                    </td>
-
-                    <td width="130"><span class="nested-step">SUCCESS</span></td>
-                    <td width="100"><span class="nested-step">310ms</span></td>
-                </tr>
-                    <tr>
-                        <td colspan="5">
-                            <table id="stepSection1-0-0-1-1" class="step-table-nested" style="display:none;">
-                <tr class="test-SUCCESS">
-
-                    <td width="150" class="step-icon">
-                        <a name="1-0-0-1-1-0"></a>
-                            <span style="margin-left: 120px;"
-                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
-                                </span>
-                    </td>
-
-                    <td class="step-description-column">
-                        <div class="step-description">
-                                <span class="nested-group-step">
                                                 Jane enters 'Walk the dog' then hits [RETURN] into 'What needs to be done?' field
                                         </span>
                             <span class="evidence">
@@ -993,7 +956,7 @@
                     </td>
 
                     <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                    <td width="100"><span class="nested-group-step">301ms</span></td>
+                    <td width="100"><span class="nested-group-step">284ms</span></td>
                 </tr>
 
                             </table>
@@ -1036,7 +999,7 @@
                     </td>
 
                     <td width="130"><span class="nested-step">SUCCESS</span></td>
-                    <td width="100"><span class="nested-step">264ms</span></td>
+                    <td width="100"><span class="nested-step">265ms</span></td>
                 </tr>
                     <tr>
                         <td colspan="5">
@@ -1066,7 +1029,7 @@
                     </td>
 
                     <td width="130"><span class="nested-step">SUCCESS</span></td>
-                    <td width="100"><span class="nested-step">224ms</span></td>
+                    <td width="100"><span class="nested-step">220ms</span></td>
                 </tr>
                     <tr>
                         <td colspan="5">
@@ -1091,7 +1054,7 @@
                     </td>
 
                     <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                    <td width="100"><span class="nested-group-step">219ms</span></td>
+                    <td width="100"><span class="nested-group-step">217ms</span></td>
                 </tr>
 
                             </table>
@@ -1117,7 +1080,7 @@
                             <a href="javaScript:void(0)" onClick="toggleDiv('stepSection1-2')"
                                style="display:block;">
                                 <span class="nested-step">
-                                                Then the "Buy some milk" task should be shown as Active
+                                                Then the "Walk the dog" task should be shown as Completed
                                         </span>
                             </a>
                             <span class="evidence">
@@ -1126,7 +1089,7 @@
                     </td>
 
                     <td width="130"><span class="nested-step">SUCCESS</span></td>
-                    <td width="100"><span class="nested-step">145ms</span></td>
+                    <td width="100"><span class="nested-step">218ms</span></td>
                 </tr>
                     <tr>
                         <td colspan="5">
@@ -1143,6 +1106,422 @@
                     <td class="step-description-column">
                         <div class="step-description">
                                 <span class="nested-group-step">
+                                                she should see  that is equal to: &lt;Completed&gt;
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">117ms</span></td>
+                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="50" class="step-icon">
+                        <a name="2"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection2')"
+                               style="display:block">
+                                <i class="bi bi-caret-right-square imgstepSection2 success-icon"
+                                   style="margin-left: 20px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection2')"
+                               style="display:block;">
+                                <span class="top-level-step">
+                                                3: Completed tasks should be shown as Completed ({Initial Tasks=Buy some milk, Walk the dog, Task=Buy some milk, Final Status=Active})
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="top-level-step">SUCCESS</span></td>
+                    <td width="100"><span class="top-level-step">3s 675ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection2" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="70" class="step-icon">
+                        <a name="2-0"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection2-0')"
+                               style="display:block">
+                                <i class="bi bi-caret-right-square imgstepSection2-0 success-icon"
+                                   style="margin-left: 40px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection2-0')"
+                               style="display:block;">
+                                <span class="nested-step">
+                                                Given Jane has a todo list containing Buy some milk, Walk the dog
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-step">2s 670ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection2-0" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="90" class="step-icon">
+                        <a name="2-0-0"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection2-0-0')"
+                               style="display:block">
+                                <i class="bi bi-caret-right-square imgstepSection2-0-0 success-icon"
+                                   style="margin-left: 60px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection2-0-0')"
+                               style="display:block;">
+                                <span class="nested-step">
+                                                Jane starts with a todo list containing Buy some milk, Walk the dog
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-step">2s 659ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection2-0-0" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="110" class="step-icon">
+                        <a name="2-0-0-0"></a>
+                            <span style="margin-left: 80px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Jane opens the home.page page
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">1s 537ms</span></td>
+                </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="110" class="step-icon">
+                        <a name="2-0-0-1"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection2-0-0-1')"
+                               style="display:block">
+                                <i class="bi bi-caret-right-square imgstepSection2-0-0-1 success-icon"
+                                   style="margin-left: 80px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection2-0-0-1')"
+                               style="display:block;">
+                                <span class="nested-step">
+                                                Jane adds the todo items called: [Buy some milk, Walk the dog]
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-step">1s 094ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection2-0-0-1" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="130" class="step-icon">
+                        <a name="2-0-0-1-0"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection2-0-0-1-0')"
+                               style="display:block">
+                                <i class="bi bi-caret-right-square imgstepSection2-0-0-1-0 success-icon"
+                                   style="margin-left: 100px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection2-0-0-1-0')"
+                               style="display:block;">
+                                <span class="nested-step">
+                                                Jane adds a todo item called: Buy some milk
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-step">565ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection2-0-0-1-0" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="150" class="step-icon">
+                        <a name="2-0-0-1-0-0"></a>
+                            <span style="margin-left: 120px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Jane enters 'Buy some milk' then hits [RETURN] into 'What needs to be done?' field
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">559ms</span></td>
+                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="130" class="step-icon">
+                        <a name="2-0-0-1-1"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection2-0-0-1-1')"
+                               style="display:block">
+                                <i class="bi bi-caret-right-square imgstepSection2-0-0-1-1 success-icon"
+                                   style="margin-left: 100px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection2-0-0-1-1')"
+                               style="display:block;">
+                                <span class="nested-step">
+                                                Jane adds a todo item called: Walk the dog
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-step">498ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection2-0-0-1-1" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="150" class="step-icon">
+                        <a name="2-0-0-1-1-0"></a>
+                            <span style="margin-left: 120px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Jane enters 'Walk the dog' then hits [RETURN] into 'What needs to be done?' field
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">489ms</span></td>
+                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="70" class="step-icon">
+                        <a name="2-1"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection2-1')"
+                               style="display:block">
+                                <i class="bi bi-caret-right-square imgstepSection2-1 success-icon"
+                                   style="margin-left: 40px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection2-1')"
+                               style="display:block;">
+                                <span class="nested-step">
+                                                When she completes the task called "Walk the dog"
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-step">431ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection2-1" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="90" class="step-icon">
+                        <a name="2-1-0"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection2-1-0')"
+                               style="display:block">
+                                <i class="bi bi-caret-right-square imgstepSection2-1-0 success-icon"
+                                   style="margin-left: 60px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection2-1-0')"
+                               style="display:block;">
+                                <span class="nested-step">
+                                                she completes the item called Walk the dog
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-step">416ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection2-1-0" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="110" class="step-icon">
+                        <a name="2-1-0-0"></a>
+                            <span style="margin-left: 80px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                she clicks on the complete item tick box
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">406ms</span></td>
+                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="70" class="step-icon">
+                        <a name="2-2"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection2-2')"
+                               style="display:block">
+                                <i class="bi bi-caret-right-square imgstepSection2-2 success-icon"
+                                   style="margin-left: 40px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection2-2')"
+                               style="display:block;">
+                                <span class="nested-step">
+                                                Then the "Buy some milk" task should be shown as Active
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-step">415ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection2-2" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="90" class="step-icon">
+                        <a name="2-2-0"></a>
+                            <span style="margin-left: 60px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
                                                 she should see  that is equal to: &lt;Active&gt;
                                         </span>
                             <span class="evidence">
@@ -1151,7 +1530,7 @@
                     </td>
 
                     <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                    <td width="100"><span class="nested-group-step">125ms</span></td>
+                    <td width="100"><span class="nested-group-step">252ms</span></td>
                 </tr>
 
                             </table>
@@ -1164,7 +1543,7 @@
             <tr class="test-SUCCESS">
                     <td colspan="2"></td>
                 <td width="130"><span class="top-level-step"><em>SUCCESS</em></span></td>
-                <td width="100"><span class="top-level-step"><em>2.08s</em></span></td>
+                <td width="100"><span class="top-level-step"><em>4.53s</em></span></td>
             </tr>
 
         </table>
@@ -1177,7 +1556,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-12">
-            <span class="version">Serenity BDD version 4.0.43</span>
+            <span class="version">Serenity BDD version 4.0.44</span>
         </div>
     </div>
 </div>

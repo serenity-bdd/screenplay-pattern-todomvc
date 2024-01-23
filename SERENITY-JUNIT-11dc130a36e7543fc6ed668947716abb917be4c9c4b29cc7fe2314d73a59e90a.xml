@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><testsuite errors="0" failures="0" name="Add new todos" skipped="0" tests="3" time="61.97" timestamp="2024-01-23 07:21:33"><testcase name="Adding an item to a list with other items"/><testcase name="Adding items to several peoples lists"/><testcase name="Adding an item to an empty list"/></testsuite>

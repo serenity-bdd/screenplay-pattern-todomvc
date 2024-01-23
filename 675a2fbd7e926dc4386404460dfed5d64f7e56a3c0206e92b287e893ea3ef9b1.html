@@ -154,7 +154,7 @@
             $("#requirements-tabs").tabs();
             $("#test-tabs").tabs();
 
-            var requirementsTree = [{"text":"Completing todos","type":"feature","href":"675a2fbd7e926dc4386404460dfed5d64f7e56a3c0206e92b287e893ea3ef9b1.html","nodes":[],"selectable":false,"tags":["\u003ca href\u003d\u0027##beforetable\u0027\u003e\u003ci class\u003d\u0027bi bi-check-circle-fill success-icon \u0027 title\u003d\u0027SUCCESS\u0027\u003e\u003c/i\u003e\u003c/a\u003e","\u003cspan class\u003d\u0027feature-count\u0027\u003e5 scenarios\u003c/span\u003e, \u003cspan class\u003d\u0027feature-count\u0027\u003e6 test cases\u003c/span\u003e"]}];
+            var requirementsTree = [{"text":"Completing todos","type":"feature","href":"675a2fbd7e926dc4386404460dfed5d64f7e56a3c0206e92b287e893ea3ef9b1.html","nodes":[],"selectable":false,"tags":["\u003ca href\u003d\u0027##beforetable\u0027\u003e\u003ci class\u003d\u0027bi bi-check-circle-fill success-icon \u0027 title\u003d\u0027SUCCESS\u0027\u003e\u003c/i\u003e\u003c/a\u003e","\u003cspan class\u003d\u0027feature-count\u0027\u003e5 scenarios\u003c/span\u003e, \u003cspan class\u003d\u0027feature-count\u0027\u003e7 test cases\u003c/span\u003e"]}];
 
             $('#tree').treeview({
                 data: requirementsTree,
@@ -233,7 +233,7 @@
             <a href="#"><i class="bi bi-chat-text"></i> Features</a>
         </li>
     </ul>
-    <span class="date-and-time"><a href="build-info.html"><i class="bi bi-info-circle"></i></a> Report generated 13-01-2024 14:13</span>
+    <span class="date-and-time"><a href="build-info.html"><i class="bi bi-info-circle"></i></a> Report generated 23-01-2024 19:21</span>
     <br style="clear:left"/>
 </div>
 
@@ -388,7 +388,7 @@ I want to be to <em>view all of things I have completed</em>
                                                                                        title="View scenario details">
                                                                                         <i class="bi bi-chat-dots"></i> Scenario Outline: Completed tasks should be shown as Completed
                                                                                     </a>
-                                                                                        (2 examples)
+                                                                                        (3 examples)
                                                                                 </span>
                                                                         </td>
                                                                         <td>
@@ -490,7 +490,7 @@ I want to be to <em>view all of things I have completed</em>
                                             <div class="col-sm-12">
                                                 <h3>Scenarios</h3>
 
-                                                    <a name="c97dab41-bd01-4c61-ab88-3a88a9dafec8"></a>
+                                                    <a name="a0068e21-9b8d-410b-90e5-404e711e034e"></a>
                                                     <p class="rule-tags inline-tag">
                                                     </p>
 
@@ -576,7 +576,7 @@ I want to be to <em>view all of things I have completed</em>
 
                                                             </div>
                                                             <div class="scenario-docs card-body">
-                                                                    <p>Given Jane has a todo list containing Buy some milk, Walk the dog</p>
+                                                                    <p>Given Jane has a todo list containing {Initial Tasks}</p>
                                                                     <p>When she completes the task called &quot;Walk the dog&quot;</p>
                                                                     <p>Then the &quot;{Task}&quot; task should be shown as {Final Status}</p>
                                                                 <div class="examples">
@@ -585,11 +585,12 @@ I want to be to <em>view all of things I have completed</em>
 </blockquote>
 <div class='example-table-in-scenario'><table>
 <thead>
-<tr><th>Task</th><th>Final Status</th><th> </th></tr>
+<tr><th>Initial Tasks</th><th>Task</th><th>Final Status</th><th> </th></tr>
 </thead>
 <tbody>
-<tr><td>Walk the dog</td><td>Completed</td><td><a href='7d802b1618bdfe7b3b5da1f3f30d1f0f74bac86bd8fa3af0615103a6333316f4.html#beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a></td></tr>
-<tr><td>Buy some milk</td><td>Active</td><td><a href='7d802b1618bdfe7b3b5da1f3f30d1f0f74bac86bd8fa3af0615103a6333316f4.html#beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a></td></tr>
+<tr><td>Buy some milk, Walk the dog</td><td>Walk the dog</td><td>Completed</td><td><a href='7d802b1618bdfe7b3b5da1f3f30d1f0f74bac86bd8fa3af0615103a6333316f4.html#beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a></td></tr>
+<tr><td>Walk the dog</td><td>Walk the dog</td><td>Completed</td><td><a href='7d802b1618bdfe7b3b5da1f3f30d1f0f74bac86bd8fa3af0615103a6333316f4.html#beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a></td></tr>
+<tr><td>Buy some milk, Walk the dog</td><td>Buy some milk</td><td>Active</td><td><a href='7d802b1618bdfe7b3b5da1f3f30d1f0f74bac86bd8fa3af0615103a6333316f4.html#beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a></td></tr>
 </tbody>
 </table></div>
 </p>
@@ -705,17 +706,17 @@ I want to be to <em>view all of things I have completed</em>
                         <i class="bi bi-stopwatch"></i> Total
                         Duration
                     </td>
-                    <td>12s</td>
+                    <td>27s</td>
                 </tr>
                 <tr scope="row">
                     <td>
                         <i class="bi bi-caret-right"></i> Total Number of Test Cases
                     </td>
-                    <td>6</td>
+                    <td>7</td>
                     <td>
                         <i class="bi bi-trophy"></i> Fastest Test
                     </td>
-                    <td>1s</td>
+                    <td>2s</td>
                 </tr>
                 <tr scope="row">
                     <td>
@@ -726,30 +727,30 @@ I want to be to <em>view all of things I have completed</em>
                         <i class="bi bi-skip-start"></i> Slowest
                         Test
                     </td>
-                    <td>5s</td>
+                    <td>21s</td>
                 </tr>
                 <tr scope="row">
                     <td>
                         <i class="bi bi-flag-fill"></i> Tests Started
                     </td>
-                    <td>Jan 13, 2024 14:13:20</td>
+                    <td>Jan 23, 2024 19:21:33</td>
                     <td>
                         <i class="bi bi-stopwatch"></i> Average
                         Execution Time
                     </td>
-                    <td>3s</td>
+                    <td>8s</td>
                 </tr>
                 <tr scope="row">
                     <td>
                         <i class="bi bi-stop-circle"></i> Tests
                         Finished
                     </td>
-                    <td>Jan 13, 2024 14:13:32</td>
+                    <td>Jan 23, 2024 19:22:00</td>
                     <td>
                         <i class="bi bi-stopwatch-fill"></i> Total
                         Execution Time
                     </td>
-                    <td>17s</td>
+                    <td>57s</td>
                 </tr>
                 </tbody>
             </table>
@@ -781,8 +782,8 @@ I want to be to <em>view all of things I have completed</em>
                                                                     <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
                                                                     </td>
                                                                     <td>4</td>
-                                                                    <td>14:13:28</td>
-                                                                    <td>2s 961ms</td>
+                                                                    <td>19:21:33</td>
+                                                                    <td>21s 071ms</td>
                                                                     <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span style="display:none">SUCCESS</span>
                                                                     </td>
                                                                 </tr>
@@ -796,8 +797,8 @@ I want to be to <em>view all of things I have completed</em>
                                                                     <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
                                                                     </td>
                                                                     <td>4</td>
-                                                                    <td>14:13:29</td>
-                                                                    <td>2s 315ms</td>
+                                                                    <td>19:21:55</td>
+                                                                    <td>4s 304ms</td>
                                                                     <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span style="display:none">SUCCESS</span>
                                                                     </td>
                                                                 </tr>
@@ -808,14 +809,14 @@ I want to be to <em>view all of things I have completed</em>
                                                                     <td>
                                                                         <i class="bi bi-table" title="Data Driven Scenario"> <a href="7d802b1618bdfe7b3b5da1f3f30d1f0f74bac86bd8fa3af0615103a6333316f4.html">Completed tasks should be shown as Completed</a>
                                                                             <br/>
-                                                                                <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> 2 passing test cases
+                                                                                <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> 3 passing test cases
                                                                                 <br/>
                                                                     </td>
                                                                     <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
                                                                     </td>
                                                                     <td>3</td>
-                                                                    <td>14:13:30</td>
-                                                                    <td>2s 076ms</td>
+                                                                    <td>19:21:55</td>
+                                                                    <td>4s 529ms</td>
                                                                     <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span style="display:none">SUCCESS</span>
                                                                     </td>
                                                                 </tr>
@@ -829,8 +830,8 @@ I want to be to <em>view all of things I have completed</em>
                                                                     <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
                                                                     </td>
                                                                     <td>3</td>
-                                                                    <td>14:13:26</td>
-                                                                    <td>4s 444ms</td>
+                                                                    <td>19:21:55</td>
+                                                                    <td>5s 710ms</td>
                                                                     <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span style="display:none">SUCCESS</span>
                                                                     </td>
                                                                 </tr>
@@ -844,8 +845,8 @@ I want to be to <em>view all of things I have completed</em>
                                                                     <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
                                                                     </td>
                                                                     <td>4</td>
-                                                                    <td>14:13:20</td>
-                                                                    <td>5s 810ms</td>
+                                                                    <td>19:21:33</td>
+                                                                    <td>21s 532ms</td>
                                                                     <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span style="display:none">SUCCESS</span>
                                                                     </td>
                                                                 </tr>
@@ -872,12 +873,12 @@ I want to be to <em>view all of things I have completed</em>
                             <div>
                                     <a href="980553ab65ac3a80cb226527d564bcf09dfb50e9d5c6245f24578a314fb4b271.html">
                                     <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
-                                        <i class="bi bi-tag-fill"></i> Cucumber&nbsp;&nbsp;&nbsp;6
+                                        <i class="bi bi-tag-fill"></i> Cucumber&nbsp;&nbsp;&nbsp;7
                                     </span>
                                     </a>
                                     <a href="08fe31b4cedcca88014566e2926c79ff53b30818f68b6c102890ece9afcee9b3.html">
                                     <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
-                                        <i class="bi bi-tag-fill"></i> Completing&nbsp;&nbsp;&nbsp;6
+                                        <i class="bi bi-tag-fill"></i> Completing&nbsp;&nbsp;&nbsp;7
                                     </span>
                                     </a>
                             </div>
@@ -889,7 +890,7 @@ I want to be to <em>view all of things I have completed</em>
                             <div>
                                     <a href="46b54d9084ba9783130da16408afb27a4e4620f6bd966e731510c7395b9ddf5c.html">
                                     <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
-                                        <i class="bi bi-tag-fill"></i> Chrome, Linux&nbsp;&nbsp;&nbsp;6
+                                        <i class="bi bi-tag-fill"></i> Chrome, Linux&nbsp;&nbsp;&nbsp;7
                                     </span>
                                     </a>
                             </div>
@@ -908,7 +909,7 @@ I want to be to <em>view all of things I have completed</em>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-12">
-                    <span class="version">Serenity BDD version 4.0.43</span>
+                    <span class="version">Serenity BDD version 4.0.44</span>
                 </div>
             </div>
         </div>
@@ -937,7 +938,7 @@ I want to be to <em>view all of things I have completed</em>
             datasets: [{
                 label: 'Test Results',
                 fill: false,
-                data: [{meta: 'Passing tests', value: 6}, {meta: 'Pending tests', value: 0}, {meta: 'Ignored tests', value: 0}, {meta: 'Skipped tests', value: 0}, {meta: 'Aborted tests', value: 0}, {meta: 'Failing tests', value: 0}, {meta: 'Broken tests', value: 0}, {meta: 'Compromised tests', value: 0}],
+                data: [{meta: 'Passing tests', value: 7}, {meta: 'Pending tests', value: 0}, {meta: 'Ignored tests', value: 0}, {meta: 'Skipped tests', value: 0}, {meta: 'Aborted tests', value: 0}, {meta: 'Failing tests', value: 0}, {meta: 'Broken tests', value: 0}, {meta: 'Compromised tests', value: 0}],
                 backgroundColor: ['rgba(153,204,51,0.5)','rgba(165, 199, 238, 0.5)','rgba(168, 168, 168, 0.5)','rgba(238, 224, 152, 0.75)','rgba(255, 153, 102, 0.5)','rgba(255, 22, 49, 0.5)','rgba(255, 97, 8, 0.5)','rgba(255, 104, 255, 0.5)','rgba(83, 50, 168, 0.5)'],
                 borderColor: ['rgba(153,204,51,1)','rgba(165, 199, 238, 1)','rgba(168, 168, 168, 1)','rgba(238, 224, 152, 1)','rgba(255, 153, 102, 1)','rgba(255, 22, 49, 1)','rgba(255, 97, 8, 1)','rgba(255, 104, 255, 1)','rgba(83, 50, 168, 1)'],
                 borderWidth: 1,
@@ -1032,7 +1033,7 @@ I want to be to <em>view all of things I have completed</em>
             datasets: [{
                 label: 'Feature Coverage',
                 fill: false,
-                data: [{meta: 'Passing tests', value: 6}, {meta: 'Pending tests', value: 0}, {meta: 'Ignored tests', value: 0}, {meta: 'Skipped tests', value: 0}, {meta: 'Aborted tests', value: 0}, {meta: 'Failing tests', value: 0}, {meta: 'Broken tests', value: 0}, {meta: 'Compromised tests', value: 0}],
+                data: [{meta: 'Passing tests', value: 7}, {meta: 'Pending tests', value: 0}, {meta: 'Ignored tests', value: 0}, {meta: 'Skipped tests', value: 0}, {meta: 'Aborted tests', value: 0}, {meta: 'Failing tests', value: 0}, {meta: 'Broken tests', value: 0}, {meta: 'Compromised tests', value: 0}],
                 backgroundColor: ['rgba(153,204,51,0.5)','rgba(165, 199, 238, 0.5)','rgba(168, 168, 168, 0.5)','rgba(238, 224, 152, 0.75)','rgba(255, 153, 102, 0.5)','rgba(255, 22, 49, 0.5)','rgba(255, 97, 8, 0.5)','rgba(255, 104, 255, 0.5)','rgba(83, 50, 168, 0.5)'],
                 borderColor: ['rgba(153,204,51,1)','rgba(165, 199, 238, 1)','rgba(168, 168, 168, 1)','rgba(238, 224, 152, 1)','rgba(255, 153, 102, 1)','rgba(255, 22, 49, 1)','rgba(255, 97, 8, 1)','rgba(255, 104, 255, 1)','rgba(83, 50, 168, 1)'],
                 borderWidth: 1,
@@ -1128,7 +1129,7 @@ I want to be to <em>view all of things I have completed</em>
             datasets: [
                 {
                     label: 'Automated',
-                    data: [6,0,0,0,0,0,0,0],
+                    data: [7,0,0,0,0,0,0,0],
                     backgroundColor: ['rgba(153,204,51,0.5)','rgba(165, 199, 238, 0.5)','rgba(168, 168, 168, 0.5)','rgba(238, 224, 152, 0.75)','rgba(255, 153, 102, 0.5)','rgba(255, 22, 49, 0.5)','rgba(255, 97, 8, 0.5)','rgba(255, 104, 255, 0.5)','rgba(83, 50, 168, 0.5)'],
                     borderColor: ['rgba(153,204,51,1)','rgba(165, 199, 238, 1)','rgba(168, 168, 168, 1)','rgba(238, 224, 152, 1)','rgba(255, 153, 102, 1)','rgba(255, 22, 49, 1)','rgba(255, 97, 8, 1)','rgba(255, 104, 255, 1)','rgba(83, 50, 168, 1)'],
                     borderWidth: 1
@@ -1211,7 +1212,7 @@ I want to be to <em>view all of things I have completed</em>
             datasets: [{
                 label: 'Number of tests per duration',
                 fill: false,
-                data: ['0','6','0','0','0','0','0','0'],
+                data: ['0','5','2','0','0','0','0','0'],
                 backgroundColor: 'rgba(83, 146, 255,0.5)',
                 borderColor: 'rgba(83, 146, 255, 1)',
             }]
