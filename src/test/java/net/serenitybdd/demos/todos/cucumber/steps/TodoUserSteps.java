@@ -8,6 +8,7 @@ import io.cucumber.java.ParameterType;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.annotations.events.AfterExample;
 import net.serenitybdd.demos.todos.cucumber.MissingTodoItemsException;
 import net.serenitybdd.demos.todos.screenplay.model.TodoStatus;
@@ -81,6 +82,7 @@ public class TodoUserSteps {
 
     @Given("{actor} has a todo list containing {items}")
     public void that_James_has_an_empty_todo_list(Actor actor, List<String> items) {
+        Serenity.setSessionVariable("todoItems").to(items);
         actor.wasAbleTo(Start.withATodoListContaining(items));
     }
 
@@ -127,6 +129,9 @@ public class TodoUserSteps {
 
     @Then("his/her todo list should contain {items}")
     public void todo_list_should_contain(List<String> expectedItems) {
+        List<String> originalItems = Serenity.sessionVariableCalled("todoItems");
+        assertThat(originalItems).isNotEmpty();
+
         theActorInTheSpotlight().should(seeThat(TheItems.displayed(), equalTo(expectedItems))
                 .orComplainWith(MissingTodoItemsException.class, "Missing todos " + expectedItems));
     }
@@ -150,5 +155,9 @@ public class TodoUserSteps {
         actor.attemptsTo(
                 FilterItems.toShow(status)
         );
+    }
+
+    @Then("his password should be updated:<updated?>")
+    public void hisPasswordShouldBeUpdatedUpdated() {
     }
 }

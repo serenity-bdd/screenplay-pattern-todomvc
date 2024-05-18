@@ -111,7 +111,8 @@ public class CompleteATodo {
         );
         then(james).should(
                 seeThat(TheItemStatus.forTheItemCalled("Walk the dog"), is(Completed)),
-                seeThat(TheItems.leftCount(), is(1))
+//                seeThat(TheItems.leftCount(), is(1))
+                seeThat(TheItems.left(), is(1))
         );
     }
 

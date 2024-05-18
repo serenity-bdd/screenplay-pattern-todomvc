@@ -11,6 +11,7 @@ import net.serenitybdd.junit5.SerenityJUnit5Extension;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -19,7 +20,6 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.openqa.selenium.WebDriver;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -30,7 +30,7 @@ import static org.hamcrest.Matchers.*;
 
 @ExtendWith(SerenityJUnit5Extension.class)
 @Tag("Screenplay")
-public class FilteringTodos {
+public class FilteringTodoItems {
 
     private Actor james = Actor.named("James");
     @Managed private WebDriver hisBrowser;
@@ -71,6 +71,7 @@ public class FilteringTodos {
 
     @ParameterizedTest
     @MethodSource("todoTestData")
+    @DisplayName("Foo bar")
     public void should_be_able_to_view_various_todo_combinations(String completeItem,
                                                                  String incompleteItem,
                                                                  TodoStatusFilter filterOption,

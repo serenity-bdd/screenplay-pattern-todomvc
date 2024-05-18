@@ -11,6 +11,6 @@ import static io.cucumber.junit.platform.engine.Constants.*;
 @IncludeEngines("cucumber")
 @SelectClasspathResource("/features")
 @ConfigurationParameter(key = GLUE_PROPERTY_NAME, value = "net.serenitybdd.demos.todos.cucumber.steps")
-@ConfigurationParameter(key = FILTER_TAGS_PROPERTY_NAME, value = "not @ignore")
+//@ConfigurationParameter(key = FILTER_TAGS_PROPERTY_NAME, value = "@smoke-test and @filtering")
 public class CucumberTestSuite {
 }

@@ -19,7 +19,7 @@ import static org.hamcrest.Matchers.contains;
 
 @ExtendWith(SerenityJUnit5Extension.class)
 @Tag("Screenplay")
-public class DeletingTodos {
+public class DeletingTodoItems {
 
     @Managed
     private WebDriver hisBrowser;

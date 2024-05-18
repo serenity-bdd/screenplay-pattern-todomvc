@@ -6,6 +6,7 @@ Feature: Filtering other todos
   As a forgetful person
   I want to be to view all of things I have completed
 
+  @ios @android
   Scenario Outline: Filtering items by status
     Given Jane has prepared a todo list containing <tasks>
     And she has completed the task called "<completed>"

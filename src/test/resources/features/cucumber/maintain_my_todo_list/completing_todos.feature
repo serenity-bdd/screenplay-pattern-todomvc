@@ -6,12 +6,31 @@ Feature: Completing todos
   As a forgetful person
   I want to be to _view all of things I have completed_
 
+  @smoke-test
   Scenario: When a task is completed it remains in the main list
     Given Jane has a todo list containing Buy some milk, Walk the dog
     When she completes the task called "Walk the dog"
     Then her todo list should contain Buy some milk, Walk the dog
     But the "Walk the dog" task should be shown as Completed
 
+    Given Pete wants to change his password
+    When he enters "Password1!" as his new password
+    Then his password should be updated
+
+    @manual
+  Scenario Outline: Updating a password
+    Given Pete wants to change his password
+    When he enters "<password>" as his new password
+    Then his password should be updated:<updated?>
+    Examples:
+      | password   | updated? |
+      | Password1! | true     |
+      | Password1  | false    |
+      | Password!  | false    |
+      | Passwor    | false    |
+
+
+      @ios
   Scenario: Completed tasks should appear in the Completed list
     Given Jane has a todo list containing Buy some milk, Walk the dog
     When she completes the task called "Walk the dog"

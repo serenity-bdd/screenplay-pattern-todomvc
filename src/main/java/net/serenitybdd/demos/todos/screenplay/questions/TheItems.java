@@ -1,7 +1,9 @@
 package net.serenitybdd.demos.todos.screenplay.questions;
 
 import net.serenitybdd.demos.todos.screenplay.user_interface.TodoList;
+import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Question;
+import net.serenitybdd.screenplay.ensure.Ensure;
 import net.serenitybdd.screenplay.questions.Text;
 
 import java.util.Collection;
@@ -20,4 +22,14 @@ public class TheItems {
                    .describedAs("the number of items left")
                    .asInteger();
     }
+
+    public static Question<Integer> left() {
+        return actor -> {
+            actor.attemptsTo(
+                    Ensure.that("a").isEqualTo("b")
+            );
+            return 1;
+        };
+    }
+
 }
