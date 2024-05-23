@@ -26,6 +26,7 @@ import net.serenitybdd.screenplay.ui.Button;
 import net.serenitybdd.screenplay.waits.Wait;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static java.util.Collections.EMPTY_LIST;
 import static net.serenitybdd.demos.todos.screenplay.model.TodoStatus.Completed;
@@ -82,7 +83,9 @@ public class TodoUserSteps {
 
     @Given("{actor} has a todo list containing {items}")
     public void that_James_has_an_empty_todo_list(Actor actor, List<String> items) {
-        Serenity.setSessionVariable("todoItems").to(items);
+
+        actor.remember("todoItems", items);
+
         actor.wasAbleTo(Start.withATodoListContaining(items));
     }
 
@@ -129,8 +132,9 @@ public class TodoUserSteps {
 
     @Then("his/her todo list should contain {items}")
     public void todo_list_should_contain(List<String> expectedItems) {
-        List<String> originalItems = Serenity.sessionVariableCalled("todoItems");
-        assertThat(originalItems).isNotEmpty();
+
+        List<String> todoItems = theActorInTheSpotlight().recall("todoItems");
+        assertThat(todoItems).isNotEmpty();
 
         theActorInTheSpotlight().should(seeThat(TheItems.displayed(), equalTo(expectedItems))
                 .orComplainWith(MissingTodoItemsException.class, "Missing todos " + expectedItems));

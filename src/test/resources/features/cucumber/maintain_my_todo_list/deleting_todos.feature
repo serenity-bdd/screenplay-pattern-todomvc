@@ -12,7 +12,6 @@ Feature: Deleting todos
     When she deletes the task called 'Walk the dog'
     Then her todo list should contain Buy some milk
 
-  @manual
   Scenario: Delete all the items
    Given Jane has a todo list containing Buy some milk, Walk the dog
     When she deletes the task called 'Walk the dog'

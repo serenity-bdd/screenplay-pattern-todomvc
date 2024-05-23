@@ -35,21 +35,4 @@ public class TodoUserActionSteps {
     public void herListShouldContain(List<String> items) {
         james.should_see_that_displayed_items_contain(items.toArray(new String[]{}));
     }
-
-    @Given("Pete wants to change his password")
-    public void peteWantsToChangeHisPassword() {
-    }
-
-    @When("he enters {string} as his new password")
-    public void heEntersAsHisNewPassword(String arg0) {
-    }
-
-    @Then("his password should be updated")
-    public void hisPasswordShouldBeUpdated() {
-    }
-
-    @Then("his password should be updated:{}")
-    public void hisPasswordShouldBeUpdatedUpdated(boolean yes) {
-
-    }
 }
