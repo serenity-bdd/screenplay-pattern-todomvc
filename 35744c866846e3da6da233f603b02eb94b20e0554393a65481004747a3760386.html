@@ -115,7 +115,11 @@
                     search: ""
                 },
                 columnDefs: [
-                    {type: 'time-elapsed-dhms', targets: 5}
+                    {
+                        targets: 4,
+                        visible: false
+                    },
+                    {type: 'time-elapsed-dhms', targets: 6}
                 ]
             })
             $("#manual-scenario-results").DataTable({
@@ -124,6 +128,12 @@
                     searchPlaceholder: "Filter",
                     search: ""
                 },
+                columnDefs: [
+                    {
+                        targets: 4,
+                        visible: false
+                    },
+                ]
             })
 
             // Results table
@@ -142,7 +152,17 @@
             $(".feature-coverage-table").DataTable({
                 searching: true,
                 paging: false,
-                info: false
+                info: false,
+                language: {
+                    searchPlaceholder: "Filter",
+                    search: ""
+                },
+                columnDefs: [
+                    {
+                        targets: 2,
+                        visible: false
+                    },
+                ]
             });
 
             $(".feature-coverage-table-with-pagination").DataTable({
@@ -152,7 +172,13 @@
                 language: {
                     searchPlaceholder: "Filter",
                     search: ""
-                }
+                },
+                columnDefs: [
+                    {
+                        targets: 2,
+                        visible: false
+                    },
+                ]
             });
         });
     </script>
@@ -206,7 +232,7 @@
             <a href="576946480b52ad056d6f5bddf874399c83582ecf90963cc074a14c70580e7d9f.html"><i class="bi bi-chat-text"></i> Features</a>
         </li>
     </ul>
-    <span class="date-and-time"><a href="build-info.html"><i class="bi bi-info-circle"></i></a> Report generated 06-03-2024 07:12:28</span>
+    <span class="date-and-time"><a href="build-info.html"><i class="bi bi-info-circle"></i></a> Report generated 23-05-2024 08:44:13</span>
     <br style="clear:left"/>
 </div>
     <div class="clr"></div>
@@ -306,27 +332,27 @@
                     <td>
                         <i class="bi bi-flag-fill"></i> Tests Started
                     </td>
-                    <td>Mar 06, 2024 07:12:12</td>
+                    <td>May 23, 2024 08:43:56</td>
                 </tr>
                 <tr scope="row">
                     <td>
                         <i class="bi bi-stop-circle"></i> Tests
                         Finished
                     </td>
-                    <td>Mar 06, 2024 07:12:20</td>
+                    <td>May 23, 2024 08:44:06</td>
                 </tr>
                 <tr scope="row">
                     <td>
                         <i class="bi bi-stopwatch"></i> Total
                         Duration
                     </td>
-                    <td>8s</td>
+                    <td>10s</td>
                 </tr>
                 <tr scope="row">
                     <td>
                         <i class="bi bi-trophy"></i> Fastest Test
                     </td>
-                    <td>2s</td>
+                    <td>3s</td>
                 </tr>
                 <tr scope="row">
                     <td>
@@ -347,7 +373,7 @@
                         <i class="bi bi-stopwatch-fill"></i> Total
                         Execution Time
                     </td>
-                    <td>10s</td>
+                    <td>11s</td>
                 </tr>
                 </tbody>
             </table>
@@ -364,12 +390,12 @@
 
                                                                     <h4>Features</h4>
 
-                                                                    <table class="table feature-coverage-table"
-                                                                           id="Feature">
+                                                                    <table class="table feature-coverage-table" id="Feature" style="width:100%">
                                                                         <thead>
                                                                         <tr>
                                                                             <th>Feature</th>
                                                                             <th style="width:1em;">Scenarios</th>
+                                                                            <th style="width:1em;">StepsText</th>
                                                                             <th style="width:1em;">Test&nbsp;Cases</th>
                                                                             <th style="width:1em;">%&nbsp;Pass</th>
                                                                             <th style="width:1em;">Result</th>
@@ -382,6 +408,16 @@
                                                                                             <a href="fc6d6b11273ca8dc0923978323811fd4507072aa6571485ae24f42a2bd5577fb.html"> Learn about the application</a>
                                                                                     </td>
                                                                                     <td>2</td>
+                                                                                    <td>Starts with an empty todo list
+Starts with a todo list containing: {}
+Adds todo items called: {}
+Should see that the placeholder text says: What needs to be done?
+Starts with an empty todo list
+Starts with a todo list containing: {}
+Adds todo items called: {}
+Should see the correct website title
+Should see the correct application heading
+</td>
                                                                                     <td>2</td>
                                                                                     <td>100%</td>
                                                                                     <td>
@@ -405,6 +441,14 @@
                                                                                             <a href="5d761a5e7c7d3a6be48dcc28bb2467ddf8b352b19783dff741aba89a705fdf03.html"> Complete a todo</a>
                                                                                     </td>
                                                                                     <td>1</td>
+                                                                                    <td>Starts with a todo list containing: {Walk the dog,Put out the garbage}
+Adds todo items called: {Walk the dog,Put out the garbage}
+Adds a todo item called: Walk the dog
+Adds a todo item called: Put out the garbage
+Completes: Walk the dog
+Should see that that following item is marked as complete: Walk the dog
+Should see that the number of items left is: 1
+</td>
                                                                                     <td>1</td>
                                                                                     <td>100%</td>
                                                                                     <td>
@@ -478,7 +522,7 @@
                         <i class="bi bi-stopwatch"></i> Total
                         Duration
                     </td>
-                    <td>8s</td>
+                    <td>10s</td>
                 </tr>
                 <tr scope="row">
                     <td>
@@ -488,7 +532,7 @@
                     <td>
                         <i class="bi bi-trophy"></i> Fastest Test
                     </td>
-                    <td>2s</td>
+                    <td>3s</td>
                 </tr>
                 <tr scope="row">
                     <td>
@@ -505,7 +549,7 @@
                     <td>
                         <i class="bi bi-flag-fill"></i> Tests Started
                     </td>
-                    <td>Mar 06, 2024 07:12:12</td>
+                    <td>May 23, 2024 08:43:56</td>
                     <td>
                         <i class="bi bi-stopwatch"></i> Average
                         Execution Time
@@ -517,12 +561,12 @@
                         <i class="bi bi-stop-circle"></i> Tests
                         Finished
                     </td>
-                    <td>Mar 06, 2024 07:12:20</td>
+                    <td>May 23, 2024 08:44:06</td>
                     <td>
                         <i class="bi bi-stopwatch-fill"></i> Total
                         Execution Time
                     </td>
-                    <td>10s</td>
+                    <td>11s</td>
                 </tr>
                 </tbody>
             </table>
@@ -531,14 +575,14 @@
 
                                                         <h3><i class="bi bi-gear"></i> Automated Scenarios</h3>
 
-                                                            <table class="scenario-result-table table"
-                                                                   id="scenario-results">
+                                                            <table class="scenario-result-table table" id="scenario-results" style="width:100%">
                                                                 <thead>
                                                                 <tr>
                                                                     <th>feature</th>
                                                                     <th class="test-name-column">Scenario</th>
                                                                     <th>Context</th>
                                                                     <th>Steps</th>
+                                                                    <th>StepsText</th>
                                                                     <th>Started</th>
                                                                     <th>Total Duration</th>
                                                                     <th>Result</th>
@@ -555,8 +599,11 @@
                                                                         <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
                                                                         </td>
                                                                         <td>2</td>
-                                                                        <td data-order="1709709132">07:12:12</td>
-                                                                        <td>4s 602ms</td>
+                                                                        <td>Starts with an empty todo list
+Should see that the placeholder text says: What needs to be done?
+</td>
+                                                                        <td data-order="1716453836">08:43:56</td>
+                                                                        <td>4s 186ms</td>
                                                                         <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
                                                                                     style="display:none">SUCCESS</span>
                                                                         </td>
@@ -571,8 +618,12 @@
                                                                         <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
                                                                         </td>
                                                                         <td>3</td>
-                                                                        <td data-order="1709709136">07:12:16</td>
-                                                                        <td>3s 957ms</td>
+                                                                        <td>Starts with an empty todo list
+Should see the correct website title
+Should see the correct application heading
+</td>
+                                                                        <td data-order="1716453840">08:44:00</td>
+                                                                        <td>4s 242ms</td>
                                                                         <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
                                                                                     style="display:none">SUCCESS</span>
                                                                         </td>
@@ -587,8 +638,13 @@
                                                                         <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
                                                                         </td>
                                                                         <td>4</td>
-                                                                        <td data-order="1709709137">07:12:17</td>
-                                                                        <td>2s 195ms</td>
+                                                                        <td>Starts with a todo list containing: {Walk the dog,Put out the garbage}
+Completes: Walk the dog
+Should see that that following item is marked as complete: Walk the dog
+Should see that the number of items left is: 1
+</td>
+                                                                        <td data-order="1716453843">08:44:03</td>
+                                                                        <td>3s 312ms</td>
                                                                         <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
                                                                                     style="display:none">SUCCESS</span>
                                                                         </td>
@@ -655,7 +711,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-12">
-            <span class="version">Serenity BDD version 4.1.3</span>
+            <span class="version">Serenity BDD version 4.1.12</span>
         </div>
     </div>
 </div>

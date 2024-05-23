@@ -115,7 +115,11 @@
                     search: ""
                 },
                 columnDefs: [
-                    {type: 'time-elapsed-dhms', targets: 5}
+                    {
+                        targets: 4,
+                        visible: false
+                    },
+                    {type: 'time-elapsed-dhms', targets: 6}
                 ]
             })
             $("#manual-scenario-results").DataTable({
@@ -124,6 +128,12 @@
                     searchPlaceholder: "Filter",
                     search: ""
                 },
+                columnDefs: [
+                    {
+                        targets: 4,
+                        visible: false
+                    },
+                ]
             })
 
             // Results table
@@ -142,7 +152,17 @@
             $(".feature-coverage-table").DataTable({
                 searching: true,
                 paging: false,
-                info: false
+                info: false,
+                language: {
+                    searchPlaceholder: "Filter",
+                    search: ""
+                },
+                columnDefs: [
+                    {
+                        targets: 2,
+                        visible: false
+                    },
+                ]
             });
 
             $(".feature-coverage-table-with-pagination").DataTable({
@@ -152,7 +172,13 @@
                 language: {
                     searchPlaceholder: "Filter",
                     search: ""
-                }
+                },
+                columnDefs: [
+                    {
+                        targets: 2,
+                        visible: false
+                    },
+                ]
             });
         });
     </script>
@@ -206,7 +232,7 @@
             <a href="576946480b52ad056d6f5bddf874399c83582ecf90963cc074a14c70580e7d9f.html"><i class="bi bi-chat-text"></i> Features</a>
         </li>
     </ul>
-    <span class="date-and-time"><a href="build-info.html"><i class="bi bi-info-circle"></i></a> Report generated 06-03-2024 07:12:28</span>
+    <span class="date-and-time"><a href="build-info.html"><i class="bi bi-info-circle"></i></a> Report generated 23-05-2024 08:44:13</span>
     <br style="clear:left"/>
 </div>
     <div class="clr"></div>
@@ -306,48 +332,48 @@
                     <td>
                         <i class="bi bi-flag-fill"></i> Tests Started
                     </td>
-                    <td>Mar 06, 2024 07:11:33</td>
+                    <td>May 23, 2024 08:43:43</td>
                 </tr>
                 <tr scope="row">
                     <td>
                         <i class="bi bi-stop-circle"></i> Tests
                         Finished
                     </td>
-                    <td>Mar 06, 2024 07:12:06</td>
+                    <td>May 23, 2024 08:43:53</td>
                 </tr>
                 <tr scope="row">
                     <td>
                         <i class="bi bi-stopwatch"></i> Total
                         Duration
                     </td>
-                    <td>33s</td>
+                    <td>10s</td>
                 </tr>
                 <tr scope="row">
                     <td>
                         <i class="bi bi-trophy"></i> Fastest Test
                     </td>
-                    <td>28s</td>
+                    <td>6s</td>
                 </tr>
                 <tr scope="row">
                     <td>
                         <i class="bi bi-skip-start"></i> Slowest
                         Test
                     </td>
-                    <td>33s</td>
+                    <td>10s</td>
                 </tr>
                 <tr scope="row">
                     <td>
                         <i class="bi bi-stopwatch"></i> Average
                         Execution Time
                     </td>
-                    <td>30s</td>
+                    <td>8s</td>
                 </tr>
                 <tr scope="row">
                     <td>
                         <i class="bi bi-stopwatch-fill"></i> Total
                         Execution Time
                     </td>
-                    <td> 1m 32s</td>
+                    <td>25s</td>
                 </tr>
                 </tbody>
             </table>
@@ -364,12 +390,12 @@
 
                                                                     <h4>Features</h4>
 
-                                                                    <table class="table feature-coverage-table"
-                                                                           id="Feature">
+                                                                    <table class="table feature-coverage-table" id="Feature" style="width:100%">
                                                                         <thead>
                                                                         <tr>
                                                                             <th>Feature</th>
                                                                             <th style="width:1em;">Scenarios</th>
+                                                                            <th style="width:1em;">StepsText</th>
                                                                             <th style="width:1em;">Test&nbsp;Cases</th>
                                                                             <th style="width:1em;">%&nbsp;Pass</th>
                                                                             <th style="width:1em;">Result</th>
@@ -382,6 +408,51 @@
                                                                                             <a href="5655a252d959d384f717ce1515a9e368b8f57bcddb623d457e89b64c333e4fda.html"> Add new todos</a>
                                                                                     </td>
                                                                                     <td>3</td>
+                                                                                    <td>Given that James has an empty todo list
+James starts with an empty todo list
+James opens the home.page page
+When he adds 'Buy some milk' to his list
+he adds a todo item called: Buy some milk
+he enters 'Buy some milk' then hits [RETURN] into 'What needs to be done?' field
+Then 'Buy some milk' should be recorded in his list
+Then the items displayed should be a collection containing 'Buy some milk'
+Given Jane has a todo list containing Buy some milk, Walk the dog
+Jane starts with a todo list containing Buy some milk, Walk the dog
+Jane opens the home.page page
+Jane adds the todo items called: [Buy some milk, Walk the dog]
+Jane adds a todo item called: Buy some milk
+Jane enters 'Buy some milk' then hits [RETURN] into 'What needs to be done?' field
+Jane adds a todo item called: Walk the dog
+Jane enters 'Walk the dog' then hits [RETURN] into 'What needs to be done?' field
+When she adds 'Buy some cereal' to her list
+she adds a todo item called: Buy some cereal
+she enters 'Buy some cereal' then hits [RETURN] into 'What needs to be done?' field
+Then her todo list should contain Buy some milk, Walk the dog, Buy some cereal
+Then the items displayed should be ([Buy some milk, Walk the dog, Buy some cereal])
+Given James has a todo list containing Buy some milk, Walk the dog
+James starts with a todo list containing Buy some milk, Walk the dog
+James opens the home.page page
+James adds the todo items called: [Buy some milk, Walk the dog]
+James adds a todo item called: Buy some milk
+James enters 'Buy some milk' then hits [RETURN] into 'What needs to be done?' field
+James adds a todo item called: Walk the dog
+James enters 'Walk the dog' then hits [RETURN] into 'What needs to be done?' field
+And Jill has a todo list containing Buy some milk, Buy some cheese
+Jill starts with a todo list containing Buy some milk, Buy some cheese
+Jill opens the home.page page
+Jill adds the todo items called: [Buy some milk, Buy some cheese]
+Jill adds a todo item called: Buy some milk
+Jill enters 'Buy some milk' then hits [RETURN] into 'What needs to be done?' field
+Jill adds a todo item called: Buy some cheese
+Jill enters 'Buy some cheese' then hits [RETURN] into 'What needs to be done?' field
+When she adds 'Buy some cereal' to her list
+she adds a todo item called: Buy some cereal
+she enters 'Buy some cereal' then hits [RETURN] into 'What needs to be done?' field
+Then Jill's todo list should contain Buy some milk, Buy some cheese, Buy some cereal
+Jill should see the items displayed that contains: <[Buy some milk, Buy some cheese, Buy some cereal]>
+And James's todo list should contain Buy some milk, Walk the dog
+James should see the items displayed that contains: <[Buy some milk, Walk the dog]>
+</td>
                                                                                     <td>3</td>
                                                                                     <td>100%</td>
                                                                                     <td>
@@ -460,7 +531,7 @@
                         <i class="bi bi-stopwatch"></i> Total
                         Duration
                     </td>
-                    <td>33s</td>
+                    <td>10s</td>
                 </tr>
                 <tr scope="row">
                     <td>
@@ -470,7 +541,7 @@
                     <td>
                         <i class="bi bi-trophy"></i> Fastest Test
                     </td>
-                    <td>28s</td>
+                    <td>6s</td>
                 </tr>
                 <tr scope="row">
                     <td>
@@ -481,30 +552,30 @@
                         <i class="bi bi-skip-start"></i> Slowest
                         Test
                     </td>
-                    <td>33s</td>
+                    <td>10s</td>
                 </tr>
                 <tr scope="row">
                     <td>
                         <i class="bi bi-flag-fill"></i> Tests Started
                     </td>
-                    <td>Mar 06, 2024 07:11:33</td>
+                    <td>May 23, 2024 08:43:43</td>
                     <td>
                         <i class="bi bi-stopwatch"></i> Average
                         Execution Time
                     </td>
-                    <td>30s</td>
+                    <td>8s</td>
                 </tr>
                 <tr scope="row">
                     <td>
                         <i class="bi bi-stop-circle"></i> Tests
                         Finished
                     </td>
-                    <td>Mar 06, 2024 07:12:06</td>
+                    <td>May 23, 2024 08:43:53</td>
                     <td>
                         <i class="bi bi-stopwatch-fill"></i> Total
                         Execution Time
                     </td>
-                    <td> 1m 32s</td>
+                    <td>25s</td>
                 </tr>
                 </tbody>
             </table>
@@ -513,14 +584,14 @@
 
                                                         <h3><i class="bi bi-gear"></i> Automated Scenarios</h3>
 
-                                                            <table class="scenario-result-table table"
-                                                                   id="scenario-results">
+                                                            <table class="scenario-result-table table" id="scenario-results" style="width:100%">
                                                                 <thead>
                                                                 <tr>
                                                                     <th>feature</th>
                                                                     <th class="test-name-column">Scenario</th>
                                                                     <th>Context</th>
                                                                     <th>Steps</th>
+                                                                    <th>StepsText</th>
                                                                     <th>Started</th>
                                                                     <th>Total Duration</th>
                                                                     <th>Result</th>
@@ -537,24 +608,12 @@
                                                                         <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
                                                                         </td>
                                                                         <td>3</td>
-                                                                        <td data-order="1709709093">07:11:33</td>
-                                                                        <td>28s 498ms</td>
-                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
-                                                                                    style="display:none">SUCCESS</span>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="scenario-result SUCCESS">
-                                                                        <td>
-                                                                                <a href="5655a252d959d384f717ce1515a9e368b8f57bcddb623d457e89b64c333e4fda.html">Add new todos</a>
-                                                                        </td>
-                                                                        <td data-order="Adding items to several peoples lists">
-                                                                                    <a href="53de6e2fde680d7b272d57292fe0469ebcea7dec18a95c0cac41a41329424356.html">Adding items to several peoples lists</a>
-                                                                        </td>
-                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
-                                                                        </td>
-                                                                        <td>5</td>
-                                                                        <td data-order="1709709093">07:11:33</td>
-                                                                        <td>33s 317ms</td>
+                                                                        <td>Given that James has an empty todo list
+When he adds 'Buy some milk' to his list
+Then 'Buy some milk' should be recorded in his list
+</td>
+                                                                        <td data-order="1716453823">08:43:43</td>
+                                                                        <td>6s 605ms</td>
                                                                         <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
                                                                                     style="display:none">SUCCESS</span>
                                                                         </td>
@@ -569,8 +628,34 @@
                                                                         <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
                                                                         </td>
                                                                         <td>3</td>
-                                                                        <td data-order="1709709093">07:11:33</td>
-                                                                        <td>31s 140ms</td>
+                                                                        <td>Given Jane has a todo list containing Buy some milk, Walk the dog
+When she adds 'Buy some cereal' to her list
+Then her todo list should contain Buy some milk, Walk the dog, Buy some cereal
+</td>
+                                                                        <td data-order="1716453823">08:43:43</td>
+                                                                        <td>8s 588ms</td>
+                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                    style="display:none">SUCCESS</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="scenario-result SUCCESS">
+                                                                        <td>
+                                                                                <a href="5655a252d959d384f717ce1515a9e368b8f57bcddb623d457e89b64c333e4fda.html">Add new todos</a>
+                                                                        </td>
+                                                                        <td data-order="Adding items to several peoples lists">
+                                                                                    <a href="53de6e2fde680d7b272d57292fe0469ebcea7dec18a95c0cac41a41329424356.html">Adding items to several peoples lists</a>
+                                                                        </td>
+                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
+                                                                        </td>
+                                                                        <td>5</td>
+                                                                        <td>Given James has a todo list containing Buy some milk, Walk the dog
+And Jill has a todo list containing Buy some milk, Buy some cheese
+When she adds 'Buy some cereal' to her list
+Then Jill's todo list should contain Buy some milk, Buy some cheese, Buy some cereal
+And James's todo list should contain Buy some milk, Walk the dog
+</td>
+                                                                        <td data-order="1716453823">08:43:43</td>
+                                                                        <td>10s 388ms</td>
                                                                         <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
                                                                                     style="display:none">SUCCESS</span>
                                                                         </td>
@@ -642,7 +727,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-12">
-            <span class="version">Serenity BDD version 4.1.3</span>
+            <span class="version">Serenity BDD version 4.1.12</span>
         </div>
     </div>
 </div>
@@ -849,7 +934,7 @@
             datasets: [{
                 label: 'Number of tests per duration',
                 fill: false,
-                data: ['0','0','1','2','0','0','0','0'],
+                data: ['0','2','1','0','0','0','0','0'],
                 backgroundColor: 'rgba(83, 146, 255,0.5)',
                 borderColor: 'rgba(83, 146, 255, 1)',
             }]
@@ -926,64 +1011,52 @@
                 result: 'SUCCESS',
                 link: "b3f706bf8f247d9c100b9e130fc05544b762809ce18613516306cff20a75fd9d.html"
             },
-            {
-                title: 'Filtering other todos',
-                result: 'SUCCESS',
-                link: "833fa07d5e0687f05a9f09429aa4c51e3e714bb9d238fab46a90d9857eba871a.html"
-            },
-            {
-                title: 'Filtering todos',
-                result: 'SUCCESS',
-                link: "7077e374b487fe487d82eab3224c4a716cfa62ebc84bcc58828d7a6f35471354.html"
-            },
         ]
         const coverageData = {
             labels: [
                 'Add new todos',
                 'Completing todos',
                 'Deleting todos',
-                'Filtering other todos',
-                'Filtering todos',
             ],
             datasets: [
                 {
                     label: ['Passing Tests'],
-                    data: [3,0,0,0,0],
+                    data: [3,0,0],
                     backgroundColor: [ 'rgba(153,204,51,0.5)' ]
                 },
                 {
                     label: ['Pending Tests'],
-                    data: [0,0,0,0,0],
+                    data: [0,0,0],
                     backgroundColor: [ 'rgba(165, 199, 238, 0.5)' ]
                 },
                 {
                     label: ['Ignored Tests'],
-                    data: [0,0,0,0,0],
+                    data: [0,0,0],
                     backgroundColor: [ 'rgba(168, 168, 168, 0.5)' ]
                 },
                 {
                     label: ['Skipped Tests'],
-                    data: [0,0,0,0,0],
+                    data: [0,0,0],
                     backgroundColor: [ 'rgba(238, 224, 152, 0.75)' ]
                 },
                 {
                     label: ['Aborted Tests'],
-                    data: [0,0,0,0,0],
+                    data: [0,0,0],
                     backgroundColor: [ 'rgba(255, 153, 102, 0.5)' ]
                 },
                 {
                     label: ['Failed Tests'],
-                    data: [0,0,0,0,0],
+                    data: [0,0,0],
                     backgroundColor: [ 'rgba(255, 22, 49, 0.5)' ]
                 },
                 {
                     label: ['Errors'],
-                    data: [0,0,0,0,0],
+                    data: [0,0,0],
                     backgroundColor: [ 'rgba(255, 97, 8, 0.5)' ]
                 },
                 {
                     label: ['Compromised Tests'],
-                    data: [0,0,0,0,0],
+                    data: [0,0,0],
                     backgroundColor: [ 'rgba(255, 104, 255, 0.5)' ]
                 },
             ]

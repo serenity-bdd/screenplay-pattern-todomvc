@@ -115,7 +115,11 @@
                     search: ""
                 },
                 columnDefs: [
-                    {type: 'time-elapsed-dhms', targets: 5}
+                    {
+                        targets: 4,
+                        visible: false
+                    },
+                    {type: 'time-elapsed-dhms', targets: 6}
                 ]
             })
             $("#manual-scenario-results").DataTable({
@@ -124,6 +128,12 @@
                     searchPlaceholder: "Filter",
                     search: ""
                 },
+                columnDefs: [
+                    {
+                        targets: 4,
+                        visible: false
+                    },
+                ]
             })
 
             // Results table
@@ -142,7 +152,17 @@
             $(".feature-coverage-table").DataTable({
                 searching: true,
                 paging: false,
-                info: false
+                info: false,
+                language: {
+                    searchPlaceholder: "Filter",
+                    search: ""
+                },
+                columnDefs: [
+                    {
+                        targets: 2,
+                        visible: false
+                    },
+                ]
             });
 
             $(".feature-coverage-table-with-pagination").DataTable({
@@ -152,7 +172,13 @@
                 language: {
                     searchPlaceholder: "Filter",
                     search: ""
-                }
+                },
+                columnDefs: [
+                    {
+                        targets: 2,
+                        visible: false
+                    },
+                ]
             });
         });
     </script>
@@ -201,7 +227,7 @@
             <a href="576946480b52ad056d6f5bddf874399c83582ecf90963cc074a14c70580e7d9f.html"><i class="bi bi-chat-text"></i> Features</a>
         </li>
     </ul>
-    <span class="date-and-time"><a href="build-info.html"><i class="bi bi-info-circle"></i></a> Report generated 06-03-2024 07:12:28</span>
+    <span class="date-and-time"><a href="build-info.html"><i class="bi bi-info-circle"></i></a> Report generated 23-05-2024 08:44:13</span>
     <br style="clear:left"/>
 </div>
     <div class="clr"></div>
@@ -216,7 +242,7 @@
                         <td width="375px" valign="top">
                             <div class="test-count-summary">
                                 <div class="test-count-title">
-                                    54 tests
+                                    51 tests
 
                                     
 
@@ -286,60 +312,60 @@
                     <td>
                         <i class="bi bi-card-checklist"></i> Number of Scenarios
                     </td>
-                    <td>48</td>
+                    <td>45</td>
                 </tr>
                 <tr scope="row">
                     <td>
                         <i class="bi bi-caret-right"></i> Total Number of Test Cases
                     </td>
-                    <td>54</td>
+                    <td>51</td>
                 </tr>
                 <tr scope="row">
                     <td>
                         <i class="bi bi-flag-fill"></i> Tests Started
                     </td>
-                    <td>Mar 06, 2024 07:11:33</td>
+                    <td>May 23, 2024 08:43:43</td>
                 </tr>
                 <tr scope="row">
                     <td>
                         <i class="bi bi-stop-circle"></i> Tests
                         Finished
                     </td>
-                    <td>Mar 06, 2024 07:12:30</td>
+                    <td>May 23, 2024 08:44:14</td>
                 </tr>
                 <tr scope="row">
                     <td>
                         <i class="bi bi-stopwatch"></i> Total
                         Duration
                     </td>
-                    <td>56s</td>
+                    <td>31s</td>
                 </tr>
                 <tr scope="row">
                     <td>
                         <i class="bi bi-trophy"></i> Fastest Test
                     </td>
-                    <td>1s</td>
+                    <td>2s</td>
                 </tr>
                 <tr scope="row">
                     <td>
                         <i class="bi bi-skip-start"></i> Slowest
                         Test
                     </td>
-                    <td>35s</td>
+                    <td>10s</td>
                 </tr>
                 <tr scope="row">
                     <td>
                         <i class="bi bi-stopwatch"></i> Average
                         Execution Time
                     </td>
-                    <td>8s</td>
+                    <td>4s</td>
                 </tr>
                 <tr scope="row">
                     <td>
                         <i class="bi bi-stopwatch-fill"></i> Total
                         Execution Time
                     </td>
-                    <td> 6m 30s</td>
+                    <td> 3m 25s</td>
                 </tr>
                 </tbody>
             </table>
@@ -356,12 +382,12 @@
 
                                                                     <h4>Features</h4>
 
-                                                                    <table class="table feature-coverage-table-with-pagination"
-                                                                           id="Feature">
+                                                                    <table class="table feature-coverage-table-with-pagination" id="Feature" style="width:100%">
                                                                         <thead>
                                                                         <tr>
                                                                             <th>Feature</th>
                                                                             <th style="width:1em;">Scenarios</th>
+                                                                            <th style="width:1em;">StepsText</th>
                                                                             <th style="width:1em;">Test&nbsp;Cases</th>
                                                                             <th style="width:1em;">%&nbsp;Pass</th>
                                                                             <th style="width:1em;">Result</th>
@@ -374,6 +400,106 @@
                                                                                             <a href="675a2fbd7e926dc4386404460dfed5d64f7e56a3c0206e92b287e893ea3ef9b1.html"> Cucumber > maintain my todo list > Completing todos</a>
                                                                                     </td>
                                                                                     <td>5</td>
+                                                                                    <td>Given Jane has a todo list containing Buy some milk, Walk the dog
+Jane starts with a todo list containing Buy some milk, Walk the dog
+Jane opens the home.page page
+Jane adds the todo items called: [Buy some milk, Walk the dog]
+Jane adds a todo item called: Buy some milk
+Jane enters 'Buy some milk' then hits [RETURN] into 'What needs to be done?' field
+Jane adds a todo item called: Walk the dog
+Jane enters 'Walk the dog' then hits [RETURN] into 'What needs to be done?' field
+When she completes the task called "Walk the dog"
+she completes the item called Walk the dog
+she clicks on the complete item tick box
+Then her todo list should contain Buy some milk, Walk the dog
+Then the items displayed should be ([Buy some milk, Walk the dog])
+But the "Walk the dog" task should be shown as Completed
+she should see  that is equal to: <Completed>
+Given Sophie has a todo list containing Buy some milk, Walk the dog
+Sophie starts with a todo list containing Buy some milk, Walk the dog
+Sophie opens the home.page page
+Sophie adds the todo items called: [Buy some milk, Walk the dog]
+Sophie adds a todo item called: Buy some milk
+Sophie enters 'Buy some milk' then hits [RETURN] into 'What needs to be done?' field
+Sophie adds a todo item called: Walk the dog
+Sophie enters 'Walk the dog' then hits [RETURN] into 'What needs to be done?' field
+Then her remaining todo count should be 2
+her should see the number of items left that is equal to: <2>
+When she completes the task called "Walk the dog"
+she completes the item called Walk the dog
+she clicks on the complete item tick box
+Then her remaining todo count should be 1
+her should see the number of items left that is equal to: <1>
+Given James has a todo list containing Buy some milk, Walk the dog
+James starts with a todo list containing Buy some milk, Walk the dog
+James opens the home.page page
+James adds the todo items called: [Buy some milk, Walk the dog]
+James adds a todo item called: Buy some milk
+James enters 'Buy some milk' then hits [RETURN] into 'What needs to be done?' field
+James adds a todo item called: Walk the dog
+James enters 'Walk the dog' then hits [RETURN] into 'What needs to be done?' field
+When he completes the task called "Walk the dog"
+he completes the item called Walk the dog
+he clicks on the complete item tick box
+And he filters her list to show only Completed tasks
+he filters items by Completed
+he clicks on filter by Completed
+Then her todo list should contain Walk the dog
+Then the items displayed should be ([Walk the dog])
+Given Jill has a todo list containing Buy some milk, Walk the dog
+Jill starts with a todo list containing Buy some milk, Walk the dog
+Jill opens the home.page page
+Jill adds the todo items called: [Buy some milk, Walk the dog]
+Jill adds a todo item called: Buy some milk
+Jill enters 'Buy some milk' then hits [RETURN] into 'What needs to be done?' field
+Jill adds a todo item called: Walk the dog
+Jill enters 'Walk the dog' then hits [RETURN] into 'What needs to be done?' field
+When she filters her list to show only Completed tasks
+she filters items by Completed
+she clicks on filter by Completed
+Then her todo list should be empty
+Then the items displayed should be ([])
+1: Completed tasks should be shown as Completed ({Initial Tasks=Buy some milk, Walk the dog, Task=Walk the dog, Final Status=Completed})
+Given Sarah has a todo list containing Buy some milk, Walk the dog
+Sarah starts with a todo list containing Buy some milk, Walk the dog
+Sarah opens the home.page page
+Sarah adds the todo items called: [Buy some milk, Walk the dog]
+Sarah adds a todo item called: Buy some milk
+Sarah enters 'Buy some milk' then hits [RETURN] into 'What needs to be done?' field
+Sarah adds a todo item called: Walk the dog
+Sarah enters 'Walk the dog' then hits [RETURN] into 'What needs to be done?' field
+When she completes the task called "Walk the dog"
+she completes the item called Walk the dog
+she clicks on the complete item tick box
+Then the "Walk the dog" task should be shown as Completed
+she should see  that is equal to: <Completed>
+2: Completed tasks should be shown as Completed ({Initial Tasks=Walk the dog, Task=Walk the dog, Final Status=Completed})
+Given Sarah has a todo list containing Walk the dog
+Sarah starts with a todo list containing Walk the dog
+Sarah opens the home.page page
+Sarah adds the todo items called: [Walk the dog]
+Sarah adds a todo item called: Walk the dog
+Sarah enters 'Walk the dog' then hits [RETURN] into 'What needs to be done?' field
+When she completes the task called "Walk the dog"
+she completes the item called Walk the dog
+she clicks on the complete item tick box
+Then the "Walk the dog" task should be shown as Completed
+she should see  that is equal to: <Completed>
+3: Completed tasks should be shown as Completed ({Initial Tasks=Buy some milk, Walk the dog, Task=Buy some milk, Final Status=Active})
+Given Sarah has a todo list containing Buy some milk, Walk the dog
+Sarah starts with a todo list containing Buy some milk, Walk the dog
+Sarah opens the home.page page
+Sarah adds the todo items called: [Buy some milk, Walk the dog]
+Sarah adds a todo item called: Buy some milk
+Sarah enters 'Buy some milk' then hits [RETURN] into 'What needs to be done?' field
+Sarah adds a todo item called: Walk the dog
+Sarah enters 'Walk the dog' then hits [RETURN] into 'What needs to be done?' field
+When she completes the task called "Walk the dog"
+she completes the item called Walk the dog
+she clicks on the complete item tick box
+Then the "Buy some milk" task should be shown as Active
+she should see  that is equal to: <Active>
+</td>
                                                                                     <td>7</td>
                                                                                     <td>100%</td>
                                                                                     <td>
@@ -397,6 +523,36 @@
                                                                                             <a href="b3f706bf8f247d9c100b9e130fc05544b762809ce18613516306cff20a75fd9d.html"> Cucumber > maintain my todo list > Deleting todos</a>
                                                                                     </td>
                                                                                     <td>2</td>
+                                                                                    <td>Given Jane has a todo list containing Buy some milk, Walk the dog
+Jane starts with a todo list containing Buy some milk, Walk the dog
+Jane opens the home.page page
+Jane adds the todo items called: [Buy some milk, Walk the dog]
+Jane adds a todo item called: Buy some milk
+Jane enters 'Buy some milk' then hits [RETURN] into 'What needs to be done?' field
+Jane adds a todo item called: Walk the dog
+Jane enters 'Walk the dog' then hits [RETURN] into 'What needs to be done?' field
+When she deletes the task called 'Walk the dog'
+she deletes the item Walk the dog
+she clicks on the delete item button
+And she deletes the task called 'Buy some milk'
+she deletes the item Buy some milk
+she clicks on the delete item button
+Then her todo list should be empty
+Then the items displayed should be ([])
+Given Jane has a todo list containing Buy some milk, Walk the dog
+Jane starts with a todo list containing Buy some milk, Walk the dog
+Jane opens the home.page page
+Jane adds the todo items called: [Buy some milk, Walk the dog]
+Jane adds a todo item called: Buy some milk
+Jane enters 'Buy some milk' then hits [RETURN] into 'What needs to be done?' field
+Jane adds a todo item called: Walk the dog
+Jane enters 'Walk the dog' then hits [RETURN] into 'What needs to be done?' field
+When she deletes the task called 'Walk the dog'
+she deletes the item Walk the dog
+she clicks on the delete item button
+Then her todo list should contain Buy some milk
+Then the items displayed should be ([Buy some milk])
+</td>
                                                                                     <td>2</td>
                                                                                     <td>100%</td>
                                                                                     <td>
@@ -417,32 +573,61 @@
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <td>
-                                                                                            <a href="833fa07d5e0687f05a9f09429aa4c51e3e714bb9d238fab46a90d9857eba871a.html"> Cucumber > maintain my todo list > Filtering other todos</a>
-                                                                                    </td>
-                                                                                    <td>1</td>
-                                                                                    <td>3</td>
-                                                                                    <td>100%</td>
-                                                                                    <td>
-                                                                                            <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
-                                                                                    </td>
-                                                                                    <td>
-                                                                                        <div class="progress">
-                                                                                                <div class="progress-bar"
-                                                                                                     role="progressbar"
-                                                                                                     style="width: 100%; background-color: #b0cf73"
-                                                                                                     aria-valuenow="3"
-                                                                                                     title="100% success"
-                                                                                                     aria-valuemin="0"
-                                                                                                     aria-valuemax="100">
-                                                                                                </div>
-                                                                                        </div>
-                                                                                    </td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td>
                                                                                             <a href="7077e374b487fe487d82eab3224c4a716cfa62ebc84bcc58828d7a6f35471354.html"> Cucumber > maintain my todo list > Filtering todos</a>
                                                                                     </td>
                                                                                     <td>1</td>
+                                                                                    <td>1: Viewing the items by status filter ({tasks=Buy some milk, Walk the dog, completed=Walk the dog, filter=Active, expected=Buy some milk})
+Given Jane has a todo list containing Buy some milk, Walk the dog
+Jane starts with a todo list containing Buy some milk, Walk the dog
+Jane opens the home.page page
+Jane adds the todo items called: [Buy some milk, Walk the dog]
+Jane adds a todo item called: Buy some milk
+Jane enters 'Buy some milk' then hits [RETURN] into 'What needs to be done?' field
+Jane adds a todo item called: Walk the dog
+Jane enters 'Walk the dog' then hits [RETURN] into 'What needs to be done?' field
+And she completes the task called "Walk the dog"
+she completes the item called Walk the dog
+she clicks on the complete item tick box
+When she filters her list to show only Active tasks
+she filters items by Active
+she clicks on filter by Active
+Then her todo list should contain Buy some milk
+Then the items displayed should be ([Buy some milk])
+2: Viewing the items by status filter ({tasks=Buy some milk, Walk the dog, completed=Walk the dog, filter=Completed, expected=Walk the dog})
+Given Jane has a todo list containing Buy some milk, Walk the dog
+Jane starts with a todo list containing Buy some milk, Walk the dog
+Jane opens the home.page page
+Jane adds the todo items called: [Buy some milk, Walk the dog]
+Jane adds a todo item called: Buy some milk
+Jane enters 'Buy some milk' then hits [RETURN] into 'What needs to be done?' field
+Jane adds a todo item called: Walk the dog
+Jane enters 'Walk the dog' then hits [RETURN] into 'What needs to be done?' field
+And she completes the task called "Walk the dog"
+she completes the item called Walk the dog
+she clicks on the complete item tick box
+When she filters her list to show only Completed tasks
+she filters items by Completed
+she clicks on filter by Completed
+Then her todo list should contain Walk the dog
+Then the items displayed should be ([Walk the dog])
+3: Viewing the items by status filter ({tasks=Buy some milk, Walk the dog, completed=Walk the dog, filter=All, expected=Buy some milk,  Walk the dog})
+Given Jane has a todo list containing Buy some milk, Walk the dog
+Jane starts with a todo list containing Buy some milk, Walk the dog
+Jane opens the home.page page
+Jane adds the todo items called: [Buy some milk, Walk the dog]
+Jane adds a todo item called: Buy some milk
+Jane enters 'Buy some milk' then hits [RETURN] into 'What needs to be done?' field
+Jane adds a todo item called: Walk the dog
+Jane enters 'Walk the dog' then hits [RETURN] into 'What needs to be done?' field
+And she completes the task called "Walk the dog"
+she completes the item called Walk the dog
+she clicks on the complete item tick box
+When she filters her list to show only All tasks
+she filters items by All
+she clicks on filter by All
+Then her todo list should contain Buy some milk,  Walk the dog
+Then the items displayed should be ([Buy some milk, Walk the dog])
+</td>
                                                                                     <td>3</td>
                                                                                     <td>100%</td>
                                                                                     <td>
@@ -466,6 +651,51 @@
                                                                                             <a href="5655a252d959d384f717ce1515a9e368b8f57bcddb623d457e89b64c333e4fda.html"> Cucumber > record todos > Add new todos</a>
                                                                                     </td>
                                                                                     <td>3</td>
+                                                                                    <td>Given that James has an empty todo list
+James starts with an empty todo list
+James opens the home.page page
+When he adds 'Buy some milk' to his list
+he adds a todo item called: Buy some milk
+he enters 'Buy some milk' then hits [RETURN] into 'What needs to be done?' field
+Then 'Buy some milk' should be recorded in his list
+Then the items displayed should be a collection containing 'Buy some milk'
+Given Jane has a todo list containing Buy some milk, Walk the dog
+Jane starts with a todo list containing Buy some milk, Walk the dog
+Jane opens the home.page page
+Jane adds the todo items called: [Buy some milk, Walk the dog]
+Jane adds a todo item called: Buy some milk
+Jane enters 'Buy some milk' then hits [RETURN] into 'What needs to be done?' field
+Jane adds a todo item called: Walk the dog
+Jane enters 'Walk the dog' then hits [RETURN] into 'What needs to be done?' field
+When she adds 'Buy some cereal' to her list
+she adds a todo item called: Buy some cereal
+she enters 'Buy some cereal' then hits [RETURN] into 'What needs to be done?' field
+Then her todo list should contain Buy some milk, Walk the dog, Buy some cereal
+Then the items displayed should be ([Buy some milk, Walk the dog, Buy some cereal])
+Given James has a todo list containing Buy some milk, Walk the dog
+James starts with a todo list containing Buy some milk, Walk the dog
+James opens the home.page page
+James adds the todo items called: [Buy some milk, Walk the dog]
+James adds a todo item called: Buy some milk
+James enters 'Buy some milk' then hits [RETURN] into 'What needs to be done?' field
+James adds a todo item called: Walk the dog
+James enters 'Walk the dog' then hits [RETURN] into 'What needs to be done?' field
+And Jill has a todo list containing Buy some milk, Buy some cheese
+Jill starts with a todo list containing Buy some milk, Buy some cheese
+Jill opens the home.page page
+Jill adds the todo items called: [Buy some milk, Buy some cheese]
+Jill adds a todo item called: Buy some milk
+Jill enters 'Buy some milk' then hits [RETURN] into 'What needs to be done?' field
+Jill adds a todo item called: Buy some cheese
+Jill enters 'Buy some cheese' then hits [RETURN] into 'What needs to be done?' field
+When she adds 'Buy some cereal' to her list
+she adds a todo item called: Buy some cereal
+she enters 'Buy some cereal' then hits [RETURN] into 'What needs to be done?' field
+Then Jill's todo list should contain Buy some milk, Buy some cheese, Buy some cereal
+Jill should see the items displayed that contains: <[Buy some milk, Buy some cheese, Buy some cereal]>
+And James's todo list should contain Buy some milk, Walk the dog
+James should see the items displayed that contains: <[Buy some milk, Walk the dog]>
+</td>
                                                                                     <td>3</td>
                                                                                     <td>100%</td>
                                                                                     <td>
@@ -489,6 +719,16 @@
                                                                                             <a href="fc6d6b11273ca8dc0923978323811fd4507072aa6571485ae24f42a2bd5577fb.html"> Pageobjects > accessing the application > Learn about the application</a>
                                                                                     </td>
                                                                                     <td>2</td>
+                                                                                    <td>Starts with an empty todo list
+Starts with a todo list containing: {}
+Adds todo items called: {}
+Should see that the placeholder text says: What needs to be done?
+Starts with an empty todo list
+Starts with a todo list containing: {}
+Adds todo items called: {}
+Should see the correct website title
+Should see the correct application heading
+</td>
                                                                                     <td>2</td>
                                                                                     <td>100%</td>
                                                                                     <td>
@@ -512,6 +752,14 @@
                                                                                             <a href="5d761a5e7c7d3a6be48dcc28bb2467ddf8b352b19783dff741aba89a705fdf03.html"> Pageobjects > completing todos > Complete a todo</a>
                                                                                     </td>
                                                                                     <td>1</td>
+                                                                                    <td>Starts with a todo list containing: {Walk the dog,Put out the garbage}
+Adds todo items called: {Walk the dog,Put out the garbage}
+Adds a todo item called: Walk the dog
+Adds a todo item called: Put out the garbage
+Completes: Walk the dog
+Should see that that following item is marked as complete: Walk the dog
+Should see that the number of items left is: 1
+</td>
                                                                                     <td>1</td>
                                                                                     <td>100%</td>
                                                                                     <td>
@@ -535,6 +783,37 @@
                                                                                             <a href="fd5980370be8d13ff490ebddc14a546c87af4c684aa4024bb33297d51a5a1d12.html"> Pageobjects > completing todos > Toggle all todos</a>
                                                                                     </td>
                                                                                     <td>4</td>
+                                                                                    <td>Starts with a todo list containing: {Walk the dog,Put out the garbage}
+Adds todo items called: {Walk the dog,Put out the garbage}
+Adds a todo item called: Walk the dog
+Adds a todo item called: Put out the garbage
+Toggles all items
+Should see that that following items are marked as complete: {Walk the dog,Put out the garbage}
+Should see that that following item is marked as complete: Walk the dog
+Should see that that following item is marked as complete: Put out the garbage
+Starts with a todo list containing: {Walk the dog,Put out the garbage}
+Adds todo items called: {Walk the dog,Put out the garbage}
+Adds a todo item called: Walk the dog
+Adds a todo item called: Put out the garbage
+Toggles all items
+Toggles all items
+Should see that that following items are marked as active: {Walk the dog,Put out the garbage}
+Should see that that following item is marked as active: Walk the dog
+Should see that that following item is marked as active: Put out the garbage
+Starts with a todo list containing: {Walk the dog,Put out the garbage}
+Adds todo items called: {Walk the dog,Put out the garbage}
+Adds a todo item called: Walk the dog
+Adds a todo item called: Put out the garbage
+Toggles all items
+Toggles all items
+Should see that the number of items left is: 2
+Starts with a todo list containing: {Walk the dog,Put out the garbage}
+Adds todo items called: {Walk the dog,Put out the garbage}
+Adds a todo item called: Walk the dog
+Adds a todo item called: Put out the garbage
+Toggles all items
+Should see that the number of items left is: 0
+</td>
                                                                                     <td>4</td>
                                                                                     <td>100%</td>
                                                                                     <td>
@@ -558,6 +837,19 @@
                                                                                             <a href="4356d9cfe25d6e22f473d024a074ad06ded4a4726fc7b1d559f9975bff2bc19b.html"> Pageobjects > maintain my todo list > Clear completed todos</a>
                                                                                     </td>
                                                                                     <td>2</td>
+                                                                                    <td>Starts with a todo list containing: {Walk the dog,Put out the garbage}
+Adds todo items called: {Walk the dog,Put out the garbage}
+Adds a todo item called: Walk the dog
+Adds a todo item called: Put out the garbage
+Should see that the clear completed items option is not visible
+Starts with a todo list containing: {Walk the dog,Put out the garbage}
+Adds todo items called: {Walk the dog,Put out the garbage}
+Adds a todo item called: Walk the dog
+Adds a todo item called: Put out the garbage
+Completes: Walk the dog
+Clears completed items
+Should see that displayed items contain: {Put out the garbage}
+</td>
                                                                                     <td>2</td>
                                                                                     <td>100%</td>
                                                                                     <td>
@@ -581,6 +873,19 @@
                                                                                             <a href="87c2ec25c15954703a8a5dc5b2405d8e88d88948c2d8ad14d09edbc40bc8d107.html"> Pageobjects > maintain my todo list > Deleting todos</a>
                                                                                     </td>
                                                                                     <td>2</td>
+                                                                                    <td>Starts with a todo list containing: {Walk the dog,Put out the garbage}
+Adds todo items called: {Walk the dog,Put out the garbage}
+Adds a todo item called: Walk the dog
+Adds a todo item called: Put out the garbage
+Deletes: Walk the dog
+Should see that the number of items left is: 1
+Starts with a todo list containing: {Walk the dog,Put out the garbage}
+Adds todo items called: {Walk the dog,Put out the garbage}
+Adds a todo item called: Walk the dog
+Adds a todo item called: Put out the garbage
+Deletes: Walk the dog
+Should see that displayed items contain: {Put out the garbage}
+</td>
                                                                                     <td>2</td>
                                                                                     <td>100%</td>
                                                                                     <td>
@@ -604,6 +909,34 @@
                                                                                             <a href="490af42e89f9d05fb66e223ff737cefd7b35c5b876e506a7823388dc4c9f3dea.html"> Pageobjects > maintain my todo list > Filtering todos</a>
                                                                                     </td>
                                                                                     <td>3</td>
+                                                                                    <td>Starts with a todo list containing: {Walk the dog,Put out the garbage}
+Adds todo items called: {Walk the dog,Put out the garbage}
+Adds a todo item called: Walk the dog
+Adds a todo item called: Put out the garbage
+Completes: Walk the dog
+Filters items to show: Active
+Should see that displayed items contain: {Put out the garbage}
+Should see that displayed items do not contain: {Walk the dog}
+Should see that the currently selected filter is: Active
+Starts with a todo list containing: {Walk the dog,Put out the garbage}
+Adds todo items called: {Walk the dog,Put out the garbage}
+Adds a todo item called: Walk the dog
+Adds a todo item called: Put out the garbage
+Completes: Walk the dog
+Filters items to show: Completed
+Should see that displayed items contain: {Walk the dog}
+Should see that displayed items do not contain: {Put out the garbage}
+Should see that the currently selected filter is: Completed
+Starts with a todo list containing: {Walk the dog,Put out the garbage}
+Adds todo items called: {Walk the dog,Put out the garbage}
+Adds a todo item called: Walk the dog
+Adds a todo item called: Put out the garbage
+Completes: Walk the dog
+Filters items to show: Active
+Filters items to show: All
+Should see that displayed items contain: {Walk the dog,Put out the garbage}
+Should see that the currently selected filter is: All
+</td>
                                                                                     <td>3</td>
                                                                                     <td>100%</td>
                                                                                     <td>
@@ -627,6 +960,18 @@
                                                                                             <a href="bb7a868d8ec46ecec60d434bcb7d6177f1d241645125b877cb2322e2ffd4ef23.html"> Pageobjects > record todos > Add new todos</a>
                                                                                     </td>
                                                                                     <td>2</td>
+                                                                                    <td>Starts with a todo list containing: {Walk the dog,Put out the garbage}
+Adds todo items called: {Walk the dog,Put out the garbage}
+Adds a todo item called: Walk the dog
+Adds a todo item called: Put out the garbage
+Adds a todo item called: Buy some milk
+Should see that displayed items contain: {Walk the dog,Put out the garbage,Buy some milk}
+Starts with an empty todo list
+Starts with a todo list containing: {}
+Adds todo items called: {}
+Adds a todo item called: Buy some milk
+Should see that displayed items contain: {Buy some milk}
+</td>
                                                                                     <td>2</td>
                                                                                     <td>100%</td>
                                                                                     <td>
@@ -650,6 +995,14 @@
                                                                                             <a href="bb1bef04f5495f9d00c5d4f99fc52f7ea08fd0381cce630d8c8b45e1c779b932.html"> Screenplay > accessing the application > Learn about the application</a>
                                                                                     </td>
                                                                                     <td>2</td>
+                                                                                    <td>James starts with an empty todo list
+James opens the home.page page
+Then the placeholder text should be 'What needs to be done?'
+James starts with an empty todo list
+James opens the home.page page
+Then application should be to display 'title' as 'TodoMVC: Angular'
+Then application should be to display 'heading' as 'Todos'
+</td>
                                                                                     <td>2</td>
                                                                                     <td>100%</td>
                                                                                     <td>
@@ -673,6 +1026,52 @@
                                                                                             <a href="99c417da16d797ee6e7e29174b9af433d1144e5506116f2fc76a9ca44586f925.html"> Screenplay > completing todos > Complete a todo</a>
                                                                                     </td>
                                                                                     <td>6</td>
+                                                                                    <td>James starts with a todo list containing Walk the dog, Put out the garbage
+James opens the home.page page
+James adds the todo items called: [Walk the dog, Put out the garbage]
+James adds a todo item called: Walk the dog
+James enters 'Walk the dog' then hits [RETURN] into 'What needs to be done?' field
+James adds a todo item called: Put out the garbage
+James enters 'Put out the garbage' then hits [RETURN] into 'What needs to be done?' field
+James completes the item called Walk the dog
+James clicks on the complete item tick box
+Then the number of items left should be (1)
+James starts with a todo list containing Walk the dog, Put out the garbage
+James opens the home.page page
+James adds the todo items called: [Walk the dog, Put out the garbage]
+James adds a todo item called: Walk the dog
+James enters 'Walk the dog' then hits [RETURN] into 'What needs to be done?' field
+James adds a todo item called: Put out the garbage
+James enters 'Put out the garbage' then hits [RETURN] into 'What needs to be done?' field
+James completes the item called Walk the dog
+James clicks on the complete item tick box
+James should see  that is equal to: <Completed>
+James should see the number of items left that is equal to: <1>
+James starts with a todo list containing Walk the dog, Put out the garbage
+James opens the home.page page
+James adds the todo items called: [Walk the dog, Put out the garbage]
+James adds a todo item called: Walk the dog
+James enters 'Walk the dog' then hits [RETURN] into 'What needs to be done?' field
+James adds a todo item called: Put out the garbage
+James enters 'Put out the garbage' then hits [RETURN] into 'What needs to be done?' field
+James toggles the status of all items
+Execute JavaScript arguments[0].click();
+James should see  that is equal to: <Completed>
+James should see  that is equal to: <Completed>
+James should see the number of items left that is equal to: <0>
+James starts with a todo list containing Walk the dog, Put out the garbage
+James opens the home.page page
+James adds the todo items called: [Walk the dog, Put out the garbage]
+James adds a todo item called: Walk the dog
+James enters 'Walk the dog' then hits [RETURN] into 'What needs to be done?' field
+James adds a todo item called: Put out the garbage
+James enters 'Put out the garbage' then hits [RETURN] into 'What needs to be done?' field
+James completes the item called Walk the dog
+James clicks on the complete item tick box
+Then The item status for 'Walk the dog' should be (Completed)
+Then the items$$ lambda$2265/0x00007f275075b5c0 should be (1)
+James should see a value that is equal to: <"b">
+</td>
                                                                                     <td>6</td>
                                                                                     <td>100%</td>
                                                                                     <td>
@@ -693,32 +1092,30 @@
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <td>
-                                                                                            <a href="a9ef7c19cf25e1e8424df345da55eb5a3a4722191e4874d7311f8a9a587c5464.html"> Screenplay > maintain my todo list > Clear completed todos</a>
+                                                                                            <a href="6aef99603943aad0e497a7e4a75950fabb98f17d5448f82fe62bd5c0ba0a2ead.html"> Screenplay > maintain my todo list > Clear completed todo items</a>
                                                                                     </td>
                                                                                     <td>2</td>
-                                                                                    <td>2</td>
-                                                                                    <td>100%</td>
-                                                                                    <td>
-                                                                                            <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
-                                                                                    </td>
-                                                                                    <td>
-                                                                                        <div class="progress">
-                                                                                                <div class="progress-bar"
-                                                                                                     role="progressbar"
-                                                                                                     style="width: 100%; background-color: #b0cf73"
-                                                                                                     aria-valuenow="2"
-                                                                                                     title="100% success"
-                                                                                                     aria-valuemin="0"
-                                                                                                     aria-valuemax="100">
-                                                                                                </div>
-                                                                                        </div>
-                                                                                    </td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td>
-                                                                                            <a href="a7266d2706da755e292bb1113dbc32c9397ecbf22b7d4be5860e55d4fc3a9fba.html"> Screenplay > maintain my todo list > Deleting todos</a>
-                                                                                    </td>
-                                                                                    <td>2</td>
+                                                                                    <td>James starts with a todo list containing Walk the dog, Put out the garbage
+James opens the home.page page
+James adds the todo items called: [Walk the dog, Put out the garbage]
+James adds a todo item called: Walk the dog
+James enters 'Walk the dog' then hits [RETURN] into 'What needs to be done?' field
+James adds a todo item called: Put out the garbage
+James enters 'Put out the garbage' then hits [RETURN] into 'What needs to be done?' field
+James completes the item called Walk the dog
+James clicks on the complete item tick box
+James clears all the completed items
+James clicks on Clear completed link
+Then the items displayed should be iterable containing ['Put out the garbage']
+James starts with a todo list containing Walk the dog, Put out the garbage
+James opens the home.page page
+James adds the todo items called: [Walk the dog, Put out the garbage]
+James adds a todo item called: Walk the dog
+James enters 'Walk the dog' then hits [RETURN] into 'What needs to be done?' field
+James adds a todo item called: Put out the garbage
+James enters 'Put out the garbage' then hits [RETURN] into 'What needs to be done?' field
+Then the 'Clear Completed' option should be (Unavailable)
+</td>
                                                                                     <td>2</td>
                                                                                     <td>100%</td>
                                                                                     <td>
@@ -739,9 +1136,124 @@
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <td>
-                                                                                            <a href="c93dcbddcae36438f6869cbb0f1dd7ae0c4832d5a4a64d6386c69a785ef3c009.html"> Screenplay > maintain my todo list > Filtering todos</a>
+                                                                                            <a href="6aab44069ea31287a0d497482f8b392c3ce96625a52c3abe3aa1fc7c8c015341.html"> Screenplay > maintain my todo list > Deleting todo items</a>
                                                                                     </td>
-                                                                                    <td>5</td>
+                                                                                    <td>2</td>
+                                                                                    <td>James starts with a todo list containing Walk the dog, Put out the garbage
+James opens the home.page page
+James adds the todo items called: [Walk the dog, Put out the garbage]
+James adds a todo item called: Walk the dog
+James enters 'Walk the dog' then hits [RETURN] into 'What needs to be done?' field
+James adds a todo item called: Put out the garbage
+James enters 'Put out the garbage' then hits [RETURN] into 'What needs to be done?' field
+James deletes the item Walk the dog
+James clicks on the delete item button
+Then the number of items left should be (1)
+James starts with a todo list containing Walk the dog, Put out the garbage
+James opens the home.page page
+James adds the todo items called: [Walk the dog, Put out the garbage]
+James adds a todo item called: Walk the dog
+James enters 'Walk the dog' then hits [RETURN] into 'What needs to be done?' field
+James adds a todo item called: Put out the garbage
+James enters 'Put out the garbage' then hits [RETURN] into 'What needs to be done?' field
+James deletes the item Walk the dog
+James clicks on the delete item button
+Then the items displayed should be iterable containing ['Put out the garbage']
+</td>
+                                                                                    <td>2</td>
+                                                                                    <td>100%</td>
+                                                                                    <td>
+                                                                                            <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="progress">
+                                                                                                <div class="progress-bar"
+                                                                                                     role="progressbar"
+                                                                                                     style="width: 100%; background-color: #b0cf73"
+                                                                                                     aria-valuenow="2"
+                                                                                                     title="100% success"
+                                                                                                     aria-valuemin="0"
+                                                                                                     aria-valuemax="100">
+                                                                                                </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                            <a href="b32d78e5a653b3255057728550bcc4eb3254905c5358e9a8c84ca3ca2a547ca7.html"> Screenplay > maintain my todo list > Filtering todo items</a>
+                                                                                    </td>
+                                                                                    <td>3</td>
+                                                                                    <td>James starts with a todo list containing Walk the dog, Put out the garbage
+James opens the home.page page
+James adds the todo items called: [Walk the dog, Put out the garbage]
+James adds a todo item called: Walk the dog
+James enters 'Walk the dog' then hits [RETURN] into 'What needs to be done?' field
+James adds a todo item called: Put out the garbage
+James enters 'Put out the garbage' then hits [RETURN] into 'What needs to be done?' field
+James completes the item called Walk the dog
+James clicks on the complete item tick box
+James filters items by Completed
+James clicks on filter by Completed
+Then the items displayed should be iterable containing ['Walk the dog']
+Then the items displayed should be not iterable containing ['Put out the garbage']
+Then the current filter should be (Completed)
+James starts with a todo list containing Walk the dog, Put out the garbage
+James opens the home.page page
+James adds the todo items called: [Walk the dog, Put out the garbage]
+James adds a todo item called: Walk the dog
+James enters 'Walk the dog' then hits [RETURN] into 'What needs to be done?' field
+James adds a todo item called: Put out the garbage
+James enters 'Put out the garbage' then hits [RETURN] into 'What needs to be done?' field
+James completes the item called Walk the dog
+James clicks on the complete item tick box
+James filters items by Active
+James clicks on filter by Active
+Then the items displayed should be iterable containing ['Put out the garbage']
+Then the items displayed should be not iterable containing ['Walk the dog']
+Then the current filter should be (Active)
+Should be able to view various todo combinations[1] Walk the dog, Put out the garbage, All, [Walk the dog, Put out the garbage]
+James starts with a todo list containing Walk the dog, Put out the garbage
+James opens the home.page page
+James adds the todo items called: [Walk the dog, Put out the garbage]
+James adds a todo item called: Walk the dog
+James enters 'Walk the dog' then hits [RETURN] into 'What needs to be done?' field
+James adds a todo item called: Put out the garbage
+James enters 'Put out the garbage' then hits [RETURN] into 'What needs to be done?' field
+James completes the item called Walk the dog
+James clicks on the complete item tick box
+James filters items by All
+James clicks on filter by All
+Then the items displayed should be iterable containing ['Walk the dog', 'Put out the garbage']
+Then the current filter should be (All)
+Should be able to view various todo combinations[2] Walk the dog, Put out the garbage, Active, [Put out the garbage]
+James starts with a todo list containing Walk the dog, Put out the garbage
+James opens the home.page page
+James adds the todo items called: [Walk the dog, Put out the garbage]
+James adds a todo item called: Walk the dog
+James enters 'Walk the dog' then hits [RETURN] into 'What needs to be done?' field
+James adds a todo item called: Put out the garbage
+James enters 'Put out the garbage' then hits [RETURN] into 'What needs to be done?' field
+James completes the item called Walk the dog
+James clicks on the complete item tick box
+James filters items by Active
+James clicks on filter by Active
+Then the items displayed should be iterable containing ['Put out the garbage']
+Then the current filter should be (Active)
+Should be able to view various todo combinations[3] Walk the dog, Put out the garbage, Completed, [Walk the dog]
+James starts with a todo list containing Walk the dog, Put out the garbage
+James opens the home.page page
+James adds the todo items called: [Walk the dog, Put out the garbage]
+James adds a todo item called: Walk the dog
+James enters 'Walk the dog' then hits [RETURN] into 'What needs to be done?' field
+James adds a todo item called: Put out the garbage
+James enters 'Put out the garbage' then hits [RETURN] into 'What needs to be done?' field
+James completes the item called Walk the dog
+James clicks on the complete item tick box
+James filters items by Completed
+James clicks on filter by Completed
+Then the items displayed should be iterable containing ['Walk the dog']
+Then the current filter should be (Completed)
+</td>
                                                                                     <td>5</td>
                                                                                     <td>100%</td>
                                                                                     <td>
@@ -762,9 +1274,29 @@
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <td>
-                                                                                            <a href="8a2528df3074e8697e4e80fbebc7b478d669cb9fe8e8e5fbc501118d3d5b5011.html"> Screenplay > maintain my todo list > Todos belong to a user</a>
+                                                                                            <a href="68ea1a643ecdc5bfdc0ca0c7619106f6b16fb392e8056c604e4051f198960117.html"> Screenplay > maintain my todo list > Handling todos belonging to several users</a>
                                                                                     </td>
                                                                                     <td>1</td>
+                                                                                    <td>James starts with a todo list containing Walk the dog, Put out the garbage
+James opens the home.page page
+James adds the todo items called: [Walk the dog, Put out the garbage]
+James adds a todo item called: Walk the dog
+James enters 'Walk the dog' then hits [RETURN] into 'What needs to be done?' field
+James adds a todo item called: Put out the garbage
+James enters 'Put out the garbage' then hits [RETURN] into 'What needs to be done?' field
+Jane starts with a todo list containing Walk the dog, Feed the cat
+Jane opens the home.page page
+Jane adds the todo items called: [Walk the dog, Feed the cat]
+Jane adds a todo item called: Walk the dog
+Jane enters 'Walk the dog' then hits [RETURN] into 'What needs to be done?' field
+Jane adds a todo item called: Feed the cat
+Jane enters 'Feed the cat' then hits [RETURN] into 'What needs to be done?' field
+James completes the item called Walk the dog
+James clicks on the complete item tick box
+James clears all the completed items
+James clicks on Clear completed link
+Then the items displayed should be iterable containing ['Walk the dog', 'Feed the cat']
+</td>
                                                                                     <td>1</td>
                                                                                     <td>100%</td>
                                                                                     <td>
@@ -788,6 +1320,22 @@
                                                                                             <a href="34fb289e4cea690ab1e2d6f4edbb412cb21a79ccc5c713af4d74db4d5851fc24.html"> Screenplay > record todos > Add new todos</a>
                                                                                     </td>
                                                                                     <td>2</td>
+                                                                                    <td>James starts with a todo list containing Walk the dog, Put out the garbage
+James opens the home.page page
+James adds the todo items called: [Walk the dog, Put out the garbage]
+James adds a todo item called: Walk the dog
+James enters 'Walk the dog' then hits [RETURN] into 'What needs to be done?' field
+James adds a todo item called: Put out the garbage
+James enters 'Put out the garbage' then hits [RETURN] into 'What needs to be done?' field
+James adds a todo item called: Buy some milk
+James enters 'Buy some milk' then hits [RETURN] into 'What needs to be done?' field
+Then the items displayed should be (a collection containing 'Walk the dog' and a collection containing 'Put out the garbage' and a collection containing 'Buy some milk')
+James starts with an empty todo list
+James opens the home.page page
+James adds a todo item called: Buy some milk
+James enters 'Buy some milk' then hits [RETURN] into 'What needs to be done?' field
+Then the items displayed should be a collection containing 'Buy some milk'
+</td>
                                                                                     <td>2</td>
                                                                                     <td>100%</td>
                                                                                     <td>
@@ -826,7 +1374,7 @@
                                     </a>
                                     <a href="1a067281f08658ac6c668d1f525eeada9cc5ed39ad7a4d652c30b2778694a272.html">
                                     <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
-                                        <i class="bi bi-tag-fill"></i> Filtering&nbsp;&nbsp;&nbsp;6
+                                        <i class="bi bi-tag-fill"></i> Filtering&nbsp;&nbsp;&nbsp;3
                                     </span>
                                     </a>
                                     <a href="d0e3033e1d4fd450bad910c731185f5c272a3350c68ca7cf2b9537e0aceae6af.html">
@@ -837,6 +1385,11 @@
                                     <a href="028fb69bf25996e445f66d6323cf7c1d294bfbbb15ca870736473bd3facac897.html">
                                     <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
                                         <i class="bi bi-tag-fill"></i> Deleting&nbsp;&nbsp;&nbsp;2
+                                    </span>
+                                    </a>
+                                    <a href="2cd01b32c760219da9b91861180157b914de4b5670a97fe9eeeca8e63aa4e2ab.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Smoke-Test&nbsp;&nbsp;&nbsp;5
                                     </span>
                                     </a>
                                     <a href="08fe31b4cedcca88014566e2926c79ff53b30818f68b6c102890ece9afcee9b3.html">
@@ -851,7 +1404,7 @@
                                     </a>
                                     <a href="980553ab65ac3a80cb226527d564bcf09dfb50e9d5c6245f24578a314fb4b271.html">
                                     <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
-                                        <i class="bi bi-tag-fill"></i> Cucumber&nbsp;&nbsp;&nbsp;18
+                                        <i class="bi bi-tag-fill"></i> Cucumber&nbsp;&nbsp;&nbsp;12
                                     </span>
                                     </a>
                             </div>
@@ -863,7 +1416,7 @@
                             <div>
                                     <a href="46b54d9084ba9783130da16408afb27a4e4620f6bd966e731510c7395b9ddf5c.html">
                                     <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
-                                        <i class="bi bi-tag-fill"></i> Chrome, Linux&nbsp;&nbsp;&nbsp;54
+                                        <i class="bi bi-tag-fill"></i> Chrome, Linux&nbsp;&nbsp;&nbsp;51
                                     </span>
                                     </a>
                             </div>
@@ -886,22 +1439,22 @@
                     <td>
                         <i class="bi bi-card-checklist"></i> Number of Scenarios
                     </td>
-                    <td>48</td>
+                    <td>45</td>
                     <td>
                         <i class="bi bi-stopwatch"></i> Total
                         Duration
                     </td>
-                    <td>56s</td>
+                    <td>31s</td>
                 </tr>
                 <tr scope="row">
                     <td>
                         <i class="bi bi-caret-right"></i> Total Number of Test Cases
                     </td>
-                    <td>54</td>
+                    <td>51</td>
                     <td>
                         <i class="bi bi-trophy"></i> Fastest Test
                     </td>
-                    <td>1s</td>
+                    <td>2s</td>
                 </tr>
                 <tr scope="row">
                     <td>
@@ -912,30 +1465,30 @@
                         <i class="bi bi-skip-start"></i> Slowest
                         Test
                     </td>
-                    <td>35s</td>
+                    <td>10s</td>
                 </tr>
                 <tr scope="row">
                     <td>
                         <i class="bi bi-flag-fill"></i> Tests Started
                     </td>
-                    <td>Mar 06, 2024 07:11:33</td>
+                    <td>May 23, 2024 08:43:43</td>
                     <td>
                         <i class="bi bi-stopwatch"></i> Average
                         Execution Time
                     </td>
-                    <td>8s</td>
+                    <td>4s</td>
                 </tr>
                 <tr scope="row">
                     <td>
                         <i class="bi bi-stop-circle"></i> Tests
                         Finished
                     </td>
-                    <td>Mar 06, 2024 07:12:30</td>
+                    <td>May 23, 2024 08:44:14</td>
                     <td>
                         <i class="bi bi-stopwatch-fill"></i> Total
                         Execution Time
                     </td>
-                    <td> 6m 30s</td>
+                    <td> 3m 25s</td>
                 </tr>
                 </tbody>
             </table>
@@ -944,14 +1497,14 @@
 
                                                         <h3><i class="bi bi-gear"></i> Automated Scenarios</h3>
 
-                                                            <table class="scenario-result-table table"
-                                                                   id="scenario-results">
+                                                            <table class="scenario-result-table table" id="scenario-results" style="width:100%">
                                                                 <thead>
                                                                 <tr>
                                                                     <th>feature</th>
                                                                     <th class="test-name-column">Scenario</th>
                                                                     <th>Context</th>
                                                                     <th>Steps</th>
+                                                                    <th>StepsText</th>
                                                                     <th>Started</th>
                                                                     <th>Total Duration</th>
                                                                     <th>Result</th>
@@ -962,14 +1515,19 @@
                                                                         <td>
                                                                                 <a href="675a2fbd7e926dc4386404460dfed5d64f7e56a3c0206e92b287e893ea3ef9b1.html">Completing todos</a>
                                                                         </td>
-                                                                        <td data-order="The todo count should keep track of how many todos remain">
-                                                                                    <a href="8c7e215e9f3a1f26e37753938a53a650afbf3e48b25c4329026c066c24790008.html">The todo count should keep track of how many todos remain</a>
+                                                                        <td data-order="When a task is completed it remains in the main list">
+                                                                                    <a href="6fac2b2fe3ce09b39e434c7d0284a66035893cf66c966e8f377324f67f87016b.html">When a task is completed it remains in the main list</a>
                                                                         </td>
                                                                         <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
                                                                         </td>
                                                                         <td>4</td>
-                                                                        <td data-order="1709709093">07:11:33</td>
-                                                                        <td>32s 717ms</td>
+                                                                        <td>Given Jane has a todo list containing Buy some milk, Walk the dog
+When she completes the task called "Walk the dog"
+Then her todo list should contain Buy some milk, Walk the dog
+But the "Walk the dog" task should be shown as Completed
+</td>
+                                                                        <td data-order="1716453823">08:43:43</td>
+                                                                        <td>9s 991ms</td>
                                                                         <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
                                                                                     style="display:none">SUCCESS</span>
                                                                         </td>
@@ -978,14 +1536,19 @@
                                                                         <td>
                                                                                 <a href="675a2fbd7e926dc4386404460dfed5d64f7e56a3c0206e92b287e893ea3ef9b1.html">Completing todos</a>
                                                                         </td>
-                                                                        <td data-order="When a task is completed it remains in the main list">
-                                                                                    <a href="6fac2b2fe3ce09b39e434c7d0284a66035893cf66c966e8f377324f67f87016b.html">When a task is completed it remains in the main list</a>
+                                                                        <td data-order="The todo count should keep track of how many todos remain">
+                                                                                    <a href="8c7e215e9f3a1f26e37753938a53a650afbf3e48b25c4329026c066c24790008.html">The todo count should keep track of how many todos remain</a>
                                                                         </td>
                                                                         <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
                                                                         </td>
                                                                         <td>4</td>
-                                                                        <td data-order="1709709093">07:11:33</td>
-                                                                        <td>32s 396ms</td>
+                                                                        <td>Given Sophie has a todo list containing Buy some milk, Walk the dog
+Then her remaining todo count should be 2
+When she completes the task called "Walk the dog"
+Then her remaining todo count should be 1
+</td>
+                                                                        <td data-order="1716453823">08:43:43</td>
+                                                                        <td>7s 401ms</td>
                                                                         <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
                                                                                     style="display:none">SUCCESS</span>
                                                                         </td>
@@ -1000,8 +1563,33 @@
                                                                         <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
                                                                         </td>
                                                                         <td>4</td>
-                                                                        <td data-order="1709709093">07:11:33</td>
-                                                                        <td>32s 234ms</td>
+                                                                        <td>Given James has a todo list containing Buy some milk, Walk the dog
+When he completes the task called "Walk the dog"
+And he filters her list to show only Completed tasks
+Then her todo list should contain Walk the dog
+</td>
+                                                                        <td data-order="1716453823">08:43:43</td>
+                                                                        <td>9s 501ms</td>
+                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                    style="display:none">SUCCESS</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="scenario-result SUCCESS">
+                                                                        <td>
+                                                                                <a href="675a2fbd7e926dc4386404460dfed5d64f7e56a3c0206e92b287e893ea3ef9b1.html">Completing todos</a>
+                                                                        </td>
+                                                                        <td data-order="The list of completed items should be empty if nothing has been completed">
+                                                                                    <a href="11e124e0fb7eaee2c3fb4419e893bde4c7776142f75acb30e9849fe1e73469bc.html">The list of completed items should be empty if nothing has been completed</a>
+                                                                        </td>
+                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
+                                                                        </td>
+                                                                        <td>3</td>
+                                                                        <td>Given Jill has a todo list containing Buy some milk, Walk the dog
+When she filters her list to show only Completed tasks
+Then her todo list should be empty
+</td>
+                                                                        <td data-order="1716453831">08:43:51</td>
+                                                                        <td>4s 410ms</td>
                                                                         <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
                                                                                     style="display:none">SUCCESS</span>
                                                                         </td>
@@ -1021,24 +1609,12 @@
                                                                         <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
                                                                         </td>
                                                                         <td>3</td>
-                                                                        <td data-order="1709709126">07:12:06</td>
-                                                                        <td>3s 317ms</td>
-                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
-                                                                                    style="display:none">SUCCESS</span>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="scenario-result SUCCESS">
-                                                                        <td>
-                                                                                <a href="675a2fbd7e926dc4386404460dfed5d64f7e56a3c0206e92b287e893ea3ef9b1.html">Completing todos</a>
-                                                                        </td>
-                                                                        <td data-order="The list of completed items should be empty if nothing has been completed">
-                                                                                    <a href="11e124e0fb7eaee2c3fb4419e893bde4c7776142f75acb30e9849fe1e73469bc.html">The list of completed items should be empty if nothing has been completed</a>
-                                                                        </td>
-                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
-                                                                        </td>
-                                                                        <td>3</td>
-                                                                        <td data-order="1709709126">07:12:06</td>
-                                                                        <td>5s 119ms</td>
+                                                                        <td>Given Sarah has a todo list containing <Initial Tasks>
+When she completes the task called "Walk the dog"
+Then the "<Task>" task should be shown as <Final Status>
+</td>
+                                                                        <td data-order="1716453832">08:43:52</td>
+                                                                        <td>3s 010ms</td>
                                                                         <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
                                                                                     style="display:none">SUCCESS</span>
                                                                         </td>
@@ -1053,8 +1629,13 @@
                                                                         <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
                                                                         </td>
                                                                         <td>4</td>
-                                                                        <td data-order="1709709093">07:11:33</td>
-                                                                        <td>35s 229ms</td>
+                                                                        <td>Given Jane has a todo list containing Buy some milk, Walk the dog
+When she deletes the task called 'Walk the dog'
+And she deletes the task called 'Buy some milk'
+Then her todo list should be empty
+</td>
+                                                                        <td data-order="1716453823">08:43:43</td>
+                                                                        <td>10s 704ms</td>
                                                                         <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
                                                                                     style="display:none">SUCCESS</span>
                                                                         </td>
@@ -1069,29 +1650,12 @@
                                                                         <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
                                                                         </td>
                                                                         <td>3</td>
-                                                                        <td data-order="1709709123">07:12:03</td>
-                                                                        <td>4s 319ms</td>
-                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
-                                                                                    style="display:none">SUCCESS</span>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="scenario-result SUCCESS">
-                                                                        <td>
-                                                                                <a href="833fa07d5e0687f05a9f09429aa4c51e3e714bb9d238fab46a90d9857eba871a.html">Filtering other todos</a>
-                                                                        </td>
-                                                                        <td data-order="Filtering items by status">
-                                                                            <i class="bi bi-table"
-                                                                               title="Data Driven Scenario"> <a
-                                                                                        href="6450a25eab86d072df3180f999c4d98ed24533014a9dc75a5fb774555c9c9125.html">Filtering items by status</a>
-                                                                                <br/>
-                                                                                    <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> 3 passing test cases
-                                                                                    <br/>
-                                                                        </td>
-                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
-                                                                        </td>
-                                                                        <td>4</td>
-                                                                        <td data-order="1709709093">07:11:33</td>
-                                                                        <td>30s 608ms</td>
+                                                                        <td>Given Jane has a todo list containing Buy some milk, Walk the dog
+When she deletes the task called 'Walk the dog'
+Then her todo list should contain Buy some milk
+</td>
+                                                                        <td data-order="1716453830">08:43:50</td>
+                                                                        <td>3s 980ms</td>
                                                                         <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
                                                                                     style="display:none">SUCCESS</span>
                                                                         </td>
@@ -1100,10 +1664,10 @@
                                                                         <td>
                                                                                 <a href="7077e374b487fe487d82eab3224c4a716cfa62ebc84bcc58828d7a6f35471354.html">Filtering todos</a>
                                                                         </td>
-                                                                        <td data-order="Viewing the items by status">
+                                                                        <td data-order="Viewing the items by status filter">
                                                                             <i class="bi bi-table"
                                                                                title="Data Driven Scenario"> <a
-                                                                                        href="8872589249dc2cd41e57fca8dcdb079a0fb565d09b8fa891261ec6b962945fbf.html">Viewing the items by status</a>
+                                                                                        href="1f47d2b75ca29c9991a12f194bc68b3e5fbf2f9c5cff4adb6729ce08eddd65ba.html">Viewing the items by status filter</a>
                                                                                 <br/>
                                                                                     <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> 3 passing test cases
                                                                                     <br/>
@@ -1111,8 +1675,13 @@
                                                                         <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
                                                                         </td>
                                                                         <td>4</td>
-                                                                        <td data-order="1709709093">07:11:33</td>
-                                                                        <td>34s 419ms</td>
+                                                                        <td>Given Jane has a todo list containing <tasks>
+And she completes the task called "<completed>"
+When she filters her list to show only <filter> tasks
+Then her todo list should contain <expected>
+</td>
+                                                                        <td data-order="1716453823">08:43:43</td>
+                                                                        <td>9s 189ms</td>
                                                                         <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
                                                                                     style="display:none">SUCCESS</span>
                                                                         </td>
@@ -1127,24 +1696,12 @@
                                                                         <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
                                                                         </td>
                                                                         <td>3</td>
-                                                                        <td data-order="1709709093">07:11:33</td>
-                                                                        <td>28s 498ms</td>
-                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
-                                                                                    style="display:none">SUCCESS</span>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="scenario-result SUCCESS">
-                                                                        <td>
-                                                                                <a href="5655a252d959d384f717ce1515a9e368b8f57bcddb623d457e89b64c333e4fda.html">Add new todos</a>
-                                                                        </td>
-                                                                        <td data-order="Adding items to several peoples lists">
-                                                                                    <a href="53de6e2fde680d7b272d57292fe0469ebcea7dec18a95c0cac41a41329424356.html">Adding items to several peoples lists</a>
-                                                                        </td>
-                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
-                                                                        </td>
-                                                                        <td>5</td>
-                                                                        <td data-order="1709709093">07:11:33</td>
-                                                                        <td>33s 317ms</td>
+                                                                        <td>Given that James has an empty todo list
+When he adds 'Buy some milk' to his list
+Then 'Buy some milk' should be recorded in his list
+</td>
+                                                                        <td data-order="1716453823">08:43:43</td>
+                                                                        <td>6s 605ms</td>
                                                                         <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
                                                                                     style="display:none">SUCCESS</span>
                                                                         </td>
@@ -1159,8 +1716,34 @@
                                                                         <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
                                                                         </td>
                                                                         <td>3</td>
-                                                                        <td data-order="1709709093">07:11:33</td>
-                                                                        <td>31s 140ms</td>
+                                                                        <td>Given Jane has a todo list containing Buy some milk, Walk the dog
+When she adds 'Buy some cereal' to her list
+Then her todo list should contain Buy some milk, Walk the dog, Buy some cereal
+</td>
+                                                                        <td data-order="1716453823">08:43:43</td>
+                                                                        <td>8s 588ms</td>
+                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                    style="display:none">SUCCESS</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="scenario-result SUCCESS">
+                                                                        <td>
+                                                                                <a href="5655a252d959d384f717ce1515a9e368b8f57bcddb623d457e89b64c333e4fda.html">Add new todos</a>
+                                                                        </td>
+                                                                        <td data-order="Adding items to several peoples lists">
+                                                                                    <a href="53de6e2fde680d7b272d57292fe0469ebcea7dec18a95c0cac41a41329424356.html">Adding items to several peoples lists</a>
+                                                                        </td>
+                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
+                                                                        </td>
+                                                                        <td>5</td>
+                                                                        <td>Given James has a todo list containing Buy some milk, Walk the dog
+And Jill has a todo list containing Buy some milk, Buy some cheese
+When she adds 'Buy some cereal' to her list
+Then Jill's todo list should contain Buy some milk, Buy some cheese, Buy some cereal
+And James's todo list should contain Buy some milk, Walk the dog
+</td>
+                                                                        <td data-order="1716453823">08:43:43</td>
+                                                                        <td>10s 388ms</td>
                                                                         <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
                                                                                     style="display:none">SUCCESS</span>
                                                                         </td>
@@ -1175,8 +1758,11 @@
                                                                         <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
                                                                         </td>
                                                                         <td>2</td>
-                                                                        <td data-order="1709709132">07:12:12</td>
-                                                                        <td>4s 602ms</td>
+                                                                        <td>Starts with an empty todo list
+Should see that the placeholder text says: What needs to be done?
+</td>
+                                                                        <td data-order="1716453836">08:43:56</td>
+                                                                        <td>4s 186ms</td>
                                                                         <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
                                                                                     style="display:none">SUCCESS</span>
                                                                         </td>
@@ -1191,8 +1777,12 @@
                                                                         <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
                                                                         </td>
                                                                         <td>3</td>
-                                                                        <td data-order="1709709136">07:12:16</td>
-                                                                        <td>3s 957ms</td>
+                                                                        <td>Starts with an empty todo list
+Should see the correct website title
+Should see the correct application heading
+</td>
+                                                                        <td data-order="1716453840">08:44:00</td>
+                                                                        <td>4s 242ms</td>
                                                                         <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
                                                                                     style="display:none">SUCCESS</span>
                                                                         </td>
@@ -1207,8 +1797,13 @@
                                                                         <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
                                                                         </td>
                                                                         <td>4</td>
-                                                                        <td data-order="1709709137">07:12:17</td>
-                                                                        <td>2s 195ms</td>
+                                                                        <td>Starts with a todo list containing: {Walk the dog,Put out the garbage}
+Completes: Walk the dog
+Should see that that following item is marked as complete: Walk the dog
+Should see that the number of items left is: 1
+</td>
+                                                                        <td data-order="1716453843">08:44:03</td>
+                                                                        <td>3s 312ms</td>
                                                                         <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
                                                                                     style="display:none">SUCCESS</span>
                                                                         </td>
@@ -1223,8 +1818,12 @@
                                                                         <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
                                                                         </td>
                                                                         <td>3</td>
-                                                                        <td data-order="1709709137">07:12:17</td>
-                                                                        <td>2s 555ms</td>
+                                                                        <td>Starts with a todo list containing: {Walk the dog,Put out the garbage}
+Toggles all items
+Should see that that following items are marked as complete: {Walk the dog,Put out the garbage}
+</td>
+                                                                        <td data-order="1716453842">08:44:02</td>
+                                                                        <td>3s 421ms</td>
                                                                         <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
                                                                                     style="display:none">SUCCESS</span>
                                                                         </td>
@@ -1239,8 +1838,13 @@
                                                                         <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
                                                                         </td>
                                                                         <td>4</td>
-                                                                        <td data-order="1709709138">07:12:18</td>
-                                                                        <td>2s 646ms</td>
+                                                                        <td>Starts with a todo list containing: {Walk the dog,Put out the garbage}
+Toggles all items
+Toggles all items
+Should see that that following items are marked as active: {Walk the dog,Put out the garbage}
+</td>
+                                                                        <td data-order="1716453843">08:44:03</td>
+                                                                        <td>3s 041ms</td>
                                                                         <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
                                                                                     style="display:none">SUCCESS</span>
                                                                         </td>
@@ -1255,8 +1859,13 @@
                                                                         <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
                                                                         </td>
                                                                         <td>4</td>
-                                                                        <td data-order="1709709139">07:12:19</td>
-                                                                        <td>3s 014ms</td>
+                                                                        <td>Starts with a todo list containing: {Walk the dog,Put out the garbage}
+Toggles all items
+Toggles all items
+Should see that the number of items left is: 2
+</td>
+                                                                        <td data-order="1716453846">08:44:06</td>
+                                                                        <td>3s 211ms</td>
                                                                         <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
                                                                                     style="display:none">SUCCESS</span>
                                                                         </td>
@@ -1271,8 +1880,12 @@
                                                                         <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
                                                                         </td>
                                                                         <td>3</td>
-                                                                        <td data-order="1709709141">07:12:21</td>
-                                                                        <td>2s 598ms</td>
+                                                                        <td>Starts with a todo list containing: {Walk the dog,Put out the garbage}
+Toggles all items
+Should see that the number of items left is: 0
+</td>
+                                                                        <td data-order="1716453846">08:44:06</td>
+                                                                        <td>3s 383ms</td>
                                                                         <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
                                                                                     style="display:none">SUCCESS</span>
                                                                         </td>
@@ -1287,8 +1900,11 @@
                                                                         <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
                                                                         </td>
                                                                         <td>2</td>
-                                                                        <td data-order="1709709140">07:12:20</td>
-                                                                        <td>2s 312ms</td>
+                                                                        <td>Starts with a todo list containing: {Walk the dog,Put out the garbage}
+Should see that the clear completed items option is not visible
+</td>
+                                                                        <td data-order="1716453836">08:43:56</td>
+                                                                        <td>4s 641ms</td>
                                                                         <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
                                                                                     style="display:none">SUCCESS</span>
                                                                         </td>
@@ -1303,8 +1919,13 @@
                                                                         <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
                                                                         </td>
                                                                         <td>4</td>
-                                                                        <td data-order="1709709141">07:12:21</td>
-                                                                        <td>2s 022ms</td>
+                                                                        <td>Starts with a todo list containing: {Walk the dog,Put out the garbage}
+Completes: Walk the dog
+Clears completed items
+Should see that displayed items contain: {Put out the garbage}
+</td>
+                                                                        <td data-order="1716453841">08:44:01</td>
+                                                                        <td>3s 978ms</td>
                                                                         <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
                                                                                     style="display:none">SUCCESS</span>
                                                                         </td>
@@ -1319,8 +1940,12 @@
                                                                         <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
                                                                         </td>
                                                                         <td>3</td>
-                                                                        <td data-order="1709709139">07:12:19</td>
-                                                                        <td>2s 378ms</td>
+                                                                        <td>Starts with a todo list containing: {Walk the dog,Put out the garbage}
+Deletes: Walk the dog
+Should see that the number of items left is: 1
+</td>
+                                                                        <td data-order="1716453836">08:43:56</td>
+                                                                        <td>3s 052ms</td>
                                                                         <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
                                                                                     style="display:none">SUCCESS</span>
                                                                         </td>
@@ -1335,8 +1960,12 @@
                                                                         <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
                                                                         </td>
                                                                         <td>3</td>
-                                                                        <td data-order="1709709142">07:12:22</td>
-                                                                        <td>2s 111ms</td>
+                                                                        <td>Starts with a todo list containing: {Walk the dog,Put out the garbage}
+Deletes: Walk the dog
+Should see that displayed items contain: {Put out the garbage}
+</td>
+                                                                        <td data-order="1716453839">08:43:59</td>
+                                                                        <td>3s 121ms</td>
                                                                         <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
                                                                                     style="display:none">SUCCESS</span>
                                                                         </td>
@@ -1351,24 +1980,15 @@
                                                                         <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
                                                                         </td>
                                                                         <td>6</td>
-                                                                        <td data-order="1709709139">07:12:19</td>
-                                                                        <td>2s 393ms</td>
-                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
-                                                                                    style="display:none">SUCCESS</span>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="scenario-result SUCCESS">
-                                                                        <td>
-                                                                                <a href="490af42e89f9d05fb66e223ff737cefd7b35c5b876e506a7823388dc4c9f3dea.html">FilteringTodos</a>
-                                                                        </td>
-                                                                        <td data-order="Should be able to view both complete and incomplete todos with page objects">
-                                                                                    <a href="8296ce6d96941423e92da7663e1a01898b1f33ce15a08331bf7eb10dbf9ebdb3.html">Should be able to view both complete and incomplete todos with page objects</a>
-                                                                        </td>
-                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
-                                                                        </td>
-                                                                        <td>6</td>
-                                                                        <td data-order="1709709143">07:12:23</td>
-                                                                        <td>1s 865ms</td>
+                                                                        <td>Starts with a todo list containing: {Walk the dog,Put out the garbage}
+Completes: Walk the dog
+Filters items to show: Active
+Should see that displayed items contain: {Put out the garbage}
+Should see that displayed items do not contain: {Walk the dog}
+Should see that the currently selected filter is: Active
+</td>
+                                                                        <td data-order="1716453841">08:44:01</td>
+                                                                        <td>3s 397ms</td>
                                                                         <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
                                                                                     style="display:none">SUCCESS</span>
                                                                         </td>
@@ -1383,8 +2003,38 @@
                                                                         <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
                                                                         </td>
                                                                         <td>6</td>
-                                                                        <td data-order="1709709143">07:12:23</td>
-                                                                        <td>1s 960ms</td>
+                                                                        <td>Starts with a todo list containing: {Walk the dog,Put out the garbage}
+Completes: Walk the dog
+Filters items to show: Completed
+Should see that displayed items contain: {Walk the dog}
+Should see that displayed items do not contain: {Put out the garbage}
+Should see that the currently selected filter is: Completed
+</td>
+                                                                        <td data-order="1716453845">08:44:05</td>
+                                                                        <td>3s 941ms</td>
+                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                    style="display:none">SUCCESS</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="scenario-result SUCCESS">
+                                                                        <td>
+                                                                                <a href="490af42e89f9d05fb66e223ff737cefd7b35c5b876e506a7823388dc4c9f3dea.html">FilteringTodos</a>
+                                                                        </td>
+                                                                        <td data-order="Should be able to view both complete and incomplete todos with page objects">
+                                                                                    <a href="8296ce6d96941423e92da7663e1a01898b1f33ce15a08331bf7eb10dbf9ebdb3.html">Should be able to view both complete and incomplete todos with page objects</a>
+                                                                        </td>
+                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
+                                                                        </td>
+                                                                        <td>6</td>
+                                                                        <td>Starts with a todo list containing: {Walk the dog,Put out the garbage}
+Completes: Walk the dog
+Filters items to show: Active
+Filters items to show: All
+Should see that displayed items contain: {Walk the dog,Put out the garbage}
+Should see that the currently selected filter is: All
+</td>
+                                                                        <td data-order="1716453845">08:44:05</td>
+                                                                        <td>4s 032ms</td>
                                                                         <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
                                                                                     style="display:none">SUCCESS</span>
                                                                         </td>
@@ -1399,8 +2049,12 @@
                                                                         <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
                                                                         </td>
                                                                         <td>3</td>
-                                                                        <td data-order="1709709140">07:12:20</td>
-                                                                        <td>3s 010ms</td>
+                                                                        <td>Starts with a todo list containing: {Walk the dog,Put out the garbage}
+Adds a todo item called: Buy some milk
+Should see that displayed items contain: {Walk the dog,Put out the garbage,Buy some milk}
+</td>
+                                                                        <td data-order="1716453843">08:44:03</td>
+                                                                        <td>3s 071ms</td>
                                                                         <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
                                                                                     style="display:none">SUCCESS</span>
                                                                         </td>
@@ -1415,8 +2069,12 @@
                                                                         <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
                                                                         </td>
                                                                         <td>3</td>
-                                                                        <td data-order="1709709142">07:12:22</td>
-                                                                        <td>3s 189ms</td>
+                                                                        <td>Starts with an empty todo list
+Adds a todo item called: Buy some milk
+Should see that displayed items contain: {Buy some milk}
+</td>
+                                                                        <td data-order="1716453846">08:44:06</td>
+                                                                        <td>3s 775ms</td>
                                                                         <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
                                                                                     style="display:none">SUCCESS</span>
                                                                         </td>
@@ -1431,8 +2089,11 @@
                                                                         <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
                                                                         </td>
                                                                         <td>2</td>
-                                                                        <td data-order="1709709135">07:12:15</td>
-                                                                        <td>1s 705ms</td>
+                                                                        <td>James starts with an empty todo list
+Then the placeholder text should be 'What needs to be done?'
+</td>
+                                                                        <td data-order="1716453836">08:43:56</td>
+                                                                        <td>2s 405ms</td>
                                                                         <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
                                                                                     style="display:none">SUCCESS</span>
                                                                         </td>
@@ -1447,40 +2108,12 @@
                                                                         <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
                                                                         </td>
                                                                         <td>3</td>
-                                                                        <td data-order="1709709136">07:12:16</td>
-                                                                        <td>2s 008ms</td>
-                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
-                                                                                    style="display:none">SUCCESS</span>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="scenario-result SUCCESS">
-                                                                        <td>
-                                                                                <a href="99c417da16d797ee6e7e29174b9af433d1144e5506116f2fc76a9ca44586f925.html">CompleteATodo</a>
-                                                                        </td>
-                                                                        <td data-order="Should be able to complete a todo using imperative code">
-                                                                                    <a href="86f1052878e8a929825ab54069abb33748fd87151b4f675a47a2a673577401b3.html">Should be able to complete a todo using imperative code</a>
-                                                                        </td>
-                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
-                                                                        </td>
-                                                                        <td>0</td>
-                                                                        <td data-order="1709709131">07:12:11</td>
-                                                                        <td>2s 587ms</td>
-                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
-                                                                                    style="display:none">SUCCESS</span>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="scenario-result SUCCESS">
-                                                                        <td>
-                                                                                <a href="99c417da16d797ee6e7e29174b9af433d1144e5506116f2fc76a9ca44586f925.html">CompleteATodo</a>
-                                                                        </td>
-                                                                        <td data-order="Should be able to toggle the status of all todos">
-                                                                                    <a href="37c6bd75831af2d512f449198b5af57add9463e6ffc21b08ffeb6158ffaead17.html">Should be able to toggle the status of all todos</a>
-                                                                        </td>
-                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
-                                                                        </td>
-                                                                        <td>5</td>
-                                                                        <td data-order="1709709131">07:12:11</td>
-                                                                        <td>2s 391ms</td>
+                                                                        <td>James starts with an empty todo list
+Then application should be to display 'title' as 'TodoMVC: Angular'
+Then application should be to display 'heading' as 'Todos'
+</td>
+                                                                        <td data-order="1716453838">08:43:58</td>
+                                                                        <td>2s 233ms</td>
                                                                         <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
                                                                                     style="display:none">SUCCESS</span>
                                                                         </td>
@@ -1495,40 +2128,12 @@
                                                                         <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
                                                                         </td>
                                                                         <td>3</td>
-                                                                        <td data-order="1709709131">07:12:11</td>
-                                                                        <td>1s 631ms</td>
-                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
-                                                                                    style="display:none">SUCCESS</span>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="scenario-result SUCCESS">
-                                                                        <td>
-                                                                                <a href="99c417da16d797ee6e7e29174b9af433d1144e5506116f2fc76a9ca44586f925.html">CompleteATodo</a>
-                                                                        </td>
-                                                                        <td data-order="Should be able to complete a todo using a bdd style">
-                                                                                    <a href="987d6cc23c404106982ad05680e8ccebf429c746fe51479ec3da91346aa56ec8.html">Should be able to complete a todo using a bdd style</a>
-                                                                        </td>
-                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
-                                                                        </td>
-                                                                        <td>4</td>
-                                                                        <td data-order="1709709131">07:12:11</td>
-                                                                        <td>1s 472ms</td>
-                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
-                                                                                    style="display:none">SUCCESS</span>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="scenario-result SUCCESS">
-                                                                        <td>
-                                                                                <a href="99c417da16d797ee6e7e29174b9af433d1144e5506116f2fc76a9ca44586f925.html">CompleteATodo</a>
-                                                                        </td>
-                                                                        <td data-order="Should be able to complete a todo">
-                                                                                    <a href="61100b88bc8eb91bac4e82836862f291eda78f8d64779ab1835df19cf05241a2.html">Should be able to complete a todo</a>
-                                                                        </td>
-                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
-                                                                        </td>
-                                                                        <td>4</td>
-                                                                        <td data-order="1709709134">07:12:14</td>
-                                                                        <td>1s 486ms</td>
+                                                                        <td>James starts with a todo list containing Walk the dog, Put out the garbage
+James completes the item called Walk the dog
+Then the number of items left should be (1)
+</td>
+                                                                        <td data-order="1716453836">08:43:56</td>
+                                                                        <td>3s 808ms</td>
                                                                         <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
                                                                                     style="display:none">SUCCESS</span>
                                                                         </td>
@@ -1543,183 +2148,265 @@
                                                                         <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
                                                                         </td>
                                                                         <td>0</td>
-                                                                        <td data-order="1709709135">07:12:15</td>
-                                                                        <td>1s 816ms</td>
+                                                                        <td></td>
+                                                                        <td data-order="1716453840">08:44:00</td>
+                                                                        <td>3s 019ms</td>
                                                                         <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
                                                                                     style="display:none">SUCCESS</span>
                                                                         </td>
                                                                     </tr>
                                                                     <tr class="scenario-result SUCCESS">
                                                                         <td>
-                                                                                <a href="a9ef7c19cf25e1e8424df345da55eb5a3a4722191e4874d7311f8a9a587c5464.html">ClearCompletedTodos</a>
+                                                                                <a href="99c417da16d797ee6e7e29174b9af433d1144e5506116f2fc76a9ca44586f925.html">CompleteATodo</a>
                                                                         </td>
-                                                                        <td data-order="Should be able to clear completed todos">
-                                                                                    <a href="7a64714035277affdf77589c5e9191384cdf5cafd7f2e60214df64f8c9480c39.html">Should be able to clear completed todos</a>
+                                                                        <td data-order="Should be able to complete a todo">
+                                                                                    <a href="61100b88bc8eb91bac4e82836862f291eda78f8d64779ab1835df19cf05241a2.html">Should be able to complete a todo</a>
                                                                         </td>
                                                                         <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
                                                                         </td>
                                                                         <td>4</td>
-                                                                        <td data-order="1709709131">07:12:11</td>
-                                                                        <td>1s 763ms</td>
+                                                                        <td>James starts with a todo list containing Walk the dog, Put out the garbage
+James completes the item called Walk the dog
+James should see  that is equal to: <Completed>
+James should see the number of items left that is equal to: <1>
+</td>
+                                                                        <td data-order="1716453843">08:44:03</td>
+                                                                        <td>3s 621ms</td>
                                                                         <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
                                                                                     style="display:none">SUCCESS</span>
                                                                         </td>
                                                                     </tr>
                                                                     <tr class="scenario-result SUCCESS">
                                                                         <td>
-                                                                                <a href="a9ef7c19cf25e1e8424df345da55eb5a3a4722191e4874d7311f8a9a587c5464.html">ClearCompletedTodos</a>
+                                                                                <a href="99c417da16d797ee6e7e29174b9af433d1144e5506116f2fc76a9ca44586f925.html">CompleteATodo</a>
+                                                                        </td>
+                                                                        <td data-order="Should be able to complete a todo using imperative code">
+                                                                                    <a href="86f1052878e8a929825ab54069abb33748fd87151b4f675a47a2a673577401b3.html">Should be able to complete a todo using imperative code</a>
+                                                                        </td>
+                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
+                                                                        </td>
+                                                                        <td>0</td>
+                                                                        <td></td>
+                                                                        <td data-order="1716453846">08:44:06</td>
+                                                                        <td>3s 157ms</td>
+                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                    style="display:none">SUCCESS</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="scenario-result SUCCESS">
+                                                                        <td>
+                                                                                <a href="99c417da16d797ee6e7e29174b9af433d1144e5506116f2fc76a9ca44586f925.html">CompleteATodo</a>
+                                                                        </td>
+                                                                        <td data-order="Should be able to toggle the status of all todos">
+                                                                                    <a href="37c6bd75831af2d512f449198b5af57add9463e6ffc21b08ffeb6158ffaead17.html">Should be able to toggle the status of all todos</a>
+                                                                        </td>
+                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
+                                                                        </td>
+                                                                        <td>5</td>
+                                                                        <td>James starts with a todo list containing Walk the dog, Put out the garbage
+James toggles the status of all items
+James should see  that is equal to: <Completed>
+James should see  that is equal to: <Completed>
+James should see the number of items left that is equal to: <0>
+</td>
+                                                                        <td data-order="1716453846">08:44:06</td>
+                                                                        <td>3s 243ms</td>
+                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                    style="display:none">SUCCESS</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="scenario-result SUCCESS">
+                                                                        <td>
+                                                                                <a href="99c417da16d797ee6e7e29174b9af433d1144e5506116f2fc76a9ca44586f925.html">CompleteATodo</a>
+                                                                        </td>
+                                                                        <td data-order="Should be able to complete a todo using a bdd style">
+                                                                                    <a href="987d6cc23c404106982ad05680e8ccebf429c746fe51479ec3da91346aa56ec8.html">Should be able to complete a todo using a bdd style</a>
+                                                                        </td>
+                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
+                                                                        </td>
+                                                                        <td>4</td>
+                                                                        <td>James starts with a todo list containing Walk the dog, Put out the garbage
+James completes the item called Walk the dog
+Then The item status for 'Walk the dog' should be (Completed)
+Then the items$$ lambda$2265/0x00007f275075b5c0 should be (1)
+</td>
+                                                                        <td data-order="1716453847">08:44:07</td>
+                                                                        <td>3s 156ms</td>
+                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                    style="display:none">SUCCESS</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="scenario-result SUCCESS">
+                                                                        <td>
+                                                                                <a href="6aef99603943aad0e497a7e4a75950fabb98f17d5448f82fe62bd5c0ba0a2ead.html">ClearCompletedTodoItems</a>
+                                                                        </td>
+                                                                        <td data-order="Should be able to clear completed todos">
+                                                                                    <a href="7063222a36303dd2c9f50b7d7bea8eb0a30c97102df9b378a91c5bcd9a899fde.html">Should be able to clear completed todos</a>
+                                                                        </td>
+                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
+                                                                        </td>
+                                                                        <td>4</td>
+                                                                        <td>James starts with a todo list containing Walk the dog, Put out the garbage
+James completes the item called Walk the dog
+James clears all the completed items
+Then the items displayed should be iterable containing ['Put out the garbage']
+</td>
+                                                                        <td data-order="1716453836">08:43:56</td>
+                                                                        <td>3s 911ms</td>
+                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                    style="display:none">SUCCESS</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="scenario-result SUCCESS">
+                                                                        <td>
+                                                                                <a href="6aef99603943aad0e497a7e4a75950fabb98f17d5448f82fe62bd5c0ba0a2ead.html">ClearCompletedTodoItems</a>
                                                                         </td>
                                                                         <td data-order="Should not be able to clear completed todos if none are complete">
-                                                                                    <a href="0858c5a21b266ce78288d1128e30dcf5dccf72c9019218793742ca9b86359307.html">Should not be able to clear completed todos if none are complete</a>
+                                                                                    <a href="9d8aa2bae14c6eb895fe93a8973aa98b63c5ee600ec6990548cd3728dd5d6467.html">Should not be able to clear completed todos if none are complete</a>
                                                                         </td>
                                                                         <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
                                                                         </td>
                                                                         <td>2</td>
-                                                                        <td data-order="1709709135">07:12:15</td>
-                                                                        <td>1s 685ms</td>
+                                                                        <td>James starts with a todo list containing Walk the dog, Put out the garbage
+Then the 'Clear Completed' option should be (Unavailable)
+</td>
+                                                                        <td data-order="1716453840">08:44:00</td>
+                                                                        <td>5s 695ms</td>
                                                                         <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
                                                                                     style="display:none">SUCCESS</span>
                                                                         </td>
                                                                     </tr>
                                                                     <tr class="scenario-result SUCCESS">
                                                                         <td>
-                                                                                <a href="a7266d2706da755e292bb1113dbc32c9397ecbf22b7d4be5860e55d4fc3a9fba.html">DeletingTodos</a>
-                                                                        </td>
-                                                                        <td data-order="Should be able to delete todos">
-                                                                                    <a href="f47302c831b56033af085bf8c20447f9a0045eb13fcdcca4b9129413044da5d1.html">Should be able to delete todos</a>
-                                                                        </td>
-                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
-                                                                        </td>
-                                                                        <td>3</td>
-                                                                        <td data-order="1709709131">07:12:11</td>
-                                                                        <td>2s 551ms</td>
-                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
-                                                                                    style="display:none">SUCCESS</span>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="scenario-result SUCCESS">
-                                                                        <td>
-                                                                                <a href="a7266d2706da755e292bb1113dbc32c9397ecbf22b7d4be5860e55d4fc3a9fba.html">DeletingTodos</a>
+                                                                                <a href="6aab44069ea31287a0d497482f8b392c3ce96625a52c3abe3aa1fc7c8c015341.html">DeletingTodoItems</a>
                                                                         </td>
                                                                         <td data-order="Should see deleting a todo decreases the remaining items count">
-                                                                                    <a href="ad887e27f9393419c343de5467b6e403197eeb1e4db6171b4a0c5e4ff384974a.html">Should see deleting a todo decreases the remaining items count</a>
+                                                                                    <a href="a72ab8a0505a901d0d3b067dac6b9f2061b2e37241b511191f892c8ea1f192fe.html">Should see deleting a todo decreases the remaining items count</a>
                                                                         </td>
                                                                         <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
                                                                         </td>
                                                                         <td>3</td>
-                                                                        <td data-order="1709709131">07:12:11</td>
-                                                                        <td>2s 517ms</td>
+                                                                        <td>James starts with a todo list containing Walk the dog, Put out the garbage
+James deletes the item Walk the dog
+Then the number of items left should be (1)
+</td>
+                                                                        <td data-order="1716453836">08:43:56</td>
+                                                                        <td>3s 015ms</td>
                                                                         <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
                                                                                     style="display:none">SUCCESS</span>
                                                                         </td>
                                                                     </tr>
                                                                     <tr class="scenario-result SUCCESS">
                                                                         <td>
-                                                                                <a href="c93dcbddcae36438f6869cbb0f1dd7ae0c4832d5a4a64d6386c69a785ef3c009.html">FilteringTodos</a>
+                                                                                <a href="6aab44069ea31287a0d497482f8b392c3ce96625a52c3abe3aa1fc7c8c015341.html">DeletingTodoItems</a>
+                                                                        </td>
+                                                                        <td data-order="Should be able to delete todos">
+                                                                                    <a href="5c4c19b0cb5199333ec132d9aa474a36079b821414f3e6177d720d5a3abb0db4.html">Should be able to delete todos</a>
+                                                                        </td>
+                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
+                                                                        </td>
+                                                                        <td>3</td>
+                                                                        <td>James starts with a todo list containing Walk the dog, Put out the garbage
+James deletes the item Walk the dog
+Then the items displayed should be iterable containing ['Put out the garbage']
+</td>
+                                                                        <td data-order="1716453839">08:43:59</td>
+                                                                        <td>2s 799ms</td>
+                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                    style="display:none">SUCCESS</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="scenario-result SUCCESS">
+                                                                        <td>
+                                                                                <a href="b32d78e5a653b3255057728550bcc4eb3254905c5358e9a8c84ca3ca2a547ca7.html">FilteringTodoItems</a>
                                                                         </td>
                                                                         <td data-order="Should be able to view only completed todos">
-                                                                                    <a href="ca513ebb76c152d97447f8b8c67b36fc05587d8866e6c21369af06e730a2e85b.html">Should be able to view only completed todos</a>
+                                                                                    <a href="46e173d9bca2063b9f5839b8108689c750e6d0c3f1ba6c2ef5caac32c75a2084.html">Should be able to view only completed todos</a>
                                                                         </td>
                                                                         <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
                                                                         </td>
                                                                         <td>6</td>
-                                                                        <td data-order="1709709131">07:12:11</td>
-                                                                        <td>1s 645ms</td>
+                                                                        <td>James starts with a todo list containing Walk the dog, Put out the garbage
+James completes the item called Walk the dog
+James filters items by Completed
+Then the items displayed should be iterable containing ['Walk the dog']
+Then the items displayed should be not iterable containing ['Put out the garbage']
+Then the current filter should be (Completed)
+</td>
+                                                                        <td data-order="1716453836">08:43:56</td>
+                                                                        <td>3s 526ms</td>
                                                                         <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
                                                                                     style="display:none">SUCCESS</span>
                                                                         </td>
                                                                     </tr>
                                                                     <tr class="scenario-result SUCCESS">
                                                                         <td>
-                                                                                <a href="c93dcbddcae36438f6869cbb0f1dd7ae0c4832d5a4a64d6386c69a785ef3c009.html">FilteringTodos</a>
+                                                                                <a href="b32d78e5a653b3255057728550bcc4eb3254905c5358e9a8c84ca3ca2a547ca7.html">FilteringTodoItems</a>
                                                                         </td>
                                                                         <td data-order="Should be able to view only incomplete todos">
-                                                                                    <a href="bdd06d26433dd9d135ae7dbdfd1ca5933dfd1f42e1872af4f69f43d245941188.html">Should be able to view only incomplete todos</a>
+                                                                                    <a href="c1fcce3a1b4d1c28cad1563037bb74b3327392e3b6d5cf2551a7a2ddd59e8e82.html">Should be able to view only incomplete todos</a>
                                                                         </td>
                                                                         <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
                                                                         </td>
                                                                         <td>6</td>
-                                                                        <td data-order="1709709135">07:12:15</td>
-                                                                        <td>1s 918ms</td>
+                                                                        <td>James starts with a todo list containing Walk the dog, Put out the garbage
+James completes the item called Walk the dog
+James filters items by Active
+Then the items displayed should be iterable containing ['Put out the garbage']
+Then the items displayed should be not iterable containing ['Walk the dog']
+Then the current filter should be (Active)
+</td>
+                                                                        <td data-order="1716453839">08:43:59</td>
+                                                                        <td>3s 618ms</td>
                                                                         <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
                                                                                     style="display:none">SUCCESS</span>
                                                                         </td>
                                                                     </tr>
                                                                     <tr class="scenario-result SUCCESS">
                                                                         <td>
-                                                                                <a href="c93dcbddcae36438f6869cbb0f1dd7ae0c4832d5a4a64d6386c69a785ef3c009.html">FilteringTodos</a>
+                                                                                <a href="b32d78e5a653b3255057728550bcc4eb3254905c5358e9a8c84ca3ca2a547ca7.html">FilteringTodoItems</a>
                                                                         </td>
-                                                                        <td data-order="[1] Walk the dog, Put out the garbage, All, [Walk the dog, Put out the garbage]">
+                                                                        <td data-order="Foo bar">
                                                                             <i class="bi bi-table"
                                                                                title="Data Driven Scenario"> <a
-                                                                                        href="bd1371608422c2427630b03b6b780c966d267da4b9ae5a5947e991f14ecd1705.html">[1] Walk the dog, Put out the garbage, All, [Walk the dog, Put out the garbage]</a>
+                                                                                        href="af39ebf432c0697976a6ee9f57d961ab6b2e3dab0ceb0517c4452ed2b07d533e.html">Foo bar</a>
                                                                                 <br/>
-                                                                                    <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> 1 passing test case
+                                                                                    <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> 3 passing test cases
                                                                                     <br/>
                                                                         </td>
                                                                         <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
                                                                         </td>
                                                                         <td>5</td>
-                                                                        <td data-order="1709709145">07:12:25</td>
-                                                                        <td>4s 194ms</td>
+                                                                        <td>James starts with a todo list containing <arg0>, <arg1>
+James completes the item called <arg0>
+James filters items by <arg2>
+Then the items displayed should be iterable containing ['<arg0>', '<arg1>']
+Then the current filter should be (<arg2>)
+</td>
+                                                                        <td data-order="1716453850">08:44:10</td>
+                                                                        <td>3s 404ms</td>
                                                                         <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
                                                                                     style="display:none">SUCCESS</span>
                                                                         </td>
                                                                     </tr>
                                                                     <tr class="scenario-result SUCCESS">
                                                                         <td>
-                                                                                <a href="c93dcbddcae36438f6869cbb0f1dd7ae0c4832d5a4a64d6386c69a785ef3c009.html">FilteringTodos</a>
-                                                                        </td>
-                                                                        <td data-order="[2] Walk the dog, Put out the garbage, Active, [Put out the garbage]">
-                                                                            <i class="bi bi-table"
-                                                                               title="Data Driven Scenario"> <a
-                                                                                        href="6148ddd942d90da0a7ebcb11168e553791fdf9022a5953396a495c3eac7acc14.html">[2] Walk the dog, Put out the garbage, Active, [Put out the garbage]</a>
-                                                                                <br/>
-                                                                                    <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> 1 passing test case
-                                                                                    <br/>
-                                                                        </td>
-                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
-                                                                        </td>
-                                                                        <td>5</td>
-                                                                        <td data-order="1709709145">07:12:25</td>
-                                                                        <td>3s 221ms</td>
-                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
-                                                                                    style="display:none">SUCCESS</span>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="scenario-result SUCCESS">
-                                                                        <td>
-                                                                                <a href="c93dcbddcae36438f6869cbb0f1dd7ae0c4832d5a4a64d6386c69a785ef3c009.html">FilteringTodos</a>
-                                                                        </td>
-                                                                        <td data-order="[3] Walk the dog, Put out the garbage, Completed, [Walk the dog]">
-                                                                            <i class="bi bi-table"
-                                                                               title="Data Driven Scenario"> <a
-                                                                                        href="facf39c3d486765aa128edfb9f60ef340b400addc10771c80730dd248ea83862.html">[3] Walk the dog, Put out the garbage, Completed, [Walk the dog]</a>
-                                                                                <br/>
-                                                                                    <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> 1 passing test case
-                                                                                    <br/>
-                                                                        </td>
-                                                                        <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
-                                                                        </td>
-                                                                        <td>5</td>
-                                                                        <td data-order="1709709145">07:12:25</td>
-                                                                        <td>3s 813ms</td>
-                                                                        <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
-                                                                                    style="display:none">SUCCESS</span>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="scenario-result SUCCESS">
-                                                                        <td>
-                                                                                <a href="8a2528df3074e8697e4e80fbebc7b478d669cb9fe8e8e5fbc501118d3d5b5011.html">TodosBelongToAUser</a>
+                                                                                <a href="68ea1a643ecdc5bfdc0ca0c7619106f6b16fb392e8056c604e4051f198960117.html">HandlingTodosBelongingToSeveralUsers</a>
                                                                         </td>
                                                                         <td data-order="Should not affect todos belonging to another user">
-                                                                                    <a href="7575efdfb649811e6172d5155c0144964f0bcd0420c059aa9359acd3e5bf9edd.html">Should not affect todos belonging to another user</a>
+                                                                                    <a href="89a68db9b1e4f5d13d9b8b741cda6d1cc64ff0141cfdfcc50ed6a3b424cbba37.html">Should not affect todos belonging to another user</a>
                                                                         </td>
                                                                         <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
                                                                         </td>
                                                                         <td>5</td>
-                                                                        <td data-order="1709709131">07:12:11</td>
-                                                                        <td>1s 550ms</td>
+                                                                        <td>James starts with a todo list containing Walk the dog, Put out the garbage
+Jane starts with a todo list containing Walk the dog, Feed the cat
+James completes the item called Walk the dog
+James clears all the completed items
+Then the items displayed should be iterable containing ['Walk the dog', 'Feed the cat']
+</td>
+                                                                        <td data-order="1716453835">08:43:55</td>
+                                                                        <td>6s 451ms</td>
                                                                         <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
                                                                                     style="display:none">SUCCESS</span>
                                                                         </td>
@@ -1734,8 +2421,12 @@
                                                                         <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
                                                                         </td>
                                                                         <td>3</td>
-                                                                        <td data-order="1709709135">07:12:15</td>
-                                                                        <td>2s 054ms</td>
+                                                                        <td>James starts with a todo list containing Walk the dog, Put out the garbage
+James adds a todo item called: Buy some milk
+Then the items displayed should be (a collection containing 'Walk the dog' and a collection containing 'Put out the garbage' and a collection containing 'Buy some milk')
+</td>
+                                                                        <td data-order="1716453836">08:43:56</td>
+                                                                        <td>3s 637ms</td>
                                                                         <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
                                                                                     style="display:none">SUCCESS</span>
                                                                         </td>
@@ -1750,8 +2441,12 @@
                                                                         <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-ubuntu' title='Linux'></i></span><span style="display:none">Chrome,linux</span>
                                                                         </td>
                                                                         <td>3</td>
-                                                                        <td data-order="1709709135">07:12:15</td>
-                                                                        <td>1s 975ms</td>
+                                                                        <td>James starts with an empty todo list
+James adds a todo item called: Buy some milk
+Then the items displayed should be a collection containing 'Buy some milk'
+</td>
+                                                                        <td data-order="1716453839">08:43:59</td>
+                                                                        <td>2s 902ms</td>
                                                                         <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
                                                                                     style="display:none">SUCCESS</span>
                                                                         </td>
@@ -1785,7 +2480,7 @@
                                     </a>
                                     <a href="1a067281f08658ac6c668d1f525eeada9cc5ed39ad7a4d652c30b2778694a272.html">
                                     <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
-                                        <i class="bi bi-tag-fill"></i> Filtering&nbsp;&nbsp;&nbsp;6
+                                        <i class="bi bi-tag-fill"></i> Filtering&nbsp;&nbsp;&nbsp;3
                                     </span>
                                     </a>
                                     <a href="d0e3033e1d4fd450bad910c731185f5c272a3350c68ca7cf2b9537e0aceae6af.html">
@@ -1796,6 +2491,11 @@
                                     <a href="028fb69bf25996e445f66d6323cf7c1d294bfbbb15ca870736473bd3facac897.html">
                                     <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
                                         <i class="bi bi-tag-fill"></i> Deleting&nbsp;&nbsp;&nbsp;2
+                                    </span>
+                                    </a>
+                                    <a href="2cd01b32c760219da9b91861180157b914de4b5670a97fe9eeeca8e63aa4e2ab.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Smoke-Test&nbsp;&nbsp;&nbsp;5
                                     </span>
                                     </a>
                                     <a href="08fe31b4cedcca88014566e2926c79ff53b30818f68b6c102890ece9afcee9b3.html">
@@ -1810,7 +2510,7 @@
                                     </a>
                                     <a href="980553ab65ac3a80cb226527d564bcf09dfb50e9d5c6245f24578a314fb4b271.html">
                                     <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
-                                        <i class="bi bi-tag-fill"></i> Cucumber&nbsp;&nbsp;&nbsp;18
+                                        <i class="bi bi-tag-fill"></i> Cucumber&nbsp;&nbsp;&nbsp;12
                                     </span>
                                     </a>
                             </div>
@@ -1822,7 +2522,7 @@
                             <div>
                                     <a href="46b54d9084ba9783130da16408afb27a4e4620f6bd966e731510c7395b9ddf5c.html">
                                     <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
-                                        <i class="bi bi-tag-fill"></i> Chrome, Linux&nbsp;&nbsp;&nbsp;54
+                                        <i class="bi bi-tag-fill"></i> Chrome, Linux&nbsp;&nbsp;&nbsp;51
                                     </span>
                                     </a>
                             </div>
@@ -1848,7 +2548,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-12">
-            <span class="version">Serenity BDD version 4.1.3</span>
+            <span class="version">Serenity BDD version 4.1.12</span>
         </div>
     </div>
 </div>
@@ -1876,7 +2576,7 @@
             datasets: [{
                 label: 'Test Results',
                 fill: false,
-                data: [54,0,0,0,0,0,0,0],
+                data: [51,0,0,0,0,0,0,0],
                 backgroundColor: ['rgba(153,204,51,0.5)','rgba(165, 199, 238, 0.5)','rgba(168, 168, 168, 0.5)','rgba(238, 224, 152, 0.75)','rgba(255, 153, 102, 0.5)','rgba(255, 22, 49, 0.5)','rgba(255, 97, 8, 0.5)','rgba(255, 104, 255, 0.5)','rgba(83, 50, 168, 0.5)'],
                 borderColor: ['rgba(153,204,51,1)','rgba(165, 199, 238, 1)','rgba(168, 168, 168, 1)','rgba(238, 224, 152, 1)','rgba(255, 153, 102, 1)','rgba(255, 22, 49, 1)','rgba(255, 97, 8, 1)','rgba(255, 104, 255, 1)','rgba(83, 50, 168, 1)'],
                 borderWidth: 1,
@@ -1972,7 +2672,7 @@
             datasets: [
                 {
                     label: 'Automated',
-                    data: [54,0,0,0,0,0,0,0],
+                    data: [51,0,0,0,0,0,0,0],
                     backgroundColor: ['rgba(153,204,51,0.5)','rgba(165, 199, 238, 0.5)','rgba(168, 168, 168, 0.5)','rgba(238, 224, 152, 0.75)','rgba(255, 153, 102, 0.5)','rgba(255, 22, 49, 0.5)','rgba(255, 97, 8, 0.5)','rgba(255, 104, 255, 0.5)','rgba(83, 50, 168, 0.5)'],
                     borderColor: ['rgba(153,204,51,1)','rgba(165, 199, 238, 1)','rgba(168, 168, 168, 1)','rgba(238, 224, 152, 1)','rgba(255, 153, 102, 1)','rgba(255, 22, 49, 1)','rgba(255, 97, 8, 1)','rgba(255, 104, 255, 1)','rgba(83, 50, 168, 1)'],
                     borderWidth: 1
@@ -2055,7 +2755,7 @@
             datasets: [{
                 label: 'Number of tests per duration',
                 fill: false,
-                data: ['0','44','1','9','0','0','0','0'],
+                data: ['0','49','2','0','0','0','0','0'],
                 backgroundColor: 'rgba(83, 146, 255,0.5)',
                 borderColor: 'rgba(83, 146, 255, 1)',
             }]
@@ -2128,11 +2828,6 @@
                 link: "b3f706bf8f247d9c100b9e130fc05544b762809ce18613516306cff20a75fd9d.html"
             },
             {
-                title: 'Filtering other todos',
-                result: 'SUCCESS',
-                link: "833fa07d5e0687f05a9f09429aa4c51e3e714bb9d238fab46a90d9857eba871a.html"
-            },
-            {
                 title: 'Filtering todos',
                 result: 'SUCCESS',
                 link: "7077e374b487fe487d82eab3224c4a716cfa62ebc84bcc58828d7a6f35471354.html"
@@ -2188,24 +2883,24 @@
                 link: "99c417da16d797ee6e7e29174b9af433d1144e5506116f2fc76a9ca44586f925.html"
             },
             {
-                title: 'Clear completed todos',
+                title: 'Clear completed todo items',
                 result: 'SUCCESS',
-                link: "a9ef7c19cf25e1e8424df345da55eb5a3a4722191e4874d7311f8a9a587c5464.html"
+                link: "6aef99603943aad0e497a7e4a75950fabb98f17d5448f82fe62bd5c0ba0a2ead.html"
             },
             {
-                title: 'Deleting todos',
+                title: 'Deleting todo items',
                 result: 'SUCCESS',
-                link: "a7266d2706da755e292bb1113dbc32c9397ecbf22b7d4be5860e55d4fc3a9fba.html"
+                link: "6aab44069ea31287a0d497482f8b392c3ce96625a52c3abe3aa1fc7c8c015341.html"
             },
             {
-                title: 'Filtering todos',
+                title: 'Filtering todo items',
                 result: 'SUCCESS',
-                link: "c93dcbddcae36438f6869cbb0f1dd7ae0c4832d5a4a64d6386c69a785ef3c009.html"
+                link: "b32d78e5a653b3255057728550bcc4eb3254905c5358e9a8c84ca3ca2a547ca7.html"
             },
             {
-                title: 'Todos belong to a user',
+                title: 'Handling todos belonging to several users',
                 result: 'SUCCESS',
-                link: "8a2528df3074e8697e4e80fbebc7b478d669cb9fe8e8e5fbc501118d3d5b5011.html"
+                link: "68ea1a643ecdc5bfdc0ca0c7619106f6b16fb392e8056c604e4051f198960117.html"
             },
             {
                 title: 'Add new todos',
@@ -2217,7 +2912,6 @@
             labels: [
                 'Completing todos',
                 'Deleting todos',
-                'Filtering other todos',
                 'Filtering todos',
                 'Add new todos',
                 'Learn about the application',
@@ -2229,51 +2923,51 @@
                 'Add new todos',
                 'Learn about the application',
                 'Complete a todo',
-                'Clear completed todos',
-                'Deleting todos',
-                'Filtering todos',
-                'Todos belong to a user',
+                'Clear completed todo items',
+                'Deleting todo items',
+                'Filtering todo items',
+                'Handling todos belonging to several users',
                 'Add new todos',
             ],
             datasets: [
                 {
                     label: ['Passing Tests'],
-                    data: [7,2,3,3,3,2,1,4,2,2,3,2,2,6,2,2,5,1,2],
+                    data: [7,2,3,3,2,1,4,2,2,3,2,2,6,2,2,5,1,2],
                     backgroundColor: [ 'rgba(153,204,51,0.5)' ]
                 },
                 {
                     label: ['Pending Tests'],
-                    data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                    data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
                     backgroundColor: [ 'rgba(165, 199, 238, 0.5)' ]
                 },
                 {
                     label: ['Ignored Tests'],
-                    data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                    data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
                     backgroundColor: [ 'rgba(168, 168, 168, 0.5)' ]
                 },
                 {
                     label: ['Skipped Tests'],
-                    data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                    data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
                     backgroundColor: [ 'rgba(238, 224, 152, 0.75)' ]
                 },
                 {
                     label: ['Aborted Tests'],
-                    data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                    data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
                     backgroundColor: [ 'rgba(255, 153, 102, 0.5)' ]
                 },
                 {
                     label: ['Failed Tests'],
-                    data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                    data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
                     backgroundColor: [ 'rgba(255, 22, 49, 0.5)' ]
                 },
                 {
                     label: ['Errors'],
-                    data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                    data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
                     backgroundColor: [ 'rgba(255, 97, 8, 0.5)' ]
                 },
                 {
                     label: ['Compromised Tests'],
-                    data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                    data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
                     backgroundColor: [ 'rgba(255, 104, 255, 0.5)' ]
                 },
             ]
